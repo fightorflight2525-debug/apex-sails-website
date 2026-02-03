@@ -756,10 +756,10 @@ export default function GolfPage() {
             <p className="mt-8 text-base font-medium text-white/90">
               Or call us directly:{" "}
               <a
-                href="tel:+14352294847"
+                href="tel:+16027275107"
                 className="underline decoration-white/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
               >
-                (435) 229-4847
+                (602) 727-5107
               </a>
             </p>
           </div>

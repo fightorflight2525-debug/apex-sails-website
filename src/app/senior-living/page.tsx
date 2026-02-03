@@ -613,10 +613,10 @@ export default function SeniorLivingPage() {
             <p className="mt-8 font-body text-base text-white/80">
               Or call us directly:{" "}
               <a
-                href="tel:+14352294847"
+                href="tel:+16027275107"
                 className="font-semibold text-white underline decoration-white/40 underline-offset-4 transition-colors hover:decoration-white"
               >
-                (435) 229-4847
+                (602) 727-5107
               </a>
             </p>
           </div>

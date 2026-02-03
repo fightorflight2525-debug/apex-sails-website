@@ -344,10 +344,10 @@ export default function ContactPage() {
                     <div>
                       <p className="text-xs text-charcoal-light">Phone</p>
                       <a
-                        href="tel:+14352294847"
+                        href="tel:+16027275107"
                         className="text-sm font-medium text-charcoal hover:text-copper transition-colors"
                       >
-                        (435) 229-4847
+                        (602) 727-5107
                       </a>
                     </div>
                   </div>
@@ -372,10 +372,10 @@ export default function ContactPage() {
                     <div>
                       <p className="text-xs text-charcoal-light">Email</p>
                       <a
-                        href="mailto:apex@apexsailshades.com"
+                        href="mailto:apexsails1@gmail.com"
                         className="text-sm font-medium text-charcoal hover:text-copper transition-colors"
                       >
-                        apex@apexsailshades.com
+                        apexsails1@gmail.com
                       </a>
                     </div>
                   </div>

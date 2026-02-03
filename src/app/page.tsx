@@ -708,10 +708,10 @@ export default function Home() {
           <p className="mt-6 text-white/60">
             Or call us directly:{" "}
             <a
-              href="tel:+14352294847"
+              href="tel:+16027275107"
               className="text-white font-semibold hover:text-cream transition-colors underline underline-offset-2"
             >
-              (435) 229-4847
+              (602) 727-5107
             </a>
           </p>
         </div>

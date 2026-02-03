@@ -41,7 +41,7 @@ export default function Footer() {
               Engineered commercial shade solutions. Serving Arizona &amp; Utah.
             </p>
             <a
-              href="tel:+14352294847"
+              href="tel:+16027275107"
               className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-copper hover:text-copper-light transition-colors"
             >
               <svg
@@ -58,10 +58,10 @@ export default function Footer() {
                   fill="currentColor"
                 />
               </svg>
-              (435) 229-4847
+              (602) 727-5107
             </a>
             <a
-              href="mailto:apex@apexsailshades.com"
+              href="mailto:apexsails1@gmail.com"
               className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-copper hover:text-copper-light transition-colors"
             >
               <svg
@@ -82,7 +82,7 @@ export default function Footer() {
                   fill="none"
                 />
               </svg>
-              apex@apexsailshades.com
+              apexsails1@gmail.com
             </a>
           </div>
 
