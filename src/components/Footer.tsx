@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const footerSolutions = [
   { label: "Golf & Entertainment", href: "/golf" },
@@ -25,42 +26,22 @@ export default function Footer() {
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-          {/* Column 1: Logo + Tagline + Phone */}
+          {/* Column 1: Logo + Tagline + Phone + Email */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-2.5 group">
-              {/* Geometric sail icon */}
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 32 32"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="shrink-0"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4 28L16 4L28 28H4Z"
-                  fill="currentColor"
-                  className="text-copper"
-                  opacity="0.9"
-                />
-                <path
-                  d="M8 28L16 10L24 28H8Z"
-                  fill="currentColor"
-                  className="text-sand"
-                  opacity="0.5"
-                />
-              </svg>
-              <span className="font-heading text-lg font-bold tracking-wide text-white">
-                APEX SAIL SHADES
-              </span>
+            <Link href="/" className="inline-flex items-center group">
+              <Image
+                src="/images/logo-dark-bg.svg"
+                alt="Apex Sail Shades"
+                width={180}
+                height={51}
+                className="h-11 w-auto"
+              />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-gray-400 max-w-xs">
-              Engineered commercial shade solutions for Arizona&apos;s toughest
-              environments.
+              Engineered commercial shade solutions. Serving Arizona &amp; Utah.
             </p>
             <a
-              href="tel:+14805551234"
+              href="tel:+14352294847"
               className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-copper hover:text-copper-light transition-colors"
             >
               <svg
@@ -77,7 +58,31 @@ export default function Footer() {
                   fill="currentColor"
                 />
               </svg>
-              (480) 555-1234
+              (435) 229-4847
+            </a>
+            <a
+              href="mailto:apex@apexsailshades.com"
+              className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-copper hover:text-copper-light transition-colors"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="shrink-0"
+                aria-hidden="true"
+              >
+                <path
+                  d="M2 4l6 4 6-4M2 4v8h12V4M2 4h12"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  fill="none"
+                />
+              </svg>
+              apex@apexsailshades.com
             </a>
           </div>
 
@@ -160,7 +165,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
             <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
-              <span>&copy; 2025 Apex Sail Shades. All rights reserved.</span>
+              <span>&copy; {new Date().getFullYear()} Apex Sail Shades. All rights reserved.</span>
               <span className="hidden sm:inline text-gray-600">&middot;</span>
               <span className="text-copper/70 font-medium">
                 Licensed, Bonded &amp; Insured

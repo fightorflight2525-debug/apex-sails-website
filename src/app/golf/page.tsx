@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Golf & Entertainment Shade Solutions | Apex Sail Shades",
@@ -423,12 +424,15 @@ export default function GolfPage() {
           <div className="mx-auto mt-14 grid max-w-5xl gap-8 lg:grid-cols-2">
             {/* Installation 1 */}
             <div className="overflow-hidden rounded-2xl border border-cream-dark bg-cream/30">
-              {/* Photo placeholder */}
-              <div className="flex h-56 items-center justify-center bg-sand/40 sm:h-64">
-                <p className="px-6 text-center text-sm text-charcoal-light">
-                  [Photo: TopGolf Utah &mdash; Installation 1, aerial view of
-                  cantilever shade sails over driving bays]
-                </p>
+              {/* Photo */}
+              <div className="relative h-56 sm:h-64 overflow-hidden">
+                <Image
+                  src="/images/commercial-shade-1.jpg"
+                  alt="TopGolf Utah Installation 1 - shade sails over driving bays"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
               </div>
               <div className="p-6">
                 <h3 className="font-heading text-lg font-bold text-charcoal">
@@ -457,12 +461,15 @@ export default function GolfPage() {
 
             {/* Installation 2 */}
             <div className="overflow-hidden rounded-2xl border border-cream-dark bg-cream/30">
-              {/* Photo placeholder */}
-              <div className="flex h-56 items-center justify-center bg-sand/40 sm:h-64">
-                <p className="px-6 text-center text-sm text-charcoal-light">
-                  [Photo: TopGolf Utah &mdash; Installation 2, ground-level view
-                  of shade sails with guests underneath]
-                </p>
+              {/* Photo */}
+              <div className="relative h-56 sm:h-64 overflow-hidden">
+                <Image
+                  src="/images/commercial-shade-2.jpg"
+                  alt="TopGolf Utah Installation 2 - shade sails with guests"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
               </div>
               <div className="p-6">
                 <h3 className="font-heading text-lg font-bold text-charcoal">
@@ -523,12 +530,10 @@ export default function GolfPage() {
               <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
             </svg>
             <blockquote className="mt-4 text-lg italic leading-relaxed text-charcoal sm:text-xl">
-              &ldquo;Apex delivered exactly what they promised &mdash; on time,
-              on budget, and without a single hour of downtime. Our bay
-              utilization during peak summer went up over 40%.&rdquo;
+              &ldquo;Two large-scale shade installations completed for TopGolf Utah&apos;s driving range facility. Over 66,000 square feet of engineered shade coverage installed across both structures, enabling full bay utilization during peak summer months. Our ShadeCast&#8482; software was instrumental in optimizing shadow placement for maximum afternoon coverage.&rdquo;
             </blockquote>
             <p className="mt-4 text-sm font-medium text-charcoal-light">
-              &mdash; Facility Director, TopGolf Utah
+              &mdash; TopGolf Utah Installation, 2024
             </p>
           </div>
         </div>
@@ -751,10 +756,10 @@ export default function GolfPage() {
             <p className="mt-8 text-base font-medium text-white/90">
               Or call us directly:{" "}
               <a
-                href="tel:+14805551234"
+                href="tel:+14352294847"
                 className="underline decoration-white/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
               >
-                (480) 555-1234
+                (435) 229-4847
               </a>
             </p>
           </div>

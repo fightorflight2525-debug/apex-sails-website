@@ -30,7 +30,7 @@ const trustBadges = [
   "Since 2018",
 ];
 
-const serviceAreas = ["Phoenix Metro", "Scottsdale", "Tucson", "Flagstaff"];
+const serviceAreas = ["Phoenix Metro", "Scottsdale", "Tucson", "Salt Lake City", "St. George"];
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -344,10 +344,10 @@ export default function ContactPage() {
                     <div>
                       <p className="text-xs text-charcoal-light">Phone</p>
                       <a
-                        href="tel:+14805550123"
+                        href="tel:+14352294847"
                         className="text-sm font-medium text-charcoal hover:text-copper transition-colors"
                       >
-                        (480) 555-0123
+                        (435) 229-4847
                       </a>
                     </div>
                   </div>
@@ -372,10 +372,10 @@ export default function ContactPage() {
                     <div>
                       <p className="text-xs text-charcoal-light">Email</p>
                       <a
-                        href="mailto:info@apexsailshades.com"
+                        href="mailto:apex@apexsailshades.com"
                         className="text-sm font-medium text-charcoal hover:text-copper transition-colors"
                       >
-                        info@apexsailshades.com
+                        apex@apexsailshades.com
                       </a>
                     </div>
                   </div>
@@ -407,7 +407,7 @@ export default function ContactPage() {
                         Service Area
                       </p>
                       <p className="text-sm font-medium text-charcoal">
-                        Arizona
+                        Serving Arizona &amp; Utah
                       </p>
                       <p className="mt-0.5 text-xs text-charcoal-light">
                         {serviceAreas.join(", ")}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import ShadeCastDemo from "@/components/ShadeCastDemo";
 
 export default function Home() {
@@ -8,8 +9,17 @@ export default function Home() {
           SECTION 1: HERO
           ============================================================ */}
       <section className="relative min-h-screen flex items-center overflow-hidden bg-charcoal">
+        {/* Hero background image */}
+        <Image
+          src="/images/hero-shade.jpg"
+          alt=""
+          fill
+          className="object-cover opacity-30"
+          priority
+          sizes="100vw"
+        />
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal via-charcoal-light/40 to-charcoal" />
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/80 via-charcoal-light/60 to-charcoal" />
 
         {/* Geometric sail-shape SVG decorative patterns */}
         <div className="absolute inset-0 opacity-[0.04]">
@@ -71,8 +81,8 @@ export default function Home() {
               Engineered Shade That Pays For Itself
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-white/70 max-w-2xl leading-relaxed font-body">
-              Commercial shade sail installations for Arizona&apos;s golf courses,
-              entertainment venues, and senior living facilities. $100k+ engineered
+              Commercial shade sail installations for golf courses,
+              entertainment venues, and senior living facilities across Arizona &amp; Utah. $100k+ engineered
               solutions&nbsp;&mdash; not backyard canopies.
             </p>
 
@@ -407,18 +417,30 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Before/After placeholder */}
+          {/* Project images */}
           <div className="grid md:grid-cols-2 gap-6 mb-14">
-            <div className="aspect-[16/10] rounded-2xl bg-sand/30 border-2 border-dashed border-sand flex items-center justify-center">
-              <div className="text-center">
-                <p className="text-charcoal/40 font-heading font-semibold text-lg">Before Photo</p>
-                <p className="text-charcoal/30 text-sm mt-1">TopGolf Utah &mdash; Unshaded</p>
+            <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-sand/30">
+              <Image
+                src="/images/commercial-shade-1.jpg"
+                alt="Large commercial shade sail installation"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal/80 to-transparent p-4">
+                <p className="text-white/90 text-sm font-medium">Commercial Shade Installation</p>
               </div>
             </div>
-            <div className="aspect-[16/10] rounded-2xl bg-sand/30 border-2 border-dashed border-sand flex items-center justify-center">
-              <div className="text-center">
-                <p className="text-charcoal/40 font-heading font-semibold text-lg">After Photo</p>
-                <p className="text-charcoal/30 text-sm mt-1">TopGolf Utah &mdash; Apex Shade Installed</p>
+            <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-sand/30">
+              <Image
+                src="/images/commercial-shade-2.jpg"
+                alt="TopGolf Utah shade sail installation"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal/80 to-transparent p-4">
+                <p className="text-white/90 text-sm font-medium">Apex Shade Installed</p>
               </div>
             </div>
           </div>
@@ -435,14 +457,84 @@ export default function Home() {
                 <path d="M10 25 C10 19 14 14 20 12 L18 16 C15 17 13 20 13 23 L18 23 L18 30 L10 30 Z M24 25 C24 19 28 14 34 12 L32 16 C29 17 27 20 27 23 L32 23 L32 30 L24 30 Z" />
               </svg>
               <p className="relative z-10 text-lg sm:text-xl text-charcoal/80 italic leading-relaxed pl-8">
-                The shade analysis showed us exactly what we needed. Installation
-                was completed without disrupting a single day of operations.
+                Two large-scale shade installations completed for TopGolf Utah&apos;s driving range facility. Over 66,000 square feet of engineered shade coverage installed across both structures, enabling full bay utilization during peak summer months. Our ShadeCast&#8482; software was instrumental in optimizing shadow placement for maximum afternoon coverage.
               </p>
               <footer className="mt-6 pl-8">
-                <p className="text-charcoal font-semibold">Facility Director</p>
-                <p className="text-charcoal/50 text-sm">TopGolf Utah</p>
+                <p className="text-charcoal font-semibold">&mdash; TopGolf Utah Installation, 2024</p>
               </footer>
             </blockquote>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+          SECTION 5B: PAST PROJECTS / OUR WORK
+          ============================================================ */}
+      <section className="bg-cream py-20 sm:py-24">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="text-center mb-14">
+            <p className="text-copper font-semibold tracking-wide uppercase text-sm mb-3">
+              Our Work
+            </p>
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-charcoal">
+              Past Projects
+            </h2>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Project 1: TopGolf Utah */}
+            <div className="group rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-lg transition-shadow">
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image
+                  src="/images/commercial-shade-1.jpg"
+                  alt="TopGolf Utah shade sail installation"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="font-heading text-lg font-bold text-charcoal">TopGolf Utah</h3>
+                <p className="text-copper text-sm font-semibold mt-1">66,000+ sq ft &bull; $132K</p>
+                <p className="text-charcoal/60 text-sm mt-2">Two engineered HyPar shade structures covering outdoor hitting bays and event areas.</p>
+              </div>
+            </div>
+
+            {/* Project 2 */}
+            <div className="group rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-lg transition-shadow">
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image
+                  src="/images/commercial-shade-2.jpg"
+                  alt="Commercial shade installation"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="font-heading text-lg font-bold text-charcoal">Commercial Installation</h3>
+                <p className="text-copper text-sm font-semibold mt-1">Large-Scale Coverage</p>
+                <p className="text-charcoal/60 text-sm mt-2">Engineered tensioned membrane shade structures for commercial outdoor spaces.</p>
+              </div>
+            </div>
+
+            {/* Project 3 */}
+            <div className="group rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-lg transition-shadow">
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image
+                  src="/images/golf-venue.jpg"
+                  alt="Golf venue shade structure"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="font-heading text-lg font-bold text-charcoal">Entertainment Venue</h3>
+                <p className="text-copper text-sm font-semibold mt-1">Commercial Grade</p>
+                <p className="text-charcoal/60 text-sm mt-2">High-performance shade solutions for outdoor entertainment and recreation facilities.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -616,10 +708,10 @@ export default function Home() {
           <p className="mt-6 text-white/60">
             Or call us directly:{" "}
             <a
-              href="tel:+14805551234"
+              href="tel:+14352294847"
               className="text-white font-semibold hover:text-cream transition-colors underline underline-offset-2"
             >
-              (480) 555-1234
+              (435) 229-4847
             </a>
           </p>
         </div>

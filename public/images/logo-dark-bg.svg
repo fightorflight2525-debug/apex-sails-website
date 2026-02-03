@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" fill="none">
+  <!-- Geometric sail/mountain mark -->
+  <g transform="translate(0, 5)">
+    <!-- Back gold/tan triangle -->
+    <polygon points="35,65 55,25 75,65" fill="#C4924A" opacity="0.9"/>
+    <!-- Main orange triangle (left side) -->
+    <polygon points="15,65 40,10 55,35" fill="#C45C26"/>
+    <!-- Dark center triangle -->
+    <polygon points="40,10 55,35 48,45 35,25" fill="#2D2D2D" opacity="0.7"/>
+    <!-- Top orange peak -->
+    <polygon points="30,30 40,10 50,25 40,20" fill="#D4732E"/>
+    <!-- Right copper sail piece -->
+    <polygon points="50,25 65,45 55,35" fill="#C45C26" opacity="0.85"/>
+    <!-- Small inner triangle cutout at peak -->
+    <polygon points="37,28 40,20 43,28" fill="none" stroke="#2D2D2D" stroke-width="0.5" opacity="0.3"/>
+  </g>
+  <!-- APEX text -->
+  <text x="90" y="42" font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="32" fill="white" letter-spacing="3">APEX</text>
+  <!-- SAIL SHADES text -->
+  <text x="92" y="62" font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-weight="500" font-size="14" fill="#C4924A" letter-spacing="4">SAIL SHADES</text>
+</svg>

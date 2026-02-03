@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Senior Living Shade Solutions | Apex Sail Shades",
@@ -612,10 +613,10 @@ export default function SeniorLivingPage() {
             <p className="mt-8 font-body text-base text-white/80">
               Or call us directly:{" "}
               <a
-                href="tel:+14805551234"
+                href="tel:+14352294847"
                 className="font-semibold text-white underline decoration-white/40 underline-offset-4 transition-colors hover:decoration-white"
               >
-                (480) 555-1234
+                (435) 229-4847
               </a>
             </p>
           </div>

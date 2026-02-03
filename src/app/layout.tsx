@@ -20,7 +20,7 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "Apex Sail Shades | Engineered Commercial Shade Solutions",
   description:
-    "Premium commercial shade sail installations for golf courses, entertainment venues, and senior living facilities in Arizona. ShadeCast™ technology, HyPar engineering, 96% UV block.",
+    "Premium commercial shade sail installations for golf courses, entertainment venues, and senior living facilities in Arizona and Utah. ShadeCast™ technology, HyPar engineering, 96% UV block.",
   keywords: [
     "commercial shade sails",
     "golf course shade",

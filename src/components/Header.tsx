@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -86,49 +87,15 @@ export default function Header() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-20 items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group">
-              <svg
-                viewBox="0 0 40 40"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-9 w-9 shrink-0"
-                aria-hidden="true"
-              >
-                {/* Stylized sail / geometric triangle shape */}
-                <path
-                  d="M8 36L20 4L32 36"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  fill="none"
-                  className="text-copper"
-                />
-                <path
-                  d="M20 4L32 36H20V4Z"
-                  fill="currentColor"
-                  className="text-copper opacity-80"
-                />
-                <path
-                  d="M8 36L20 4V36H8Z"
-                  fill="currentColor"
-                  className="text-copper opacity-40"
-                />
-                <line
-                  x1="11"
-                  y1="28"
-                  x2="29"
-                  y2="28"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  className="text-copper"
-                />
-              </svg>
-              <span
-                className={`font-heading text-lg font-bold tracking-wide transition-colors duration-300 ${
-                  scrolled ? "text-charcoal" : "text-white"
-                }`}
-              >
-                APEX SAIL SHADES
-              </span>
+            <Link href="/" className="flex items-center group">
+              <Image
+                src={scrolled ? "/images/logo-light-bg.svg" : "/images/logo-dark-bg.svg"}
+                alt="Apex Sail Shades"
+                width={200}
+                height={57}
+                className="h-12 w-auto transition-opacity duration-300"
+                priority
+              />
             </Link>
 
             {/* Desktop Navigation */}
@@ -187,11 +154,13 @@ export default function Header() {
                         stroke="currentColor"
                         strokeWidth={2}
                       >
+                        {/* Golf flag icon */}
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          d="M3 21h18M3 21V8l9-5 9 5v13"
+                          d="M3 21V3m0 0l9 4.5L3 12"
                         />
+                        <circle cx="3" cy="21" r="1.5" fill="currentColor" opacity="0.3" />
                       </svg>
                     </span>
                     <div>
@@ -214,10 +183,11 @@ export default function Header() {
                         stroke="currentColor"
                         strokeWidth={2}
                       >
+                        {/* Building/community icon */}
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          d="M12 3v18m-7-7h14M5 8h14"
+                          d="M2 22h20M6 22V6l6-4 6 4v16M10 22v-4h4v4M10 10h.01M14 10h.01M10 14h.01M14 14h.01"
                         />
                       </svg>
                     </span>

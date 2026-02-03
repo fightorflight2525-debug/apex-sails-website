@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "How It Works | Apex Sail Shades",
@@ -220,6 +221,7 @@ const processSteps = [
       "Realistic timeline discussion and planning",
     ],
     imagePlaceholder: "Consultation Photo",
+    image: "/images/commercial-shade-1.jpg",
     Icon: IconDiscovery,
   },
   {
@@ -234,6 +236,7 @@ const processSteps = [
       "Custom report with visual shadow data and coverage metrics",
     ],
     imagePlaceholder: "ShadeCast\u2122 Analysis Report",
+    image: "/images/commercial-shade-2.jpg",
     Icon: IconShadeCast,
   },
   {
@@ -249,6 +252,7 @@ const processSteps = [
       "City permitting handled entirely by our team",
     ],
     imagePlaceholder: "Engineering Blueprint",
+    image: "/images/installation-process.jpg",
     Icon: IconEngineering,
   },
   {
@@ -264,6 +268,7 @@ const processSteps = [
       "Quality control inspection before shipping",
     ],
     imagePlaceholder: "Fabrication Process",
+    image: "/images/golf-venue.jpg",
     Icon: IconFabrication,
   },
   {
@@ -279,6 +284,7 @@ const processSteps = [
       "10-year fabric warranty activation",
     ],
     imagePlaceholder: "Installation Photo",
+    image: "/images/senior-courtyard.jpg",
     Icon: IconInstallation,
   },
 ];
@@ -394,20 +400,29 @@ export default function HowItWorksPage() {
                   </ul>
                 </div>
 
-                {/* Image Placeholder Side */}
+                {/* Image Side */}
                 <div className="w-full lg:w-1/2">
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border-2 border-dashed border-copper/20 bg-cream-dark/50 flex items-center justify-center">
-                    <div className="text-center px-6">
-                      <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-copper/10">
-                        <step.Icon className="h-8 w-8 text-copper" />
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+                    {step.image ? (
+                      <Image
+                        src={step.image}
+                        alt={step.imagePlaceholder}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 border-2 border-dashed border-copper/20 bg-cream-dark/50 flex items-center justify-center">
+                        <div className="text-center px-6">
+                          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-copper/10">
+                            <step.Icon className="h-8 w-8 text-copper" />
+                          </div>
+                          <p className="font-heading text-lg font-semibold text-charcoal/40">
+                            {step.imagePlaceholder}
+                          </p>
+                        </div>
                       </div>
-                      <p className="font-heading text-lg font-semibold text-charcoal/40">
-                        {step.imagePlaceholder}
-                      </p>
-                      <p className="mt-2 text-sm text-charcoal/30">
-                        Image Placeholder
-                      </p>
-                    </div>
+                    )}
                   </div>
                 </div>
               </div>
