@@ -221,7 +221,7 @@ const processSteps = [
       "Realistic timeline discussion and planning",
     ],
     imagePlaceholder: "Consultation Photo",
-    image: "/images/commercial-shade-1.jpg",
+    image: "/images/gallery-blue-courtyard.jpg",
     Icon: IconDiscovery,
   },
   {
@@ -236,7 +236,7 @@ const processSteps = [
       "Custom report with visual shadow data and coverage metrics",
     ],
     imagePlaceholder: "ShadeCast\u2122 Analysis Report",
-    image: "/images/commercial-shade-2.jpg",
+    image: "/images/gallery-aerial.jpg",
     Icon: IconShadeCast,
   },
   {
@@ -268,7 +268,7 @@ const processSteps = [
       "Quality control inspection before shipping",
     ],
     imagePlaceholder: "Fabrication Process",
-    image: "/images/golf-venue.jpg",
+    image: "/images/gallery-curved-desert.jpg",
     Icon: IconFabrication,
   },
   {
@@ -284,7 +284,7 @@ const processSteps = [
       "10-year fabric warranty activation",
     ],
     imagePlaceholder: "Installation Photo",
-    image: "/images/senior-courtyard.jpg",
+    image: "/images/gallery-desert-mountains.jpg",
     Icon: IconInstallation,
   },
 ];

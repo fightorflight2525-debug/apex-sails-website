@@ -13,6 +13,15 @@ export default function GolfPage() {
     <>
       {/* ===== SECTION 1: HERO ===== */}
       <section className="relative overflow-hidden bg-charcoal pt-32 pb-20 md:pb-28">
+        {/* Hero background image */}
+        <Image
+          src="/images/gallery-desert-mountains.jpg"
+          alt=""
+          fill
+          className="object-cover opacity-20"
+          priority
+          sizes="100vw"
+        />
         {/* Geometric pattern overlay */}
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
           <svg
@@ -427,8 +436,8 @@ export default function GolfPage() {
               {/* Photo */}
               <div className="relative h-56 sm:h-64 overflow-hidden">
                 <Image
-                  src="/images/commercial-shade-1.jpg"
-                  alt="TopGolf Utah Installation 1 - shade sails over driving bays"
+                  src="/images/pizza-hut-commercial.jpg"
+                  alt="Commercial shade sail installation - aerial drone shot"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -464,8 +473,8 @@ export default function GolfPage() {
               {/* Photo */}
               <div className="relative h-56 sm:h-64 overflow-hidden">
                 <Image
-                  src="/images/commercial-shade-2.jpg"
-                  alt="TopGolf Utah Installation 2 - shade sails with guests"
+                  src="/images/commercial-patio-seating.jpg"
+                  alt="Commercial patio with shade sails and outdoor seating"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"

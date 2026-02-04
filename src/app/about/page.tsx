@@ -118,8 +118,18 @@ export default function AboutPage() {
   return (
     <>
       {/* ===== HERO ===== */}
-      <section className="bg-charcoal pt-32 pb-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative bg-charcoal pt-32 pb-20">
+        {/* Hero background image */}
+        <Image
+          src="/images/about-dramatic.png"
+          alt=""
+          fill
+          className="object-cover opacity-20"
+          priority
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 to-charcoal/80" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-heading text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
             Commercial Shade. Engineered Right.
           </h1>

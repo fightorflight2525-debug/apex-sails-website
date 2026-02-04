@@ -14,8 +14,18 @@ export default function SeniorLivingPage() {
       {/* ═══════════════════════════════════════════════════
           SECTION 1 — HERO
       ═══════════════════════════════════════════════════ */}
-      <section className="bg-charcoal pt-32 pb-20 md:pb-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-charcoal pt-32 pb-20 md:pb-28">
+        {/* Hero background image */}
+        <Image
+          src="/images/senior-living-lounge.jpg"
+          alt=""
+          fill
+          className="object-cover opacity-20"
+          priority
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/60 to-charcoal" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="font-heading text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
               End Seasonal Entrapment
@@ -382,7 +392,38 @@ export default function SeniorLivingPage() {
               Proven In Senior Living
             </h2>
           </div>
-          <div className="mx-auto mt-14 max-w-2xl">
+          {/* Project Gallery */}
+          <div className="mx-auto mt-14 grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-14">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+              <Image
+                src="/images/senior-living-lounge.jpg"
+                alt="Turquoise shade sails over senior living outdoor lounge"
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
+            </div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+              <Image
+                src="/images/gallery-curved-desert.jpg"
+                alt="Curved shade sail with desert landscape"
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
+            </div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+              <Image
+                src="/images/gallery-aerial.jpg"
+                alt="Aerial view of shade sail installation"
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
+            </div>
+          </div>
+
+          <div className="mx-auto max-w-2xl">
             <div className="overflow-hidden rounded-2xl bg-white shadow-lg">
               <div className="bg-charcoal px-8 py-6">
                 <p className="font-heading text-sm font-semibold uppercase tracking-wider text-copper-light">

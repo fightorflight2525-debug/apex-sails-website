@@ -11,8 +11,8 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center overflow-hidden bg-charcoal">
         {/* Hero background image */}
         <Image
-          src="/images/hero-shade.jpg"
-          alt=""
+          src="/images/hero-bryce-canyon.jpg"
+          alt="Commercial shade sail installation with red rock backdrop"
           fill
           className="object-cover opacity-30"
           priority
@@ -504,17 +504,17 @@ export default function Home() {
             <div className="group rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-lg transition-shadow">
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
-                  src="/images/commercial-shade-2.jpg"
-                  alt="Commercial shade installation"
+                  src="/images/pizza-hut-commercial.jpg"
+                  alt="Commercial patio shade sail drone shot"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
               <div className="p-6">
-                <h3 className="font-heading text-lg font-bold text-charcoal">Commercial Installation</h3>
+                <h3 className="font-heading text-lg font-bold text-charcoal">Commercial Patio</h3>
                 <p className="text-copper text-sm font-semibold mt-1">Large-Scale Coverage</p>
-                <p className="text-charcoal/60 text-sm mt-2">Engineered tensioned membrane shade structures for commercial outdoor spaces.</p>
+                <p className="text-charcoal/60 text-sm mt-2">Engineered shade sails covering outdoor dining and seating areas for commercial venues.</p>
               </div>
             </div>
 
@@ -522,8 +522,8 @@ export default function Home() {
             <div className="group rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-lg transition-shadow">
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
-                  src="/images/golf-venue.jpg"
-                  alt="Golf venue shade structure"
+                  src="/images/commercial-patio-seating.jpg"
+                  alt="Commercial patio seating with shade sails"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
