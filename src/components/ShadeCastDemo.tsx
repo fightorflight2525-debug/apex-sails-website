@@ -119,29 +119,38 @@ function getSunColor(hour: number): string {
 }
 
 /**
- * Project a sail corner's shadow onto the ground.
- * sunX/sunY are in SVG sky coords. We treat the sail corner as being
- * `height` px "above" its ground position. The sun angle determines
- * where the shadow lands on the ground.
+ * Project a sail corner's shadow onto the ground plane.
+ * Uses ray-casting: draw a line from sun through sail corner to ground.
  */
 function projectCorner(sun: Pt, corner: Pt, height: number): Pt {
-  // Sun angle relative to the corner's ground position
-  // dx = horizontal offset of sun from corner
-  // The "virtual sun height" is how far the sun is above the ground
-  // plane in our projection model
-  const sunVirtualH = (SKY_H + 30) - sun.y; // higher sun = taller virtual height
-  if (sunVirtualH <= 0) return { x: corner.x, y: corner.y };
+  // Ground plane Y coordinate (where shadows land)
+  const GROUND_Y = PATIO_Y + GROUND_H - 10; // Bottom of patio area
 
-  const dx = sun.x - corner.x;
+  // The sail corner is at (corner.x, corner.y) but is 'height' pixels above ground in our 3D model
+  // Sun position in our pseudo-3D: sun.x, sun.y in the sky
+  // We treat the sun as being at a virtual height based on its Y position
+  const sunHeight = SKY_H - sun.y + 50; // Higher sun.y = lower in sky = lower virtual height
 
-  // Shadow offset = opposite direction from sun, scaled by height/sunHeight ratio
-  const shadowScale = height / sunVirtualH;
-  const sx = corner.x - dx * shadowScale;
-  const sy = corner.y + height * shadowScale * 0.3; // slight vertical spread for depth
+  // If sun is at or below the sail, no projection (edge case)
+  if (sunHeight <= height) {
+    return { x: corner.x, y: GROUND_Y };
+  }
+
+  // Ray casting: project from sun through corner to ground
+  // Horizontal displacement based on similar triangles:
+  // dx_shadow / height = dx_sun / sunHeight
+  const dx_sun = corner.x - sun.x;
+  const shadowRatio = height / (sunHeight - height);
+
+  // Shadow X: corner position + offset in OPPOSITE direction from sun
+  const sx = corner.x + dx_sun * shadowRatio;
+
+  // Shadow Y is always on the ground plane
+  const sy = GROUND_Y;
 
   return {
     x: Math.max(0, Math.min(W, sx)),
-    y: Math.max(PATIO_Y, Math.min(H, sy)),
+    y: sy,
   };
 }
 
