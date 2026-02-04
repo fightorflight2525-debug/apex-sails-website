@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import ShadeCastDemo from "@/components/ShadeCastDemo";
 
 export const metadata: Metadata = {
   title: "How It Works | Apex Sail Shades",
@@ -238,6 +239,7 @@ const processSteps = [
     imagePlaceholder: "ShadeCast\u2122 Analysis Report",
     image: "/images/gallery-aerial.jpg",
     Icon: IconShadeCast,
+    useShadeCast: true,
   },
   {
     number: "03",
@@ -402,28 +404,32 @@ export default function HowItWorksPage() {
 
                 {/* Image Side */}
                 <div className="w-full lg:w-1/2">
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
-                    {step.image ? (
-                      <Image
-                        src={step.image}
-                        alt={step.imagePlaceholder}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                      />
-                    ) : (
-                      <div className="absolute inset-0 border-2 border-dashed border-copper/20 bg-cream-dark/50 flex items-center justify-center">
-                        <div className="text-center px-6">
-                          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-copper/10">
-                            <step.Icon className="h-8 w-8 text-copper" />
+                  {"useShadeCast" in step && step.useShadeCast ? (
+                    <ShadeCastDemo className="w-full max-w-lg" />
+                  ) : (
+                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+                      {step.image ? (
+                        <Image
+                          src={step.image}
+                          alt={step.imagePlaceholder}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 1024px) 100vw, 50vw"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 border-2 border-dashed border-copper/20 bg-cream-dark/50 flex items-center justify-center">
+                          <div className="text-center px-6">
+                            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-copper/10">
+                              <step.Icon className="h-8 w-8 text-copper" />
+                            </div>
+                            <p className="font-heading text-lg font-semibold text-charcoal/40">
+                              {step.imagePlaceholder}
+                            </p>
                           </div>
-                          <p className="font-heading text-lg font-semibold text-charcoal/40">
-                            {step.imagePlaceholder}
-                          </p>
                         </div>
-                      </div>
-                    )}
-                  </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
