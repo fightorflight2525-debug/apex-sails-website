@@ -196,8 +196,8 @@ export default function AboutPage() {
             {/* Team Photo */}
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-cream">
               <Image
-                src="/images/team-photo.jpg"
-                alt="Apex Sail Shades founding team with shade sail installation"
+                src="/images/team-founders.jpg"
+                alt="Apex Sail Shades founders with shade sail installation"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"

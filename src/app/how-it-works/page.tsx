@@ -222,7 +222,7 @@ const processSteps = [
       "Realistic timeline discussion and planning",
     ],
     imagePlaceholder: "Consultation Photo",
-    image: "/images/gallery-blue-courtyard.jpg",
+    image: "/images/consultation-specialist.jpg",
     Icon: IconDiscovery,
   },
   {
@@ -254,7 +254,7 @@ const processSteps = [
       "City permitting handled entirely by our team",
     ],
     imagePlaceholder: "Engineering Blueprint",
-    image: "/images/installation-process.jpg",
+    image: "/images/engineering-blueprint.jpg",
     Icon: IconEngineering,
   },
   {
@@ -270,7 +270,7 @@ const processSteps = [
       "Quality control inspection before shipping",
     ],
     imagePlaceholder: "Fabrication Process",
-    image: "/images/gallery-curved-desert.jpg",
+    image: "/images/fabric-samples-closeup.jpg",
     Icon: IconFabrication,
   },
   {

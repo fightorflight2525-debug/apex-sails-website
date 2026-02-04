@@ -421,26 +421,26 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-6 mb-14">
             <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-sand/30">
               <Image
-                src="/images/commercial-shade-1.jpg"
-                alt="Large commercial shade sail installation"
+                src="/images/bigshots-golf-exterior.jpg"
+                alt="Big Shots Golf St. George aerial view with shade sails"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal/80 to-transparent p-4">
-                <p className="text-white/90 text-sm font-medium">Commercial Shade Installation</p>
+                <p className="text-white/90 text-sm font-medium">Big Shots Golf St. George</p>
               </div>
             </div>
             <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-sand/30">
               <Image
-                src="/images/commercial-shade-2.jpg"
-                alt="Big Shots Golf St. George shade sail installation"
+                src="/images/golf-hero-shaded-bays.jpg"
+                alt="Golfers at shaded driving range bays"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal/80 to-transparent p-4">
-                <p className="text-white/90 text-sm font-medium">Apex Shade Installed</p>
+                <p className="text-white/90 text-sm font-medium">Shaded Driving Bays In Action</p>
               </div>
             </div>
           </div>
