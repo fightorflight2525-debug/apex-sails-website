@@ -75,7 +75,7 @@ export default function GolfPage() {
             <div className="grid grid-cols-1 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm sm:grid-cols-3 sm:divide-x sm:divide-y-0">
               <div className="px-6 py-5 text-center">
                 <p className="font-heading text-sm font-bold tracking-wide text-copper-light">
-                  Big Shots Golf Trusted
+                  Crush Golf Trusted
                 </p>
               </div>
               <div className="px-6 py-5 text-center">
@@ -425,7 +425,7 @@ export default function GolfPage() {
               Case Study
             </p>
             <h2 className="font-heading mt-3 text-3xl font-bold tracking-tight text-charcoal sm:text-4xl lg:text-5xl">
-              Proven At Big Shots Golf St. George
+              Proven At Crush Golf and Grill
             </h2>
           </div>
 
@@ -436,8 +436,8 @@ export default function GolfPage() {
               {/* Photo */}
               <div className="relative h-56 sm:h-64 overflow-hidden">
                 <Image
-                  src="/images/pizza-hut-commercial.jpg"
-                  alt="Commercial shade sail installation - aerial drone shot"
+                  src="/images/crush-golf-aerial.jpg"
+                  alt="Crush Golf and Grill aerial view with shade sails"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -473,8 +473,8 @@ export default function GolfPage() {
               {/* Photo */}
               <div className="relative h-56 sm:h-64 overflow-hidden">
                 <Image
-                  src="/images/commercial-patio-seating.jpg"
-                  alt="Commercial patio with shade sails and outdoor seating"
+                  src="/images/crush-golf-driving-range.jpg"
+                  alt="Crush Golf and Grill driving range with shaded bays"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -539,10 +539,10 @@ export default function GolfPage() {
               <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
             </svg>
             <blockquote className="mt-4 text-lg italic leading-relaxed text-charcoal sm:text-xl">
-              &ldquo;Two large-scale shade installations completed for Big Shots Golf St. George&apos;s driving range facility. Over 66,000 square feet of engineered shade coverage installed across both structures, enabling full bay utilization during peak summer months. Our ShadeCast&#8482; software was instrumental in optimizing shadow placement for maximum afternoon coverage.&rdquo;
+              &ldquo;Two large-scale shade installations completed for Crush Golf and Grill&apos;s driving range facility. Over 66,000 square feet of engineered shade coverage installed across both structures, enabling full bay utilization during peak summer months. Our ShadeCast&#8482; software was instrumental in optimizing shadow placement for maximum afternoon coverage.&rdquo;
             </blockquote>
             <p className="mt-4 text-sm font-medium text-charcoal-light">
-              &mdash; Big Shots Golf St. George, 2024
+              &mdash; Crush Golf and Grill, 2024
             </p>
           </div>
         </div>

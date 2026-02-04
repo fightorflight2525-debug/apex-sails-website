@@ -5,12 +5,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Apex Sail Shades",
   description:
-    "Learn about Apex Sail Shades — Arizona's commercial shade engineering experts. From Big Shots Golf installations to senior living facilities, we build shade structures that perform under the most demanding conditions.",
+    "Learn about Apex Sail Shades — Arizona's commercial shade engineering experts. From Crush Golf and Grill installations to senior living facilities, we build shade structures that perform under the most demanding conditions.",
 };
 
 const milestones = [
   { year: "2018", label: "Company Founded" },
-  { year: "2019", label: "Big Shots Golf Installations" },
+  { year: "2019", label: "Crush Golf and Grill Installations" },
   { year: "2024", label: "Arizona Expansion" },
 ];
 
@@ -134,7 +134,7 @@ export default function AboutPage() {
             Commercial Shade. Engineered Right.
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-lg text-sand-light leading-relaxed sm:text-xl">
-            From Big Shots Golf installations to senior living sanctuaries, we build
+            From Crush Golf and Grill installations to senior living sanctuaries, we build
             shade structures that perform under Arizona&apos;s most demanding
             conditions.
           </p>
@@ -162,7 +162,7 @@ export default function AboutPage() {
                   measurable ROI.
                 </p>
                 <p>
-                  We cut our teeth on Big Shots Golf St. George installations totaling
+                  We cut our teeth on Crush Golf and Grill installations totaling
                   $132K, proving our engineering in one of the most
                   scrutinized commercial environments in the country. From
                   there, we expanded into senior living communities where shade

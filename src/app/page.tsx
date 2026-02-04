@@ -104,7 +104,7 @@ export default function Home() {
 
             {/* Trust line */}
             <p className="mt-8 text-sm text-white/40 tracking-wide">
-              Trusted by Big Shots Golf &bull; 300,000+ sq ft shaded &bull; Since 2018
+              Trusted by Crush Golf &bull; 300,000+ sq ft shaded &bull; Since 2018
             </p>
           </div>
         </div>
@@ -385,7 +385,7 @@ export default function Home() {
               Proven At Scale
             </p>
             <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-charcoal">
-              Big Shots Golf St. George
+              Crush Golf and Grill
             </h2>
           </div>
 
@@ -410,7 +410,7 @@ export default function Home() {
             <p className="text-lg text-charcoal/70 leading-relaxed">
               Our largest commercial installation to date&nbsp;&mdash; two
               engineered HyPar shade structures covering 66,000 square feet of
-              Big Shots Golf&apos;s outdoor hitting bays and event areas. Designed to
+              Crush Golf and Grill&apos;s outdoor hitting bays and event areas. Designed to
               withstand Utah&apos;s wind loads while maintaining peak UV protection
               during summer months. Completed on-schedule without disrupting daily
               operations.
@@ -422,13 +422,13 @@ export default function Home() {
             <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-sand/30">
               <Image
                 src="/images/bigshots-golf-exterior.jpg"
-                alt="Big Shots Golf St. George aerial view with shade sails"
+                alt="Crush Golf and Grill aerial view with shade sails"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal/80 to-transparent p-4">
-                <p className="text-white/90 text-sm font-medium">Big Shots Golf St. George</p>
+                <p className="text-white/90 text-sm font-medium">Crush Golf and Grill</p>
               </div>
             </div>
             <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-sand/30">
@@ -457,10 +457,10 @@ export default function Home() {
                 <path d="M10 25 C10 19 14 14 20 12 L18 16 C15 17 13 20 13 23 L18 23 L18 30 L10 30 Z M24 25 C24 19 28 14 34 12 L32 16 C29 17 27 20 27 23 L32 23 L32 30 L24 30 Z" />
               </svg>
               <p className="relative z-10 text-lg sm:text-xl text-charcoal/80 italic leading-relaxed pl-8">
-                Two large-scale shade installations completed for Big Shots Golf St. George&apos;s driving range facility. Over 66,000 square feet of engineered shade coverage installed across both structures, enabling full bay utilization during peak summer months. Our ShadeCast&#8482; software was instrumental in optimizing shadow placement for maximum afternoon coverage.
+                Two large-scale shade installations completed for Crush Golf and Grill&apos;s driving range facility. Over 66,000 square feet of engineered shade coverage installed across both structures, enabling full bay utilization during peak summer months. Our ShadeCast&#8482; software was instrumental in optimizing shadow placement for maximum afternoon coverage.
               </p>
               <footer className="mt-6 pl-8">
-                <p className="text-charcoal font-semibold">&mdash; Big Shots Golf St. George, 2024</p>
+                <p className="text-charcoal font-semibold">&mdash; Crush Golf and Grill, 2024</p>
               </footer>
             </blockquote>
           </div>
@@ -482,19 +482,19 @@ export default function Home() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Project 1: Big Shots Golf St. George */}
+            {/* Project 1: Crush Golf and Grill */}
             <div className="group rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-lg transition-shadow">
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
                   src="/images/commercial-shade-1.jpg"
-                  alt="Big Shots Golf St. George shade sail installation"
+                  alt="Crush Golf and Grill shade sail installation"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
               <div className="p-6">
-                <h3 className="font-heading text-lg font-bold text-charcoal">Big Shots Golf St. George</h3>
+                <h3 className="font-heading text-lg font-bold text-charcoal">Crush Golf and Grill</h3>
                 <p className="text-copper text-sm font-semibold mt-1">66,000+ sq ft &bull; $132K</p>
                 <p className="text-charcoal/60 text-sm mt-2">Two engineered HyPar shade structures covering outdoor hitting bays and event areas.</p>
               </div>
