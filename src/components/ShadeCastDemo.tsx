@@ -39,12 +39,12 @@ const BLDG = { x: 80, y: PATIO_Y, w: 440, h: 28 };
 
 // --- Sail corners (quadrilateral HyPar) ---
 // Two corners attach to building wall, two extend outward on steel poles
-// This creates a large canopy covering the seating area
+// Wider trapezoid shape that sits FLAT as a canopy over the seating area
 const SAIL: Pt[] = [
-  { x: 130, y: PATIO_Y + BLDG.h },       // A: left building attachment
-  { x: 470, y: PATIO_Y + BLDG.h },       // B: right building attachment
-  { x: 440, y: PATIO_Y + BLDG.h + 135 }, // C: right outer pole
-  { x: 160, y: PATIO_Y + BLDG.h + 135 }, // D: left outer pole
+  { x: 150, y: PATIO_Y + 20 },      // A: left building attachment
+  { x: 450, y: PATIO_Y + 20 },      // B: right building attachment
+  { x: 480, y: PATIO_Y + 100 },     // C: right outer pole
+  { x: 120, y: PATIO_Y + 100 },     // D: left outer pole
 ];
 
 // Sail "3D" height above ground — used for shadow projection
@@ -57,11 +57,11 @@ const POLES = [
   { top: SAIL[3], base: { x: SAIL[3].x, y: SAIL[3].y + 6 } }, // left outer
 ];
 
-// --- Patio furniture: 3 table+chair sets under the sail ---
+// --- Patio furniture: 3 table+chair sets under the sail canopy ---
 const TABLES = [
-  { x: 220, y: PATIO_Y + BLDG.h + 55,  r: 14, chairs: 4 },  // left table
-  { x: 320, y: PATIO_Y + BLDG.h + 80,  r: 16, chairs: 4 },  // center table (bigger)
-  { x: 410, y: PATIO_Y + BLDG.h + 50,  r: 13, chairs: 3 },  // right table
+  { x: 200, y: PATIO_Y + 55,  r: 14, chairs: 4 },  // left table
+  { x: 310, y: PATIO_Y + 75,  r: 16, chairs: 4 },  // center table (bigger)
+  { x: 420, y: PATIO_Y + 50,  r: 13, chairs: 3 },  // right table
 ];
 
 /* ================================================================== */
@@ -124,33 +124,29 @@ function getSunColor(hour: number): string {
  */
 function projectCorner(sun: Pt, corner: Pt, height: number): Pt {
   // Ground plane Y coordinate (where shadows land)
-  const GROUND_Y = PATIO_Y + GROUND_H - 10; // Bottom of patio area
+  const GROUND_Y = PATIO_Y + GROUND_H - 5;
 
-  // The sail corner is at (corner.x, corner.y) but is 'height' pixels above ground in our 3D model
-  // Sun position in our pseudo-3D: sun.x, sun.y in the sky
-  // We treat the sun as being at a virtual height based on its Y position
-  const sunHeight = SKY_H - sun.y + 50; // Higher sun.y = lower in sky = lower virtual height
+  // Sun's virtual height above ground (higher Y in SVG = lower in sky)
+  const sunHeight = (SKY_H + 30) - sun.y;
 
-  // If sun is at or below the sail, no projection (edge case)
-  if (sunHeight <= height) {
+  // Edge case: sun at or below sail height
+  if (sunHeight <= height + 10) {
     return { x: corner.x, y: GROUND_Y };
   }
 
-  // Ray casting: project from sun through corner to ground
-  // Horizontal displacement based on similar triangles:
-  // dx_shadow / height = dx_sun / sunHeight
-  const dx_sun = corner.x - sun.x;
-  const shadowRatio = height / (sunHeight - height);
+  // Calculate shadow offset using similar triangles
+  // The shadow extends in the OPPOSITE direction from the sun
+  const dx = sun.x - corner.x; // horizontal distance from corner to sun
 
-  // Shadow X: corner position + offset in OPPOSITE direction from sun
-  const sx = corner.x + dx_sun * shadowRatio;
+  // Shadow scale: how far the shadow extends based on height ratios
+  const scale = height / sunHeight;
 
-  // Shadow Y is always on the ground plane
-  const sy = GROUND_Y;
+  // Shadow position: corner position + offset away from sun
+  const shadowX = corner.x - (dx * scale * 1.5); // multiply for more visible offset
 
   return {
-    x: Math.max(0, Math.min(W, sx)),
-    y: sy,
+    x: Math.max(50, Math.min(W - 50, shadowX)),
+    y: GROUND_Y,
   };
 }
 
@@ -213,7 +209,7 @@ export default function ShadeCastDemo({ className = "" }: ShadeCastDemoProps) {
   const shadowVis = useMemo(() => {
     const t = (hour - 6) / 12;
     const s = Math.sin(t * Math.PI);
-    return { opacity: 0.1 + s * 0.3, blur: 7 - s * 5 };
+    return { opacity: 0.15 + s * 0.25, blur: 5 - s * 3 };
   }, [hour]);
 
   // Sun arc dotted path
@@ -307,7 +303,7 @@ export default function ShadeCastDemo({ className = "" }: ShadeCastDemoProps) {
         <rect x="0" y={PATIO_Y} width={W} height={GROUND_H} fill="url(#sc-patio)" />
 
         {/* Patio border / decorative edge */}
-        <rect x={BLDG.x - 10} y={PATIO_Y + BLDG.h + 2} width={BLDG.w + 20} height={155} rx="3"
+        <rect x={BLDG.x - 10} y={PATIO_Y + BLDG.h + 2} width={BLDG.w + 20} height={GROUND_H - BLDG.h - 20} rx="3"
           fill="none" stroke="#C4B8A0" strokeWidth="1.5" opacity="0.4" strokeDasharray="6 4" />
 
         {/* ===== BUILDING (simple bar along top of patio) ===== */}
@@ -365,11 +361,11 @@ export default function ShadeCastDemo({ className = "" }: ShadeCastDemoProps) {
           </g>
         ))}
 
-        {/* Building-side brackets (smaller, attached to wall) */}
-        <circle cx={SAIL[0].x} cy={SAIL[0].y} r="3" fill="#2D2D2D" />
-        <circle cx={SAIL[0].x} cy={SAIL[0].y} r="2" fill="#C45C26" />
-        <circle cx={SAIL[1].x} cy={SAIL[1].y} r="3" fill="#2D2D2D" />
-        <circle cx={SAIL[1].x} cy={SAIL[1].y} r="2" fill="#C45C26" />
+        {/* Building-side wall brackets */}
+        <line x1={SAIL[0].x} y1={BLDG.y + BLDG.h} x2={SAIL[0].x} y2={SAIL[0].y} stroke="#2D2D2D" strokeWidth="3" strokeLinecap="round" />
+        <circle cx={SAIL[0].x} cy={SAIL[0].y} r="3" fill="#C45C26" />
+        <line x1={SAIL[1].x} y1={BLDG.y + BLDG.h} x2={SAIL[1].x} y2={SAIL[1].y} stroke="#2D2D2D" strokeWidth="3" strokeLinecap="round" />
+        <circle cx={SAIL[1].x} cy={SAIL[1].y} r="3" fill="#C45C26" />
 
         {/* ===== SHADE SAIL (HyPar quadrilateral) ===== */}
         {/* Tensioned cable edges */}
