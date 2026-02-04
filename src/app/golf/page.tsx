@@ -5,7 +5,7 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Golf & Entertainment Shade Solutions | Apex Sail Shades",
   description:
-    "Engineered shade sails for driving ranges, TopGolf-style venues, pickleball complexes, and resort pools. Recover lost midday revenue with 96% UV block, 15°F cooler temps, and zero-downtime installation.",
+    "Engineered shade sails for driving ranges, golf entertainment venues, pickleball complexes, and resort pools. Recover lost midday revenue with 96% UV block, 15°F cooler temps, and zero-downtime installation.",
 };
 
 export default function GolfPage() {
@@ -75,7 +75,7 @@ export default function GolfPage() {
             <div className="grid grid-cols-1 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm sm:grid-cols-3 sm:divide-x sm:divide-y-0">
               <div className="px-6 py-5 text-center">
                 <p className="font-heading text-sm font-bold tracking-wide text-copper-light">
-                  TopGolf Trusted
+                  Big Shots Golf Trusted
                 </p>
               </div>
               <div className="px-6 py-5 text-center">
@@ -417,7 +417,7 @@ export default function GolfPage() {
         </div>
       </section>
 
-      {/* ===== SECTION 4: TOPGOLF CASE STUDY ===== */}
+      {/* ===== SECTION 4: BIG SHOTS GOLF CASE STUDY ===== */}
       <section className="bg-white py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
@@ -425,7 +425,7 @@ export default function GolfPage() {
               Case Study
             </p>
             <h2 className="font-heading mt-3 text-3xl font-bold tracking-tight text-charcoal sm:text-4xl lg:text-5xl">
-              Proven At TopGolf Utah
+              Proven At Big Shots Golf St. George
             </h2>
           </div>
 
@@ -539,10 +539,10 @@ export default function GolfPage() {
               <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
             </svg>
             <blockquote className="mt-4 text-lg italic leading-relaxed text-charcoal sm:text-xl">
-              &ldquo;Two large-scale shade installations completed for TopGolf Utah&apos;s driving range facility. Over 66,000 square feet of engineered shade coverage installed across both structures, enabling full bay utilization during peak summer months. Our ShadeCast&#8482; software was instrumental in optimizing shadow placement for maximum afternoon coverage.&rdquo;
+              &ldquo;Two large-scale shade installations completed for Big Shots Golf St. George&apos;s driving range facility. Over 66,000 square feet of engineered shade coverage installed across both structures, enabling full bay utilization during peak summer months. Our ShadeCast&#8482; software was instrumental in optimizing shadow placement for maximum afternoon coverage.&rdquo;
             </blockquote>
             <p className="mt-4 text-sm font-medium text-charcoal-light">
-              &mdash; TopGolf Utah Installation, 2024
+              &mdash; Big Shots Golf St. George, 2024
             </p>
           </div>
         </div>
