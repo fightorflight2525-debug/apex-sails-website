@@ -89,11 +89,11 @@ export default function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center group">
               <Image
-                src={scrolled ? "/images/apex-logo-light.png" : "/images/apex-logo-dark.png"}
+                src={scrolled ? "/images/logo-light-bg.svg" : "/images/logo-dark-bg.svg"}
                 alt="Apex Sail Shades"
                 width={200}
-                height={85}
-                className="h-14 w-auto transition-opacity duration-300"
+                height={57}
+                className="h-12 w-auto transition-opacity duration-300"
                 priority
               />
             </Link>
