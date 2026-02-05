@@ -1,17 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" fill="none">
-  <!-- Geometric sail/A mark matching Apex brand -->
-  <g transform="translate(5, 5)">
-    <!-- Back tan/gold sail (bottom right, behind everything) -->
-    <polygon points="30,62 72,62 55,25" fill="#C9A86C"/>
-    <!-- Main copper/orange A-frame outline -->
-    <path d="M5,65 L40,8 L75,65 L58,65 L40,32 L22,65 Z" fill="#C45C26"/>
-    <!-- Small copper accent at peak -->
-    <polygon points="40,8 48,22 40,18 32,22" fill="#D4732E"/>
-    <!-- Copper swoosh/sail accent extending right -->
-    <path d="M42,35 Q55,28 70,45 L55,25 Z" fill="#C45C26"/>
+  <!-- Apex Sail Shades logo mark - exact brand trace -->
+  <g transform="translate(2, 3)">
+    <!-- Bottom-left tan/gold triangle (behind) -->
+    <polygon points="8,62 32,62 22,38" fill="#C9A86C"/>
+
+    <!-- Bottom-right tan/gold pointed sail (behind) -->
+    <polygon points="38,52 78,62 52,28" fill="#C9A86C"/>
+
+    <!-- Main copper A-frame with hollow center -->
+    <path d="M12,65 L38,10 L64,65 L52,65 L38,38 L24,65 Z" fill="#C45C26"/>
+
+    <!-- Copper swoosh/sail curving from left to right -->
+    <path d="M18,48 Q32,42 48,44 Q58,38 68,42 L58,32 Q48,36 38,38 Q28,40 18,48 Z" fill="#C45C26"/>
+
+    <!-- Small inner triangle cutout at peak (shows background) -->
+    <polygon points="38,18 44,28 32,28" fill="#F5F3EF"/>
   </g>
+
   <!-- APEX text -->
-  <text x="90" y="42" font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="32" fill="#2D2D2D" letter-spacing="3">APEX</text>
+  <text x="88" y="42" font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="32" fill="#2D2D2D" letter-spacing="3">APEX</text>
   <!-- SAIL SHADES text -->
-  <text x="92" y="62" font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-weight="500" font-size="14" fill="#C9A86C" letter-spacing="4">SAIL SHADES</text>
+  <text x="90" y="62" font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-weight="500" font-size="14" fill="#C9A86C" letter-spacing="4">SAIL SHADES</text>
 </svg>

@@ -1,12 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
-  <g transform="translate(5, 5)">
-    <!-- Back tan/gold sail (bottom right, behind everything) -->
-    <polygon points="30,62 72,62 55,25" fill="#C9A86C"/>
-    <!-- Main copper/orange A-frame outline -->
-    <path d="M5,65 L40,8 L75,65 L58,65 L40,32 L22,65 Z" fill="#C45C26"/>
-    <!-- Small copper accent at peak -->
-    <polygon points="40,8 48,22 40,18 32,22" fill="#D4732E"/>
-    <!-- Copper swoosh/sail accent extending right -->
-    <path d="M42,35 Q55,28 70,45 L55,25 Z" fill="#C45C26"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 75" fill="none">
+  <g transform="translate(2, 3)">
+    <!-- Bottom-left tan/gold triangle (behind) -->
+    <polygon points="8,62 32,62 22,38" fill="#C9A86C"/>
+
+    <!-- Bottom-right tan/gold pointed sail (behind) -->
+    <polygon points="38,52 78,62 52,28" fill="#C9A86C"/>
+
+    <!-- Main copper A-frame with hollow center -->
+    <path d="M12,65 L38,10 L64,65 L52,65 L38,38 L24,65 Z" fill="#C45C26"/>
+
+    <!-- Copper swoosh/sail curving from left to right -->
+    <path d="M18,48 Q32,42 48,44 Q58,38 68,42 L58,32 Q48,36 38,38 Q28,40 18,48 Z" fill="#C45C26"/>
+
+    <!-- Small inner triangle cutout at peak -->
+    <polygon points="38,18 44,28 32,28" fill="#2D2D2D"/>
   </g>
 </svg>
