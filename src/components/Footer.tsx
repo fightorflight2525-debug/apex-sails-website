@@ -30,11 +30,11 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <Link href="/" className="inline-flex items-center group">
               <Image
-                src="/images/logo-dark-bg.svg"
+                src="/images/apex-logo-dark.png"
                 alt="Apex Sail Shades"
                 width={180}
-                height={51}
-                className="h-11 w-auto"
+                height={77}
+                className="h-12 w-auto"
               />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-gray-400 max-w-xs">
