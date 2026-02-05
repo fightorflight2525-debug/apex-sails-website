@@ -486,7 +486,7 @@ export default function Home() {
             <div className="group rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-lg transition-shadow">
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
-                  src="/images/bigshots-golf-exterior.jpg"
+                  src="/images/crush-golf-aerial.jpg"
                   alt="Crush Golf and Grill shade sail installation"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
