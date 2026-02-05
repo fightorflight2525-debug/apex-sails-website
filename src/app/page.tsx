@@ -486,7 +486,7 @@ export default function Home() {
             <div className="group rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-lg transition-shadow">
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
-                  src="/images/commercial-shade-1.jpg"
+                  src="/images/bigshots-golf-exterior.jpg"
                   alt="Crush Golf and Grill shade sail installation"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -522,8 +522,8 @@ export default function Home() {
             <div className="group rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-lg transition-shadow">
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
-                  src="/images/commercial-patio-seating.jpg"
-                  alt="Commercial patio seating with shade sails"
+                  src="/images/bryce-canyon-shade.jpg"
+                  alt="Bryce Canyon shade sail installation"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
