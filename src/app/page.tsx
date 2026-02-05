@@ -421,7 +421,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-6 mb-14">
             <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-sand/30">
               <Image
-                src="/images/bigshots-golf-exterior.jpg"
+                src="/images/crush-golf-aerial.png"
                 alt="Crush Golf and Grill aerial view with shade sails"
                 fill
                 className="object-cover"
