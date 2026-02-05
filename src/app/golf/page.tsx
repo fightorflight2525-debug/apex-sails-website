@@ -436,7 +436,7 @@ export default function GolfPage() {
               {/* Photo */}
               <div className="relative h-56 sm:h-64 overflow-hidden">
                 <Image
-                  src="/images/crush-golf-aerial.jpg"
+                  src="/images/crush-golf-aerial.png"
                   alt="Crush Golf and Grill aerial view with shade sails"
                   fill
                   className="object-cover"
