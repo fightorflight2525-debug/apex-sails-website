@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
-  <g transform="translate(5, 5)">
-    <!-- Back gold/tan triangle -->
-    <polygon points="35,65 55,25 75,65" fill="#C4924A" opacity="0.9"/>
-    <!-- Main orange triangle (left side) -->
-    <polygon points="15,65 40,10 55,35" fill="#C45C26"/>
-    <!-- Dark center triangle -->
-    <polygon points="40,10 55,35 48,45 35,25" fill="#2D2D2D" opacity="0.7"/>
-    <!-- Top orange peak -->
-    <polygon points="30,30 40,10 50,25 40,20" fill="#D4732E"/>
-    <!-- Right copper sail piece -->
-    <polygon points="50,25 65,45 55,35" fill="#C45C26" opacity="0.85"/>
+  <g transform="translate(0, 2)">
+    <!-- Back tan/gold sail (behind, right side) -->
+    <polygon points="42,68 68,18 78,68" fill="#C9A86C"/>
+    <!-- Main copper/orange A-frame outer shape -->
+    <polygon points="8,68 42,8 76,68" fill="#C45C26"/>
+    <!-- Inner charcoal/black triangle cutout -->
+    <polygon points="24,68 42,28 60,68" fill="#2D2D2D"/>
+    <!-- Upper copper peak highlight -->
+    <polygon points="34,38 42,22 50,38" fill="#D4732E"/>
+    <!-- Right extending copper sail accent -->
+    <polygon points="58,48 68,18 72,58" fill="#C45C26"/>
   </g>
 </svg>
