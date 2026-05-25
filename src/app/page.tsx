@@ -81,9 +81,9 @@ export default function Home() {
               Engineered Shade That Pays For Itself
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-white/70 max-w-2xl leading-relaxed font-body">
-              Commercial shade sail installations for golf courses,
-              entertainment venues, and senior living facilities across Arizona &amp; Utah. $100k+ engineered
-              solutions&nbsp;&mdash; not backyard canopies.
+              Custom-engineered shade sails for Phoenix homes and businesses.
+              Designed and installed in one visit, built for 110°F sun and
+              monsoon winds.
             </p>
 
             {/* CTAs */}

@@ -202,6 +202,15 @@ export default function Header() {
               </div>
 
               <Link
+                href="/residential"
+                className={`text-sm font-medium transition-colors duration-300 hover:text-copper ${
+                  scrolled ? "text-charcoal" : "text-white"
+                }`}
+              >
+                Residential
+              </Link>
+
+              <Link
                 href="/how-it-works"
                 className={`text-sm font-medium transition-colors duration-300 hover:text-copper ${
                   scrolled ? "text-charcoal" : "text-white"
@@ -331,6 +340,14 @@ export default function Header() {
                 </Link>
               </div>
             </div>
+
+            <Link
+              href="/residential"
+              className="border-b border-cream-dark py-4 text-base font-medium text-charcoal transition-colors hover:text-copper"
+              onClick={closeMobile}
+            >
+              Residential
+            </Link>
 
             <Link
               href="/how-it-works"
