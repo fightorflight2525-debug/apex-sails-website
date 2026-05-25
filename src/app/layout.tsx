@@ -39,10 +39,10 @@ export const metadata: Metadata = {
     siteName: "Apex Sail Shades",
     images: [
       {
-        url: "https://www.apexsailshades.com/images/bigshots-golf-exterior.jpg",
+        url: "https://apex-sail-shades.com/images/hero-shade-sail.webp",
         width: 1200,
         height: 630,
-        alt: "Crush Golf and Grill - $132K commercial shade sail installation by Apex Sail Shades",
+        alt: "Engineered commercial shade sail installation by Apex Sail Shades",
       },
     ],
   },
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     title: "Apex Sail Shades | Engineered Commercial Shade Solutions",
     description:
       "Turn Arizona's sun into revenue with engineered shade that pays for itself. Commercial installations for golf, entertainment, and senior living.",
-    images: ["https://www.apexsailshades.com/images/bigshots-golf-exterior.jpg"],
+    images: ["https://apex-sail-shades.com/images/hero-shade-sail.webp"],
   },
 };
 

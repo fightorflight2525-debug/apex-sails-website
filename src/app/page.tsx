@@ -11,8 +11,8 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center overflow-hidden bg-charcoal">
         {/* Hero background image */}
         <Image
-          src="/images/hero-bryce-canyon.jpg"
-          alt="Commercial shade sail installation with red rock backdrop"
+          src="/images/hero-shade-sail.webp"
+          alt="Engineered shade sail installation in Phoenix Arizona"
           fill
           className="object-cover opacity-30"
           priority
@@ -421,7 +421,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-6 mb-14">
             <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-sand/30">
               <Image
-                src="/images/bigshots-golf-exterior.jpg"
+                src="/images/crush-golf-aerial.webp"
                 alt="Crush Golf and Grill aerial view with shade sails"
                 fill
                 className="object-cover"
@@ -522,8 +522,8 @@ export default function Home() {
             <div className="group rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-lg transition-shadow">
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
-                  src="/images/bryce-canyon-shade.jpg"
-                  alt="Bryce Canyon shade sail installation"
+                  src="/images/project-residential-01.webp"
+                  alt="Residential shade sail installation in Phoenix"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
