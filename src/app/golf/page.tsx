@@ -436,7 +436,7 @@ export default function GolfPage() {
               {/* Photo */}
               <div className="relative h-56 sm:h-64 overflow-hidden">
                 <Image
-                  src="/images/crush-golf-aerial.png"
+                  src="/images/crush-golf-aerial.webp"
                   alt="Crush Golf and Grill aerial view with shade sails"
                   fill
                   className="object-cover"
@@ -473,7 +473,7 @@ export default function GolfPage() {
               {/* Photo */}
               <div className="relative h-56 sm:h-64 overflow-hidden">
                 <Image
-                  src="/images/crush-golf-driving-range.jpg"
+                  src="/images/crush-golf-driving-range.webp"
                   alt="Crush Golf and Grill driving range with shaded bays"
                   fill
                   className="object-cover"

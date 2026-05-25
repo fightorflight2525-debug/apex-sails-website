@@ -222,7 +222,7 @@ const processSteps = [
       "Realistic timeline discussion and planning",
     ],
     imagePlaceholder: "Consultation Photo",
-    image: "/images/consultation-specialist.jpg",
+    image: "/images/consultation-specialist.webp",
     Icon: IconDiscovery,
   },
   {
