@@ -225,7 +225,7 @@ export default function ResidentialPage() {
 
           <div className="mt-12">
             <Link
-              href="/how-it-works"
+              href="/process"
               className="text-copper font-semibold hover:text-copper-dark transition-colors"
             >
               See our full process →

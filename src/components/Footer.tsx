@@ -4,7 +4,7 @@ import Image from "next/image";
 const footerSolutions = [
   { label: "Golf & Entertainment", href: "/golf" },
   { label: "Senior Living", href: "/senior-living" },
-  { label: "How It Works", href: "/how-it-works" },
+  { label: "How It Works", href: "/process" },
 ];
 
 const footerCompany = [
@@ -41,7 +41,7 @@ export default function Footer() {
               Engineered commercial shade solutions. Serving Arizona &amp; Utah.
             </p>
             <a
-              href="tel:+16027275107"
+              href="tel:+16028370370"
               className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-copper hover:text-copper-light transition-colors"
             >
               <svg
@@ -58,10 +58,10 @@ export default function Footer() {
                   fill="currentColor"
                 />
               </svg>
-              (602) 727-5107
+              (602) 837-0370
             </a>
             <a
-              href="mailto:apexsails1@gmail.com"
+              href="mailto:contact@apex-sail-shades.com"
               className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-copper hover:text-copper-light transition-colors"
             >
               <svg
@@ -82,7 +82,7 @@ export default function Footer() {
                   fill="none"
                 />
               </svg>
-              apexsails1@gmail.com
+              contact@apex-sail-shades.com
             </a>
           </div>
 
@@ -168,7 +168,7 @@ export default function Footer() {
               <span>&copy; {new Date().getFullYear()} Apex Sail Shades. All rights reserved.</span>
               <span className="hidden sm:inline text-gray-600">&middot;</span>
               <span className="text-copper/70 font-medium">
-                Licensed, Bonded &amp; Insured
+                Installed by licensed, insured crews
               </span>
             </div>
             <div className="flex items-center gap-4">
