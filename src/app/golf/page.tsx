@@ -1,779 +1,421 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import Reveal from "@/components/Reveal";
+import CountUp from "@/components/CountUp";
+import StickyCallBar from "@/components/StickyCallBar";
 
 export const metadata: Metadata = {
-  title: "Golf & Entertainment Shade Solutions | Apex Sail Shades",
+  title: "Golf & Entertainment Venue Shade | Apex Sail Shades",
   description:
-    "Engineered shade sails for driving ranges, golf entertainment venues, pickleball complexes, and resort pools. Recover lost midday revenue with 96% UV block, 15°F cooler temps, and zero-downtime installation.",
+    "Custom-engineered shade sails for Phoenix driving ranges, golf entertainment venues, and resort recreation. Keep bays and patios usable through peak sun. Built for 110°F sun and monsoon winds.",
 };
+
+const problems = [
+  {
+    title: "Empty bays at peak hours",
+    body: "The hottest part of the day is exactly when your premium bays and patio seating sit unused.",
+  },
+  {
+    title: "Shorter sessions, lower spend",
+    body: "Guests baking in the sun leave early, which means fewer buckets and less food and beverage.",
+  },
+  {
+    title: "Hot equipment and surfaces",
+    body: "Clubs, turf, and seating heat up fast in direct Phoenix sun, and the experience suffers for it.",
+  },
+  {
+    title: "Shaded competitors win midday",
+    body: "Venues that offer comfortable shade capture the midday and event crowd you are losing.",
+  },
+];
+
+const coverage = [
+  {
+    title: "Driving bays and tee lines",
+    body: "Cover the hitting line and premium bays so play continues straight through peak sun.",
+  },
+  {
+    title: "Patios and event lawns",
+    body: "Keep outdoor dining, bar seating, and event space comfortable and bookable all summer.",
+  },
+  {
+    title: "Putting and short-game areas",
+    body: "Shade practice greens and short-game zones so guests stay and play longer.",
+  },
+  {
+    title: "Walkways and cart staging",
+    body: "Protect the paths and staging areas guests and staff move through all day.",
+  },
+];
+
+const working = [
+  {
+    title: "Free on-site assessment",
+    body: "We walk your venue, map the sun with ShadeCast™, and scope the work before you commit.",
+  },
+  {
+    title: "Install around your hours",
+    body: "We schedule and stage the work to keep your venue open and earning while we install.",
+  },
+  {
+    title: "Licensed, insured crews",
+    body: "Every install is performed by licensed, insured local crews with the right precautions on site.",
+  },
+  {
+    title: "Engineering and permitting handled",
+    body: "We manage the structural engineering and city permitting so your team does not have to.",
+  },
+];
 
 export default function GolfPage() {
   return (
     <>
-      {/* ===== SECTION 1: HERO ===== */}
-      <section className="relative overflow-hidden bg-charcoal pt-32 pb-20 md:pb-28">
-        {/* Hero background image */}
+      {/* ============================================================
+          SECTION 1: HERO  (LCP element, rendered immediately, NOT motion-gated)
+          ============================================================ */}
+      <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-charcoal">
         <Image
-          src="/images/gallery-desert-mountains.jpg"
-          alt=""
+          src="/images/business-card-ws06.webp"
+          alt="Large-scale shade sails over an outdoor entertainment venue"
           fill
-          className="object-cover opacity-20"
+          className="object-cover opacity-30"
           priority
           sizes="100vw"
         />
-        {/* Geometric pattern overlay */}
-        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-          <svg
-            className="absolute top-0 left-0 h-full w-full opacity-[0.04]"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <pattern
-                id="hero-grid"
-                width="60"
-                height="60"
-                patternUnits="userSpaceOnUse"
-              >
-                <path
-                  d="M60 0L0 60M45 0L0 45M60 15L15 60M30 0L0 30M60 30L30 60"
-                  stroke="white"
-                  strokeWidth="1"
-                  fill="none"
-                />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#hero-grid)" />
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/80 via-charcoal-light/60 to-charcoal" />
+
+        <div className="absolute inset-0 opacity-[0.04]">
+          <svg className="absolute top-24 -left-20 w-[600px] h-[600px]" viewBox="0 0 600 600" fill="none" aria-hidden="true">
+            <path d="M100 500 L300 100 L500 400 Z" stroke="white" strokeWidth="1.5" />
+            <path d="M150 480 L320 150 L480 380 Z" stroke="white" strokeWidth="0.75" />
           </svg>
-          {/* Copper accent glow */}
-          <div className="absolute -top-24 right-1/4 h-96 w-96 rounded-full bg-copper opacity-10 blur-[120px]" />
+          <svg className="absolute bottom-10 right-0 w-[500px] h-[500px]" viewBox="0 0 500 500" fill="none" aria-hidden="true">
+            <path d="M50 450 L250 50 L450 350 Z" stroke="white" strokeWidth="1.5" />
+          </svg>
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="font-heading text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Recapture 100% Of Your{" "}
-              <span className="text-copper-light">Midday Revenue</span>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-32 pb-20 w-full">
+          <div className="max-w-3xl">
+            <span className="inline-block text-sm font-semibold uppercase tracking-widest text-sand">
+              Golf &amp; entertainment venues
+            </span>
+            <h1 className="mt-4 font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight">
+              Keep Your Venue Playing Through the Phoenix Heat
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/70 sm:text-xl">
-              Your driving bays sit empty from 11 AM to 4 PM while Arizona&apos;s
-              sun drives customers away. Engineered shade sails bring them
-              back&nbsp;&mdash; guaranteed.
+            <p className="mt-6 text-lg sm:text-xl text-white/70 max-w-2xl leading-relaxed font-body">
+              Custom-engineered shade for driving bays, patios, and event spaces.
+              Designed, engineered, and installed by licensed, insured local
+              crews, with minimal disruption to your operation.
             </p>
-            <div className="mt-10">
+
+            <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Link
                 href="/contact"
-                className="inline-block rounded-full bg-copper px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:bg-copper-dark hover:shadow-xl sm:text-lg"
+                className="inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
               >
-                Get Your Free Revenue Analysis
+                Get a Free Commercial Assessment
               </Link>
-            </div>
-          </div>
-
-          {/* Stat bar */}
-          <div className="mx-auto mt-16 max-w-2xl">
-            <div className="grid grid-cols-1 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-              <div className="px-6 py-5 text-center">
-                <p className="font-heading text-sm font-bold tracking-wide text-copper-light">
-                  Crush Golf Trusted
-                </p>
-              </div>
-              <div className="px-6 py-5 text-center">
-                <p className="font-heading text-sm font-bold tracking-wide text-copper-light">
-                  15&deg;F Cooler
-                </p>
-              </div>
-              <div className="px-6 py-5 text-center">
-                <p className="font-heading text-sm font-bold tracking-wide text-copper-light">
-                  Zero Downtime Install
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== SECTION 2: PROBLEM AGITATION ===== */}
-      <section className="bg-white py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-heading text-3xl font-bold tracking-tight text-charcoal sm:text-4xl lg:text-5xl">
-              The{" "}
-              <span className="text-copper">$180,000 Problem</span> You Can See
-              From The Parking Lot
-            </h2>
-          </div>
-
-          {/* Revenue loss calculator card */}
-          <div className="mx-auto mt-14 max-w-2xl">
-            <div className="overflow-hidden rounded-2xl border border-cream-dark bg-cream shadow-sm">
-              <div className="bg-charcoal px-6 py-4">
-                <h3 className="font-heading text-sm font-bold tracking-wider text-copper-light uppercase">
-                  Revenue Loss Calculator
-                </h3>
-              </div>
-              <div className="px-6 py-8 sm:px-10">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between border-b border-cream-dark pb-4">
-                    <span className="font-body text-sm text-charcoal-light sm:text-base">
-                      Empty bays during peak sun
-                    </span>
-                    <span className="font-heading text-lg font-bold text-charcoal sm:text-xl">
-                      10 bays
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between border-b border-cream-dark pb-4">
-                    <span className="font-body text-sm text-charcoal-light sm:text-base">
-                      Average revenue per bay/hour
-                    </span>
-                    <span className="font-heading text-lg font-bold text-charcoal sm:text-xl">
-                      $50/hr
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between border-b border-cream-dark pb-4">
-                    <span className="font-body text-sm text-charcoal-light sm:text-base">
-                      Lost hours per day (11 AM&ndash;4 PM)
-                    </span>
-                    <span className="font-heading text-lg font-bold text-charcoal sm:text-xl">
-                      4 hours
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between border-b border-cream-dark pb-4">
-                    <span className="font-body text-sm text-charcoal-light sm:text-base">
-                      Peak-season days
-                    </span>
-                    <span className="font-heading text-lg font-bold text-charcoal sm:text-xl">
-                      90 days
-                    </span>
-                  </div>
-                </div>
-                <div className="mt-6 flex items-center justify-between rounded-xl bg-charcoal px-6 py-5">
-                  <span className="font-heading text-sm font-semibold tracking-wide text-white/80 uppercase">
-                    Lost Revenue / Season
-                  </span>
-                  <span className="font-heading text-2xl font-bold text-copper-light sm:text-3xl">
-                    $180,000
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Pain points */}
-          <div className="mx-auto mt-16 max-w-3xl">
-            <div className="grid gap-6 sm:grid-cols-2">
-              {[
-                {
-                  icon: (
-                    <svg
-                      className="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={1.5}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-                      />
-                    </svg>
-                  ),
-                  text: "Bays sit empty during peak sun hours",
-                },
-                {
-                  icon: (
-                    <svg
-                      className="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={1.5}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1.001A3.75 3.75 0 0012 18z"
-                      />
-                    </svg>
-                  ),
-                  text: "Equipment overheats, clubs become untouchable",
-                },
-                {
-                  icon: (
-                    <svg
-                      className="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={1.5}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
-                      />
-                    </svg>
-                  ),
-                  text: "Guests leave early \u2014 shorter sessions, less F&B spend",
-                },
-                {
-                  icon: (
-                    <svg
-                      className="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={1.5}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"
-                      />
-                    </svg>
-                  ),
-                  text: "Competing venues with shade capture your customers",
-                },
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="flex items-start gap-4 rounded-xl border border-cream-dark bg-cream/50 p-5"
-                >
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-copper/10 text-copper">
-                    {item.icon}
-                  </span>
-                  <p className="font-body text-base leading-relaxed text-charcoal">
-                    {item.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== SECTION 3: SOLUTION ===== */}
-      <section className="bg-cream py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-heading text-3xl font-bold tracking-tight text-charcoal sm:text-4xl lg:text-5xl">
-              The{" "}
-              <span className="text-copper">14-Day</span> Revenue Recovery
-              System
-            </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-charcoal-light">
-              From first call to full shade in two weeks. Our proven process
-              eliminates guesswork and gets your venue earning at full capacity
-              before the next heat wave.
-            </p>
-          </div>
-
-          {/* Process timeline */}
-          <div className="mx-auto mt-16 max-w-4xl">
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {[
-                {
-                  days: "Day 1\u20133",
-                  title: "ShadeCast\u2122 Analysis",
-                  desc: "3D site scan and sun-path simulation to map every shadow across your venue.",
-                },
-                {
-                  days: "Day 4\u20137",
-                  title: "Engineering & Permits",
-                  desc: "Structural calcs, wind-load modeling, and permit submission handled in full.",
-                },
-                {
-                  days: "Day 8\u201312",
-                  title: "Fabrication",
-                  desc: "Marine-grade HDPE membranes cut and reinforced at our Arizona facility.",
-                },
-                {
-                  days: "Day 13\u201314",
-                  title: "Installation",
-                  desc: "Overnight crews install while your venue stays open. Zero lost operating hours.",
-                },
-              ].map((step, i) => (
-                <div
-                  key={i}
-                  className="relative rounded-2xl border border-cream-dark bg-white p-6 shadow-sm"
-                >
-                  <span className="inline-block rounded-full bg-copper px-3 py-1 text-xs font-bold tracking-wide text-white">
-                    {step.days}
-                  </span>
-                  <h3 className="font-heading mt-4 text-lg font-bold text-charcoal">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-charcoal-light">
-                    {step.desc}
-                  </p>
-                  {/* Connector line (hidden on last item and mobile) */}
-                  {i < 3 && (
-                    <div className="absolute top-10 -right-3 hidden h-0.5 w-6 bg-copper/30 lg:block" aria-hidden="true" />
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Key features */}
-          <div className="mx-auto mt-16 max-w-3xl">
-            <div className="grid gap-5 sm:grid-cols-2">
-              {[
-                {
-                  icon: (
-                    <svg
-                      className="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.64 0 8.577 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.64 0-8.577-3.007-9.963-7.178z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                    </svg>
-                  ),
-                  text: "Cantilever designs \u2014 no columns blocking bay sight lines",
-                },
-                {
-                  icon: (
-                    <svg
-                      className="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  ),
-                  text: "96% UV block with 15\u00b0F temperature reduction",
-                },
-                {
-                  icon: (
-                    <svg
-                      className="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
-                      />
-                    </svg>
-                  ),
-                  text: "90mph+ wind-rated engineering",
-                },
-                {
-                  icon: (
-                    <svg
-                      className="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  ),
-                  text: "Zero operations disruption during installation",
-                },
-              ].map((feature, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-copper/10 text-copper">
-                    {feature.icon}
-                  </span>
-                  <p className="font-body text-base leading-relaxed text-charcoal">
-                    {feature.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== SECTION 4: BIG SHOTS GOLF CASE STUDY ===== */}
-      <section className="bg-white py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="font-heading text-sm font-bold tracking-wider text-copper uppercase">
-              Case Study
-            </p>
-            <h2 className="font-heading mt-3 text-3xl font-bold tracking-tight text-charcoal sm:text-4xl lg:text-5xl">
-              Proven At Crush Golf and Grill
-            </h2>
-          </div>
-
-          {/* Installation cards */}
-          <div className="mx-auto mt-14 grid max-w-5xl gap-8 lg:grid-cols-2">
-            {/* Installation 1 */}
-            <div className="overflow-hidden rounded-2xl border border-cream-dark bg-cream/30">
-              {/* Photo */}
-              <div className="relative h-56 sm:h-64 overflow-hidden">
-                <Image
-                  src="/images/crush-golf-aerial.webp"
-                  alt="Crush Golf and Grill aerial view with shade sails"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="font-heading text-lg font-bold text-charcoal">
-                  Installation 1
-                </h3>
-                <div className="mt-4 grid grid-cols-2 gap-4">
-                  <div>
-                    <p className="text-xs font-medium text-charcoal-light uppercase tracking-wide">
-                      Coverage
-                    </p>
-                    <p className="font-heading mt-1 text-xl font-bold text-charcoal">
-                      33,000+ sq ft
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-xs font-medium text-charcoal-light uppercase tracking-wide">
-                      Project Value
-                    </p>
-                    <p className="font-heading mt-1 text-xl font-bold text-copper">
-                      $66K
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <a
+                href="tel:+16028370370"
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white text-lg font-semibold rounded-full hover:bg-white/10 transition-colors duration-200"
+              >
+                Call (602) 837-0370
+              </a>
             </div>
 
-            {/* Installation 2 */}
-            <div className="overflow-hidden rounded-2xl border border-cream-dark bg-cream/30">
-              {/* Photo */}
-              <div className="relative h-56 sm:h-64 overflow-hidden">
-                <Image
-                  src="/images/crush-golf-driving-range.webp"
-                  alt="Crush Golf and Grill driving range with shaded bays"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="font-heading text-lg font-bold text-charcoal">
-                  Installation 2
-                </h3>
-                <div className="mt-4 grid grid-cols-2 gap-4">
-                  <div>
-                    <p className="text-xs font-medium text-charcoal-light uppercase tracking-wide">
-                      Coverage
-                    </p>
-                    <p className="font-heading mt-1 text-xl font-bold text-charcoal">
-                      33,000+ sq ft
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-xs font-medium text-charcoal-light uppercase tracking-wide">
-                      Project Value
-                    </p>
-                    <p className="font-heading mt-1 text-xl font-bold text-copper">
-                      $66K
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Totals */}
-          <div className="mx-auto mt-12 max-w-2xl">
-            <div className="grid grid-cols-2 gap-6 rounded-2xl border border-cream-dark bg-cream p-6 sm:p-8">
-              <div className="text-center">
-                <p className="text-xs font-medium text-charcoal-light uppercase tracking-wide">
-                  Total Project Value
-                </p>
-                <p className="font-heading mt-2 text-3xl font-bold text-copper sm:text-4xl">
-                  $132K
-                </p>
-              </div>
-              <div className="text-center">
-                <p className="text-xs font-medium text-charcoal-light uppercase tracking-wide">
-                  Total Shade Coverage
-                </p>
-                <p className="font-heading mt-2 text-3xl font-bold text-charcoal sm:text-4xl">
-                  66,000+ sq ft
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Quote */}
-          <div className="mx-auto mt-12 max-w-2xl text-center">
-            <svg
-              className="mx-auto h-8 w-8 text-copper/30"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
-            </svg>
-            <blockquote className="mt-4 text-lg italic leading-relaxed text-charcoal sm:text-xl">
-              &ldquo;Two large-scale shade installations completed for Crush Golf and Grill&apos;s driving range facility. Over 66,000 square feet of engineered shade coverage installed across both structures, enabling full bay utilization during peak summer months. Our ShadeCast&#8482; software was instrumental in optimizing shadow placement for maximum afternoon coverage.&rdquo;
-            </blockquote>
-            <p className="mt-4 text-sm font-medium text-charcoal-light">
-              &mdash; Crush Golf and Grill, 2024
+            <p className="mt-8 text-sm text-white/45 tracking-wide">
+              Driving ranges, entertainment venues, and resort recreation
+              &middot; Built for 110&deg;F sun and monsoon winds
             </p>
           </div>
         </div>
+
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-charcoal to-transparent" />
       </section>
 
-      {/* ===== SECTION 5: GUARANTEES ===== */}
-      <section className="bg-charcoal py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              Guarantees That{" "}
-              <span className="text-copper-light">Eliminate Risk</span>
-            </h2>
-          </div>
-
-          <div className="mx-auto mt-14 grid max-w-4xl gap-8 lg:grid-cols-2">
-            {/* Guarantee 1 */}
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-copper/20">
-                <svg
-                  className="h-7 w-7 text-copper-light"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
-                  />
-                </svg>
-              </div>
-              <h3 className="font-heading mt-6 text-xl font-bold text-white">
-                The Permit Shield
-              </h3>
-              <p className="mt-3 text-base leading-relaxed text-white/70">
-                If the city rejects our design, you get 100% of your engineering
-                deposit back. Period. We handle all municipal requirements so
-                you never carry permit risk.
-              </p>
-            </div>
-
-            {/* Guarantee 2 */}
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-copper/20">
-                <svg
-                  className="h-7 w-7 text-copper-light"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </div>
-              <h3 className="font-heading mt-6 text-xl font-bold text-white">
-                The 15&deg;F Performance Promise
-              </h3>
-              <p className="mt-3 text-base leading-relaxed text-white/70">
-                If the temperature under our sails doesn&apos;t drop at least
-                15&deg;F from direct sun, we&apos;ll install cooling misters at
-                our cost. No fine print, no exceptions.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== SECTION 6: TECHNOLOGY SPECS ===== */}
-      <section className="bg-cream py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="font-heading text-sm font-bold tracking-wider text-copper uppercase">
-              Engineering Edge
-            </p>
-            <h2 className="font-heading mt-3 text-3xl font-bold tracking-tight text-charcoal sm:text-4xl">
-              Technology Built For Scale
-            </h2>
-          </div>
-
-          <div className="mx-auto mt-14 grid max-w-4xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {/* ============================================================
+          SECTION 2: STAT STRIP  (count-up)
+          ============================================================ */}
+      <section className="bg-cream py-12 sm:py-14 border-b border-sand/30">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              {
-                icon: (
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={1.5}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L12 12.75 6.429 9.75m11.142 0l4.179 2.25-4.179 2.25m0 0L12 17.25 6.429 14.25m11.142 0l4.179 2.25L12 21.75l-9.75-5.25 4.179-2.25"
-                    />
-                  </svg>
-                ),
-                title: "HyPar Engineering",
-                desc: "Hyperbolic paraboloid geometry for spans up to 80 ft without intermediate supports.",
-              },
-              {
-                icon: (
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={1.5}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M7.5 3.75H6A2.25 2.25 0 003.75 6v1.5M16.5 3.75H18A2.25 2.25 0 0120.25 6v1.5m0 9V18A2.25 2.25 0 0118 20.25h-1.5m-9 0H6A2.25 2.25 0 013.75 18v-1.5M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
-                ),
-                title: "Leica 3D Mapping",
-                desc: "Sub-millimeter site scans ensure perfect fitment on the first install attempt.",
-              },
-              {
-                icon: (
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={1.5}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-                    />
-                  </svg>
-                ),
-                title: "ShadeCast\u2122",
-                desc: "Proprietary sun-path simulation visualizes shade coverage before a single post goes in.",
-              },
-              {
-                icon: (
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={1.5}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M11.42 15.17l-5.1-5.1m0 0L12 4.37m-5.68 5.7h11.8M4.26 19.72A9.965 9.965 0 0112 2.25c5.523 0 10 4.477 10 10a9.965 9.965 0 01-7.74 9.72"
-                    />
-                  </svg>
-                ),
-                title: "Marine-Grade Hardware",
-                desc: "316 stainless steel fittings and UV-stabilized HDPE fabrics rated for 15+ year service life.",
-              },
-            ].map((tech, i) => (
-              <div key={i} className="text-center">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-copper shadow-sm">
-                  {tech.icon}
-                </div>
-                <h3 className="font-heading mt-5 text-base font-bold text-charcoal">
-                  {tech.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-charcoal-light">
-                  {tech.desc}
+              { node: <CountUp to={96} suffix="%" />, label: "UV blocked" },
+              { node: <CountUp to={15} suffix={"°F"} />, label: "Cooler under shade" },
+              { node: <CountUp to={90} suffix="mph" />, label: "Wind rated" },
+              { node: <CountUp to={10} suffix="-yr" />, label: "Fabric warranty" },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <p className="font-heading text-3xl sm:text-4xl font-bold text-copper">
+                  {stat.node}
                 </p>
+                <p className="mt-1 text-sm text-charcoal/60">{stat.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ===== SECTION 7: FINAL CTA ===== */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-copper via-copper to-copper-dark py-20 md:py-28">
-        {/* Subtle pattern */}
-        <div className="pointer-events-none absolute inset-0 opacity-10" aria-hidden="true">
-          <svg
-            className="h-full w-full"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <pattern
-                id="cta-dots"
-                width="24"
-                height="24"
-                patternUnits="userSpaceOnUse"
-              >
-                <circle cx="2" cy="2" r="1" fill="white" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#cta-dots)" />
-          </svg>
-        </div>
-
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              Stop Losing Revenue To The Sun
+      {/* ============================================================
+          SECTION 3: PROBLEM  (honest agitation, no fabricated figures)
+          ============================================================ */}
+      <section className="bg-white py-20 sm:py-24">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <Reveal className="max-w-2xl mb-14">
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-charcoal">
+              When the range bakes, your guests walk
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-white/80">
-              Limited Arizona installation slots available this quarter. Lock in
-              your project timeline before peak season begins.
+            <p className="mt-4 text-lg text-charcoal/60 leading-relaxed">
+              From late morning to late afternoon, unshaded bays and patios get
+              too hot to enjoy. Guests cut sessions short and spend less at the
+              bar and grill.
             </p>
-            <div className="mt-10 flex flex-col items-center gap-5 sm:flex-row sm:justify-center">
-              <Link
-                href="/contact"
-                className="inline-block rounded-full bg-white px-8 py-4 text-base font-semibold text-copper shadow-lg transition-all duration-300 hover:bg-cream hover:shadow-xl sm:text-lg"
-              >
-                Get Your Free Revenue Analysis
-              </Link>
-            </div>
-            <p className="mt-8 text-base font-medium text-white/90">
-              Or call us directly:{" "}
-              <a
-                href="tel:+16027275107"
-                className="underline decoration-white/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
-              >
-                (602) 727-5107
-              </a>
-            </p>
+          </Reveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {problems.map((p, i) => (
+              <Reveal key={p.title} delay={(i % 4) * 0.06}>
+                <div className="h-full rounded-2xl border border-sand/40 bg-cream/40 p-7">
+                  <h3 className="font-heading text-lg font-semibold text-charcoal">
+                    {p.title}
+                  </h3>
+                  <p className="mt-3 text-charcoal/65 leading-relaxed">{p.body}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
+
+      {/* ============================================================
+          SECTION 4: SOLUTION / WHAT WE SHADE
+          ============================================================ */}
+      <section className="bg-cream py-20 sm:py-24">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <Reveal className="max-w-2xl mb-14">
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-charcoal tracking-tight">
+              Shade engineered around how your venue is used
+            </h2>
+            <p className="mt-4 text-lg text-charcoal/70 leading-relaxed">
+              We design around your bays, sight lines, and event flow, then
+              install around your operating hours.
+            </p>
+          </Reveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {coverage.map((c, i) => (
+              <Reveal key={c.title} delay={(i % 4) * 0.06}>
+                <div className="h-full rounded-2xl bg-white p-7 shadow-sm border border-charcoal/5">
+                  <h3 className="font-heading text-lg font-semibold text-charcoal">
+                    {c.title}
+                  </h3>
+                  <p className="mt-3 text-charcoal/70 leading-relaxed">{c.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+          SECTION 5: PROOF  (real proof only)
+          ============================================================ */}
+      <section id="work" className="bg-white py-20 sm:py-24 scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <Reveal className="max-w-2xl mb-14">
+            <p className="text-copper font-semibold tracking-wide uppercase text-sm mb-3">
+              Our Work
+            </p>
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-charcoal">
+              Real commercial installs
+            </h2>
+            <p className="mt-4 text-lg text-charcoal/60 leading-relaxed">
+              We build engineered commercial shade at scale. Here is a real
+              project and a look at the work.
+            </p>
+          </Reveal>
+
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <Reveal>
+              <div className="rounded-2xl bg-cream/60 p-8 sm:p-10 border border-sand/40">
+                <p className="font-heading text-4xl sm:text-5xl font-bold text-copper">
+                  1,500 sq ft
+                </p>
+                <p className="mt-3 font-heading text-xl font-semibold text-charcoal">
+                  Whirlwind commercial install, Phoenix
+                </p>
+                <p className="mt-2 text-charcoal/65 leading-relaxed">
+                  A $31,000 engineered commercial shade sail, designed and built
+                  for an Arizona business, end to end from survey to final
+                  tensioning.
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.08}>
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-sand/30">
+                <Image
+                  src="/images/showcase-commercial-ws48.webp"
+                  alt="Engineered shade sails over a commercial building entrance"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal/80 to-transparent p-4">
+                  <p className="text-white/90 text-sm font-medium">
+                    Commercial-grade shade, engineered for desert heat
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="mt-10">
+            <Reveal>
+              <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-sand/30">
+                <Image
+                  src="/images/showcase-craft-ws09.webp"
+                  alt="Tensioned shade sails over an outdoor venue space"
+                  fill
+                  className="object-cover"
+                  sizes="100vw"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal/80 to-transparent p-4">
+                  <p className="text-white/90 text-sm font-medium">
+                    Tensioned sails over an outdoor venue
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+          SECTION 6: WORKING WITH APEX  (done-for-you)
+          ============================================================ */}
+      <section className="bg-cream py-20 sm:py-24">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <Reveal className="max-w-2xl mb-14">
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-charcoal tracking-tight">
+              A project that runs without surprises
+            </h2>
+          </Reveal>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {working.map((w, i) => (
+              <Reveal key={w.title} delay={(i % 4) * 0.06}>
+                <div className="h-full rounded-2xl bg-white p-7 shadow-sm border border-charcoal/5">
+                  <h3 className="font-heading text-lg font-semibold text-charcoal">
+                    {w.title}
+                  </h3>
+                  <p className="mt-3 text-charcoal/70 leading-relaxed">{w.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+          SECTION 7: MECHANISM / DURABILITY  (consistent with homepage)
+          ============================================================ */}
+      <section className="bg-charcoal py-20 sm:py-24">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <Reveal className="max-w-3xl mb-14">
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+              Built to commercial spec, built to last.
+            </h2>
+            <p className="mt-6 text-lg text-white/65 leading-relaxed">
+              A pop-up canopy or off-the-shelf cover is built to a price, not to a
+              place, and the first real monsoon tends to shred it. Every Apex sail
+              is custom-engineered and tensioned for your exact site, then anchored
+              to ride out Phoenix sun and storm season.
+            </p>
+          </Reveal>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <Reveal>
+              <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-8 sm:p-10">
+                <h3 className="font-heading text-xl font-bold text-white mb-3">
+                  Custom-engineered and tensioned
+                </h3>
+                <p className="text-white/60 leading-relaxed">
+                  Each sail is designed for its site and tensioned to stay taut and
+                  stable, rated for 90 mph wind loads.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-8 sm:p-10">
+                <h3 className="font-heading text-xl font-bold text-white mb-3">
+                  Marine-grade 316 stainless hardware
+                </h3>
+                <p className="text-white/60 leading-relaxed">
+                  Posts, cables, and fittings use marine-grade 316 stainless steel
+                  built to handle 110&deg;F summers without rusting out.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.16}>
+              <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-8 sm:p-10">
+                <h3 className="font-heading text-xl font-bold text-white mb-3">
+                  Commercial-grade fabric
+                </h3>
+                <p className="text-white/60 leading-relaxed">
+                  Architectural shade fabric blocks up to 96% of UV and drops the
+                  temperature beneath by up to 15&deg;F, backed by a 10-year fabric
+                  warranty.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+          SECTION 8: FINAL CTA
+          ============================================================ */}
+      <section className="relative py-20 sm:py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-copper-dark via-copper to-copper-light" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+
+        <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+            Ready to keep your venue playing all summer?
+          </h2>
+          <p className="mt-6 text-lg sm:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
+            Talk to a local Phoenix shade specialist, not a call center. Book a
+            free commercial assessment and we will walk your venue, map the sun,
+            and show you exactly what it will take.
+          </p>
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-10 py-5 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/20"
+            >
+              Get a Free Commercial Assessment
+            </Link>
+            <a
+              href="tel:+16028370370"
+              className="inline-flex items-center justify-center px-10 py-5 border-2 border-white text-white text-lg font-bold rounded-full hover:bg-white/10 transition-colors duration-200"
+            >
+              Call (602) 837-0370
+            </a>
+          </div>
+          <p className="mt-6 text-white/70">
+            Prefer email?{" "}
+            <a
+              href="mailto:contact@apex-sail-shades.com"
+              className="font-semibold text-white underline underline-offset-2 hover:text-cream transition-colors"
+            >
+              contact@apex-sail-shades.com
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <StickyCallBar />
     </>
   );
 }
