@@ -238,7 +238,7 @@ export default function Home() {
             {/* For Your Business */}
             <Reveal delay={0.08}>
               <Link
-                href="/golf"
+                href="/commercial"
                 className="group block overflow-hidden rounded-2xl border-2 border-sand/40 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-charcoal/5 hover:border-copper"
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
@@ -263,7 +263,7 @@ export default function Home() {
                     Phoenix midday heat.
                   </p>
                   <span className="mt-6 inline-flex items-center gap-2 text-copper font-semibold transition-all group-hover:gap-3">
-                    Explore Solutions
+                    Explore Commercial
                     <svg className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                       <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
                     </svg>
