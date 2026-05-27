@@ -4,6 +4,7 @@ import { useState, type FormEvent } from "react";
 
 const projectTypes = [
   "Select project type...",
+  "Residential / Backyard",
   "Golf & Entertainment Venue",
   "Senior Living Facility",
   "Other Commercial Project",
@@ -21,7 +22,7 @@ const benefits = [
   "Complimentary ShadeCast\u2122 shadow analysis",
   "No-obligation project consultation",
   "Custom engineering assessment",
-  "Transparent pricing \u2014 no hidden fees",
+  "Transparent pricing, no hidden fees",
 ];
 
 const trustBadges = [
@@ -30,7 +31,7 @@ const trustBadges = [
   "Since 2018",
 ];
 
-const serviceAreas = ["Phoenix Metro", "Scottsdale", "Tucson", "Salt Lake City", "St. George"];
+const serviceAreas = ["Phoenix Metro", "Scottsdale", "Mesa", "Gilbert", "Chandler", "Tucson"];
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -72,7 +73,7 @@ export default function ContactPage() {
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-lg text-sand-light leading-relaxed sm:text-xl">
             Tell us about your project and we&apos;ll show you exactly
-            what&apos;s possible &mdash; including a complimentary
+            what&apos;s possible, including a complimentary
             ShadeCast&trade; shadow analysis.
           </p>
         </div>
@@ -344,10 +345,10 @@ export default function ContactPage() {
                     <div>
                       <p className="text-xs text-charcoal-light">Phone</p>
                       <a
-                        href="tel:+16027275107"
+                        href="tel:+16028370370"
                         className="text-sm font-medium text-charcoal hover:text-copper transition-colors"
                       >
-                        (602) 727-5107
+                        (602) 837-0370
                       </a>
                     </div>
                   </div>
@@ -372,10 +373,10 @@ export default function ContactPage() {
                     <div>
                       <p className="text-xs text-charcoal-light">Email</p>
                       <a
-                        href="mailto:apexsails1@gmail.com"
+                        href="mailto:contact@apex-sail-shades.com"
                         className="text-sm font-medium text-charcoal hover:text-copper transition-colors"
                       >
-                        apexsails1@gmail.com
+                        contact@apex-sail-shades.com
                       </a>
                     </div>
                   </div>
@@ -407,7 +408,7 @@ export default function ContactPage() {
                         Service Area
                       </p>
                       <p className="text-sm font-medium text-charcoal">
-                        Serving Arizona &amp; Utah
+                        Serving the Greater Phoenix Area
                       </p>
                       <p className="mt-0.5 text-xs text-charcoal-light">
                         {serviceAreas.join(", ")}

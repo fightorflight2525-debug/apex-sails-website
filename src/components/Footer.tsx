@@ -38,7 +38,7 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-gray-400 max-w-xs">
-              Engineered commercial shade solutions. Serving Arizona &amp; Utah.
+              Custom-engineered shade sails for Phoenix homes and businesses.
             </p>
             <a
               href="tel:+16028370370"

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Get Your Free Assessment | Apex Sail Shades",
   description:
-    "Request a complimentary shade analysis and ShadeCast™ shadow study for your commercial property. Golf courses, entertainment venues, and senior living facilities in Arizona.",
+    "Request a complimentary shade analysis and ShadeCast™ shadow study for your Phoenix home or business. Custom-engineered shade sails for residential and commercial spaces across Arizona.",
 };
 
 export default function ContactLayout({

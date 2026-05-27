@@ -5,14 +5,8 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Apex Sail Shades",
   description:
-    "Learn about Apex Sail Shades — Arizona's commercial shade engineering experts. From Crush Golf and Grill installations to senior living facilities, we build shade structures that perform under the most demanding conditions.",
+    "Learn about Apex Sail Shades, a Phoenix shade sail company engineering custom shade for homes and businesses across Arizona, built to perform under the most demanding desert sun.",
 };
-
-const milestones = [
-  { year: "2018", label: "Company Founded" },
-  { year: "2019", label: "Crush Golf and Grill Installations" },
-  { year: "2024", label: "Arizona Expansion" },
-];
 
 const differentiators = [
   {
@@ -38,7 +32,7 @@ const differentiators = [
   {
     title: "ShadeCast\u2122 Technology",
     description:
-      "Proprietary shadow analysis software that tracks shade movement hour by hour. This alone closes deals.",
+      "Proprietary shadow analysis that maps shade movement across your space, hour by hour and season by season.",
     icon: (
       <svg
         className="h-7 w-7 text-copper"
@@ -76,9 +70,9 @@ const differentiators = [
     ),
   },
   {
-    title: "Commercial Only",
+    title: "Homes & Businesses",
     description:
-      "We don't do backyard patios. Every resource, every process, every material is optimized for commercial performance.",
+      "From backyard patios to large commercial courtyards, every sail is custom-engineered and built to perform in the Arizona sun.",
     icon: (
       <svg
         className="h-7 w-7 text-copper"
@@ -101,7 +95,7 @@ const stats = [
   { value: "300,000+", label: "Sq Ft Shaded" },
   { value: "96%", label: "UV Block Rating" },
   { value: "15\u00b0F", label: "Avg Temp Reduction" },
-  { value: "$132K", label: "Largest Project Scope" },
+  { value: "$31K", label: "Commercial Install" },
   { value: "90mph+", label: "Wind Load Rating" },
   { value: "10 Years", label: "Fabric Warranty" },
 ];
@@ -131,12 +125,12 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 to-charcoal/80" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-heading text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
-            Commercial Shade. Engineered Right.
+            Custom Shade. Engineered Right.
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-lg text-sand-light leading-relaxed sm:text-xl">
-            From Crush Golf and Grill installations to senior living sanctuaries, we build
+            From backyard patios to commercial courtyards, we design and build
             shade structures that perform under Arizona&apos;s most demanding
-            conditions.
+            sun.
           </p>
         </div>
       </section>
@@ -155,41 +149,23 @@ export default function AboutPage() {
               </h2>
               <div className="mt-6 space-y-4 text-charcoal-light leading-relaxed">
                 <p>
-                  Apex Sail Shades was founded with a singular focus:
-                  commercial-grade shade engineering. Not residential canopies
-                  &mdash; engineered tensioned membrane structures for
-                  facilities that demand performance, durability, and
-                  measurable ROI.
+                  Apex Sail Shades was founded with a singular focus: shade
+                  done right. Custom-engineered, tensioned shade sails for
+                  Phoenix homes and businesses that demand performance and
+                  durability in extreme desert sun.
                 </p>
                 <p>
-                  We cut our teeth on Crush Golf and Grill installations totaling
-                  $132K, proving our engineering in one of the most
-                  scrutinized commercial environments in the country. From
-                  there, we expanded into senior living communities where shade
-                  isn&apos;t a luxury &mdash; it&apos;s a safety requirement.
+                  We have engineered and installed commercial projects like our
+                  1,500 square foot, $31,000 Whirlwind install, alongside custom
+                  residential sails for Phoenix homeowners. For senior living
+                  and family backyards alike, shade here isn&apos;t a luxury, it
+                  is a daily necessity.
                 </p>
                 <p>
-                  Now we&apos;re bringing those same proven commercial shade
-                  solutions to Arizona, where the sun is relentless and the
-                  stakes are even higher.
+                  Today we bring that same engineered approach to every project
+                  across the Greater Phoenix area, where the sun is relentless
+                  and the stakes are high.
                 </p>
-              </div>
-
-              {/* Milestones */}
-              <div className="mt-10 flex flex-wrap gap-6">
-                {milestones.map((m) => (
-                  <div key={m.year} className="flex items-center gap-3">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-copper/10 font-heading text-sm font-bold text-copper">
-                      {m.year.slice(2)}
-                    </span>
-                    <div>
-                      <p className="text-xs text-charcoal-light">{m.year}</p>
-                      <p className="text-sm font-semibold text-charcoal">
-                        {m.label}
-                      </p>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
 
@@ -281,8 +257,8 @@ export default function AboutPage() {
               Every component we specify is selected for commercial longevity.
               We don&apos;t substitute materials, cut corners on hardware, or
               use residential-grade anything. When your structure is engineered
-              by Apex, every bolt, cable, and thread is built to last decades
-              &mdash; not seasons.
+              by Apex, every bolt, cable, and thread is built to last decades,
+              not seasons.
             </p>
           </div>
 
@@ -317,7 +293,7 @@ export default function AboutPage() {
       <section className="bg-gradient-to-br from-copper to-copper-dark py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-heading text-3xl font-bold text-white sm:text-4xl">
-            Ready To Work With Arizona&apos;s Commercial Shade Experts?
+            Ready To Work With Arizona&apos;s Shade Experts?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
             Let&apos;s talk about your project. We&apos;ll show you what
