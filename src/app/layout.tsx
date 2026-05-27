@@ -18,22 +18,23 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Apex Sail Shades | Engineered Commercial Shade Solutions",
+  title: "Apex Sail Shades | Phoenix Shade Sail Specialists",
   description:
-    "Premium commercial shade sail installations for golf courses, entertainment venues, and senior living facilities in Arizona and Utah. ShadeCast™ technology, HyPar engineering, 96% UV block.",
+    "Custom-engineered shade sails for Phoenix homes and businesses. Designed and installed in one visit, built for 110F sun and monsoon winds. 96% UV block, 10-year fabric, engineered and tensioned.",
   keywords: [
+    "shade sails Phoenix",
+    "residential shade sails",
     "commercial shade sails",
     "golf course shade",
     "senior living shade",
     "tensioned membrane structures",
     "Arizona shade solutions",
     "ShadeCast",
-    "HyPar shade",
   ],
   openGraph: {
-    title: "Apex Sail Shades | Engineered Commercial Shade Solutions",
+    title: "Apex Sail Shades | Phoenix Shade Sail Specialists",
     description:
-      "Turn Arizona's sun into revenue with engineered shade that pays for itself. Commercial installations for golf, entertainment, and senior living.",
+      "Custom-engineered shade sails for Phoenix homes and businesses. Designed and installed in one visit, built for 110F sun and monsoon winds.",
     type: "website",
     locale: "en_US",
     siteName: "Apex Sail Shades",
@@ -42,15 +43,15 @@ export const metadata: Metadata = {
         url: "https://apex-sail-shades.com/images/hero-shade-sail.webp",
         width: 1200,
         height: 630,
-        alt: "Engineered commercial shade sail installation by Apex Sail Shades",
+        alt: "Custom shade sail installation by Apex Sail Shades in Phoenix, Arizona",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Apex Sail Shades | Engineered Commercial Shade Solutions",
+    title: "Apex Sail Shades | Phoenix Shade Sail Specialists",
     description:
-      "Turn Arizona's sun into revenue with engineered shade that pays for itself. Commercial installations for golf, entertainment, and senior living.",
+      "Custom-engineered shade sails for Phoenix homes and businesses. Designed and installed in one visit, built for 110F sun and monsoon winds.",
     images: ["https://apex-sail-shades.com/images/hero-shade-sail.webp"],
   },
 };
