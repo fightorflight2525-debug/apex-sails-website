@@ -122,7 +122,7 @@ export default function Home() {
               Shade for your <span className="text-copper">home</span> or your <span className="text-copper">business</span>
             </h2>
             <p className="mt-4 text-lg text-charcoal/60 max-w-2xl mx-auto leading-relaxed">
-              One <span className="text-copper font-semibold">Phoenix team</span>, <span className="text-copper font-semibold">two specialties</span>. Tell us which space you want to take back from the sun.
+              <span className="text-copper font-semibold">One</span> Phoenix team, <span className="text-copper font-semibold">two</span> specialties. Tell us which space you want to take back from the sun.
             </p>
           </Reveal>
 
@@ -151,7 +151,7 @@ export default function Home() {
                   </h3>
                   <p className="mt-3 text-charcoal/60 leading-relaxed">
                     Custom backyard shade sails that keep your patio, pool, and
-                    play space usable all summer. Most residential projects run <span className="font-semibold text-copper">$5,000 to $8,000</span>.
+                    play space usable all summer. Most residential projects run <span className="font-semibold text-copper">$5,000</span> to <span className="font-semibold text-copper">$8,000</span>.
                   </p>
                   <span className="mt-6 inline-flex items-center gap-2 text-copper font-semibold transition-all group-hover:gap-3">
                     Explore Residential
