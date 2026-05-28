@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import StatsBand from "@/components/StatsBand";
 import StickyCallBar from "@/components/StickyCallBar";
+import Lightbox from "@/components/Lightbox";
 
 export const metadata: Metadata = {
   title: "Residential Shade Sails Phoenix | Apex Sail Shades",
@@ -10,30 +12,100 @@ export const metadata: Metadata = {
     "Custom-engineered backyard shade sails for Phoenix homes. Designed and installed in one visit, built for 110°F sun and monsoon winds. Free design visit. Most projects $5,000 to $8,000.",
 };
 
-const valueProps = [
+type ValueProp = {
+  title: string;
+  body: string;
+  icon: ReactNode;
+  href?: string;
+};
+
+const valueProps: ValueProp[] = [
   {
     title: "Designed in one visit",
+    href: "/process",
     body: "We measure, design, and quote your backyard in a single on-site visit. No drawn-out back and forth.",
+    icon: (
+      <svg className="w-10 h-10 text-copper" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        {/* Calendar with checkmark */}
+        <rect x="6" y="9" width="28" height="25" rx="3" stroke="currentColor" strokeWidth="2" />
+        <line x1="6" y1="15" x2="34" y2="15" stroke="currentColor" strokeWidth="2" />
+        <line x1="13" y1="5" x2="13" y2="11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <line x1="27" y1="5" x2="27" y2="11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <polyline points="14,23 18,27 26,19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
   },
   {
     title: "ShadeCast™ sun analysis",
+    href: "/#shadecast",
     body: "We predict exactly where the sun falls across every hour and season, so the shade lands where you actually need it.",
+    icon: (
+      <svg className="w-10 h-10 text-copper" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        {/* Sun with rays + ground baseline */}
+        <circle cx="20" cy="16" r="6" stroke="currentColor" strokeWidth="2" />
+        <line x1="20" y1="4" x2="20" y2="7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <line x1="20" y1="25" x2="20" y2="28" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <line x1="8" y1="16" x2="11" y2="16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <line x1="29" y1="16" x2="32" y2="16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <line x1="11.5" y1="7.5" x2="13.5" y2="9.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <line x1="26.5" y1="7.5" x2="28.5" y2="9.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <line x1="11.5" y1="24.5" x2="13.5" y2="22.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <line x1="26.5" y1="24.5" x2="28.5" y2="22.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <line x1="4" y1="34" x2="36" y2="34" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    ),
   },
   {
     title: "Built for Phoenix",
     body: "Engineered for 110°F summers and 60+ mph monsoon winds. Marine-grade 316 stainless hardware on every install.",
+    icon: (
+      <svg className="w-10 h-10 text-copper" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        {/* Desert mountains + sun */}
+        <path d="M3 30 L12 16 L18 24 L26 12 L37 30 Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+        <circle cx="29" cy="10" r="3" stroke="currentColor" strokeWidth="2" />
+        <line x1="3" y1="30" x2="37" y2="30" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    ),
   },
   {
     title: "96% UV protection",
     body: "Commercial-grade fabric blocks up to 96% of UV and drops the temperature beneath by up to 15°F.",
+    icon: (
+      <svg className="w-10 h-10 text-copper" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        {/* Shield with sun inside */}
+        <path d="M20 4 L32 9 L32 20 C32 28 26 33 20 36 C14 33 8 28 8 20 L8 9 Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+        <circle cx="20" cy="18" r="3.5" stroke="currentColor" strokeWidth="1.8" />
+        <line x1="20" y1="10" x2="20" y2="12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        <line x1="20" y1="24" x2="20" y2="26" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        <line x1="12" y1="18" x2="14" y2="18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        <line x1="26" y1="18" x2="28" y2="18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      </svg>
+    ),
   },
   {
     title: "10-year fabric warranty",
     body: "We stand behind the materials and the workmanship, so your patio stays protected season after season.",
+    icon: (
+      <svg className="w-10 h-10 text-copper" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        {/* Shield with checkmark (mirrors StatsBand warranty icon) */}
+        <path d="M20 4 L32 10 L32 22 C32 30 26 36 20 38 C14 36 8 30 8 22 L8 10 Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+        <polyline points="14,20 18,24 26,16" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
   },
   {
     title: "Licensed, insured crews",
     body: "Every install is performed by licensed, insured Phoenix crews with the right precautions on every job.",
+    icon: (
+      <svg className="w-10 h-10 text-copper" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        {/* Certificate with seal + ribbon */}
+        <rect x="6" y="6" width="28" height="22" rx="2" stroke="currentColor" strokeWidth="2" />
+        <line x1="10" y1="13" x2="22" y2="13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="10" y1="17" x2="20" y2="17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="28" cy="18" r="3.5" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M20 28 L20 36 L23 33 L26 36 L26 28" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+      </svg>
+    ),
   },
 ];
 
@@ -48,6 +120,8 @@ const gallery = [
   "/images/residential-08.webp",
   "/images/residential-09.webp",
   "/images/residential-10.webp",
+  "/images/os-04.webp",
+  "/images/os-15.webp",
 ];
 
 const steps = [
@@ -81,10 +155,10 @@ export default function ResidentialPage() {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/85 via-charcoal/60 to-charcoal" />
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/65 via-charcoal/40 to-charcoal md:from-charcoal/85 md:via-charcoal/60 md:to-charcoal" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl mx-auto text-center">
             <span className="inline-block text-sm font-semibold uppercase tracking-widest text-sand">
               Residential shade sails
             </span>
@@ -102,7 +176,7 @@ export default function ResidentialPage() {
                 href="/contact"
                 className="cta-glow inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
               >
-                Get My Free Design Visit
+                Get My <em className="not-italic font-bold text-[1.08em]">Free</em> 3D Design + Visit
               </Link>
               <a
                 href="#gallery"
@@ -125,13 +199,12 @@ export default function ResidentialPage() {
       {/* ===== SECTION 2: VALUE STACK ===== */}
       <section className="bg-cream py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl mx-auto text-center">
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-charcoal tracking-tight">
               A shade sail that is actually built for your backyard
             </h2>
-            <p className="mt-4 text-lg text-charcoal/70 leading-relaxed">
-              Not an off-the-shelf canopy. A custom-engineered sail, designed
-              around your space and your sun.
+            <p className="mt-4 text-lg text-copper italic leading-relaxed">
+              A shade sail built for your backyard, not an off-the-shelf canopy. A custom-engineered sail designed to cover your space and block the sun.
             </p>
           </div>
 
@@ -139,11 +212,21 @@ export default function ResidentialPage() {
             {valueProps.map((p) => (
               <div
                 key={p.title}
-                className="rounded-2xl bg-white p-7 shadow-sm border border-charcoal/5 transition-transform duration-200 hover:-translate-y-1"
+                className="rounded-2xl bg-white p-7 shadow-sm border border-charcoal/5 transition-transform duration-200 hover:-translate-y-1 text-center"
               >
-                <h3 className="font-heading text-xl font-semibold text-charcoal">
-                  {p.title}
-                </h3>
+                <span className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-copper/10">
+                  {p.icon}
+                </span>
+                {p.href ? (
+                  <Link
+                    href={p.href}
+                    className="block font-heading text-xl font-semibold text-charcoal hover:text-copper transition-colors"
+                  >
+                    {p.title}
+                  </Link>
+                ) : (
+                  <h3 className="font-heading text-xl font-semibold text-charcoal">{p.title}</h3>
+                )}
                 <p className="mt-3 text-charcoal/70 leading-relaxed">{p.body}</p>
               </div>
             ))}
@@ -171,8 +254,18 @@ export default function ResidentialPage() {
       {/* ===== SECTION 4: GALLERY ===== */}
       <section id="gallery" className="bg-cream py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="max-w-2xl">
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-charcoal tracking-tight">
+          <div className="max-w-2xl mx-auto text-center">
+            <span className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-copper/10">
+              <svg className="w-10 h-10 text-copper" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                {/* House with shade triangle above */}
+                <path d="M10 32 L10 20 L20 12 L30 20 L30 32 Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+                <rect x="17" y="24" width="6" height="8" stroke="currentColor" strokeWidth="2" />
+                <path d="M6 8 L20 4 L34 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <line x1="6" y1="8" x2="6" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                <line x1="34" y1="10" x2="34" y2="14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            </span>
+            <h2 className="font-heading text-4xl sm:text-5xl font-bold text-copper tracking-tight">
               Real backyards we have shaded
             </h2>
             <p className="mt-4 text-lg text-charcoal/70 leading-relaxed">
@@ -181,22 +274,16 @@ export default function ResidentialPage() {
             </p>
           </div>
 
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {gallery.map((src, i) => (
-              <div
-                key={src}
-                className="relative aspect-square overflow-hidden rounded-xl bg-charcoal/5"
-              >
-                <Image
-                  src={src}
-                  alt="Custom residential shade sail installation in the Phoenix metro"
-                  fill
-                  className="object-cover transition-transform duration-300 hover:scale-105"
-                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  loading={i < 4 ? "eager" : "lazy"}
-                />
-              </div>
-            ))}
+          <div className="mt-12">
+            <Lightbox
+              images={gallery.map((src) => ({
+                src,
+                alt: "Custom residential shade sail installation in the Phoenix metro",
+              }))}
+              gridClassName="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+              itemClassName="relative aspect-square overflow-hidden rounded-xl bg-charcoal/5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-copper/60 focus:ring-offset-2"
+              imageSizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            />
           </div>
         </div>
       </section>
@@ -255,7 +342,7 @@ export default function ResidentialPage() {
               href="/contact"
               className="inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
             >
-              Get My Free Design Visit
+              Get My <em className="not-italic font-bold text-[1.08em]">Free</em> 3D Design + Visit
             </Link>
             <a
               href="tel:+16028370370"
