@@ -69,8 +69,8 @@ const verticals: {
     title: "Golf & Recreation",
     blurb:
       "Keep driving bays, ranges, and seating usable through peak sun so play does not stop at midday.",
-    href: "/golf",
-    cta: "View golf solutions",
+    href: "/contact",
+    cta: "Request an assessment",
     icon: (
       <path
         strokeLinecap="round"
@@ -83,8 +83,8 @@ const verticals: {
     title: "Senior Living",
     blurb:
       "Give residents shaded courtyards and walkways so outdoor access is not lost to the summer.",
-    href: "/senior-living",
-    cta: "View senior living solutions",
+    href: "/contact",
+    cta: "Request an assessment",
     icon: (
       <path
         strokeLinecap="round"
