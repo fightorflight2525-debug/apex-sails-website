@@ -171,12 +171,12 @@ export default function ResidentialPage() {
               110°F sun and monsoon winds.
             </p>
 
-            <div className="mt-10 flex flex-col sm:flex-row gap-4">
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
                 className="cta-glow inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
               >
-                Get My <em className="not-italic font-bold text-[1.08em]">Free</em> 3D Design + Visit
+                Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> 3D Design + Visit
               </Link>
               <a
                 href="#gallery"
@@ -291,7 +291,7 @@ export default function ResidentialPage() {
       {/* ===== SECTION 5: PROCESS ===== */}
       <section className="bg-white py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl mx-auto text-center">
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-charcoal tracking-tight">
               From first visit to finished shade
             </h2>
@@ -342,7 +342,7 @@ export default function ResidentialPage() {
               href="/contact"
               className="inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
             >
-              Get My <em className="not-italic font-bold text-[1.08em]">Free</em> 3D Design + Visit
+              Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> 3D Design + Visit
             </Link>
             <a
               href="tel:+16028370370"
