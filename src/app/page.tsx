@@ -122,8 +122,7 @@ export default function Home() {
               Shade for your <span className="text-copper">home</span> or your <span className="text-copper">business</span>
             </h2>
             <p className="mt-4 text-lg text-charcoal/60 max-w-2xl mx-auto leading-relaxed">
-              One Phoenix team, two specialties. Tell us which space you want to
-              take back from the sun.
+              One <span className="text-copper font-semibold">Phoenix team</span>, <span className="text-copper font-semibold">two specialties</span>. Tell us which space you want to take back from the sun.
             </p>
           </Reveal>
 
