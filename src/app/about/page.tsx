@@ -95,7 +95,7 @@ const stats = [
   { value: "300,000+", label: "Sq Ft Shaded" },
   { value: "96%", label: "UV Block Rating" },
   { value: "15\u00b0F", label: "Avg Temp Reduction" },
-  { value: "$31K", label: "Commercial Install" },
+  { value: "1,500 sq ft", label: "Largest commercial install" },
   { value: "90mph+", label: "Wind Load Rating" },
   { value: "10 Years", label: "Fabric Warranty" },
 ];
@@ -156,7 +156,7 @@ export default function AboutPage() {
                 </p>
                 <p>
                   We have engineered and installed commercial projects like our
-                  1,500 square foot, $31,000 Whirlwind install, alongside custom
+                  1,500 square foot Whirlwind install, alongside custom
                   residential sails for Phoenix homeowners. For senior living
                   and family backyards alike, shade here isn&apos;t a luxury, it
                   is a daily necessity.

@@ -67,20 +67,20 @@ export default function Home() {
 
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-32 pb-20 w-full">
-          <div className="max-w-3xl">
+          <div className="max-w-4xl mx-auto text-center">
             <span className="inline-block text-sm font-semibold uppercase tracking-widest text-sand">
               Phoenix shade sail specialists
             </span>
             <h1 className="mt-4 font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight">
-              Custom Shade Sails, Built for Phoenix Heat.
+              <span className="italic text-copper">Custom</span> Shade Sails,<br />Built for <span className="text-copper">Phoenix</span> Heat.
             </h1>
-            <p className="mt-6 text-lg sm:text-xl text-white/70 max-w-2xl leading-relaxed font-body">
+            <p className="mt-6 text-lg sm:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed font-body">
               Custom-engineered shade sails, designed and installed in one visit.
               Cooler patios, protected pools, shaded commercial spaces.
             </p>
 
             {/* Dual CTA */}
-            <div className="mt-10 flex flex-col sm:flex-row gap-4">
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
                 className="cta-glow inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
@@ -119,7 +119,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <Reveal className="text-center mb-14">
             <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-charcoal">
-              Shade for your home or your business
+              Shade for your <span className="text-copper">home</span> or your <span className="text-copper">business</span>
             </h2>
             <p className="mt-4 text-lg text-charcoal/60 max-w-2xl mx-auto leading-relaxed">
               One Phoenix team, two specialties. Tell us which space you want to
@@ -152,8 +152,7 @@ export default function Home() {
                   </h3>
                   <p className="mt-3 text-charcoal/60 leading-relaxed">
                     Custom backyard shade sails that keep your patio, pool, and
-                    play space usable all summer. Most residential projects run
-                    $5,000 to $8,000.
+                    play space usable all summer. Most residential projects run <span className="font-semibold text-copper">$5,000 to $8,000</span>.
                   </p>
                   <span className="mt-6 inline-flex items-center gap-2 text-copper font-semibold transition-all group-hover:gap-3">
                     Explore Residential
@@ -212,14 +211,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <Reveal className="text-center mb-14">
             <p className="text-copper font-semibold tracking-wide uppercase text-sm mb-3">
-              Our Work
+              Latest Project
             </p>
             <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-charcoal">
-              Trusted by Phoenix businesses and homeowners
+              Our most recent install
             </h2>
             <p className="mt-4 text-lg text-charcoal/60 max-w-2xl mx-auto leading-relaxed">
-              Real projects, real numbers. From single-family backyards to
-              large-scale commercial installs.
+              A recent commercial install in Phoenix, alongside a residential close that wrapped this season.
             </p>
           </Reveal>
 
@@ -249,19 +247,18 @@ export default function Home() {
                   1,500 sq ft
                 </p>
                 <p className="mt-2 font-heading text-lg font-semibold text-charcoal">
-                  Whirlwind commercial install, Phoenix
+                  Whirlwind Golf Course Install, Phoenix
                 </p>
                 <p className="mt-1 text-charcoal/60 leading-relaxed">
-                  A $31,000 engineered commercial shade sail, designed and built
-                  for an Arizona business.
+                  An engineered commercial shade sail, designed and built for an Arizona business.
                 </p>
               </div>
               <div className="rounded-2xl bg-white p-7 sm:p-8 border border-sand/40 shadow-sm">
                 <p className="font-heading text-3xl sm:text-4xl font-bold text-copper">
-                  $8,000
+                  Phoenix backyard
                 </p>
                 <p className="mt-2 font-heading text-lg font-semibold text-charcoal">
-                  Recent residential close
+                  Backyard garden cover, Phoenix
                 </p>
                 <p className="mt-1 text-charcoal/60 leading-relaxed">
                   A custom backyard shade sail, measured, designed, and installed
@@ -278,9 +275,9 @@ export default function Home() {
           ============================================================ */}
       <section className="bg-charcoal py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <Reveal className="max-w-3xl mb-14">
+          <Reveal className="max-w-3xl mx-auto text-center mb-14">
             <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
-              Not a big-box canopy. Engineered shade that lasts.
+              <span className="italic text-copper text-4xl sm:text-5xl md:text-6xl">Not</span> an <span className="text-copper">&ldquo;online&rdquo;</span> or <span className="text-copper">&ldquo;store-bought&rdquo;</span> canopy.
             </h2>
             <p className="mt-6 text-lg text-white/65 leading-relaxed">
               A pop-up canopy or off-the-shelf shade sail is built to a price, not
@@ -292,7 +289,17 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             <Reveal>
-              <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-8 sm:p-10">
+              <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-8 sm:p-10 text-center">
+                <div className="flex justify-center mb-5">
+                  <svg className="w-12 h-12 text-copper" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    {/* Triangular sail outline with tension lines to two anchors */}
+                    <circle cx="6" cy="40" r="2" fill="currentColor" />
+                    <circle cx="42" cy="40" r="2" fill="currentColor" />
+                    <line x1="6" y1="40" x2="24" y2="8" />
+                    <line x1="42" y1="40" x2="24" y2="8" />
+                    <path d="M6 40 Q 24 28 42 40" />
+                  </svg>
+                </div>
                 <h3 className="font-heading text-xl font-bold text-white mb-3">
                   Custom-engineered and tensioned
                 </h3>
@@ -304,7 +311,16 @@ export default function Home() {
               </div>
             </Reveal>
             <Reveal delay={0.08}>
-              <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-8 sm:p-10">
+              <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-8 sm:p-10 text-center">
+                <div className="flex justify-center mb-5">
+                  <svg className="w-12 h-12 text-copper" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    {/* Stylized D-ring / shackle outline with pin across the top */}
+                    <path d="M14 14 L14 28 a10 10 0 0 0 20 0 L34 14" />
+                    <line x1="10" y1="14" x2="38" y2="14" />
+                    <circle cx="10" cy="14" r="2" fill="currentColor" />
+                    <circle cx="38" cy="14" r="2" fill="currentColor" />
+                  </svg>
+                </div>
                 <h3 className="font-heading text-xl font-bold text-white mb-3">
                   Marine-grade 316 stainless hardware
                 </h3>
@@ -316,7 +332,21 @@ export default function Home() {
               </div>
             </Reveal>
             <Reveal delay={0.16}>
-              <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-8 sm:p-10">
+              <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-8 sm:p-10 text-center">
+                <div className="flex justify-center mb-5">
+                  <svg className="w-12 h-12 text-copper" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    {/* Folded fabric panel with a sun glyph above */}
+                    <circle cx="24" cy="10" r="4" />
+                    <line x1="24" y1="2" x2="24" y2="4" />
+                    <line x1="33" y1="10" x2="35" y2="10" />
+                    <line x1="13" y1="10" x2="15" y2="10" />
+                    <line x1="30" y1="4" x2="31.5" y2="5.5" />
+                    <line x1="16.5" y1="5.5" x2="18" y2="4" />
+                    <path d="M6 24 L42 24 L42 42 L6 42 Z" />
+                    <path d="M6 30 Q 15 34 24 30 T 42 30" />
+                    <path d="M6 36 Q 15 40 24 36 T 42 36" />
+                  </svg>
+                </div>
                 <h3 className="font-heading text-xl font-bold text-white mb-3">
                   Commercial-grade fabric
                 </h3>
@@ -407,25 +437,29 @@ export default function Home() {
                 Experience
               </p>
               <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-charcoal leading-tight">
-                Backed by deep shade-sail experience
+                Backed by <em className="italic">deep</em> shade-sail experience
               </h2>
               <p className="mt-6 text-lg text-charcoal/70 leading-relaxed">
-                Our crews and fabrication partners have engineered and installed
-                more than 300,000 square feet of shade since 2018. That depth shows
-                up in every footing we pour and every sail we tension.
+                The team at Apex came up through a Phoenix shade-sail lineage that dates back to 2018. Together, our crews and the partners we trained alongside have installed more than 1 million square feet of shade in the past year alone. That depth shows up in every footing we pour and every sail we tension.
               </p>
               <div className="mt-8 flex flex-wrap gap-10">
                 <div>
                   <p className="font-heading text-4xl font-bold text-copper">
-                    <CountUp to={300000} suffix="+" />
+                    Since 2018
                   </p>
-                  <p className="mt-1 text-charcoal/60 font-medium">Sq ft shaded</p>
+                  <p className="mt-1 text-charcoal/60 font-medium">Industry lineage</p>
                 </div>
                 <div>
                   <p className="font-heading text-4xl font-bold text-copper">
-                    Since 2018
+                    <CountUp to={500000} suffix="+" />
                   </p>
-                  <p className="mt-1 text-charcoal/60 font-medium">Industry experience</p>
+                  <p className="mt-1 text-charcoal/60 font-medium">Sq ft shaded (Apex + partners)</p>
+                </div>
+                <div>
+                  <p className="font-heading text-4xl font-bold text-copper">
+                    <CountUp to={1000000} suffix="+" />
+                  </p>
+                  <p className="mt-1 text-charcoal/60 font-medium">Partner volume, past year</p>
                 </div>
               </div>
             </Reveal>
