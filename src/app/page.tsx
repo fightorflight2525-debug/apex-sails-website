@@ -22,9 +22,11 @@ export default function Home() {
           SECTION 1: HERO  (LCP element, rendered immediately, NOT motion-gated)
           ============================================================ */}
       <section className="relative min-h-screen flex items-center overflow-hidden bg-charcoal">
-        {/* Hero slideshow (H4): frame 0 preserves WS-22 LCP behavior (priority+sized). */}
+        {/* Hero slideshow (H4): passive 11-frame strip from the ambiguous LP, auto-cycle only.
+            Frame 0 (both-hero-ws-14) preserves LCP behavior (priority+sized). */}
         <CrossFadeCarousel
           fill
+          controls={false}
           ariaLabel="Hero image slideshow"
           intervalMs={6000}
           transitionMs={700}
@@ -32,17 +34,49 @@ export default function Home() {
           frameClassName="object-cover opacity-30"
           frames={[
             {
-              src: "/images/hero-shade-sail.webp",
-              alt: "Custom shade sail over a Phoenix backyard patio",
+              src: "/images/both-hero-ws-14.webp",
+              alt: "Custom shade sail over a Phoenix outdoor space",
               priority: true,
             },
             {
-              src: "/images/os-04.webp",
-              alt: "Turquoise shade sails over a Phoenix backyard patio.",
+              src: "/images/both-strip-02-ws-22.webp",
+              alt: "Phoenix residential shade sail install",
             },
             {
-              src: "/images/showcase-craft-ws09.webp",
-              alt: "Tensioned shade sails over a finished outdoor space",
+              src: "/images/both-strip-03-ws-06.webp",
+              alt: "Apex commercial shade sail install",
+            },
+            {
+              src: "/images/both-strip-04-ws-29.webp",
+              alt: "Phoenix shade sail over outdoor patio",
+            },
+            {
+              src: "/images/both-strip-05-ws-18.webp",
+              alt: "Custom shade sail backyard install",
+            },
+            {
+              src: "/images/both-strip-06-ws-32.webp",
+              alt: "Tensioned shade sail commercial install",
+            },
+            {
+              src: "/images/both-strip-07-os-12.webp",
+              alt: "Residential shade sail over Phoenix backyard",
+            },
+            {
+              src: "/images/both-strip-08-ws-23.webp",
+              alt: "Apex shade sail finished install",
+            },
+            {
+              src: "/images/both-strip-09-ws-41.webp",
+              alt: "Custom shade sail outdoor space",
+            },
+            {
+              src: "/images/both-strip-10-ws-34.webp",
+              alt: "Apex Phoenix shade sail install",
+            },
+            {
+              src: "/images/both-strip-11-ws-44.webp",
+              alt: "Tensioned custom shade sail in Phoenix",
             },
           ]}
         />
@@ -385,7 +419,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left: copy */}
             <Reveal>
-              <p className="text-copper font-semibold tracking-wide uppercase text-sm mb-3">
+              <p className="text-copper font-semibold tracking-wide uppercase text-sm lg:text-lg mb-3">
                 ShadeCast&#8482; 3D design
               </p>
               <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-charcoal leading-tight">
@@ -423,38 +457,11 @@ export default function Home() {
               </Link>
             </Reveal>
 
-            {/* Right: ShadeCastSlideover (H9b, wraps Demo, slides to 2x2 collage) +
-                CrossFadeCarousel (H9a, WSM design-proof slideshow beside on lg+, below on mobile). */}
+            {/* Right: ShadeCastSlideover (H9b, wraps Demo, slides to 2x2 collage). */}
             <Reveal delay={0.1}>
-              <div className="grid gap-6 lg:gap-8 lg:grid-cols-[3fr_2fr] items-center">
-                <ShadeCastSlideover>
-                  <ShadeCastDemo className="w-full" />
-                </ShadeCastSlideover>
-                <CrossFadeCarousel
-                  ariaLabel="ShadeCast design proof slideshow"
-                  aspectRatio="aspect-[3/2]"
-                  intervalMs={6000}
-                  transitionMs={700}
-                  sizes="(max-width: 1024px) 100vw, 35vw"
-                  className="rounded-2xl overflow-hidden border border-sand/40 bg-white shadow-md shadow-charcoal/5"
-                  frameClassName="object-contain bg-white"
-                  chevronClassName="text-charcoal/55 hover:text-charcoal hover:bg-charcoal/10"
-                  frames={[
-                    {
-                      src: "/images/wsm-03.webp",
-                      alt: "HyPar shade-sail engineering drawing showing foundation post and forged eye-bolt attachment.",
-                    },
-                    {
-                      src: "/images/wsm-05.webp",
-                      alt: "SketchUp rendering of HyPar shade sail structure on a grid plane.",
-                    },
-                    {
-                      src: "/images/wsm-06.webp",
-                      alt: "Cable-edge corner hardware diagram: D-ring, bow shackle, turnbuckle, corner bracket, eye bolt, pad eye, wall plate.",
-                    },
-                  ]}
-                />
-              </div>
+              <ShadeCastSlideover>
+                <ShadeCastDemo className="w-full" />
+              </ShadeCastSlideover>
             </Reveal>
           </div>
         </div>

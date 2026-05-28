@@ -30,6 +30,12 @@ interface CrossFadeCarouselProps {
   frameClassName?: string;
   /** Class applied to the chevron buttons. Default tuned for dark backgrounds (white chevrons). */
   chevronClassName?: string;
+  /**
+   * When `false`, render no chevrons and no click-to-pause overlay. The carousel
+   * just auto-cycles (still respects prefers-reduced-motion). Use for purely
+   * decorative/passive slideshows like the hero background strip. Default `true`.
+   */
+  controls?: boolean;
 }
 
 /** Open-triangle chevron (no base line, per H4 spec). */
@@ -70,6 +76,7 @@ export default function CrossFadeCarousel({
   sizes,
   frameClassName = "object-cover",
   chevronClassName = "text-white/70 hover:text-white hover:bg-black/20",
+  controls = true,
 }: CrossFadeCarouselProps) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -146,8 +153,8 @@ export default function CrossFadeCarousel({
       ))}
       {/* Click-to-pause overlay. Opt-out in fill mode because the hero content layer
           sits visually above the carousel and we don't want stray clicks on text/CTAs
-          to toggle the slideshow. */}
-      {!fill && (
+          to toggle the slideshow. Also opt-out when controls is false (passive mode). */}
+      {!fill && controls && (
         <button
           type="button"
           onClick={togglePause}
@@ -156,7 +163,7 @@ export default function CrossFadeCarousel({
           tabIndex={-1}
         />
       )}
-      {n > 1 && (
+      {controls && n > 1 && (
         <>
           <button
             type="button"
