@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import StatsBand from "@/components/StatsBand";
+import StickyCallBar from "@/components/StickyCallBar";
 
 export const metadata: Metadata = {
   title: "Residential Shade Sails Phoenix | Apex Sail Shades",
@@ -98,7 +100,7 @@ export default function ResidentialPage() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
+                className="cta-glow inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
               >
                 Get My Free Design Visit
               </Link>
@@ -116,6 +118,9 @@ export default function ResidentialPage() {
           </div>
         </div>
       </section>
+
+      {/* ===== SECTION 1.5: STATS BAND  (shared StatsBand; R14 parity with home) ===== */}
+      <StatsBand />
 
       {/* ===== SECTION 2: VALUE STACK ===== */}
       <section className="bg-cream py-20 md:py-28">
@@ -261,6 +266,9 @@ export default function ResidentialPage() {
           </div>
         </div>
       </section>
+
+      {/* Mobile sticky CTA */}
+      <StickyCallBar />
     </>
   );
 }

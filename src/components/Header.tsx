@@ -1,16 +1,32 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+
+/** Inline phone glyph used by the always-visible call affordances (A2). */
+function PhoneIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
+      />
+    </svg>
+  );
+}
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [solutionsOpen, setSolutionsOpen] = useState(false);
-  const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +42,6 @@ export default function Header() {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
         setMobileOpen(false);
-        setMobileSolutionsOpen(false);
       }
     };
     window.addEventListener("resize", handleResize);
@@ -45,35 +60,7 @@ export default function Header() {
     };
   }, [mobileOpen]);
 
-  // Close desktop dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(e.target as Node)
-      ) {
-        setSolutionsOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  const handleDropdownEnter = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    setSolutionsOpen(true);
-  };
-
-  const handleDropdownLeave = () => {
-    timeoutRef.current = setTimeout(() => {
-      setSolutionsOpen(false);
-    }, 150);
-  };
-
-  const closeMobile = () => {
-    setMobileOpen(false);
-    setMobileSolutionsOpen(false);
-  };
+  const closeMobile = () => setMobileOpen(false);
 
   return (
     <>
@@ -100,114 +87,13 @@ export default function Header() {
 
             {/* Desktop Navigation */}
             <nav className="hidden items-center gap-8 lg:flex">
-              {/* Solutions Dropdown */}
-              <div
-                ref={dropdownRef}
-                className="relative"
-                onMouseEnter={handleDropdownEnter}
-                onMouseLeave={handleDropdownLeave}
-              >
-                <button
-                  onClick={() => setSolutionsOpen(!solutionsOpen)}
-                  className={`flex items-center gap-1 text-sm font-medium transition-colors duration-300 hover:text-copper ${
-                    scrolled ? "text-charcoal" : "text-white"
-                  }`}
-                  aria-expanded={solutionsOpen}
-                  aria-haspopup="true"
-                >
-                  Solutions
-                  <svg
-                    className={`h-4 w-4 transition-transform duration-200 ${
-                      solutionsOpen ? "rotate-180" : ""
-                    }`}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-
-                {/* Dropdown Menu */}
-                <div
-                  className={`absolute left-1/2 top-full mt-2 w-56 -translate-x-1/2 rounded-lg bg-white py-2 shadow-xl ring-1 ring-black/5 transition-all duration-200 ${
-                    solutionsOpen
-                      ? "visible translate-y-0 opacity-100"
-                      : "invisible -translate-y-2 opacity-0"
-                  }`}
-                >
-                  <Link
-                    href="/golf"
-                    className="flex items-center gap-3 px-4 py-3 text-sm text-charcoal transition-colors hover:bg-cream hover:text-copper"
-                    onClick={() => setSolutionsOpen(false)}
-                  >
-                    <span className="flex h-8 w-8 items-center justify-center rounded-md bg-cream">
-                      <svg
-                        className="h-4 w-4 text-copper"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        {/* Golf flag icon */}
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M3 21V3m0 0l9 4.5L3 12"
-                        />
-                        <circle cx="3" cy="21" r="1.5" fill="currentColor" opacity="0.3" />
-                      </svg>
-                    </span>
-                    <div>
-                      <div className="font-medium">Golf &amp; Entertainment</div>
-                      <div className="text-xs text-charcoal-light">
-                        Courses &amp; venues
-                      </div>
-                    </div>
-                  </Link>
-                  <Link
-                    href="/senior-living"
-                    className="flex items-center gap-3 px-4 py-3 text-sm text-charcoal transition-colors hover:bg-cream hover:text-copper"
-                    onClick={() => setSolutionsOpen(false)}
-                  >
-                    <span className="flex h-8 w-8 items-center justify-center rounded-md bg-cream">
-                      <svg
-                        className="h-4 w-4 text-copper"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        {/* Building/community icon */}
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M2 22h20M6 22V6l6-4 6 4v16M10 22v-4h4v4M10 10h.01M14 10h.01M10 14h.01M14 14h.01"
-                        />
-                      </svg>
-                    </span>
-                    <div>
-                      <div className="font-medium">Senior Living</div>
-                      <div className="text-xs text-charcoal-light">
-                        Communities &amp; facilities
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-
               <Link
-                href="/residential"
+                href="/commercial"
                 className={`text-sm font-medium transition-colors duration-300 hover:text-copper ${
                   scrolled ? "text-charcoal" : "text-white"
                 }`}
               >
-                Residential
+                Commercial
               </Link>
 
               <Link
@@ -228,50 +114,71 @@ export default function Header() {
                 About
               </Link>
 
+              {/* Desktop Call link (A2) — understated, sits just before the CTA */}
+              <a
+                href="tel:+16028370370"
+                className={`inline-flex items-center gap-1.5 text-sm font-medium transition-colors duration-300 hover:text-copper ${
+                  scrolled ? "text-charcoal" : "text-white"
+                }`}
+              >
+                <PhoneIcon className="h-4 w-4" />
+                Call
+              </a>
+
               {/* CTA Button */}
               <Link
                 href="/contact"
                 className="rounded-full bg-copper px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-copper-dark hover:shadow-md"
               >
-                Get Free Assessment
+                Get a Free Estimate
               </Link>
             </nav>
 
-            {/* Mobile Hamburger Button */}
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className={`relative z-50 flex h-10 w-10 items-center justify-center rounded-md lg:hidden transition-colors ${
-                mobileOpen
-                  ? "text-charcoal"
-                  : scrolled
+            {/* Mobile call button + hamburger (A2: call sits to the LEFT of hamburger) */}
+            <div className="flex items-center gap-2 lg:hidden">
+              <a
+                href="tel:+16028370370"
+                aria-label="Call Apex Sail Shades"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-copper text-white shadow-sm transition-colors hover:bg-copper-dark"
+              >
+                <PhoneIcon className="h-5 w-5" />
+              </a>
+
+              <button
+                onClick={() => setMobileOpen(!mobileOpen)}
+                className={`relative z-50 flex h-10 w-10 items-center justify-center rounded-md transition-colors ${
+                  mobileOpen
                     ? "text-charcoal"
-                    : "text-white"
-              }`}
-              aria-label={mobileOpen ? "Close menu" : "Open menu"}
-              aria-expanded={mobileOpen}
-            >
-              <div className="flex h-5 w-6 flex-col items-center justify-center">
-                <span
-                  className={`block h-0.5 w-6 rounded-full bg-current transition-all duration-300 ${
-                    mobileOpen
-                      ? "translate-y-[3px] rotate-45"
-                      : "-translate-y-1"
-                  }`}
-                />
-                <span
-                  className={`block h-0.5 w-6 rounded-full bg-current transition-all duration-300 ${
-                    mobileOpen ? "opacity-0" : "opacity-100"
-                  }`}
-                />
-                <span
-                  className={`block h-0.5 w-6 rounded-full bg-current transition-all duration-300 ${
-                    mobileOpen
-                      ? "-translate-y-[3px] -rotate-45"
-                      : "translate-y-1"
-                  }`}
-                />
-              </div>
-            </button>
+                    : scrolled
+                      ? "text-charcoal"
+                      : "text-white"
+                }`}
+                aria-label={mobileOpen ? "Close menu" : "Open menu"}
+                aria-expanded={mobileOpen}
+              >
+                <div className="flex h-5 w-6 flex-col items-center justify-center">
+                  <span
+                    className={`block h-0.5 w-6 rounded-full bg-current transition-all duration-300 ${
+                      mobileOpen
+                        ? "translate-y-[3px] rotate-45"
+                        : "-translate-y-1"
+                    }`}
+                  />
+                  <span
+                    className={`block h-0.5 w-6 rounded-full bg-current transition-all duration-300 ${
+                      mobileOpen ? "opacity-0" : "opacity-100"
+                    }`}
+                  />
+                  <span
+                    className={`block h-0.5 w-6 rounded-full bg-current transition-all duration-300 ${
+                      mobileOpen
+                        ? "-translate-y-[3px] -rotate-45"
+                        : "translate-y-1"
+                    }`}
+                  />
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -295,58 +202,12 @@ export default function Header() {
       >
         <div className="flex h-full flex-col overflow-y-auto pt-24 pb-8">
           <nav className="flex flex-col px-6">
-            {/* Mobile Solutions Accordion */}
-            <div className="border-b border-cream-dark">
-              <button
-                onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
-                className="flex w-full items-center justify-between py-4 text-base font-medium text-charcoal"
-                aria-expanded={mobileSolutionsOpen}
-              >
-                Solutions
-                <svg
-                  className={`h-5 w-5 text-charcoal-light transition-transform duration-200 ${
-                    mobileSolutionsOpen ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-200 ${
-                  mobileSolutionsOpen ? "max-h-40 pb-2" : "max-h-0"
-                }`}
-              >
-                <Link
-                  href="/golf"
-                  className="block py-2.5 pl-4 text-sm text-charcoal-light transition-colors hover:text-copper"
-                  onClick={closeMobile}
-                >
-                  Golf &amp; Entertainment
-                </Link>
-                <Link
-                  href="/senior-living"
-                  className="block py-2.5 pl-4 text-sm text-charcoal-light transition-colors hover:text-copper"
-                  onClick={closeMobile}
-                >
-                  Senior Living
-                </Link>
-              </div>
-            </div>
-
             <Link
-              href="/residential"
+              href="/commercial"
               className="border-b border-cream-dark py-4 text-base font-medium text-charcoal transition-colors hover:text-copper"
               onClick={closeMobile}
             >
-              Residential
+              Commercial
             </Link>
 
             <Link
@@ -373,15 +234,15 @@ export default function Header() {
               className="block w-full rounded-full bg-copper py-3.5 text-center text-sm font-semibold text-white shadow-sm transition-all hover:bg-copper-dark hover:shadow-md"
               onClick={closeMobile}
             >
-              Get Free Assessment
+              Get a Free Estimate
             </Link>
           </div>
 
           {/* Mobile Contact Info */}
           <div className="mt-auto px-6 pt-8">
             <p className="text-xs text-charcoal-light">
-              Commercial shade solutions for golf courses and senior living
-              facilities.
+              Custom shade sails for Phoenix homes and businesses. Designed and
+              installed in one visit.
             </p>
           </div>
         </div>

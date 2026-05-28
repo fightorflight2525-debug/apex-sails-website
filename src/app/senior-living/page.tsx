@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
-import CountUp from "@/components/CountUp";
+import StatsBand from "@/components/StatsBand";
 import StickyCallBar from "@/components/StickyCallBar";
 
 export const metadata: Metadata = {
@@ -135,27 +135,9 @@ export default function SeniorLivingPage() {
       </section>
 
       {/* ============================================================
-          SECTION 2: STAT STRIP  (count-up)
+          SECTION 2: STATS BAND  (shared StatsBand; S1 parity with home)
           ============================================================ */}
-      <section className="bg-cream py-12 sm:py-14 border-b border-sand/30">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { node: <CountUp to={96} suffix="%" />, label: "UV blocked" },
-              { node: <CountUp to={15} suffix={"°F"} />, label: "Cooler under shade" },
-              { node: <CountUp to={90} suffix="mph" />, label: "Wind rated" },
-              { node: <CountUp to={10} suffix="-yr" />, label: "Fabric warranty" },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <p className="font-heading text-3xl sm:text-4xl font-bold text-copper">
-                  {stat.node}
-                </p>
-                <p className="mt-1 text-sm text-charcoal/60">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <StatsBand />
 
       {/* ============================================================
           SECTION 3: PROBLEM
