@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import ShadeCastDemo from "@/components/ShadeCastDemo";
+import ShadeCastSlideover from "@/components/ShadeCastSlideover";
+import CrossFadeCarousel from "@/components/CrossFadeCarousel";
 import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
 import StatsBand from "@/components/StatsBand";
@@ -20,14 +22,29 @@ export default function Home() {
           SECTION 1: HERO  (LCP element, rendered immediately, NOT motion-gated)
           ============================================================ */}
       <section className="relative min-h-screen flex items-center overflow-hidden bg-charcoal">
-        {/* Hero background image: priority, sized, no fade-in */}
-        <Image
-          src="/images/hero-shade-sail.webp"
-          alt="Custom shade sail over a Phoenix backyard patio"
+        {/* Hero slideshow (H4): frame 0 preserves WS-22 LCP behavior (priority+sized). */}
+        <CrossFadeCarousel
           fill
-          className="object-cover opacity-30"
-          priority
+          ariaLabel="Hero image slideshow"
+          intervalMs={6000}
+          transitionMs={700}
           sizes="100vw"
+          frameClassName="object-cover opacity-30"
+          frames={[
+            {
+              src: "/images/hero-shade-sail.webp",
+              alt: "Custom shade sail over a Phoenix backyard patio",
+              priority: true,
+            },
+            {
+              src: "/images/os-04.webp",
+              alt: "Turquoise shade sails over a Phoenix backyard patio.",
+            },
+            {
+              src: "/images/showcase-craft-ws09.webp",
+              alt: "Tensioned shade sails over a finished outdoor space",
+            },
+          ]}
         />
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal/80 via-charcoal-light/60 to-charcoal" />
@@ -372,7 +389,7 @@ export default function Home() {
                 ShadeCast&#8482; 3D design
               </p>
               <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-charcoal leading-tight">
-                See your backyard before we build it
+                See your exact design plus ShadeCast before we build it.
               </h2>
               <p className="mt-6 text-lg text-charcoal/70 leading-relaxed">
                 Our ShadeCast&#8482; tool maps the sun across your exact location,
@@ -406,9 +423,38 @@ export default function Home() {
               </Link>
             </Reveal>
 
-            {/* Right: ShadeCastDemo (entrance-animate only) */}
+            {/* Right: ShadeCastSlideover (H9b, wraps Demo, slides to 2x2 collage) +
+                CrossFadeCarousel (H9a, WSM design-proof slideshow beside on lg+, below on mobile). */}
             <Reveal delay={0.1}>
-              <ShadeCastDemo className="w-full" />
+              <div className="grid gap-6 lg:gap-8 lg:grid-cols-[3fr_2fr] items-center">
+                <ShadeCastSlideover>
+                  <ShadeCastDemo className="w-full" />
+                </ShadeCastSlideover>
+                <CrossFadeCarousel
+                  ariaLabel="ShadeCast design proof slideshow"
+                  aspectRatio="aspect-[3/2]"
+                  intervalMs={6000}
+                  transitionMs={700}
+                  sizes="(max-width: 1024px) 100vw, 35vw"
+                  className="rounded-2xl overflow-hidden border border-sand/40 bg-white shadow-md shadow-charcoal/5"
+                  frameClassName="object-contain bg-white"
+                  chevronClassName="text-charcoal/55 hover:text-charcoal hover:bg-charcoal/10"
+                  frames={[
+                    {
+                      src: "/images/wsm-03.webp",
+                      alt: "HyPar shade-sail engineering drawing showing foundation post and forged eye-bolt attachment.",
+                    },
+                    {
+                      src: "/images/wsm-05.webp",
+                      alt: "SketchUp rendering of HyPar shade sail structure on a grid plane.",
+                    },
+                    {
+                      src: "/images/wsm-06.webp",
+                      alt: "Cable-edge corner hardware diagram: D-ring, bow shackle, turnbuckle, corner bracket, eye bolt, pad eye, wall plate.",
+                    },
+                  ]}
+                />
+              </div>
             </Reveal>
           </div>
         </div>
