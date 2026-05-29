@@ -2,22 +2,6 @@
 
 import { useState, type FormEvent } from "react";
 
-const projectTypes = [
-  "Select project type...",
-  "Residential / Backyard",
-  "Golf & Entertainment Venue",
-  "Senior Living Facility",
-  "Other Commercial Project",
-];
-
-const timelines = [
-  "Select timeline...",
-  "ASAP - Need shade now",
-  "1-3 Months",
-  "3-6 Months",
-  "Just Researching Options",
-];
-
 const benefits = [
   "Complimentary ShadeCast\u2122 shadow analysis",
   "No-obligation project consultation",
@@ -35,15 +19,15 @@ const serviceAreas = ["Phoenix Metro", "Scottsdale", "Mesa", "Gilbert", "Chandle
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
-    fullName: "",
-    company: "",
-    jobTitle: "",
-    email: "",
-    phone: "",
     projectType: "",
-    timeline: "",
-    description: "",
+    fullName: "",
+    phone: "",
+    email: "",
+    addressOrZip: "",
+    notes: "",
   });
 
   function handleChange(
@@ -54,9 +38,51 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    if (submitting) return;
+    setSubmitting(true);
+    setSubmitError(null);
+
+    const form = e.currentTarget;
+    const honeypot =
+      (form.elements.namedItem("_gotcha") as HTMLInputElement | null)?.value || "";
+
+    try {
+      const payload = new FormData();
+      payload.append("Project type", formData.projectType);
+      payload.append("Name", formData.fullName);
+      payload.append("Phone", formData.phone);
+      payload.append("Email", formData.email);
+      payload.append("Address or ZIP", formData.addressOrZip);
+      payload.append("Notes", formData.notes);
+      payload.append(
+        "_subject",
+        `New Apex lead: ${formData.projectType || "unspecified"} from ${formData.fullName}`,
+      );
+      payload.append("_replyto", formData.email);
+      payload.append("_gotcha", honeypot);
+
+      const res = await fetch("https://formspree.io/f/mkopbjya", {
+        method: "POST",
+        body: payload,
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setSubmitError(
+          "Something went wrong. Please try again or call (602) 837-0370 directly.",
+        );
+      }
+    } catch {
+      setSubmitError(
+        "Something went wrong. Please try again or call (602) 837-0370 directly.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   const inputClasses =
@@ -69,12 +95,10 @@ export default function ContactPage() {
       <section className="bg-charcoal pt-32 pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-heading text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
-            Get Your Free Assessment
+            Get your free 3D design visit
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-lg text-sand-light leading-relaxed sm:text-xl">
-            Tell us about your project and we&apos;ll show you exactly
-            what&apos;s possible, including a complimentary
-            ShadeCast&trade; shadow analysis.
+            Tell us about your space. We&apos;ll call you within 4 business hours to schedule.
           </p>
         </div>
       </section>
@@ -103,184 +127,178 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <h3 className="mt-6 font-heading text-2xl font-bold text-charcoal">
-                    Thank You, {formData.fullName || "there"}!
+                    Got it{formData.fullName ? `, ${formData.fullName.split(" ")[0]}` : ""}.
                   </h3>
                   <p className="mt-3 text-charcoal-light leading-relaxed">
-                    Your inquiry has been received. Our team will review your
-                    project details and reach out within 24 business hours with
-                    your complimentary ShadeCast&trade; shadow analysis plan.
+                    We&apos;ll call you within 4 business hours to schedule your free design visit.
                   </p>
                 </div>
               ) : (
                 <>
-                  <h2 className="font-heading text-2xl font-bold text-charcoal sm:text-3xl">
-                    Tell Us About Your Project
-                  </h2>
-                  <p className="mt-2 text-charcoal-light">
-                    All fields marked with{" "}
-                    <span className="text-copper">*</span> are required.
-                  </p>
-
-                  <form
-                    onSubmit={handleSubmit}
-                    className="mt-8 space-y-6"
-                  >
-                    {/* Row: Full Name / Company */}
-                    <div className="grid gap-6 sm:grid-cols-2">
-                      <div>
-                        <label htmlFor="fullName" className={labelClasses}>
-                          Full Name <span className="text-copper">*</span>
-                        </label>
-                        <input
-                          id="fullName"
-                          name="fullName"
-                          type="text"
-                          required
-                          value={formData.fullName}
-                          onChange={handleChange}
-                          placeholder="John Smith"
-                          className={inputClasses}
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="company" className={labelClasses}>
-                          Company Name <span className="text-copper">*</span>
-                        </label>
-                        <input
-                          id="company"
-                          name="company"
-                          type="text"
-                          required
-                          value={formData.company}
-                          onChange={handleChange}
-                          placeholder="Acme Corp"
-                          className={inputClasses}
-                        />
-                      </div>
+                  <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+                    {/* Honeypot (invisible to humans, filled by bots; Formspree convention) */}
+                    <div className="absolute h-0 w-0 overflow-hidden opacity-0" aria-hidden="true">
+                      <label htmlFor="_gotcha">Leave this field blank</label>
+                      <input type="text" id="_gotcha" name="_gotcha" tabIndex={-1} autoComplete="off" />
                     </div>
 
-                    {/* Job Title */}
+                    {/* FIELD 1 - Project type (radio, REQUIRED, FIRST) */}
+                    <fieldset>
+                      <legend className={labelClasses}>
+                        Is this for your home or your business? <span className="text-copper">*</span>
+                      </legend>
+                      <div className="mt-2 grid gap-3 sm:grid-cols-2">
+                        <label
+                          className={`flex cursor-pointer items-center gap-3 rounded-lg border-2 px-4 py-3 transition-colors ${
+                            formData.projectType === "Residential"
+                              ? "border-copper bg-copper/5"
+                              : "border-sand hover:border-copper/40"
+                          }`}
+                        >
+                          <input
+                            type="radio"
+                            name="projectType"
+                            value="Residential"
+                            checked={formData.projectType === "Residential"}
+                            onChange={handleChange}
+                            required
+                            className="h-4 w-4 accent-copper"
+                          />
+                          <span className="text-sm font-medium text-charcoal">Residential (my home)</span>
+                        </label>
+                        <label
+                          className={`flex cursor-pointer items-center gap-3 rounded-lg border-2 px-4 py-3 transition-colors ${
+                            formData.projectType === "Commercial"
+                              ? "border-copper bg-copper/5"
+                              : "border-sand hover:border-copper/40"
+                          }`}
+                        >
+                          <input
+                            type="radio"
+                            name="projectType"
+                            value="Commercial"
+                            checked={formData.projectType === "Commercial"}
+                            onChange={handleChange}
+                            required
+                            className="h-4 w-4 accent-copper"
+                          />
+                          <span className="text-sm font-medium text-charcoal">Commercial (business, HOA, or property)</span>
+                        </label>
+                      </div>
+                    </fieldset>
+
+                    {/* FIELD 2 - Name */}
                     <div>
-                      <label htmlFor="jobTitle" className={labelClasses}>
-                        Job Title <span className="text-copper">*</span>
+                      <label htmlFor="fullName" className={labelClasses}>
+                        Your name <span className="text-copper">*</span>
                       </label>
                       <input
-                        id="jobTitle"
-                        name="jobTitle"
+                        id="fullName"
+                        name="fullName"
                         type="text"
                         required
-                        value={formData.jobTitle}
+                        autoComplete="name"
+                        value={formData.fullName}
                         onChange={handleChange}
-                        placeholder="Facilities Manager"
+                        placeholder="First and last"
                         className={inputClasses}
                       />
                     </div>
 
-                    {/* Row: Email / Phone */}
-                    <div className="grid gap-6 sm:grid-cols-2">
-                      <div>
-                        <label htmlFor="email" className={labelClasses}>
-                          Email <span className="text-copper">*</span>
-                        </label>
-                        <input
-                          id="email"
-                          name="email"
-                          type="email"
-                          required
-                          value={formData.email}
-                          onChange={handleChange}
-                          placeholder="john@company.com"
-                          className={inputClasses}
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="phone" className={labelClasses}>
-                          Phone <span className="text-copper">*</span>
-                        </label>
-                        <input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          required
-                          value={formData.phone}
-                          onChange={handleChange}
-                          placeholder="(480) 555-0123"
-                          className={inputClasses}
-                        />
-                      </div>
-                    </div>
-
-                    {/* Row: Project Type / Timeline */}
-                    <div className="grid gap-6 sm:grid-cols-2">
-                      <div>
-                        <label htmlFor="projectType" className={labelClasses}>
-                          Project Type
-                        </label>
-                        <select
-                          id="projectType"
-                          name="projectType"
-                          value={formData.projectType}
-                          onChange={handleChange}
-                          className={inputClasses}
-                        >
-                          {projectTypes.map((t) => (
-                            <option
-                              key={t}
-                              value={t === projectTypes[0] ? "" : t}
-                              disabled={t === projectTypes[0]}
-                            >
-                              {t}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                      <div>
-                        <label htmlFor="timeline" className={labelClasses}>
-                          Estimated Timeline
-                        </label>
-                        <select
-                          id="timeline"
-                          name="timeline"
-                          value={formData.timeline}
-                          onChange={handleChange}
-                          className={inputClasses}
-                        >
-                          {timelines.map((t) => (
-                            <option
-                              key={t}
-                              value={t === timelines[0] ? "" : t}
-                              disabled={t === timelines[0]}
-                            >
-                              {t}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-
-                    {/* Description */}
+                    {/* FIELD 3 - Phone */}
                     <div>
-                      <label htmlFor="description" className={labelClasses}>
-                        Brief Project Description
+                      <label htmlFor="phone" className={labelClasses}>
+                        Best phone number <span className="text-copper">*</span>
+                      </label>
+                      <input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        required
+                        autoComplete="tel"
+                        inputMode="tel"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="(602) 555-1234"
+                        className={inputClasses}
+                      />
+                      <p className="mt-1.5 text-xs text-charcoal-light">We&apos;ll call you here.</p>
+                    </div>
+
+                    {/* FIELD 4 - Email */}
+                    <div>
+                      <label htmlFor="email" className={labelClasses}>
+                        Email <span className="text-copper">*</span>
+                      </label>
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        required
+                        autoComplete="email"
+                        inputMode="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="you@example.com"
+                        className={inputClasses}
+                      />
+                    </div>
+
+                    {/* FIELD 5 - Address or ZIP */}
+                    <div>
+                      <label htmlFor="addressOrZip" className={labelClasses}>
+                        Project address or ZIP <span className="text-copper">*</span>
+                      </label>
+                      <input
+                        id="addressOrZip"
+                        name="addressOrZip"
+                        type="text"
+                        required
+                        autoComplete="postal-code"
+                        value={formData.addressOrZip}
+                        onChange={handleChange}
+                        placeholder="Phoenix metro"
+                        className={inputClasses}
+                      />
+                      <p className="mt-1.5 text-xs text-charcoal-light">Helps us confirm we serve your area.</p>
+                    </div>
+
+                    {/* FIELD 6 - Notes (optional) */}
+                    <div>
+                      <label htmlFor="notes" className={labelClasses}>
+                        Anything you&apos;d like us to know?
                       </label>
                       <textarea
-                        id="description"
-                        name="description"
+                        id="notes"
+                        name="notes"
                         rows={4}
-                        value={formData.description}
+                        value={formData.notes}
                         onChange={handleChange}
-                        placeholder="Tell us about your space, goals, and any specific requirements..."
+                        placeholder="Size of area, sun direction, color preferences, timeline, budget range, anything."
                         className={inputClasses}
                       />
                     </div>
+
+                    {/* Error state */}
+                    {submitError && (
+                      <div role="alert" className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-900">
+                        {submitError}
+                      </div>
+                    )}
 
                     {/* Submit */}
                     <button
                       type="submit"
-                      className="w-full rounded-lg bg-copper px-8 py-4 text-base font-semibold text-white shadow-sm transition-all hover:bg-copper-dark hover:shadow-md focus:outline-none focus:ring-2 focus:ring-copper/40 focus:ring-offset-2"
+                      disabled={submitting}
+                      className="w-full rounded-lg bg-copper px-8 py-4 text-base font-semibold text-white shadow-sm transition-all hover:bg-copper-dark hover:shadow-md focus:outline-none focus:ring-2 focus:ring-copper/40 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
                     >
-                      Get My Free Assessment
+                      {submitting ? "Sending..." : "Request my free design visit"}
                     </button>
+
+                    {/* Trust microcopy */}
+                    <p className="text-center text-xs text-charcoal-light">
+                      No obligation. Free 3D design. Locally owned in Phoenix.
+                    </p>
                   </form>
                 </>
               )}
@@ -424,7 +442,7 @@ export default function ContactPage() {
                   Response Time
                 </p>
                 <p className="mt-1 text-xs text-sand-light leading-relaxed">
-                  We respond to all inquiries within 24 business hours.
+                  We respond within 4 business hours.
                 </p>
               </div>
 

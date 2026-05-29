@@ -136,7 +136,7 @@ export default function Home() {
                 href="/contact"
                 className="cta-glow inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
               >
-                Get a Free Design Visit
+                Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> 3D Design + Visit
               </Link>
               <a
                 href="#work"
@@ -453,7 +453,7 @@ export default function Home() {
                 href="/contact"
                 className="mt-10 inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
               >
-                Get a Free Design Visit
+                Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> 3D Design + Visit
               </Link>
             </Reveal>
 
@@ -607,7 +607,7 @@ export default function Home() {
               href="/contact"
               className="inline-flex items-center justify-center px-10 py-5 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/20"
             >
-              Get a Free Design Visit
+              Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> 3D Design + Visit
             </Link>
             <a
               href="tel:+16028370370"

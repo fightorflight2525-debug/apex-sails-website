@@ -88,6 +88,15 @@ export default function Header() {
             {/* Desktop Navigation */}
             <nav className="hidden items-center gap-8 lg:flex">
               <Link
+                href="/residential"
+                className={`text-sm font-medium transition-colors duration-300 hover:text-copper ${
+                  scrolled ? "text-charcoal" : "text-white"
+                }`}
+              >
+                Residential
+              </Link>
+
+              <Link
                 href="/commercial"
                 className={`text-sm font-medium transition-colors duration-300 hover:text-copper ${
                   scrolled ? "text-charcoal" : "text-white"
@@ -114,7 +123,7 @@ export default function Header() {
                 About
               </Link>
 
-              {/* Desktop Call link (A2) — understated, sits just before the CTA */}
+              {/* Desktop Call link (A2): understated, sits just before the CTA */}
               <a
                 href="tel:+16028370370"
                 className={`inline-flex items-center gap-1.5 text-sm font-medium transition-colors duration-300 hover:text-copper ${
@@ -130,7 +139,7 @@ export default function Header() {
                 href="/contact"
                 className="rounded-full bg-copper px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-copper-dark hover:shadow-md"
               >
-                Get a Free Estimate
+                Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Visit
               </Link>
             </nav>
 
@@ -203,6 +212,14 @@ export default function Header() {
         <div className="flex h-full flex-col overflow-y-auto pt-24 pb-8">
           <nav className="flex flex-col px-6">
             <Link
+              href="/residential"
+              className="border-b border-cream-dark py-4 text-base font-medium text-charcoal transition-colors hover:text-copper"
+              onClick={closeMobile}
+            >
+              Residential
+            </Link>
+
+            <Link
               href="/commercial"
               className="border-b border-cream-dark py-4 text-base font-medium text-charcoal transition-colors hover:text-copper"
               onClick={closeMobile}
@@ -234,7 +251,7 @@ export default function Header() {
               className="block w-full rounded-full bg-copper py-3.5 text-center text-sm font-semibold text-white shadow-sm transition-all hover:bg-copper-dark hover:shadow-md"
               onClick={closeMobile}
             >
-              Get a Free Estimate
+              Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Visit
             </Link>
           </div>
 

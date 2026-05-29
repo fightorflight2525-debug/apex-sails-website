@@ -28,7 +28,7 @@ export default function StickyCallBar() {
           href="/contact"
           className="flex-1 inline-flex items-center justify-center rounded-full bg-copper px-4 py-3 text-sm font-semibold text-white"
         >
-          Free Design Visit
+          My <em className="not-italic font-bold text-[1.06em] mx-0.5">Free</em> Design + Visit
         </Link>
         <a
           href="tel:+16028370370"
