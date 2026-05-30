@@ -293,7 +293,7 @@ export default function ResidentialPage() {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-charcoal tracking-tight">
-              From first visit to finished shade
+              From <em className="not-italic font-bold text-copper text-[1.06em] mx-0.5">first</em> visit to <em className="not-italic font-bold text-copper text-[1.06em] mx-0.5">finished</em> shade
             </h2>
             <p className="mt-4 text-lg text-charcoal/70 leading-relaxed">
               A simple, done-for-you process built around getting it right the

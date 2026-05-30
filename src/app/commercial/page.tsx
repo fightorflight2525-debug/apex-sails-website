@@ -113,18 +113,50 @@ const whyApex = [
   {
     title: "Free on-site assessment",
     body: "We come to your property, assess the space, and run a ShadeCast™ sun analysis before you commit to anything.",
+    icon: (
+      <svg className="w-10 h-10 text-copper" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <rect x="6" y="9" width="28" height="25" rx="3" stroke="currentColor" strokeWidth="2" />
+        <line x1="6" y1="15" x2="34" y2="15" stroke="currentColor" strokeWidth="2" />
+        <line x1="13" y1="5" x2="13" y2="11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <line x1="27" y1="5" x2="27" y2="11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <polyline points="14,23 18,27 26,19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
   },
   {
     title: "Minimal downtime",
     body: "We schedule and stage the work to keep your business open and operating while we install.",
+    icon: (
+      <svg className="w-10 h-10 text-copper" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="14" stroke="currentColor" strokeWidth="2" />
+        <line x1="20" y1="20" x2="20" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <line x1="20" y1="20" x2="26" y2="22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    ),
   },
   {
     title: "Licensed, insured crews",
     body: "Every install is performed by licensed, insured local crews with the right precautions on every commercial site.",
+    icon: (
+      <svg className="w-10 h-10 text-copper" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <rect x="6" y="6" width="28" height="22" rx="2" stroke="currentColor" strokeWidth="2" />
+        <line x1="10" y1="13" x2="22" y2="13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="10" y1="17" x2="20" y2="17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="28" cy="18" r="3.5" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M20 28 L20 36 L23 33 L26 36 L26 28" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+      </svg>
+    ),
   },
   {
     title: "Engineering and permitting handled",
     body: "We manage the structural engineering and city permitting so your team does not have to.",
+    icon: (
+      <svg className="w-10 h-10 text-copper" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <rect x="9" y="7" width="22" height="28" rx="2.5" stroke="currentColor" strokeWidth="2" />
+        <rect x="15" y="4" width="10" height="5" rx="1.5" stroke="currentColor" strokeWidth="2" />
+        <polyline points="14,21 18,25 26,16" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
   },
 ];
 
@@ -158,25 +190,25 @@ export default function CommercialPage() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-32 pb-20 w-full">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl mx-auto text-center">
             <span className="inline-block text-sm font-semibold uppercase tracking-widest text-sand">
               Commercial shade specialists
             </span>
             <h1 className="mt-4 font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight">
               Commercial Shade Sails for Phoenix Businesses
             </h1>
-            <p className="mt-6 text-lg sm:text-xl text-white/70 max-w-2xl leading-relaxed font-body">
+            <p className="mt-6 text-lg sm:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed font-body">
               Custom-engineered shade for patios, courtyards, and outdoor spaces
               across the Valley. Designed, engineered, and installed by licensed,
               insured local crews, with minimal disruption to your business.
             </p>
 
-            <div className="mt-10 flex flex-col sm:flex-row gap-4">
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
                 className="cta-glow inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
               >
-                Get a Free Commercial Assessment
+                Get a <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Commercial Assessment
               </Link>
               <a
                 href="tel:+16028370370"
@@ -206,23 +238,23 @@ export default function CommercialPage() {
           ============================================================ */}
       <section className="bg-white py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <Reveal className="max-w-2xl mb-14">
+          <Reveal className="max-w-2xl mx-auto text-center mb-14">
             <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-charcoal">
-              Shade for every kind of commercial space
+              Shade for <em className="not-italic font-bold text-copper text-[1.06em] mx-0.5">every</em> kind of commercial space
             </h2>
             <p className="mt-4 text-lg text-charcoal/60 leading-relaxed">
               From a single restaurant patio to a full HOA amenity area, we
               engineer shade around your property and how it gets used.
+            </p>
+            <p className="mt-6 text-sm font-semibold uppercase tracking-widest text-copper">
+              Some of the commercial spaces we serve
             </p>
           </Reveal>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {verticals.map((v, i) => (
               <Reveal key={v.title} delay={(i % 3) * 0.06}>
-                <Link
-                  href={v.href}
-                  className="group flex h-full flex-col rounded-2xl border-2 border-sand/40 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-charcoal/5 hover:border-copper"
-                >
+                <div className="flex h-full flex-col rounded-2xl border-2 border-sand/40 bg-white p-8">
                   <span className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-copper/10">
                     <svg
                       className="h-6 w-6 text-copper"
@@ -235,17 +267,11 @@ export default function CommercialPage() {
                       {v.icon}
                     </svg>
                   </span>
-                  <h3 className="font-heading text-xl font-bold text-charcoal group-hover:text-copper transition-colors">
+                  <h3 className="font-heading text-xl font-bold text-charcoal">
                     {v.title}
                   </h3>
                   <p className="mt-2 text-charcoal/60 leading-relaxed">{v.blurb}</p>
-                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-copper transition-all group-hover:gap-3">
-                    {v.cta}
-                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
-                    </svg>
-                  </span>
-                </Link>
+                </div>
               </Reveal>
             ))}
           </div>
@@ -257,7 +283,7 @@ export default function CommercialPage() {
           ============================================================ */}
       <section className="bg-cream py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <Reveal className="max-w-2xl mb-14">
+          <Reveal className="max-w-2xl mx-auto text-center mb-14">
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-charcoal tracking-tight">
               A commercial project that runs without surprises
             </h2>
@@ -270,7 +296,10 @@ export default function CommercialPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {whyApex.map((p, i) => (
               <Reveal key={p.title} delay={(i % 4) * 0.06}>
-                <div className="h-full rounded-2xl bg-white p-7 shadow-sm border border-charcoal/5">
+                <div className="h-full rounded-2xl bg-white p-7 shadow-sm border border-charcoal/5 text-center">
+                  <span className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-copper/10">
+                    {p.icon}
+                  </span>
                   <h3 className="font-heading text-lg font-semibold text-charcoal">
                     {p.title}
                   </h3>
@@ -287,7 +316,7 @@ export default function CommercialPage() {
           ============================================================ */}
       <section id="work" className="bg-white py-20 sm:py-24 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <Reveal className="max-w-2xl mb-14">
+          <Reveal className="max-w-2xl mx-auto text-center mb-14">
             <p className="text-copper font-semibold tracking-wide uppercase text-sm mb-3">
               Our Work
             </p>
@@ -380,9 +409,9 @@ export default function CommercialPage() {
           ============================================================ */}
       <section className="bg-charcoal py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <Reveal className="max-w-3xl mb-14">
+          <Reveal className="max-w-3xl mx-auto text-center mb-14">
             <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
-              Built to commercial spec, built to last.
+              Built to <em className="not-italic font-bold text-copper text-[1.06em] mx-0.5">commercial</em> spec, built to <em className="not-italic font-bold text-copper text-[1.06em] mx-0.5">last</em>.
             </h2>
             <p className="mt-6 text-lg text-white/65 leading-relaxed">
               A pop-up canopy or off-the-shelf cover is built to a price, not to a
@@ -394,7 +423,16 @@ export default function CommercialPage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             <Reveal>
-              <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-8 sm:p-10">
+              <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-8 sm:p-10 text-center">
+                <div className="flex justify-center mb-5">
+                  <svg className="w-12 h-12 text-copper" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <circle cx="6" cy="40" r="2" fill="currentColor" />
+                    <circle cx="42" cy="40" r="2" fill="currentColor" />
+                    <line x1="6" y1="40" x2="24" y2="8" />
+                    <line x1="42" y1="40" x2="24" y2="8" />
+                    <path d="M6 40 Q 24 28 42 40" />
+                  </svg>
+                </div>
                 <h3 className="font-heading text-xl font-bold text-white mb-3">
                   Custom-engineered and tensioned
                 </h3>
@@ -405,7 +443,15 @@ export default function CommercialPage() {
               </div>
             </Reveal>
             <Reveal delay={0.08}>
-              <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-8 sm:p-10">
+              <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-8 sm:p-10 text-center">
+                <div className="flex justify-center mb-5">
+                  <svg className="w-12 h-12 text-copper" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M14 14 L14 28 a10 10 0 0 0 20 0 L34 14" />
+                    <line x1="10" y1="14" x2="38" y2="14" />
+                    <circle cx="10" cy="14" r="2" fill="currentColor" />
+                    <circle cx="38" cy="14" r="2" fill="currentColor" />
+                  </svg>
+                </div>
                 <h3 className="font-heading text-xl font-bold text-white mb-3">
                   Marine-grade 316 stainless hardware
                 </h3>
@@ -416,7 +462,20 @@ export default function CommercialPage() {
               </div>
             </Reveal>
             <Reveal delay={0.16}>
-              <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-8 sm:p-10">
+              <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-8 sm:p-10 text-center">
+                <div className="flex justify-center mb-5">
+                  <svg className="w-12 h-12 text-copper" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <circle cx="24" cy="10" r="4" />
+                    <line x1="24" y1="2" x2="24" y2="4" />
+                    <line x1="33" y1="10" x2="35" y2="10" />
+                    <line x1="13" y1="10" x2="15" y2="10" />
+                    <line x1="30" y1="4" x2="31.5" y2="5.5" />
+                    <line x1="16.5" y1="5.5" x2="18" y2="4" />
+                    <path d="M6 24 L42 24 L42 42 L6 42 Z" />
+                    <path d="M6 30 Q 15 34 24 30 T 42 30" />
+                    <path d="M6 36 Q 15 40 24 36 T 42 36" />
+                  </svg>
+                </div>
                 <h3 className="font-heading text-xl font-bold text-white mb-3">
                   Commercial-grade fabric
                 </h3>
@@ -458,7 +517,7 @@ export default function CommercialPage() {
               href="/contact"
               className="inline-flex items-center justify-center px-10 py-5 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/20"
             >
-              Get a Free Commercial Assessment
+              Get a <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Commercial Assessment
             </Link>
             <a
               href="tel:+16028370370"
