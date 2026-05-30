@@ -37,11 +37,12 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-charcoal);
 }
 
-/* Subtle first-view pulse-glow for the primary hero CTA (A3 / G4).
+/* First-view pulse-glow for the primary hero CTA (A3 / G4 / B7).
+   Sauce079 D3 B7: blur radius 12→18, opacity peak 0.5→0.68 (more pronounced).
    Runs a few cycles on entry then settles. Respects reduced-motion. */
 @keyframes ctaGlow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(196, 92, 38, 0.45); }
-  50%      { box-shadow: 0 0 0 10px rgba(196, 92, 38, 0); }
+  0%, 100% { box-shadow: 0 0 18px 0 rgba(196, 92, 38, 0.55); }
+  50%      { box-shadow: 0 0 18px 8px rgba(196, 92, 38, 0.68); }
 }
 .cta-glow { animation: ctaGlow 2.4s ease-in-out 3; }
 @media (prefers-reduced-motion: reduce) {
