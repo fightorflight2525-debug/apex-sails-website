@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
-import ShadeCastDemo from "@/components/ShadeCastDemo";
-import ShadeCastSlideover from "@/components/ShadeCastSlideover";
 import CrossFadeCarousel from "@/components/CrossFadeCarousel";
 import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
 import StatsBand from "@/components/StatsBand";
 import StickyCallBar from "@/components/StickyCallBar";
-import MiniGallerySlideshow from "@/components/MiniGallerySlideshow";
+
+// D5b LCP: defer below-the-fold client components out of the homepage's initial
+// JS bundle via next/dynamic (SSR stays ON by default -> zero visual change, CLS 0).
+const ShadeCastDemo = dynamic(() => import("@/components/ShadeCastDemo"));
+const ShadeCastSlideover = dynamic(() => import("@/components/ShadeCastSlideover"));
+const MiniGallerySlideshow = dynamic(() => import("@/components/MiniGallerySlideshow"));
 
 export const metadata: Metadata = {
   title: "Apex Sail Shades | Custom Shade Sails for Phoenix Homes & Businesses",
