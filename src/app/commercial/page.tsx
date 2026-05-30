@@ -163,14 +163,14 @@ const whyApex = [
 
 const COMMERCIAL_GALLERY = [
   { src: "/images/gallery-ws-34.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
-  { src: "/images/gallery-os-07.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
+  { src: "/images/gallery-ws-49.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
   { src: "/images/gallery-ws-02.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
   { src: "/images/gallery-ws-08.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
   { src: "/images/gallery-ws-12.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
   { src: "/images/gallery-ws-18.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
   { src: "/images/gallery-ws-30.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
-  { src: "/images/gallery-ws-44.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
-  { src: "/images/gallery-os-06.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
+  { src: "/images/gallery-os-17.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
+  { src: "/images/gallery-ws-50.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
   { src: "/images/gallery-os-10.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
   { src: "/images/gallery-os-16.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
   { src: "/images/gallery-os-20.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
@@ -222,9 +222,9 @@ export default function CommercialPage() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
-                className="cta-glow inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
+                className="cta-glow inline-flex items-center justify-center text-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
               >
-                Get a <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Commercial Assessment
+                <span>Get a <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Commercial Assessment</span>
               </Link>
               <a
                 href="tel:+16028370370"
@@ -319,7 +319,17 @@ export default function CommercialPage() {
                   <h3 className="font-heading text-lg font-semibold text-charcoal">
                     {p.title}
                   </h3>
-                  <p className="mt-3 text-charcoal/70 leading-relaxed">{p.body}</p>
+                  <p className="mt-3 text-charcoal/70 leading-relaxed">
+                    {p.body.includes("ShadeCast™") ? (
+                      <>
+                        {p.body.split("ShadeCast™")[0]}
+                        <Link href="/" className="text-copper underline hover:text-copper-light">ShadeCast™</Link>
+                        {p.body.split("ShadeCast™")[1]}
+                      </>
+                    ) : (
+                      p.body
+                    )}
+                  </p>
                 </div>
               </Reveal>
             ))}
@@ -553,9 +563,9 @@ export default function CommercialPage() {
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-10 py-5 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/20"
+              className="inline-flex items-center justify-center text-center px-10 py-5 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/20"
             >
-              Get a <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Commercial Assessment
+              <span>Get a <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Commercial Assessment</span>
             </Link>
             <a
               href="tel:+16028370370"
