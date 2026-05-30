@@ -256,6 +256,33 @@ const processSteps = [
     ],
     imagePlaceholder: "Engineering Blueprint",
     image: "/images/engineering-blueprint.jpg",
+    frameFit: "object-contain",
+    frames: [
+      {
+        src: "/images/material-wsm-03.webp",
+        alt: "CAD shop drawing of a HyPar shade structure with isometric, section, and plan views",
+      },
+      {
+        src: "/images/material-wsm-04.webp",
+        alt: "CAD drawing of a rafter bracket attachment with a 3D shade sail rendering",
+      },
+      {
+        src: "/images/material-wsm-05.webp",
+        alt: "3D rendering of a HyPar shade sail tensioned between four posts",
+      },
+      {
+        src: "/images/material-wsm-06.webp",
+        alt: "Labeled diagram of cable edge corner hardware components for a shade sail",
+      },
+      {
+        src: "/images/material-wsm-07.webp",
+        alt: "CAD drawing of a typical fabric corner attachment with turnbuckle and shackle",
+      },
+      {
+        src: "/images/material-wsm-08.webp",
+        alt: "CAD drawing of CMU wall corner brackets with mounting details and keynotes",
+      },
+    ],
     Icon: IconEngineering,
   },
   {
