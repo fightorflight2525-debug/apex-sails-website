@@ -4,6 +4,7 @@ import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import StatsBand from "@/components/StatsBand";
 import StickyCallBar from "@/components/StickyCallBar";
+import Lightbox from "@/components/Lightbox";
 
 export const metadata: Metadata = {
   title: "Commercial Shade Sails for Phoenix Businesses | Apex Sail Shades",
@@ -158,6 +159,21 @@ const whyApex = [
       </svg>
     ),
   },
+];
+
+const COMMERCIAL_GALLERY = [
+  { src: "/images/gallery-ws-34.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
+  { src: "/images/gallery-os-07.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
+  { src: "/images/gallery-ws-02.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
+  { src: "/images/gallery-ws-08.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
+  { src: "/images/gallery-ws-12.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
+  { src: "/images/gallery-ws-18.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
+  { src: "/images/gallery-ws-30.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
+  { src: "/images/gallery-ws-44.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
+  { src: "/images/gallery-os-06.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
+  { src: "/images/gallery-os-10.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
+  { src: "/images/gallery-os-16.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
+  { src: "/images/gallery-os-20.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
 ];
 
 export default function CommercialPage() {
@@ -333,6 +349,9 @@ export default function CommercialPage() {
             {/* Named real proof */}
             <Reveal>
               <div className="rounded-2xl bg-cream/60 p-8 sm:p-10 border border-sand/40">
+                <p className="text-copper font-semibold tracking-wide uppercase text-xs mb-3">
+                  Most Recent
+                </p>
                 <p className="font-heading text-4xl sm:text-5xl font-bold text-copper">
                   1,500 sq ft
                 </p>
@@ -401,6 +420,25 @@ export default function CommercialPage() {
               </div>
             </Reveal>
           </div>
+
+          {/* Real-work gallery (commercial) */}
+          <Reveal className="mt-16">
+            <div className="max-w-2xl mx-auto text-center mb-10">
+              <h3 className="font-heading text-2xl sm:text-3xl font-bold text-charcoal">
+                More of our commercial work
+              </h3>
+              <p className="mt-3 text-base text-charcoal/60 leading-relaxed">
+                A look across recent Phoenix-area commercial installs. Click any photo to enlarge.
+              </p>
+            </div>
+            <Lightbox
+              images={COMMERCIAL_GALLERY}
+              gridClassName="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+              itemClassName="relative aspect-square overflow-hidden rounded-xl bg-charcoal/5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-copper/60 focus:ring-offset-2"
+              imageSizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              staggerDelayMs={30}
+            />
+          </Reveal>
         </div>
       </section>
 
