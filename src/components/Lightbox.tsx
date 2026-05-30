@@ -13,6 +13,12 @@ export type LightboxProps = {
   itemClassName?: string;
   /** next/image sizes prop passed to each thumbnail. */
   imageSizes?: string;
+  /**
+   * When > 0, each thumbnail receives a fade-in-up animation with
+   * `animationDelay = index * staggerDelayMs`. Requires the `.animate-fade-in-up`
+   * utility in globals.css. Default 0 = no animation (byte-identical to prior behavior).
+   */
+  staggerDelayMs?: number;
 };
 
 function CloseIcon() {
@@ -61,6 +67,7 @@ export default function Lightbox({
   gridClassName = "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4",
   itemClassName = "relative aspect-square overflow-hidden rounded-xl bg-charcoal/5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-copper/60 focus:ring-offset-2",
   imageSizes = "(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw",
+  staggerDelayMs = 0,
 }: LightboxProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [reduced, setReduced] = useState(false);
@@ -164,7 +171,12 @@ export default function Lightbox({
               thumbRefs.current[i] = el;
             }}
             onClick={() => open(i)}
-            className={itemClassName}
+            className={`${itemClassName}${staggerDelayMs > 0 ? " animate-fade-in-up" : ""}`}
+            style={
+              staggerDelayMs > 0
+                ? { animationDelay: `${i * staggerDelayMs}ms`, animationFillMode: "both" }
+                : undefined
+            }
             aria-label={`Open image: ${img.alt}`}
           >
             <Image

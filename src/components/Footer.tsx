@@ -127,15 +127,15 @@ export default function Footer() {
           </div>
 
           {/* Column 4: Why Apex */}
-          <div className="col-span-2 text-center sm:text-left lg:col-span-1 lg:text-left">
+          <div className="col-span-2 text-center lg:col-span-1">
             <h3 className="font-heading text-sm font-semibold uppercase tracking-wider text-white mb-5">
               Why Apex?
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-3 inline-flex flex-col items-center">
               {footerWhyApex.map((item) => (
                 <li
                   key={item}
-                  className="flex items-center gap-2 text-sm text-gray-400"
+                  className="flex items-center justify-center gap-2 text-sm text-gray-400"
                 >
                   <svg
                     width="14"

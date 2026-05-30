@@ -7,17 +7,12 @@ import Lightbox from "@/components/Lightbox";
 type Category = "residential" | "commercial";
 
 const GALLERY: ReadonlyArray<{ src: string; category: Category }> = [
-  // WS pool (56 files)
   { src: "/images/gallery-ws-02.webp", category: "commercial" },
-  { src: "/images/gallery-ws-03.webp", category: "commercial" },
-  { src: "/images/gallery-ws-04.webp", category: "commercial" },
   { src: "/images/gallery-ws-05.webp", category: "commercial" },
-  { src: "/images/gallery-ws-07.webp", category: "commercial" },
   { src: "/images/gallery-ws-08.webp", category: "commercial" },
   { src: "/images/gallery-ws-10.webp", category: "commercial" },
   { src: "/images/gallery-ws-11.webp", category: "commercial" },
   { src: "/images/gallery-ws-12.webp", category: "commercial" },
-  { src: "/images/gallery-ws-13.webp", category: "commercial" },
   { src: "/images/gallery-ws-15.webp", category: "commercial" },
   { src: "/images/gallery-ws-16.webp", category: "commercial" },
   { src: "/images/gallery-ws-17.webp", category: "commercial" },
@@ -39,10 +34,10 @@ const GALLERY: ReadonlyArray<{ src: string; category: Category }> = [
   { src: "/images/gallery-ws-34.webp", category: "commercial" },
   { src: "/images/gallery-ws-35.webp", category: "commercial" },
   { src: "/images/gallery-ws-36.webp", category: "residential" },
-  { src: "/images/gallery-ws-37.webp", category: "residential" },
-  { src: "/images/gallery-ws-38.webp", category: "residential" },
   { src: "/images/gallery-ws-39.webp", category: "commercial" },
-  { src: "/images/gallery-ws-40.webp", category: "commercial" },
+  { src: "/images/gallery-ws-03.webp", category: "commercial" },
+  { src: "/images/gallery-ws-04.webp", category: "commercial" },
+  { src: "/images/gallery-ws-07.webp", category: "commercial" },
   { src: "/images/gallery-ws-41.webp", category: "residential" },
   { src: "/images/gallery-ws-42.webp", category: "residential" },
   { src: "/images/gallery-ws-43.webp", category: "residential" },
@@ -64,7 +59,6 @@ const GALLERY: ReadonlyArray<{ src: string; category: Category }> = [
   { src: "/images/gallery-ws-60.webp", category: "residential" },
   { src: "/images/gallery-ws-61.webp", category: "commercial" },
   { src: "/images/gallery-ws-62.webp", category: "commercial" },
-  // OS pool (20 files)
   { src: "/images/gallery-os-01.webp", category: "residential" },
   { src: "/images/gallery-os-02.webp", category: "residential" },
   { src: "/images/gallery-os-03.webp", category: "commercial" },
@@ -83,7 +77,6 @@ const GALLERY: ReadonlyArray<{ src: string; category: Category }> = [
   { src: "/images/gallery-os-18.webp", category: "commercial" },
   { src: "/images/gallery-os-19.webp", category: "residential" },
   { src: "/images/gallery-os-20.webp", category: "commercial" },
-  { src: "/images/gallery-os-21.webp", category: "commercial" },
   { src: "/images/gallery-os-24.webp", category: "commercial" },
 ];
 
@@ -104,7 +97,7 @@ export default function GalleryPage() {
       <section className="bg-charcoal pt-32 pb-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-heading text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
-            Real Phoenix shade installs
+            Real shade sail installs
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-sand-light leading-relaxed sm:text-xl">
             Residential backyards and commercial properties. Click any photo to enlarge.
@@ -143,6 +136,7 @@ export default function GalleryPage() {
             gridClassName="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
             itemClassName="relative aspect-square overflow-hidden rounded-xl bg-charcoal/5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-copper/60 focus:ring-offset-2"
             imageSizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            staggerDelayMs={30}
           />
         </div>
       </section>

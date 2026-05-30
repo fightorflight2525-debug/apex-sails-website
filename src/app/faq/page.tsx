@@ -109,12 +109,20 @@ export default function FaqPage() {
           <p className="mx-auto mt-4 max-w-2xl text-base text-charcoal-light leading-relaxed">
             We respond to all inquiries within 4 business hours.
           </p>
-          <Link
-            href="/contact"
-            className="mt-8 inline-flex items-center justify-center rounded-full bg-copper px-8 py-4 text-base font-semibold text-white shadow-sm transition-all hover:bg-copper-dark hover:shadow-md"
-          >
-            Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Visit
-          </Link>
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="cta-glow inline-flex items-center justify-center rounded-full bg-copper px-8 py-4 text-base font-semibold text-white shadow-sm transition-all hover:bg-copper-dark hover:shadow-md"
+            >
+              Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Visit
+            </Link>
+            <a
+              href="tel:+16028370370"
+              className="inline-flex items-center justify-center rounded-full border-2 border-charcoal px-8 py-4 text-base font-semibold text-charcoal transition-all hover:bg-charcoal hover:text-white"
+            >
+              Schedule a Call: (602) 837-0370
+            </a>
+          </div>
         </div>
       </section>
     </>

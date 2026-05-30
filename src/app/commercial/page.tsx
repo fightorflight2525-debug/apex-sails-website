@@ -311,7 +311,7 @@ export default function CommercialPage() {
                   Whirlwind commercial install, Phoenix
                 </p>
                 <p className="mt-2 text-charcoal/65 leading-relaxed">
-                  A $31,000 engineered commercial shade sail, designed and built
+                  A custom-engineered commercial shade sail, designed and built
                   for an Arizona business. The kind of project we are set up to
                   deliver end to end, from survey to final tensioning.
                 </p>
