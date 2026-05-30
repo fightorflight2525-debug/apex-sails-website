@@ -222,7 +222,7 @@ export default function CommercialPage() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
-                className="cta-glow inline-flex items-center justify-center text-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
+                className="cta-glow-loop inline-flex items-center justify-center text-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
               >
                 <span>Get a <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Commercial Assessment</span>
               </Link>
@@ -563,7 +563,7 @@ export default function CommercialPage() {
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center text-center px-10 py-5 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/20"
+              className="cta-glow-loop inline-flex items-center justify-center text-center px-10 py-5 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/20"
             >
               <span>Get a <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Commercial Assessment</span>
             </Link>

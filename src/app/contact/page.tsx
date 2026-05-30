@@ -95,8 +95,22 @@ export default function ContactPage() {
       <section className="bg-charcoal pt-32 pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-heading text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
-            Get your free 3D design visit
+            Get your <em className="not-italic font-bold text-copper">Free</em>
           </h1>
+          <div className="mx-auto mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-base font-semibold text-white sm:text-lg">
+            <span className="inline-flex items-center gap-2">
+              <svg className="h-5 w-5 text-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+              3D Design
+            </span>
+            <span className="inline-flex items-center gap-2">
+              <svg className="h-5 w-5 text-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+              Visit
+            </span>
+            <span className="inline-flex items-center gap-2">
+              <svg className="h-5 w-5 text-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+              Estimate
+            </span>
+          </div>
           <p className="mx-auto mt-6 max-w-3xl text-lg text-sand-light leading-relaxed sm:text-xl">
             Tell us about your space. We&apos;ll call you within 4 business hours to schedule.
           </p>
@@ -110,7 +124,7 @@ export default function ContactPage() {
             {/* ---------- FORM (left, wider) ---------- */}
             <div className="lg:col-span-3">
               {submitted ? (
-                <div className="rounded-2xl border border-copper/20 bg-copper/5 p-10 text-center">
+                <div className="cta-glow-loop rounded-2xl border border-copper/20 bg-copper/5 p-10 text-center">
                   <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-copper/10">
                     <svg
                       className="h-8 w-8 text-copper"
@@ -290,9 +304,11 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="w-full rounded-lg bg-copper px-8 py-4 text-base font-semibold text-white shadow-sm transition-all hover:bg-copper-dark hover:shadow-md focus:outline-none focus:ring-2 focus:ring-copper/40 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+                      className="cta-glow-loop w-full rounded-lg bg-copper px-8 py-4 text-base font-semibold text-white shadow-sm transition-all hover:bg-copper-dark hover:shadow-md focus:outline-none focus:ring-2 focus:ring-copper/40 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
                     >
-                      {submitting ? "Sending..." : "Request my free design visit"}
+                      {submitting ? "Sending..." : (
+                        <>Request my <em className="not-italic font-bold">Free</em> design visit and Estimate</>
+                      )}
                     </button>
 
                     {/* Trust microcopy */}

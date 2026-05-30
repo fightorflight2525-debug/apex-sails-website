@@ -48,6 +48,10 @@ h1, h2, h3, h4, h5, h6 {
 @media (prefers-reduced-motion: reduce) {
   .cta-glow { animation: none; }
 }
+.cta-glow-loop { animation: ctaGlow 2.4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .cta-glow-loop { animation: none; }
+}
 
 /* Gallery thumbnail fade-in-up cascade (Lightbox staggerDelayMs prop). */
 @keyframes fade-in-up {

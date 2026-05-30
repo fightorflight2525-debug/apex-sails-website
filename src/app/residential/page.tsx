@@ -174,7 +174,7 @@ export default function ResidentialPage() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
-                className="cta-glow inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
+                className="cta-glow-loop inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
               >
                 Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> 3D Design + Visit
               </Link>
@@ -340,7 +340,7 @@ export default function ResidentialPage() {
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
+              className="cta-glow-loop inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
             >
               Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> 3D Design + Visit
             </Link>
