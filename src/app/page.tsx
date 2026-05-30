@@ -199,7 +199,7 @@ export default function Home() {
                   />
                 </div>
                 <div className="p-8 sm:p-10">
-                  <p className="text-sm font-semibold uppercase tracking-widest text-copper">
+                  <p className="text-base sm:text-lg font-bold uppercase tracking-widest text-copper">
                     For Your Home
                   </p>
                   <h3 className="mt-2 font-heading text-2xl font-bold text-charcoal group-hover:text-copper transition-colors">
@@ -235,7 +235,7 @@ export default function Home() {
                   />
                 </div>
                 <div className="p-8 sm:p-10">
-                  <p className="text-sm font-semibold uppercase tracking-widest text-copper">
+                  <p className="text-base sm:text-lg font-bold uppercase tracking-widest text-copper">
                     For Your Business
                   </p>
                   <h3 className="mt-2 font-heading text-2xl font-bold text-charcoal group-hover:text-copper transition-colors">
@@ -431,50 +431,63 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left: copy */}
             <Reveal>
-              <p className="text-copper font-semibold tracking-wide uppercase text-sm lg:text-lg mb-3">
-                ShadeCast&#8482; 3D design
-              </p>
-              <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-charcoal leading-tight">
-                See your exact design plus ShadeCast before we build it.
-              </h2>
-              <p className="mt-6 text-lg text-charcoal/70 leading-relaxed">
-                Our ShadeCast&#8482; tool maps the sun across your exact location,
-                hour by hour and season by season. You see a custom 3D design of
-                your shade before a single post goes in the ground, so you know
-                precisely where the shade lands and what you are getting.
-              </p>
+              <div className="text-center lg:text-left">
+                {/* S1: eyebrow bumped to font-bold + text-base sm:text-lg (was font-semibold text-sm); lg desktop value text-lg byte-identical */}
+                <p className="text-copper font-bold tracking-wide uppercase text-base sm:text-lg lg:text-lg mb-3">
+                  ShadeCast&#8482; 3D design
+                </p>
+                <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-charcoal leading-tight">
+                  See your exact design plus ShadeCast before we build it.
+                </h2>
+                <p className="mt-6 text-lg text-charcoal/70 leading-relaxed">
+                  Our ShadeCast&#8482; tool maps the sun across your exact location,
+                  hour by hour and season by season. You see a custom 3D design of
+                  your shade before a single post goes in the ground, so you know
+                  precisely where the shade lands and what you are getting.
+                </p>
 
-              <ul className="mt-8 space-y-4">
-                {[
-                  "GPS-precise sun mapping for your site",
-                  "Hour-by-hour shade visualization",
-                  "Seasonal coverage analysis",
-                  "A custom 3D design of your space",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <svg className="w-6 h-6 text-copper flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
-                      <polyline points="8,12 11,15 16,9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <span className="text-charcoal/80 font-medium">{item}</span>
-                  </li>
-                ))}
-              </ul>
+                <ul className="mt-8 space-y-4">
+                  {[
+                    "GPS-precise sun mapping for your site",
+                    "Hour-by-hour shade visualization",
+                    "Seasonal coverage analysis",
+                    "A custom 3D design of your space",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 justify-center lg:justify-start">
+                      <svg className="w-6 h-6 text-copper flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
+                        <polyline points="8,12 11,15 16,9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      <span className="text-charcoal/80 font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
 
-              <Link
-                href="/contact"
-                className="mt-10 inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
-              >
-                Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> 3D Design + Visit
-              </Link>
+                {/* S3 desktop CTA: visible at lg+, hidden below (mobile/tablet show the post-simulation CTA instead) */}
+                <Link
+                  href="/contact"
+                  className="mt-10 hidden lg:inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
+                >
+                  Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> 3D Design + Visit
+                </Link>
+              </div>
             </Reveal>
 
-            {/* Right: ShadeCastSlideover (H9b, wraps Demo, slides to 2x2 collage). */}
+            {/* Right (desktop) / middle (mobile): ShadeCastSlideover (H9b, wraps Demo, slides to 2x2 collage). */}
             <Reveal delay={0.1}>
               <ShadeCastSlideover>
                 <ShadeCastDemo className="w-full" />
               </ShadeCastSlideover>
             </Reveal>
+
+            {/* S3 mobile-only CTA: appears AFTER the simulation per the mobile reorder spec.
+                lg:hidden removes it from the grid entirely at lg+ so desktop stays 2-cell. */}
+            <Link
+              href="/contact"
+              className="lg:hidden mt-2 mx-auto inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
+            >
+              Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> 3D Design + Visit
+            </Link>
           </div>
         </div>
       </section>
