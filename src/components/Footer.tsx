@@ -2,15 +2,17 @@ import Link from "next/link";
 import Image from "next/image";
 
 const footerSolutions = [
-  { label: "Golf & Entertainment", href: "/golf" },
+  { label: "Residential", href: "/residential" },
+  { label: "Commercial", href: "/commercial" },
   { label: "Senior Living", href: "/senior-living" },
   { label: "How It Works", href: "/process" },
 ];
 
 const footerCompany = [
   { label: "About", href: "/about" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
-  { label: "Free Assessment", href: "/contact" },
 ];
 
 const footerWhyApex = [
@@ -25,9 +27,9 @@ export default function Footer() {
     <footer className="bg-charcoal text-white">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Column 1: Logo + Tagline + Phone + Email */}
-          <div className="sm:col-span-2 lg:col-span-1">
+          <div className="col-span-2 lg:col-span-1">
             <Link href="/" className="inline-flex items-center group">
               <Image
                 src="/images/logo-dark-bg.svg"
@@ -125,9 +127,9 @@ export default function Footer() {
           </div>
 
           {/* Column 4: Why Apex */}
-          <div>
+          <div className="col-span-2 text-center sm:text-left lg:col-span-1 lg:text-left">
             <h3 className="font-heading text-sm font-semibold uppercase tracking-wider text-white mb-5">
-              Why Apex
+              Why Apex?
             </h3>
             <ul className="space-y-3">
               {footerWhyApex.map((item) => (

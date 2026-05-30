@@ -123,6 +123,24 @@ export default function Header() {
                 About
               </Link>
 
+              <Link
+                href="/gallery"
+                className={`text-sm font-medium transition-colors duration-300 hover:text-copper ${
+                  scrolled ? "text-charcoal" : "text-white"
+                }`}
+              >
+                Gallery
+              </Link>
+
+              <Link
+                href="/faq"
+                className={`text-sm font-medium transition-colors duration-300 hover:text-copper ${
+                  scrolled ? "text-charcoal" : "text-white"
+                }`}
+              >
+                FAQ
+              </Link>
+
               {/* Desktop Call link (A2): understated, sits just before the CTA */}
               <a
                 href="tel:+16028370370"
@@ -241,6 +259,22 @@ export default function Header() {
               onClick={closeMobile}
             >
               About
+            </Link>
+
+            <Link
+              href="/gallery"
+              className="border-b border-cream-dark py-4 text-base font-medium text-charcoal transition-colors hover:text-copper"
+              onClick={closeMobile}
+            >
+              Gallery
+            </Link>
+
+            <Link
+              href="/faq"
+              className="border-b border-cream-dark py-4 text-base font-medium text-charcoal transition-colors hover:text-copper"
+              onClick={closeMobile}
+            >
+              FAQ
             </Link>
           </nav>
 
