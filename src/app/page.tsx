@@ -437,7 +437,7 @@ export default function Home() {
                   ShadeCast&#8482; 3D design
                 </p>
                 <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-charcoal leading-tight">
-                  See your exact design plus ShadeCast before we build it.
+                  See your exact <span className="text-copper">design</span> plus <span className="text-copper">ShadeCast&#8482;</span> before we <span className="whitespace-nowrap">build it.</span>
                 </h2>
                 <p className="mt-6 text-lg text-charcoal/70 leading-relaxed">
                   Our ShadeCast&#8482; tool maps the sun across your exact location,
