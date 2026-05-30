@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import ShadeCastDemo from "@/components/ShadeCastDemo";
+import CrossFadeCarousel from "@/components/CrossFadeCarousel";
 
 export const metadata: Metadata = {
   title: "How It Works | Apex Sail Shades",
@@ -271,6 +272,37 @@ const processSteps = [
     ],
     imagePlaceholder: "Fabrication Process",
     image: "/images/fabric-samples-closeup.jpg",
+    frameFit: "object-cover",
+    frames: [
+      {
+        src: "/images/fabric-samples-closeup.jpg",
+        alt: "Architectural shade fabric swatches in five colors with spec labels",
+      },
+      {
+        src: "/images/material-wsm-01.webp",
+        alt: "Stainless steel turnbuckle and shackle tensioning a shade sail corner against the sky",
+      },
+      {
+        src: "/images/material-wsm-02.webp",
+        alt: "Close-up of a finished shade sail corner with a stainless steel D-ring grommet",
+      },
+      {
+        src: "/images/material-wsm-09.webp",
+        alt: "Fabricator laying out a large shade sail panel on the shop floor",
+      },
+      {
+        src: "/images/material-wsm-10.webp",
+        alt: "Worker stitching shade sail fabric at an industrial sewing machine",
+      },
+      {
+        src: "/images/material-wsm-11.webp",
+        alt: "Shade fabric staged on a cutting table in the fabrication shop",
+      },
+      {
+        src: "/images/material-wsm-12.webp",
+        alt: "Automated cutting head trimming shade fabric on the cutting table",
+      },
+    ],
     Icon: IconFabrication,
   },
   {
@@ -287,6 +319,97 @@ const processSteps = [
     ],
     imagePlaceholder: "Installation Photo",
     image: "/images/gallery-desert-mountains.jpg",
+    frameFit: "object-cover",
+    frames: [
+      {
+        src: "/images/install-ww-01.webp",
+        alt: "Installation crew preparing concrete for shade sail post footings on site",
+      },
+      {
+        src: "/images/material-ms-01.webp",
+        alt: "Worker selecting structural steel stock from a warehouse rack",
+      },
+      {
+        src: "/images/install-ww-02.webp",
+        alt: "Apex crew installing a shade sail structure on site",
+      },
+      {
+        src: "/images/material-ms-02.webp",
+        alt: "Powder-coated square steel post staged for fabrication, tagged with caution ribbon",
+      },
+      {
+        src: "/images/install-ww-03.webp",
+        alt: "Apex crew installing a shade sail structure on site",
+      },
+      {
+        src: "/images/material-ms-03.webp",
+        alt: "Forklift loading structural steel onto a metal supplier truck",
+      },
+      {
+        src: "/images/install-ww-04.webp",
+        alt: "Apex crew installing a shade sail structure on site",
+      },
+      {
+        src: "/images/material-ms-04.webp",
+        alt: "Worker pulling steel tubing from a stocked supply rack",
+      },
+      {
+        src: "/images/install-ww-06.webp",
+        alt: "Apex crew installing a shade sail structure on site",
+      },
+      {
+        src: "/images/material-ms-05.webp",
+        alt: "Gloved hand selecting a length of steel tube from a supply rack",
+      },
+      {
+        src: "/images/install-ww-07.webp",
+        alt: "Apex crew installing a shade sail structure on site",
+      },
+      {
+        src: "/images/material-ms-06.webp",
+        alt: "Structural steel post being cut to length on a clamped cutting saw",
+      },
+      {
+        src: "/images/install-ww-08.webp",
+        alt: "Apex crew installing a shade sail structure on site",
+      },
+      {
+        src: "/images/material-ms-07.webp",
+        alt: "Structural steel stock being cut on a band saw with coolant",
+      },
+      {
+        src: "/images/install-ww-09.webp",
+        alt: "Apex crew installing a shade sail structure on site",
+      },
+      {
+        src: "/images/install-ww-10.webp",
+        alt: "Apex crew installing a shade sail structure on site",
+      },
+      {
+        src: "/images/install-ww-11.webp",
+        alt: "Apex crew installing a shade sail structure on site",
+      },
+      {
+        src: "/images/install-ww-12.webp",
+        alt: "Apex crew installing a shade sail structure on site",
+      },
+      {
+        src: "/images/install-ww-13.webp",
+        alt: "Apex crew installing a shade sail structure on site",
+      },
+      {
+        src: "/images/install-ww-14.webp",
+        alt: "Apex crew installing a shade sail structure on site",
+      },
+      {
+        src: "/images/install-ww-15.webp",
+        alt: "Apex crew installing a shade sail structure on site",
+      },
+      {
+        src: "/images/install-ww-16.webp",
+        alt: "Apex crew installing a shade sail structure on site",
+      },
+    ],
     Icon: IconInstallation,
   },
 ];
@@ -406,6 +529,17 @@ export default function HowItWorksPage() {
                 <div className="w-full lg:w-1/2">
                   {"useShadeCast" in step && step.useShadeCast ? (
                     <ShadeCastDemo className="w-full max-w-lg" />
+                  ) : "frames" in step && step.frames ? (
+                    <CrossFadeCarousel
+                      frames={step.frames}
+                      intervalMs={2000}
+                      aspectRatio="aspect-[4/3]"
+                      className="overflow-hidden rounded-2xl"
+                      ariaLabel={`${step.title} image gallery`}
+                      frameClassName={step.frameFit}
+                      chevronClassName="text-white bg-charcoal/40 hover:bg-charcoal/60"
+                      controls
+                    />
                   ) : (
                     <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
                       {step.image ? (
