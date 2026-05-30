@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     siteName: "Apex Sail Shades",
     images: [
       {
-        url: "https://apex-sail-shades.com/images/hero-shade-sail.webp",
+        url: "https://apex-sail-shades.com/images/og-ws-29.webp",
         width: 1200,
         height: 630,
         alt: "Custom shade sail installation by Apex Sail Shades in Phoenix, Arizona",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     title: "Apex Sail Shades | Phoenix Shade Sail Specialists",
     description:
       "Custom-engineered shade sails for Phoenix homes and businesses. Designed and installed in one visit, built for 110F sun and monsoon winds.",
-    images: ["https://apex-sail-shades.com/images/hero-shade-sail.webp"],
+    images: ["https://apex-sail-shades.com/images/og-ws-29.webp"],
   },
 };
 
