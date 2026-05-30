@@ -28,8 +28,8 @@ export default function Footer() {
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-          {/* Column 1: Logo + Tagline + Phone + Email */}
-          <div className="col-span-2 lg:col-span-1">
+          {/* Column 1: Logo + Tagline + Phone + Email (F5: centered on all viewports) */}
+          <div className="col-span-2 lg:col-span-1 text-center">
             <Link href="/" className="inline-flex items-center group">
               <Image
                 src="/images/logo-dark-bg.svg"
@@ -39,7 +39,7 @@ export default function Footer() {
                 className="h-11 w-auto"
               />
             </Link>
-            <p className="mt-4 text-sm leading-relaxed text-gray-400 max-w-xs">
+            <p className="mt-4 text-sm leading-relaxed text-gray-400 max-w-xs mx-auto">
               Custom-engineered shade sails for Phoenix homes and businesses.
             </p>
             <a
@@ -88,8 +88,8 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Column 2: Solutions */}
-          <div>
+          {/* Column 2: Solutions (F5: centered on all viewports) */}
+          <div className="text-center">
             <h3 className="font-heading text-sm font-semibold uppercase tracking-wider text-white mb-5">
               Solutions
             </h3>
@@ -107,8 +107,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Company */}
-          <div>
+          {/* Column 3: Company (F5: centered on all viewports) */}
+          <div className="text-center">
             <h3 className="font-heading text-sm font-semibold uppercase tracking-wider text-white mb-5">
               Company
             </h3>
@@ -165,7 +165,7 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-xs text-gray-500">
             <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
               <span>&copy; {new Date().getFullYear()} Apex Sail Shades. All rights reserved.</span>
               <span className="hidden sm:inline text-gray-600">&middot;</span>

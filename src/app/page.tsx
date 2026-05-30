@@ -127,7 +127,7 @@ export default function Home() {
             <span className="inline-block text-sm font-semibold uppercase tracking-widest text-sand">
               Phoenix shade sail specialists
             </span>
-            <h1 className="mt-4 font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.05] tracking-tight">
+            <h1 className="mt-4 font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight">
               <span className="italic text-copper">Custom</span> Shade Sails,<br />Built for <span className="text-copper">Phoenix</span> Heat.
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed font-body">
@@ -173,7 +173,7 @@ export default function Home() {
           ============================================================ */}
       <section className="bg-white py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <Reveal className="text-center mb-14" delay={0.15}>
+          <Reveal className="text-center mb-14">
             <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-charcoal">
               Shade for your <span className="text-copper">home</span> or your <span className="text-copper">business</span>
             </h2>
@@ -182,7 +182,7 @@ export default function Home() {
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-2 gap-3 sm:gap-6 md:gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {/* For Your Home */}
             <Reveal>
               <Link
@@ -198,7 +198,7 @@ export default function Home() {
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
-                <div className="p-4 sm:p-6 md:p-8 lg:p-10">
+                <div className="p-8 sm:p-10">
                   <p className="text-sm font-semibold uppercase tracking-widest text-copper">
                     For Your Home
                   </p>
@@ -234,7 +234,7 @@ export default function Home() {
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
-                <div className="p-4 sm:p-6 md:p-8 lg:p-10">
+                <div className="p-8 sm:p-10">
                   <p className="text-sm font-semibold uppercase tracking-widest text-copper">
                     For Your Business
                   </p>
@@ -264,7 +264,7 @@ export default function Home() {
           ============================================================ */}
       <section id="work" className="bg-cream py-20 sm:py-24 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <Reveal className="text-center mb-14" delay={0.30}>
+          <Reveal className="text-center mb-14">
             <p className="text-copper font-semibold tracking-wide uppercase text-sm mb-3">
               Latest Project
             </p>
@@ -276,50 +276,33 @@ export default function Home() {
             </p>
           </Reveal>
 
-          {/* B2: Desktop 3-col (showcase | dual stat cards | mini-slideshow column).
-              Mobile: showcase full-width, dual cards 2-col below, mini-slideshow + button below that. */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 items-stretch">
+          {/* F6: showcase image removed (was overlapping/redundant with mini-slideshow).
+              Desktop 2-col: dual stat cards | mini-slideshow + button.
+              Mobile: dual cards 2-col side-by-side (smaller, centered text per F6), slideshow column below. */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
 
-            {/* Col 1: showcase image */}
+            {/* Col 1: dual proof cards (2-col grid on mobile, 1-col stacked on lg) */}
             <Reveal>
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-sand/30 h-full">
-                <Image
-                  src="/images/showcase-commercial-ws48.webp"
-                  alt="Commercial-grade engineered shade sails over a building entrance"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal/80 to-transparent p-4">
-                  <p className="text-white/90 text-sm font-medium">
-                    Commercial-grade shade, engineered for desert heat
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-
-            {/* Col 2: dual proof cards (2-col grid on mobile, 1-col stacked on lg) */}
-            <Reveal delay={0.08}>
               <div className="grid grid-cols-2 lg:grid-cols-1 gap-3 sm:gap-4 lg:gap-6 h-full">
-                <div className="rounded-2xl bg-white p-4 sm:p-6 lg:p-7 border border-sand/40 shadow-sm">
-                  <p className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-copper">
+                <div className="rounded-2xl bg-white p-3 sm:p-5 lg:p-7 border border-sand/40 shadow-sm text-center lg:text-left">
+                  <p className="font-heading text-xl sm:text-2xl lg:text-4xl font-bold text-copper">
                     1,500 sq ft
                   </p>
-                  <p className="mt-2 font-heading text-base sm:text-lg font-semibold text-charcoal">
+                  <p className="mt-2 font-heading text-sm sm:text-base lg:text-lg font-semibold text-charcoal">
                     Most Recent: Whirlwind Golf Course Install, Phoenix
                   </p>
-                  <p className="mt-1 text-sm sm:text-base text-charcoal/60 leading-relaxed">
+                  <p className="mt-1 text-xs sm:text-sm lg:text-base text-charcoal/60 leading-relaxed">
                     An engineered commercial shade sail, designed and built for an Arizona business.
                   </p>
                 </div>
-                <div className="rounded-2xl bg-white p-4 sm:p-6 lg:p-7 border border-sand/40 shadow-sm">
-                  <p className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-copper">
+                <div className="rounded-2xl bg-white p-3 sm:p-5 lg:p-7 border border-sand/40 shadow-sm text-center lg:text-left">
+                  <p className="font-heading text-xl sm:text-2xl lg:text-4xl font-bold text-copper">
                     Phoenix backyard
                   </p>
-                  <p className="mt-2 font-heading text-base sm:text-lg font-semibold text-charcoal">
+                  <p className="mt-2 font-heading text-sm sm:text-base lg:text-lg font-semibold text-charcoal">
                     Backyard garden cover, Phoenix
                   </p>
-                  <p className="mt-1 text-sm sm:text-base text-charcoal/60 leading-relaxed">
+                  <p className="mt-1 text-xs sm:text-sm lg:text-base text-charcoal/60 leading-relaxed">
                     A custom backyard shade sail, measured, designed, and installed
                     for a Phoenix homeowner.
                   </p>
@@ -327,8 +310,8 @@ export default function Home() {
               </div>
             </Reveal>
 
-            {/* Col 3: mini-gallery slideshow + "See Full Gallery" button */}
-            <Reveal delay={0.16}>
+            {/* Col 2: mini-gallery slideshow + "See Full Gallery" button */}
+            <Reveal delay={0.08}>
               <div className="flex flex-col gap-3 h-full">
                 <Link
                   href="/gallery"
@@ -354,7 +337,7 @@ export default function Home() {
           ============================================================ */}
       <section className="bg-charcoal py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <Reveal className="max-w-3xl mx-auto text-center mb-14" delay={0.45}>
+          <Reveal className="max-w-3xl mx-auto text-center mb-14">
             <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
               <span className="italic text-copper text-4xl sm:text-5xl md:text-6xl">Not</span> an <span className="text-copper">&ldquo;online&rdquo;</span> or <span className="text-copper">&ldquo;store-bought&rdquo;</span> canopy.
             </h2>
@@ -447,7 +430,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left: copy */}
-            <Reveal delay={0.60}>
+            <Reveal>
               <p className="text-copper font-semibold tracking-wide uppercase text-sm lg:text-lg mb-3">
                 ShadeCast&#8482; 3D design
               </p>
@@ -487,7 +470,7 @@ export default function Home() {
             </Reveal>
 
             {/* Right: ShadeCastSlideover (H9b, wraps Demo, slides to 2x2 collage). */}
-            <Reveal delay={0.70}>
+            <Reveal delay={0.1}>
               <ShadeCastSlideover>
                 <ShadeCastDemo className="w-full" />
               </ShadeCastSlideover>
@@ -514,7 +497,7 @@ export default function Home() {
                 />
               </div>
             </Reveal>
-            <Reveal delay={0.75}>
+            <Reveal delay={0.08}>
               <p className="text-copper font-semibold tracking-wide uppercase text-sm mb-3">
                 Experience
               </p>
@@ -527,7 +510,7 @@ export default function Home() {
               <div className="mt-8 flex flex-wrap gap-10">
                 <div>
                   <p className="font-heading text-4xl font-bold text-copper">
-                    Since <CountUp from={2010} to={2018} duration={1.6} />
+                    Since 2018
                   </p>
                   <p className="mt-1 text-charcoal/60 font-medium">Industry lineage</p>
                 </div>
@@ -554,7 +537,7 @@ export default function Home() {
           ============================================================ */}
       <section className="bg-cream py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <Reveal className="max-w-2xl" delay={0.90}>
+          <Reveal className="max-w-2xl">
             <p className="text-copper font-semibold tracking-wide uppercase text-sm mb-3">
               How it works
             </p>
@@ -624,30 +607,28 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-          <Reveal delay={1.05}>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
-              Ready for shade that is built for Phoenix?
-            </h2>
-            <p className="mt-6 text-lg sm:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
-              Talk to a local Phoenix shade specialist, not a call center. Book your
-              free design visit and we will show you exactly where your shade should
-              go, and what it will cost, before you commit to anything.
-            </p>
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-10 py-5 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/20"
-              >
-                Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> 3D Design + Visit
-              </Link>
-              <a
-                href="tel:+16028370370"
-                className="inline-flex items-center justify-center px-10 py-5 border-2 border-white text-white text-lg font-bold rounded-full hover:bg-white/10 transition-colors duration-200"
-              >
-                Schedule a Call: (602) 837-0370
-              </a>
-            </div>
-          </Reveal>
+          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+            Ready for shade that is built for Phoenix?
+          </h2>
+          <p className="mt-6 text-lg sm:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
+            Talk to a local Phoenix shade specialist, not a call center. Book your
+            free design visit and we will show you exactly where your shade should
+            go, and what it will cost, before you commit to anything.
+          </p>
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-10 py-5 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/20"
+            >
+              Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> 3D Design + Visit
+            </Link>
+            <a
+              href="tel:+16028370370"
+              className="inline-flex items-center justify-center px-10 py-5 border-2 border-white text-white text-lg font-bold rounded-full hover:bg-white/10 transition-colors duration-200"
+            >
+              Schedule a Call: (602) 837-0370
+            </a>
+          </div>
         </div>
       </section>
 
