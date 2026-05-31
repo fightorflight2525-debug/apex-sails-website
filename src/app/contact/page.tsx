@@ -70,6 +70,11 @@ export default function ContactPage() {
       });
 
       if (res.ok) {
+        window.gtag?.('event', 'conversion', {
+          send_to: 'AW-18055743018/6TUsCPKSoZ0cEKqM06FD',
+          value: 500,
+          currency: 'USD',
+        });
         setSubmitted(true);
       } else {
         setSubmitError(
