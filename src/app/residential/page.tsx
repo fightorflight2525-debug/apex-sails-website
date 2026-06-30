@@ -9,7 +9,7 @@ import Lightbox from "@/components/Lightbox";
 export const metadata: Metadata = {
   title: "Residential Shade Sails Phoenix | Apex Sail Shades",
   description:
-    "Custom-engineered backyard shade sails for Phoenix homes. Designed and installed in one visit, built for 110°F sun and monsoon winds. Free design visit. Most projects $5,000 to $8,000.",
+    "Custom-engineered backyard shade sails for Phoenix homes. Designed and installed in one visit, built for 110°F sun and monsoon winds. Free design visit. Most projects $8,000 to $12,000.",
 };
 
 type ValueProp = {
@@ -241,7 +241,7 @@ export default function ResidentialPage() {
             Transparent pricing
           </span>
           <p className="mt-4 font-heading text-3xl sm:text-4xl font-bold text-white">
-            Most residential projects run $5,000 to $8,000
+            Most residential projects run $8,000 to $12,000
           </p>
           <p className="mt-4 text-lg text-white/70 leading-relaxed max-w-2xl mx-auto">
             Your exact price depends on size, layout, and pole configuration. We

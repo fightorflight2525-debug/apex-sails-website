@@ -64,7 +64,7 @@ export default function TermsPage() {
             Quoted pricing is valid for 30 days from the quote date unless a different period is stated in writing. Quotes are based on the conditions observed during the free design visit; if site conditions discovered during installation materially change the scope (for example, a footing depth requirement that was not visible during the survey), we will notify you in writing and obtain your approval before proceeding with extra work.
           </p>
           <p className={P}>
-            The Site lists representative price ranges (for example, &quot;most residential projects $5,000 to $8,000,&quot; &quot;restaurant patios $15,000 to $45,000&quot;). These are illustrative ranges, not binding offers. The binding price for your project is the one stated in your written installation contract.
+            The Site lists representative price ranges (for example, &quot;most residential projects $8,000 to $12,000,&quot; &quot;restaurant patios $15,000 to $45,000&quot;). These are illustrative ranges, not binding offers. The binding price for your project is the one stated in your written installation contract.
           </p>
 
           <h2 className={H2}>Warranty</h2>

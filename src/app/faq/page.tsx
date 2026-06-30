@@ -18,7 +18,7 @@ const FAQ_ITEMS: ReadonlyArray<{ q: string; a: string }> = [
   },
   {
     q: "What does a residential project cost?",
-    a: "Most Phoenix backyard projects run $5,000 to $8,000. Free on-site 3D design and a real itemized quote in the same visit. No high-pressure sales.",
+    a: "Most Phoenix backyard projects run $8,000 to $12,000. Free on-site 3D design and a real itemized quote in the same visit. No high-pressure sales.",
   },
   {
     q: "What does a commercial project cost?",
