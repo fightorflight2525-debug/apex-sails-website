@@ -12,7 +12,7 @@ const apiHost = process.env.NEXT_PUBLIC_POSTHOG_PROXY_PATH || "/uplink";
 posthog.init(key, {
   api_host: apiHost,               // reverse proxy (next.config.ts rewrites) to beat blockers
   ui_host: "https://us.posthog.com",
-  defaults: "2025-05-24",          // SDK defaults snapshot: SPA pageviews via history_change
+  defaults: "2026-05-30",          // SDK defaults snapshot (PostHog official current): SPA pageviews via history_change + rageclick ignorelist + strict min recording duration + localhost test-user filtering
   person_profiles: "always",       // profiles for anonymous PPC visitors (UTM/gclid person props)
   capture_exceptions: true,        // client-side error tracking
 });
