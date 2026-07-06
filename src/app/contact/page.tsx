@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
+import posthog from "posthog-js";
 
 const benefits = [
   "Complimentary ShadeCast\u2122 shadow analysis",
@@ -29,6 +30,21 @@ export default function ContactPage() {
     addressOrZip: "",
     notes: "",
   });
+  const formStarted = useRef(false);
+  const focusedFields = useRef<Set<string>>(new Set());
+
+  function handleFormFocus(e: React.FocusEvent<HTMLFormElement>) {
+    const field = (e.target as { name?: string })?.name || "";
+    if (!field || field === "_gotcha") return;
+    if (!formStarted.current) {
+      formStarted.current = true;
+      posthog.capture("form_started", { form: "contact", first_field: field });
+    }
+    if (!focusedFields.current.has(field)) {
+      focusedFields.current.add(field);
+      posthog.capture("form_field_focus", { form: "contact", field });
+    }
+  }
 
   function handleChange(
     e: React.ChangeEvent<
@@ -43,6 +59,10 @@ export default function ContactPage() {
     if (submitting) return;
     setSubmitting(true);
     setSubmitError(null);
+    posthog.capture("form_submit_attempted", {
+      form: "contact",
+      project_type: formData.projectType || "unspecified",
+    });
 
     const form = e.currentTarget;
     const honeypot =
@@ -75,13 +95,23 @@ export default function ContactPage() {
           value: 500,
           currency: 'USD',
         });
+        posthog.capture("form_submitted", {
+          form: "contact",
+          project_type: formData.projectType || "unspecified",
+        });
         setSubmitted(true);
       } else {
+        posthog.capture("form_submit_failed", {
+          form: "contact",
+          stage: "formspree_response",
+          status: res.status,
+        });
         setSubmitError(
           "Something went wrong. Please try again or call (602) 837-0370 directly.",
         );
       }
     } catch {
+      posthog.capture("form_submit_failed", { form: "contact", stage: "network" });
       setSubmitError(
         "Something went wrong. Please try again or call (602) 837-0370 directly.",
       );
@@ -154,7 +184,7 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <>
-                  <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+                  <form onSubmit={handleSubmit} onFocusCapture={handleFormFocus} className="space-y-6" noValidate>
                     {/* Honeypot (invisible to humans, filled by bots; Formspree convention) */}
                     <div className="absolute h-0 w-0 overflow-hidden opacity-0" aria-hidden="true">
                       <label htmlFor="_gotcha">Leave this field blank</label>
