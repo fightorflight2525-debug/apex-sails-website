@@ -350,6 +350,12 @@ export default function ContactPage() {
                     <p className="text-center text-xs text-charcoal-light">
                       No obligation. Free 3D design. Locally owned in Phoenix.
                     </p>
+
+                    {/* SMS consent disclosure (10DLC compliance) */}
+                    <p className="text-center text-[11px] leading-relaxed text-charcoal-light/80">
+                      By submitting this form, you agree that Apex Sail Shades may contact you by phone call and SMS text message about your project and quote. Message frequency varies by project. Message and data rates may apply. Reply STOP to opt out or HELP for help. See our{" "}
+                      <a href="/privacy" className="underline hover:text-copper">Privacy Policy</a>.
+                    </p>
                   </form>
                 </>
               )}

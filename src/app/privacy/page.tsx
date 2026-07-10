@@ -74,6 +74,9 @@ export default function PrivacyPage() {
             We do not sell, rent, or trade your personal information to anyone for marketing purposes.
           </p>
           <p className={P}>
+            We do not share or sell your mobile phone number, SMS opt-in status, or text messaging consent data with any third party or affiliate for marketing or lead generation purposes.
+          </p>
+          <p className={P}>
             We will share information when the law requires it, when we need to protect the legal rights of Apex or another party, or when you have given us permission to share.
           </p>
 
