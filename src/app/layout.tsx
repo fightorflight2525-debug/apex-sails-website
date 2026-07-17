@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PhoneConversionTracker from "@/components/PhoneConversionTracker";
+import MetaPixel from "@/components/MetaPixel";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -72,6 +73,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <PhoneConversionTracker />
+        <MetaPixel />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-18055743018"
           strategy="afterInteractive"
