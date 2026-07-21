@@ -7,6 +7,7 @@ import StickyCallBar from "@/components/StickyCallBar";
 
 export const metadata: Metadata = {
   title: "Senior Living Shade Solutions | Apex Sail Shades",
+  robots: { index: false, follow: false },
   description:
     "Custom-engineered shade sails for Phoenix assisted living, memory care, and retirement communities. Give residents shaded courtyards and walkways year-round. Built for 110°F sun and monsoon winds.",
 };

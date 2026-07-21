@@ -65,6 +65,23 @@ export default function ContactPage() {
       project_type: formData.projectType || "unspecified",
     });
 
+    const missing: string[] = [];
+    if (!formData.projectType.trim()) missing.push("project type");
+    if (!formData.fullName.trim()) missing.push("name");
+    if (formData.phone.replace(/\D/g, "").length < 10) missing.push("valid phone number");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) missing.push("valid email");
+    if (!formData.addressOrZip.trim()) missing.push("address or ZIP");
+    if (missing.length > 0) {
+      posthog.capture("form_submit_failed", {
+        form: "contact",
+        stage: "client_validation",
+        missing: missing.join(", "),
+      });
+      setSubmitError(`Please fill in: ${missing.join(", ")}.`);
+      setSubmitting(false);
+      return;
+    }
+
     const form = e.currentTarget;
     const honeypot =
       (form.elements.namedItem("_gotcha") as HTMLInputElement | null)?.value || "";

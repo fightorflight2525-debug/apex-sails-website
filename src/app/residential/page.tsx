@@ -7,9 +7,9 @@ import StickyCallBar from "@/components/StickyCallBar";
 import Lightbox from "@/components/Lightbox";
 
 export const metadata: Metadata = {
-  title: "Residential Shade Sails Phoenix | Apex Sail Shades",
+  title: "Backyard & Patio Shade Sails Phoenix | Apex Sail Shades",
   description:
-    "Custom-engineered backyard shade sails for Phoenix homes. Designed and installed in one visit, built for 110°F sun and monsoon winds. Free design visit. Most projects $8,000 to $12,000.",
+    "Custom-engineered backyard & patio shade sails for Phoenix homes. Designed and installed in one visit, built for 110°F sun and monsoon winds. Free design visit. Most projects $8,000 to $12,000.",
 };
 
 type ValueProp = {
@@ -163,7 +163,7 @@ export default function ResidentialPage() {
               Residential shade sails
             </span>
             <h1 className="mt-4 font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.1] tracking-tight">
-              Take Your Phoenix Backyard Back From the Heat
+              Take Your Phoenix Backyard & Patio Back From the Heat
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-white/75 max-w-2xl leading-relaxed font-body">
               Custom shade sails, designed and installed in one visit. Keep your
@@ -201,10 +201,10 @@ export default function ResidentialPage() {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-charcoal tracking-tight">
-              A shade sail that is actually built for your backyard
+              A shade sail that is actually built for your backyard or patio
             </h2>
             <p className="mt-4 text-lg text-copper italic leading-relaxed">
-              A shade sail built for your backyard, not an off-the-shelf canopy. A custom-engineered sail designed to cover your space and block the sun.
+              A shade sail built for your backyard, not an off-the-shelf canopy. A custom-engineered sail designed to cover your space and block the sun. From backyard sails to patio shade covers, every design is fit to your exact layout and sun angles.
             </p>
           </div>
 

@@ -7,6 +7,7 @@ import StickyCallBar from "@/components/StickyCallBar";
 
 export const metadata: Metadata = {
   title: "Golf & Entertainment Venue Shade | Apex Sail Shades",
+  robots: { index: false, follow: false },
   description:
     "Custom-engineered shade sails for Phoenix driving ranges, golf entertainment venues, and resort recreation. Keep bays and patios usable through peak sun. Built for 110°F sun and monsoon winds.",
 };

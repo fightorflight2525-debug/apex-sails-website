@@ -4,7 +4,6 @@ import Image from "next/image";
 const footerSolutions = [
   { label: "Residential", href: "/residential" },
   { label: "Commercial", href: "/commercial" },
-  { label: "Senior Living", href: "/senior-living" },
   { label: "How It Works", href: "/process" },
 ];
 

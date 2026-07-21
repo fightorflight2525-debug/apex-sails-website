@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Get Your Free Assessment | Apex Sail Shades",
+  title: "Free Shade Sail Quote & Design Visit | Apex Sail Shades",
   description:
     "Request a complimentary shade analysis and ShadeCast™ shadow study for your Phoenix home or business. Custom-engineered shade sails for residential and commercial spaces across Arizona.",
 };
