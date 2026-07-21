@@ -22,6 +22,7 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [smsOptIn, setSmsOptIn] = useState(false);
   const [formData, setFormData] = useState({
     projectType: "",
     fullName: "",
@@ -76,6 +77,7 @@ export default function ContactPage() {
       payload.append("Email", formData.email);
       payload.append("Address or ZIP", formData.addressOrZip);
       payload.append("Notes", formData.notes);
+      payload.append("SMS opt-in", smsOptIn ? "Yes" : "No");
       payload.append(
         "_subject",
         `New Apex lead: ${formData.projectType || "unspecified"} from ${formData.fullName}`,
@@ -328,6 +330,22 @@ export default function ContactPage() {
                       />
                     </div>
 
+                    {/* Optional SMS opt-in (10DLC: consent must be a free choice, unchecked by default) */}
+                    <div className="flex items-start gap-3">
+                      <input
+                        id="smsOptIn"
+                        name="smsOptIn"
+                        type="checkbox"
+                        checked={smsOptIn}
+                        onChange={(e) => setSmsOptIn(e.target.checked)}
+                        className="mt-0.5 h-4 w-4 shrink-0 rounded border-charcoal-light/40 text-copper focus:ring-copper/40"
+                      />
+                      <label htmlFor="smsOptIn" className="text-[11px] leading-relaxed text-charcoal-light/80">
+                        I agree to receive SMS text messages from Apex Sail Shades about my quote and project updates. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase. See our{" "}
+                        <a href="/privacy" className="underline hover:text-copper">Privacy Policy</a>.
+                      </label>
+                    </div>
+
                     {/* Error state */}
                     {submitError && (
                       <div role="alert" className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-900">
@@ -351,9 +369,9 @@ export default function ContactPage() {
                       No obligation. Free 3D design. Locally owned in Phoenix.
                     </p>
 
-                    {/* SMS consent disclosure (10DLC compliance) */}
+                    {/* Contact disclosure (SMS is opt-in only via the checkbox above) */}
                     <p className="text-center text-[11px] leading-relaxed text-charcoal-light/80">
-                      By submitting this form, you agree that Apex Sail Shades may contact you by phone call and SMS text message about your project and quote. Message frequency varies by project. Message and data rates may apply. Reply STOP to opt out or HELP for help. See our{" "}
+                      By submitting this form, you agree that Apex Sail Shades may contact you by phone call or email about your project and quote. See our{" "}
                       <a href="/privacy" className="underline hover:text-copper">Privacy Policy</a>.
                     </p>
                   </form>
