@@ -42,7 +42,7 @@ const FAQ_ITEMS: ReadonlyArray<{ q: string; a: string }> = [
   },
   {
     q: "What is the next step?",
-    a: "One free on-site visit. Real quote same day. No high-pressure sales. We respond to all inquiries within 4 business hours.",
+    a: "One free on-site visit. Real quote same day. No high-pressure sales. We respond to all inquiries within the hour.",
   },
 ];
 
@@ -107,7 +107,7 @@ export default function FaqPage() {
             Still have questions?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-charcoal-light leading-relaxed">
-            We respond to all inquiries within 4 business hours.
+            We respond to all inquiries within the hour.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link

@@ -5,6 +5,7 @@ import Image from "next/image";
 import StatsBand from "@/components/StatsBand";
 import StickyCallBar from "@/components/StickyCallBar";
 import Lightbox from "@/components/Lightbox";
+import QuoteForm from "@/components/QuoteForm";
 
 export const metadata: Metadata = {
   title: "Backyard & Patio Shade Sails Phoenix | Apex Sail Shades",
@@ -146,7 +147,7 @@ export default function ResidentialPage() {
   return (
     <>
       {/* ===== SECTION 1: HERO ===== */}
-      <section className="relative overflow-hidden bg-charcoal pt-32 pb-20 md:pb-28">
+      <section id="top" className="relative overflow-hidden bg-charcoal pt-32 pb-20 md:pb-28">
         <Image
           src="/images/residential-hero.webp"
           alt="Custom residential shade sail over a Phoenix backyard patio"
@@ -163,21 +164,19 @@ export default function ResidentialPage() {
               Residential shade sails
             </span>
             <h1 className="mt-4 font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.1] tracking-tight">
-              Take Your Phoenix Backyard & Patio Back From the Heat
+              15 degrees cooler. 14 days. Guaranteed.
             </h1>
-            <p className="mt-6 text-lg sm:text-xl text-white/75 max-w-2xl leading-relaxed font-body">
-              Custom shade sails, designed and installed in one visit. Keep your
-              patio, pool, and play space usable all summer long, engineered for
-              110°F sun and monsoon winds.
+            <p className="mt-6 text-lg sm:text-xl text-white/75 max-w-2xl mx-auto leading-relaxed font-body">
+              Custom backyard and patio shade sails for Phoenix homes. Yours can
+              be up two weeks from today. Want proof? A real person calls you
+              within the hour.
             </p>
 
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="cta-glow-loop inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
-              >
-                Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> 3D Design + Visit
-              </Link>
+            <div className="mt-10 mx-auto max-w-xl rounded-2xl bg-white p-6 sm:p-8 text-left shadow-xl">
+              <QuoteForm formName="residential" />
+            </div>
+
+            <div className="mt-6">
               <a
                 href="#gallery"
                 className="inline-flex items-center justify-center px-8 py-4 border border-white/40 text-white text-lg font-semibold rounded-full hover:bg-white/10 transition-colors duration-200"
@@ -231,6 +230,84 @@ export default function ResidentialPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ===== SECTION 2.3: HOW IT WORKS (poles-first mechanism) ===== */}
+      <section className="bg-white py-20 md:py-28">
+        <div className="max-w-3xl mx-auto px-6 sm:px-8 text-center">
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-charcoal tracking-tight">
+            How it works
+          </h2>
+          <p className="mt-6 text-lg text-charcoal/75 leading-relaxed">
+            Most companies order your sail from a drawing. Then they hope it
+            fits. We don&apos;t hope. First we set your posts. Then we measure.
+            Then your sail is made to match. That&apos;s why it fits. That&apos;s
+            why it&apos;s fast.
+          </p>
+        </div>
+      </section>
+
+      {/* ===== SECTION 2.5: WHAT YOU GET ===== */}
+      <section className="bg-cream py-20 md:py-28">
+        <div className="max-w-3xl mx-auto px-6 sm:px-8">
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-charcoal tracking-tight text-center">
+            What you get
+          </h2>
+          <ul className="mt-10 space-y-6">
+            {[
+              "Your own custom shade sail, made to fit your yard. Most builds run $8,000 to $12,000. Estate builds with several sails start at $35,000.",
+              "A free ShadeCast study before you spend a dime. We show you right where your shade will fall at 2pm in July. On your yard. Not a guess.",
+              "A written quote the same day we visit. Free.",
+              "A 10 year warranty.",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-4">
+                <svg className="mt-1 h-6 w-6 shrink-0 text-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span className="text-lg text-charcoal/80 leading-relaxed">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ===== SECTION 2.7: HOW IT FEELS (15 degrees, ASU) ===== */}
+      <section className="bg-charcoal py-20 md:py-28">
+        <div className="max-w-3xl mx-auto px-6 sm:px-8 text-center">
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            How it feels
+          </h2>
+          <p className="mt-6 text-lg text-white/75 leading-relaxed">
+            It&apos;s 15 degrees cooler under the sail. The maker verified that.
+            ASU tested shade in Tempe for a full year. They found shade like this
+            feels as cool as a big tree. But you don&apos;t wait 15 years for it
+            to grow.
+          </p>
+        </div>
+      </section>
+
+      {/* ===== SECTION 2.9: OUR FOUR PROMISES ===== */}
+      <section className="bg-cream py-20 md:py-28">
+        <div className="max-w-3xl mx-auto px-6 sm:px-8">
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-charcoal tracking-tight text-center">
+            Our four promises
+          </h2>
+          <ol className="mt-10 space-y-6">
+            {[
+              "A real person calls you within the hour. Most days it's under 5 min.",
+              "Your shade is up 14 days after your deposit. Only bad weather can move that. And we'll tell you first.",
+              "If your sail doesn't fit, we fix it free.",
+              "We don't get paid in full until your shade is up.",
+            ].map((promise, i) => (
+              <li key={promise} className="flex items-start gap-4">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-copper font-heading text-lg font-bold text-white">
+                  {i + 1}
+                </span>
+                <span className="pt-1 text-lg text-charcoal/80 leading-relaxed">{promise}</span>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
@@ -329,21 +406,25 @@ export default function ResidentialPage() {
       {/* ===== SECTION 6: FINAL CTA ===== */}
       <section className="relative overflow-hidden bg-charcoal py-20 md:py-24">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center">
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
+          <span className="inline-block text-sm font-semibold uppercase tracking-widest text-sand">
+            Why now
+          </span>
+          <p className="mt-4 text-lg text-white/80 leading-relaxed max-w-2xl mx-auto">
+            We hold 10 spots a month for 14 day builds. That&apos;s how we keep
+            the promise. When they&apos;re full, we still build your shade. It
+            just takes longer. Phoenix stays over 100 into September. Start this
+            week and you&apos;ll use this shade all summer.
+          </p>
+          <h2 className="mt-10 font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
             Ready to make your backyard usable again?
           </h2>
-          <p className="mt-5 text-lg text-white/70 leading-relaxed max-w-2xl mx-auto">
-            Book a free design visit and we will show you exactly where your
-            shade should go, and what it will cost, before you commit to
-            anything.
-          </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
+            <a
+              href="#top"
               className="cta-glow-loop inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
             >
-              Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> 3D Design + Visit
-            </Link>
+              Start My 14 Days
+            </a>
             <a
               href="tel:+16028370370"
               className="inline-flex items-center justify-center px-8 py-4 border border-white/40 text-white text-lg font-semibold rounded-full hover:bg-white/10 transition-colors duration-200"

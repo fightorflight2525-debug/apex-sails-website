@@ -166,7 +166,7 @@ export default function ContactPage() {
             </span>
           </div>
           <p className="mx-auto mt-6 max-w-3xl text-lg text-sand-light leading-relaxed sm:text-xl">
-            Tell us about your space. We&apos;ll call you within 4 business hours to schedule.
+            Tell us about your space. We&apos;ll call you within the hour to schedule.
           </p>
         </div>
       </section>
@@ -198,7 +198,7 @@ export default function ContactPage() {
                     Got it{formData.fullName ? `, ${formData.fullName.split(" ")[0]}` : ""}.
                   </h3>
                   <p className="mt-3 text-charcoal-light leading-relaxed">
-                    We&apos;ll call you within 4 business hours to schedule your free design visit.
+                    We&apos;ll call you within the hour to schedule your free design visit.
                   </p>
                 </div>
               ) : (
@@ -534,7 +534,7 @@ export default function ContactPage() {
                   Response Time
                 </p>
                 <p className="mt-1 text-xs text-sand-light leading-relaxed">
-                  We respond within 4 business hours.
+                  We respond within the hour.
                 </p>
               </div>
 
