@@ -200,7 +200,7 @@ export default function ShadeCastDemo({ className = "" }: ShadeCastDemoProps) {
   return (
     <div className={`relative rounded-2xl border border-sand/40 bg-cream shadow-lg shadow-charcoal/5 overflow-hidden ${className}`}>
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img"
-        aria-label="ShadeCast shade sail shadow simulation — side view showing shadow movement throughout the day">
+        aria-label="ShadeCast shade sail shadow simulation, side view showing shadow movement throughout the day">
         <defs>
           <linearGradient id="sc-sky" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor={sky.top} />

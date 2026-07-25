@@ -522,12 +522,12 @@ export default function Home() {
                 Backed by <em className="italic">deep</em> shade-sail experience
               </h2>
               <p className="mt-6 text-lg text-charcoal/70 leading-relaxed">
-                The team at Apex came up through a Phoenix shade-sail lineage that dates back to 2018. Together, our crews and the partners we trained alongside have installed more than 1 million square feet of shade in the past year alone. That depth shows up in every footing we pour and every sail we tension.
+                The team at Apex came up through a Phoenix shade-sail lineage that dates back to 2019. Together, our crews and the partners we trained alongside have installed more than 1 million square feet of shade in the past year alone. That depth shows up in every footing we pour and every sail we tension.
               </p>
               <div className="mt-8 flex flex-wrap gap-10">
                 <div>
                   <p className="font-heading text-4xl font-bold text-copper">
-                    Since 2018
+                    Since 2019
                   </p>
                   <p className="mt-1 text-charcoal/60 font-medium">Industry lineage</p>
                 </div>

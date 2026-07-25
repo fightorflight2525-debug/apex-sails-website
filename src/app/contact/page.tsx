@@ -13,7 +13,7 @@ const benefits = [
 const trustBadges = [
   "Licensed, Bonded & Insured",
   "10-Year Warranty",
-  "Since 2018",
+  "Since 2019",
 ];
 
 const serviceAreas = ["Phoenix Metro", "Scottsdale", "Mesa", "Gilbert", "Chandler", "Tucson"];
