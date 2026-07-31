@@ -82,7 +82,11 @@ export default function RootLayout({
   gtag('js', new Date());
   gtag('config', 'AW-18055743018');
   gtag('config', 'AW-18055743018/CIvxCPiSoZ0cEKqM06FD', {
-    'phone_conversion_number': '(602) 837-0370'
+    'phone_conversion_number': '(602) 837-0370',
+    'phone_conversion_callback': function(formatted_number, mobile_number) {
+      window.__apexFwd = { display: formatted_number, mobile: mobile_number };
+      if (typeof window.__apexApplyFwd === 'function') window.__apexApplyFwd();
+    }
   });
 `}</Script>
       </body>
