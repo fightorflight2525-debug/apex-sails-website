@@ -349,32 +349,18 @@ export default function ResidentialPage() {
                   </a>
                 </div>
 
-                {/* Trust badge row: REAL ART cropped from the operator's GPT
-                    mock (badge-*.png, alpha-feathered) - medal + notched
-                    ribbons with the golden glow, shield outboard for symmetry,
-                    slight separation between ribbons and medal per operator.
-                    Recipe recorded in the vault for reuse on future pages. */}
-                <div className="mt-12 flex items-center justify-center gap-2">
+                {/* Trust badge row: the operator's final transparent-bg art
+                    (badge-row-7yrs.png). Processed before ship: bottom-arc
+                    GPT typo "EKPERIENCE" rebuilt as EXPERIENCE in matching
+                    lettering; ribbon interiors made translucent so the
+                    slideshow reads through. One asset = drops onto any page. */}
+                <div className="mt-10 flex justify-center">
                   <Image
-                    src="/images/badge-ribbon-licensed.png"
-                    alt="Licensed"
-                    width={348}
-                    height={122}
-                    className="h-11 sm:h-14 w-auto"
-                  />
-                  <Image
-                    src="/images/badge-medal-7yrs.png"
-                    alt="7 years experience"
-                    width={228}
-                    height={236}
-                    className="h-20 sm:h-[6.5rem] w-auto -my-3"
-                  />
-                  <Image
-                    src="/images/badge-ribbon-insured.png"
-                    alt="Insured"
-                    width={348}
-                    height={122}
-                    className="h-11 sm:h-14 w-auto"
+                    src="/images/badge-row-7yrs.png"
+                    alt="Licensed, 7 years experience, insured"
+                    width={1368}
+                    height={352}
+                    className="w-[340px] sm:w-[560px] max-w-full h-auto"
                   />
                 </div>
                 <p className="mt-4 text-sm text-white/60 font-body">Phoenix family-owned</p>
