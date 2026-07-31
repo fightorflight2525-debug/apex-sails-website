@@ -529,12 +529,21 @@ export default function ResidentialPage() {
             give you a clear, itemized quote at your free design visit, with no
             surprises.
           </p>
-          <p className="mt-6 text-base text-white/60 leading-relaxed max-w-2xl mx-auto">
-            Why that number? Because this is a structure your family will stand
-            under for the next decade, and we build it that way: commercial-grade
-            fabric, marine-grade steel, real structural engineering, and licensed,
-            insured crews. We do not cut corners to hit a price, and we do not
-            slow down to justify one. <span className="italic text-white/75">We do it right, and we do it fast.</span>
+          {/* r6b: the justification opens on a single centered question instead
+              of burying it in the first line. A question posed on its own line
+              opens a loop the reader wants closed, so the paragraph beneath it
+              gets read instead of skimmed. Deliberately set BELOW the price
+              headline in weight so the $8,000 to $12,000 anchor keeps primacy,
+              and tight to its paragraph (mt-2) so the two read as one unit. */}
+          <p className="mt-8 font-heading text-xl sm:text-2xl italic font-semibold text-copper/85">
+            Why?
+          </p>
+          <p className="mt-2 text-base text-white/60 leading-relaxed max-w-2xl mx-auto">
+            This is a structure your family will stand under for the next decade,
+            and we build it that way: commercial-grade fabric, marine-grade steel,
+            real structural engineering, and licensed, insured crews. We do not
+            cut corners to hit a price, and we do not slow down to justify one.{" "}
+            <span className="italic text-white/75">We do it right, and we do it fast.</span>
           </p>
         </div>
       </section>
