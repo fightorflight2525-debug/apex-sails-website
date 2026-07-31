@@ -304,19 +304,22 @@ export default function ResidentialPage() {
         <div className="relative z-10 -mt-[100vh]">
           {/* HERO screen */}
           <div className="min-h-screen flex items-center">
-            <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-32 pb-24">
-              <div className="max-w-3xl mx-auto text-center">
+            <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-32 lg:pt-28 pb-10 lg:pb-24">
+              <div className="max-w-3xl lg:max-w-4xl mx-auto text-center">
                 <span className="inline-block text-sm font-semibold uppercase tracking-widest text-sand">
                   Phoenix backyard, pool & patio
                   <span className="block sm:inline"> shade sails</span>
                 </span>
-                <h1 className="mt-4 font-heading text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-[1.05] tracking-tight">
+                <h1 className="mt-4 font-heading text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] xl:text-[5.5rem] font-bold text-white leading-[1.05] tracking-tight">
                   Today...
                   <span className="block mt-1">
-                    <span className="italic">Take</span> Back Your <span className="text-copper">Backyard</span>
+                    <span className="italic">Take</span> Back Your{" "}
+                    {/* r6: thin white outline. The copper washed out against the
+                        warmer slides once the burnt-orange tint went in. */}
+                    <span className="text-copper hero-word-outline">Backyard</span>
                   </span>
                 </h1>
-                <p className="mt-6 text-lg sm:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-body">
+                <p className="mt-6 text-lg sm:text-xl text-white/80 max-w-2xl lg:max-w-3xl mx-auto leading-relaxed font-body">
                   Custom shade sails for Phoenix backyards, pools, and patios.
                   Designed for your exact space, engineered for monsoon wind, and
                   up in as little as 14 days. Want proof of how fast we move? A
@@ -349,22 +352,31 @@ export default function ResidentialPage() {
                   </a>
                 </div>
 
-                {/* Trust badge row: the operator's final transparent-bg art
-                    (badge-row-7yrs.png). Processed before ship: bottom-arc
-                    GPT typo "EKPERIENCE" rebuilt as EXPERIENCE in matching
-                    lettering; ribbon interiors made translucent so the
-                    slideshow reads through. One asset = drops onto any page. */}
-                <div className="mt-10 flex justify-center">
-                  <Image
-                    src="/images/badge-row-7yrs.png"
-                    alt="Licensed, 7 years experience, insured"
-                    width={1368}
-                    height={352}
-                    className="w-[340px] sm:w-[560px] max-w-full h-auto"
-                  />
-                </div>
-                <p className="mt-4 text-sm text-white/60 font-body">Phoenix family-owned</p>
               </div>
+            </div>
+          </div>
+
+          {/* Trust badge row: the operator's final transparent-bg art
+              (badge-row-7yrs.png). Processed before ship: bottom-arc GPT typo
+              "EKPERIENCE" rebuilt as EXPERIENCE in matching lettering; ribbon
+              interiors made translucent so the slideshow reads through. One
+              asset = drops onto any page.
+              PLACEMENT (r6, operator-directed): this block sits OUTSIDE the
+              min-h-screen hero box, so it begins at exactly 100vh and is below
+              the fold on EVERY desktop height by construction, not by a pixel
+              guess. The first screen then carries ONE commitment target. */}
+          <div className="px-6 sm:px-8 lg:px-12 pb-24">
+            <div className="max-w-3xl mx-auto text-center">
+              <div className="flex justify-center">
+                <Image
+                  src="/images/badge-row-7yrs.png"
+                  alt="Licensed, 7 years experience, insured"
+                  width={1368}
+                  height={352}
+                  className="w-[340px] sm:w-[560px] max-w-full h-auto"
+                />
+              </div>
+              <p className="mt-4 text-base sm:text-lg text-white/60 font-body">Phoenix family-owned</p>
             </div>
           </div>
 

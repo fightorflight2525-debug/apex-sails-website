@@ -64,6 +64,15 @@ h1, h2, h3, h4, h5, h6 {
   .cta-glow-loop-white { animation: none; }
 }
 
+/* r6: hairline white outline on a hero accent word. The copper reads washed
+   out against the warmer tinted slideshow frames; a 1px stroke restores the
+   edge without changing the brand colour. paint-order keeps the stroke behind
+   the fill where the browser supports it (ignored safely where it does not). */
+.hero-word-outline {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.92);
+  paint-order: stroke fill;
+}
+
 /* Gallery thumbnail fade-in-up cascade (Lightbox staggerDelayMs prop). */
 @keyframes fade-in-up {
   from {
