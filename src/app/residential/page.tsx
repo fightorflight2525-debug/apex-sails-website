@@ -187,29 +187,27 @@ function MedallionBadge({ className = "" }: { className?: string }) {
     }).join(" ") + " Z";
   return (
     <svg className={className} viewBox="0 0 120 100" fill="none" aria-hidden="true">
-      {/* ribbon wings: solid copper, white stars (drawn first, behind the medal) */}
-      <path d="M34 37 H8 L14.5 50 L8 63 H34 Z" fill="#C45C26" />
-      <path d="M86 37 H112 L105.5 50 L112 63 H86 Z" fill="#C45C26" />
-      <path d={star(21)} fill="#FFFFFF" />
-      <path d={star(99)} fill="#FFFFFF" />
-      {/* solid white medal: filled serrated edge, copper rings, charcoal text.
-          Deliberately breaks the outline aesthetic so the credential READS
-          (operator directive: it is a badge, promote it). */}
-      <path d={serration} fill="#FFFFFF" stroke="#C45C26" strokeWidth="1.5" strokeLinejoin="round" />
-      <circle cx="60" cy="50" r="39.5" fill="#FFFFFF" stroke="#C45C26" strokeWidth="2.4" />
-      <circle cx="60" cy="50" r="26.5" fill="#FFFFFF" stroke="#C45C26" strokeWidth="1.6" />
-      {/* EXPERIENCE arcs (bottom arc mirrors the reference medal) */}
+      {/* COPPER medal (operator GPT-mock match): copper serrated ring + band,
+          white EXPERIENCE arcs, white band stars, white center with charcoal
+          7 YEARS. Deliberately outside the outline aesthetic: it is a badge. */}
+      <path d={serration} fill="#C45C26" strokeLinejoin="round" />
+      <circle cx="60" cy="50" r="39.5" fill="#C45C26" stroke="#FFFFFF" strokeWidth="1.2" strokeOpacity="0.65" />
+      {/* band stars at 9 and 3 o'clock, matching the mock */}
+      <path d={star(27)} fill="#FFFFFF" />
+      <path d={star(93)} fill="#FFFFFF" />
+      {/* EXPERIENCE arcs in white (bottom arc mirrors the reference medal) */}
       <defs>
         <path id="medalArcTop" d="M28.5 50 A31.5 31.5 0 0 1 91.5 50" />
         <path id="medalArcBottom" d="M28.5 50 A31.5 31.5 0 0 0 91.5 50" />
       </defs>
-      <text fontSize="9" fill="#1A1A1A" style={{ fontWeight: 800, letterSpacing: "0.14em" }}>
+      <text fontSize="9" fill="#FFFFFF" style={{ fontWeight: 800, letterSpacing: "0.14em" }}>
         <textPath href="#medalArcTop" startOffset="50%" textAnchor="middle">EXPERIENCE</textPath>
       </text>
-      <text fontSize="9" fill="#1A1A1A" style={{ fontWeight: 800, letterSpacing: "0.14em" }}>
+      <text fontSize="9" fill="#FFFFFF" style={{ fontWeight: 800, letterSpacing: "0.14em" }}>
         <textPath href="#medalArcBottom" startOffset="50%" textAnchor="middle">EXPERIENCE</textPath>
       </text>
-      {/* center: 7 YEARS in charcoal */}
+      {/* white center with charcoal 7 YEARS */}
+      <circle cx="60" cy="50" r="26.5" fill="#FFFFFF" />
       <text x="60" y="56.5" textAnchor="middle" fontSize="24" fill="#1A1A1A" style={{ fontWeight: 800 }}>7</text>
       <text x="60" y="68" textAnchor="middle" fontSize="9.5" fill="#1A1A1A" style={{ fontWeight: 800, letterSpacing: "0.18em" }}>YEARS</text>
     </svg>
@@ -324,10 +322,11 @@ export default function ResidentialPage() {
             frameClassName="object-cover"
             frames={heroFrames}
           />
-          {/* Tint matched to the home hero treatment (operator: same as the
-              original site, a hair lighter). charcoal-light mid + copper glow
-              give the warm tone; readability holds across every slide. */}
-          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/75 via-charcoal-light/60 to-charcoal/90" />
+          {/* Tint (operator-tuned r3): one step darker again + a burnt-orange
+              brand wash so lettering reads on every slide. Recipe for future
+              pages: dark gradient 80/65/90 + flat copper wash + copper glow. */}
+          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/80 via-charcoal-light/65 to-charcoal/90" />
+          <div className="absolute inset-0 bg-copper/[0.06]" />
           {/* Geometric sail-shape SVG motif (decorative, same as the home hero) */}
           <div className="absolute inset-0 opacity-[0.05]">
             <svg className="absolute top-20 -left-20 w-[600px] h-[600px]" viewBox="0 0 600 600" fill="none" aria-hidden="true">
@@ -342,8 +341,8 @@ export default function ResidentialPage() {
               <path d="M50 350 L200 50 L350 280 Z" stroke="white" strokeWidth="1" />
             </svg>
           </div>
-          {/* Subtle radial copper glow (the warm tone from the original hero) */}
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-copper/5 rounded-full blur-3xl" />
+          {/* Radial copper glow (the warm burnt-orange tone, strengthened r3) */}
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-copper/10 rounded-full blur-3xl" />
           {/* soft fade into the urgency section so the seam disappears */}
           <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-charcoal to-transparent" />
         </div>
@@ -397,18 +396,35 @@ export default function ResidentialPage() {
                   </a>
                 </div>
 
-                {/* Trust badge row: credential chips flanking the medal so the
-                    whole row reads as official credentials */}
-                <div className="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-4 text-white/90">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 backdrop-blur-sm px-4 py-2">
-                    <LicensedIcon className="w-6 h-6 text-copper" />
-                    <span className="text-sm font-semibold tracking-wide">Licensed</span>
-                  </span>
-                  <MedallionBadge className="w-24 h-20 drop-shadow-lg" />
-                  <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 backdrop-blur-sm px-4 py-2">
-                    <ShieldIcon className="w-6 h-6 text-copper" />
-                    <span className="text-sm font-semibold tracking-wide">Insured</span>
-                  </span>
+                {/* Trust badge row (operator GPT-mock match): notched ribbon
+                    banners tucked behind the copper medal. Icons sit OUTBOARD
+                    on both ribbons for mirror symmetry (operator directive:
+                    shield moved to the outside of "Insured"). */}
+                <div className="mt-12 flex items-center justify-center drop-shadow-lg">
+                  {/* Licensed ribbon (notch on the outer/left end) */}
+                  <div className="relative h-12 sm:h-14 w-36 sm:w-56">
+                    <svg className="absolute inset-0 h-full w-full" viewBox="0 0 220 64" preserveAspectRatio="none" aria-hidden="true">
+                      <path d="M2 2 H218 V62 H2 L20 32 Z" fill="rgba(20,20,20,0.55)" stroke="#C45C26" strokeWidth="1.5" strokeLinejoin="round" />
+                      <path d="M10 7 H212 V57 H10 L26 32 Z" fill="none" stroke="#C45C26" strokeWidth="0.8" opacity="0.5" />
+                    </svg>
+                    <span className="relative z-10 flex h-full items-center justify-center gap-2 pl-8 pr-4">
+                      <LicensedIcon className="w-6 h-6 shrink-0 text-copper" />
+                      <span className="text-sm sm:text-base font-semibold tracking-wide text-white">Licensed</span>
+                    </span>
+                  </div>
+                  {/* Copper medal overlapping the ribbon ends */}
+                  <MedallionBadge className="relative z-10 -mx-3 w-24 h-20 shrink-0 drop-shadow-xl" />
+                  {/* Insured ribbon (notch on the outer/right end; icon outboard) */}
+                  <div className="relative h-12 sm:h-14 w-36 sm:w-56">
+                    <svg className="absolute inset-0 h-full w-full" viewBox="0 0 220 64" preserveAspectRatio="none" aria-hidden="true">
+                      <path d="M218 2 H2 V62 H218 L200 32 Z" fill="rgba(20,20,20,0.55)" stroke="#C45C26" strokeWidth="1.5" strokeLinejoin="round" />
+                      <path d="M210 7 H8 V57 H210 L194 32 Z" fill="none" stroke="#C45C26" strokeWidth="0.8" opacity="0.5" />
+                    </svg>
+                    <span className="relative z-10 flex h-full items-center justify-center gap-2 pl-4 pr-8">
+                      <span className="text-sm sm:text-base font-semibold tracking-wide text-white">Insured</span>
+                      <ShieldIcon className="w-6 h-6 shrink-0 text-copper" />
+                    </span>
+                  </div>
                 </div>
                 <p className="mt-4 text-sm text-white/60 font-body">Phoenix family-owned</p>
               </div>
