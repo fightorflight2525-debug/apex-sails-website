@@ -5,6 +5,7 @@ import CrossFadeCarousel from "@/components/CrossFadeCarousel";
 import CountUp from "@/components/CountUp";
 import Lightbox from "@/components/Lightbox";
 import StickyCallBar from "@/components/StickyCallBar";
+import ResidentialTopCurtain from "@/components/ResidentialTopCurtain";
 
 export const metadata: Metadata = {
   title: "Shade Sails Phoenix | Backyard, Pool & Patio | Apex Sail Shades",
@@ -164,24 +165,50 @@ const valueProps: { title: string; body: string; icon: ReactNode; href?: string 
 /* ---- Inline icons (site outline style) ---- */
 
 function MedallionBadge({ className = "" }: { className?: string }) {
-  // Serrated circular medallion reading 7 YEARS EXPERIENCE (style ref: operator IMG_0651).
-  const ticks = Array.from({ length: 24 }, (_, i) => {
-    const a = (i * 360) / 24;
-    const r = (a * Math.PI) / 180;
-    const x1 = 20 + 18 * Math.cos(r);
-    const y1 = 20 + 18 * Math.sin(r);
-    const x2 = 20 + 20 * Math.cos(r);
-    const y2 = 20 + 20 * Math.sin(r);
-    return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />;
-  });
+  // Award medallion rebuilt to the operator's reference medal (serrated ring,
+  // EXPERIENCE arcs top and bottom, ribbon wings with stars, 7 YEARS center).
+  // Nothing is clipped: viewBox 120x100 with padding around every element.
+  // Colored entirely by currentColor to stay in the site outline aesthetic.
+  const serration =
+    Array.from({ length: 36 }, (_, i) => {
+      const a = ((i * 10 - 90) * Math.PI) / 180;
+      const r = i % 2 === 0 ? 47 : 41.5;
+      const x = 60 + r * Math.cos(a);
+      const y = 50 + r * Math.sin(a);
+      return `${i === 0 ? "M" : "L"}${x.toFixed(2)},${y.toFixed(2)}`;
+    }).join(" ") + " Z";
+  const star = (cx: number) =>
+    Array.from({ length: 10 }, (_, i) => {
+      const a = ((i * 36 - 90) * Math.PI) / 180;
+      const r = i % 2 === 0 ? 5 : 2.1;
+      return `${i === 0 ? "M" : "L"}${(cx + r * Math.cos(a)).toFixed(2)},${(50 + r * Math.sin(a)).toFixed(2)}`;
+    }).join(" ") + " Z";
   return (
-    <svg className={className} viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      {ticks}
-      <circle cx="20" cy="20" r="16" stroke="currentColor" strokeWidth="1.6" />
-      <circle cx="20" cy="20" r="13" stroke="currentColor" strokeWidth="1" opacity="0.7" />
-      <text x="20" y="17" textAnchor="middle" fontSize="5" fill="currentColor" style={{ fontWeight: 700, letterSpacing: "0.05em" }}>EXPERIENCE</text>
-      <text x="20" y="27.5" textAnchor="middle" fontSize="11" fill="currentColor" style={{ fontWeight: 800 }}>7</text>
-      <text x="20" y="33" textAnchor="middle" fontSize="4.4" fill="currentColor" style={{ fontWeight: 700, letterSpacing: "0.18em" }}>YEARS</text>
+    <svg className={className} viewBox="0 0 120 100" fill="none" aria-hidden="true">
+      {/* ribbon wings (drawn first, behind the medal) */}
+      <path d="M34 37 H8 L14.5 50 L8 63 H34 Z" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round" />
+      <path d="M86 37 H112 L105.5 50 L112 63 H86 Z" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round" />
+      <path d={star(21)} fill="currentColor" />
+      <path d={star(99)} fill="currentColor" />
+      {/* serrated outer edge */}
+      <path d={serration} stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+      {/* medal band */}
+      <circle cx="60" cy="50" r="39.5" stroke="currentColor" strokeWidth="2.2" />
+      <circle cx="60" cy="50" r="26.5" stroke="currentColor" strokeWidth="1.4" opacity="0.85" />
+      {/* EXPERIENCE arcs (bottom arc mirrors the reference medal) */}
+      <defs>
+        <path id="medalArcTop" d="M27 50 A33 33 0 0 1 93 50" />
+        <path id="medalArcBottom" d="M27 50 A33 33 0 0 0 93 50" />
+      </defs>
+      <text fontSize="8" fill="currentColor" style={{ fontWeight: 700, letterSpacing: "0.22em" }}>
+        <textPath href="#medalArcTop" startOffset="50%" textAnchor="middle">EXPERIENCE</textPath>
+      </text>
+      <text fontSize="8" fill="currentColor" style={{ fontWeight: 700, letterSpacing: "0.22em" }}>
+        <textPath href="#medalArcBottom" startOffset="50%" textAnchor="middle">EXPERIENCE</textPath>
+      </text>
+      {/* center: 7 YEARS */}
+      <text x="60" y="55.5" textAnchor="middle" fontSize="23" fill="currentColor" style={{ fontWeight: 800 }}>7</text>
+      <text x="60" y="67" textAnchor="middle" fontSize="8" fill="currentColor" style={{ fontWeight: 700, letterSpacing: "0.24em" }}>YEARS</text>
     </svg>
   );
 }
@@ -273,6 +300,10 @@ export default function ResidentialPage() {
         }}
       />
 
+      {/* Invisible curtain: scrolling text dissolves at the header line while
+          the header is transparent (desktop + mobile). */}
+      <ResidentialTopCurtain />
+
       {/* ===== FIXED-BACKGROUND SCROLL ZONE: hero + Apex Guarantee ===== */}
       {/* The slideshow stays pinned while the hero, then the guarantee cards, scroll over it.
           The white header color-flip is intentionally left as-is (operator to specify the
@@ -290,7 +321,26 @@ export default function ResidentialPage() {
             frameClassName="object-cover"
             frames={heroFrames}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/75 via-charcoal/55 to-charcoal/85" />
+          {/* Tint matched to the home hero treatment (operator: same as the
+              original site, a hair lighter). charcoal-light mid + copper glow
+              give the warm tone; readability holds across every slide. */}
+          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/65 via-charcoal-light/45 to-charcoal/90" />
+          {/* Geometric sail-shape SVG motif (decorative, same as the home hero) */}
+          <div className="absolute inset-0 opacity-[0.05]">
+            <svg className="absolute top-20 -left-20 w-[600px] h-[600px]" viewBox="0 0 600 600" fill="none" aria-hidden="true">
+              <path d="M100 500 L300 100 L500 400 Z" stroke="white" strokeWidth="1.5" />
+              <path d="M150 480 L320 150 L480 380 Z" stroke="white" strokeWidth="0.75" />
+            </svg>
+            <svg className="absolute top-40 right-0 w-[500px] h-[500px]" viewBox="0 0 500 500" fill="none" aria-hidden="true">
+              <path d="M50 450 L250 50 L450 350 Z" stroke="white" strokeWidth="1.5" />
+              <path d="M80 420 L260 100 L420 330 Z" stroke="white" strokeWidth="0.75" />
+            </svg>
+            <svg className="absolute bottom-10 left-1/3 w-[400px] h-[400px]" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+              <path d="M50 350 L200 50 L350 280 Z" stroke="white" strokeWidth="1" />
+            </svg>
+          </div>
+          {/* Subtle radial copper glow (the warm tone from the original hero) */}
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-copper/5 rounded-full blur-3xl" />
           {/* soft fade into the urgency section so the seam disappears */}
           <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-charcoal to-transparent" />
         </div>
@@ -302,12 +352,13 @@ export default function ResidentialPage() {
             <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-32 pb-24">
               <div className="max-w-3xl mx-auto text-center">
                 <span className="inline-block text-sm font-semibold uppercase tracking-widest text-sand">
-                  Phoenix backyard, pool & patio shade sails
+                  Phoenix backyard, pool & patio
+                  <span className="block sm:inline"> shade sails</span>
                 </span>
                 <h1 className="mt-4 font-heading text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-[1.05] tracking-tight">
                   Today...
                   <span className="block mt-1">
-                    Take Back Your <span className="text-copper">Backyard</span>
+                    <span className="italic">Take</span> Back Your <span className="text-copper">Backyard</span>
                   </span>
                 </h1>
                 <p className="mt-6 text-lg sm:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-body">
@@ -321,7 +372,9 @@ export default function ResidentialPage() {
                   your free design visit.
                 </p>
 
-                <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
+                {/* sm:items-start keeps both button TOPS level on desktop even
+                    though the primary carries a descriptor line beneath it. */}
+                <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center sm:items-start">
                   <div className="flex flex-col items-center">
                     <Link
                       href="/contact"
@@ -347,7 +400,7 @@ export default function ResidentialPage() {
                     <LicensedIcon className="w-7 h-7 text-copper" />
                     <span className="text-sm font-semibold tracking-wide">Licensed</span>
                   </span>
-                  <MedallionBadge className="w-14 h-14 text-copper" />
+                  <MedallionBadge className="w-20 h-16 text-copper" />
                   <span className="inline-flex items-center gap-2">
                     <ShieldIcon className="w-7 h-7 text-copper" />
                     <span className="text-sm font-semibold tracking-wide">Insured</span>
@@ -433,13 +486,17 @@ export default function ResidentialPage() {
                   </ul>
                 </div>
 
-                {/* CARD 4 - With One Step (copper accent) */}
-                <div className="rounded-2xl bg-copper p-7 sm:p-9 flex flex-col">
-                  <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white">With One Step</h3>
-                  <div className="mt-6 flex flex-col items-start">
+                {/* CARD 4 - With One Step (copper accent; all copy centered) */}
+                <div className="rounded-2xl bg-copper p-7 sm:p-9 flex flex-col items-center text-center">
+                  <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white">
+                    With One Step&nbsp;&nbsp;<span className="italic tracking-wide">RISK-FREE!</span>
+                  </h3>
+                  <div className="mt-6 flex flex-col items-center">
+                    {/* inline-block + text-center so the label wraps as clean
+                        centered lines on mobile instead of breaking apart */}
                     <Link
                       href="/contact"
-                      className="inline-flex items-center justify-center px-8 py-4 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/10"
+                      className="cta-glow-loop-white inline-block text-center px-8 py-4 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/10"
                     >
                       Get My <em className="not-italic font-extrabold text-[1.08em] mx-1">Free</em> Design + Estimate
                     </Link>
@@ -450,13 +507,22 @@ export default function ResidentialPage() {
                   <p className="mt-6 text-lg text-white/90 leading-relaxed">
                     Everything you need to make an informed decision.
                   </p>
-                  <div className="mt-auto pt-6">
+                  <div className="mt-auto pt-6 w-full">
                     <div className="rounded-xl bg-white/15 px-5 py-3 text-center text-sm font-semibold text-white">
                       Offer spot held upon call or form submission
                     </div>
                   </div>
                 </div>
               </div>
+
+              {/* Speed does not mean cheap (operator: fight the fast-equals-
+                  corner-cutting objection right under the guarantee) */}
+              <p className="mt-12 max-w-3xl mx-auto text-center text-lg sm:text-xl italic text-white/80 leading-relaxed font-body">
+                Your custom, premium, commercial-grade shade sail should not take
+                months before you are standing under it. Done right does not mean
+                done slow. Precise engineering, careful design, and a crew that
+                respects your home are exactly what make 20 days possible.
+              </p>
             </div>
           </div>
         </div>
@@ -494,23 +560,54 @@ export default function ResidentialPage() {
             give you a clear, itemized quote at your free design visit, with no
             surprises.
           </p>
+          <p className="mt-6 text-base text-white/60 leading-relaxed max-w-2xl mx-auto">
+            Why that number? Because this is a structure your family will stand
+            under for the next decade, and we build it that way: commercial-grade
+            fabric, marine-grade steel, real structural engineering, and licensed,
+            insured crews. We do not cut corners to hit a price, and we do not
+            slow down to justify one. <span className="italic text-white/75">We do it right, and we do it fast.</span>
+          </p>
         </div>
       </section>
 
       {/* ===== WHAT WE SHADE (QS relevance: backyard / pool / patio keyword map) ===== */}
-      <section className="bg-white py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <section className="relative overflow-hidden bg-white py-20 md:py-28">
+        {/* faint sail-geometry motif so the section is not flat white */}
+        <div className="absolute inset-0 opacity-[0.03] text-charcoal" aria-hidden="true">
+          <svg className="absolute -top-10 -right-16 w-[420px] h-[420px]" viewBox="0 0 400 400" fill="none">
+            <path d="M50 350 L200 50 L350 280 Z" stroke="currentColor" strokeWidth="2" />
+            <path d="M85 330 L210 95 L325 270 Z" stroke="currentColor" strokeWidth="1" />
+          </svg>
+          <svg className="absolute -bottom-16 -left-14 w-[360px] h-[360px]" viewBox="0 0 400 400" fill="none">
+            <path d="M50 350 L200 50 L350 280 Z" stroke="currentColor" strokeWidth="2" />
+          </svg>
+        </div>
+        <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-charcoal tracking-tight">
-              Backyard, pool, and patio shade sails
+            <span className="inline-block text-sm font-semibold uppercase tracking-widest text-copper">
+              What we shade
+            </span>
+            <h2 className="mt-3 font-heading text-3xl sm:text-4xl font-bold text-charcoal tracking-tight">
+              <span className="text-copper">Backyard</span>, <span className="text-copper">pool</span>, and <span className="text-copper">patio</span> shade sails
             </h2>
             <p className="mt-4 text-lg text-charcoal/70 leading-relaxed">
               Tell us the spot that gets too hot. We design the sail around it.
             </p>
           </div>
           <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="rounded-2xl bg-cream p-7 border border-charcoal/5">
-              <h3 className="font-heading text-xl font-semibold text-charcoal">Backyard shade sails</h3>
+            <div className="relative overflow-hidden rounded-2xl bg-cream p-7 border border-charcoal/5 transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
+              <svg className="absolute -bottom-6 -right-6 w-32 h-32 text-charcoal/[0.04]" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+                <path d="M50 350 L200 50 L350 280 Z" stroke="currentColor" strokeWidth="14" />
+              </svg>
+              <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-copper/10">
+                <svg className="w-8 h-8 text-copper" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                  <circle cx="15" cy="14" r="8" stroke="currentColor" strokeWidth="2" />
+                  <line x1="15" y1="22" x2="15" y2="34" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  <line x1="4" y1="34" x2="36" y2="34" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M26 34 L26 26 L34 26 L34 34" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+                </svg>
+              </span>
+              <h3 className="mt-4 font-heading text-xl font-semibold text-charcoal">Backyard shade sails</h3>
               <p className="mt-3 text-charcoal/70 leading-relaxed">
                 One sail can turn a backyard that bakes all afternoon into the
                 spot your family actually uses. We map the sun across your yard
@@ -521,8 +618,18 @@ export default function ResidentialPage() {
                 Start with a free visit &rarr;
               </Link>
             </div>
-            <div className="rounded-2xl bg-cream p-7 border border-charcoal/5">
-              <h3 className="font-heading text-xl font-semibold text-charcoal">Pool shade sails</h3>
+            <div className="relative overflow-hidden rounded-2xl bg-cream p-7 border border-charcoal/5 transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
+              <svg className="absolute -bottom-6 -right-6 w-32 h-32 text-charcoal/[0.04]" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+                <path d="M50 350 L200 50 L350 280 Z" stroke="currentColor" strokeWidth="14" />
+              </svg>
+              <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-copper/10">
+                <svg className="w-8 h-8 text-copper" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                  <path d="M4 22 c4 -4 8 -4 12 0 s8 4 12 0 s8 -4 8 0" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M4 30 c4 -4 8 -4 12 0 s8 4 12 0 s8 -4 8 0" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  <circle cx="28" cy="10" r="4" stroke="currentColor" strokeWidth="2" />
+                </svg>
+              </span>
+              <h3 className="mt-4 font-heading text-xl font-semibold text-charcoal">Pool shade sails</h3>
               <p className="mt-3 text-charcoal/70 leading-relaxed">
                 Phoenix pools lose their fun by June. A pool shade sail cools the
                 water and the deck, blocks up to 96% of UV, and rides high enough
@@ -532,8 +639,19 @@ export default function ResidentialPage() {
                 Start with a free visit &rarr;
               </Link>
             </div>
-            <div className="rounded-2xl bg-cream p-7 border border-charcoal/5">
-              <h3 className="font-heading text-xl font-semibold text-charcoal">Patio shade sails</h3>
+            <div className="relative overflow-hidden rounded-2xl bg-cream p-7 border border-charcoal/5 transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
+              <svg className="absolute -bottom-6 -right-6 w-32 h-32 text-charcoal/[0.04]" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+                <path d="M50 350 L200 50 L350 280 Z" stroke="currentColor" strokeWidth="14" />
+              </svg>
+              <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-copper/10">
+                <svg className="w-8 h-8 text-copper" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                  <path d="M6 18 A14 14 0 0 1 34 18 Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+                  <line x1="20" y1="6" x2="20" y2="18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  <line x1="20" y1="18" x2="20" y2="32" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M13 34 a7 4 0 0 1 14 0" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+              </span>
+              <h3 className="mt-4 font-heading text-xl font-semibold text-charcoal">Patio shade sails</h3>
               <p className="mt-3 text-charcoal/70 leading-relaxed">
                 A patio shade sail turns your patio into an outdoor room you can
                 use at noon in July. We attach to the house where the structure
@@ -544,6 +662,29 @@ export default function ResidentialPage() {
                 Start with a free visit &rarr;
               </Link>
             </div>
+          </div>
+
+          {/* Or give us a challenge (operator: thin elongated card, positive frame) */}
+          <div className="mt-8 relative overflow-hidden rounded-2xl bg-charcoal px-8 py-7 sm:flex items-center justify-between gap-8">
+            <svg className="absolute -top-10 -right-8 w-48 h-48 text-white/[0.05]" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+              <path d="M50 350 L200 50 L350 280 Z" stroke="currentColor" strokeWidth="10" />
+            </svg>
+            <div className="relative">
+              <h3 className="font-heading text-2xl font-bold text-white">
+                Or&hellip; <span className="text-copper">give us a challenge.</span>
+              </h3>
+              <p className="mt-2 text-white/70 leading-relaxed max-w-2xl">
+                We custom engineer and design every shade structure to fit the
+                vision you have for your home, with shade where you need it, when
+                you need it, while upgrading the look of your house.
+              </p>
+            </div>
+            <Link
+              href="/contact"
+              className="relative mt-5 sm:mt-0 shrink-0 inline-flex items-center justify-center px-6 py-3 bg-copper text-white font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
+            >
+              Bring us your idea
+            </Link>
           </div>
         </div>
       </section>
@@ -584,11 +725,24 @@ export default function ResidentialPage() {
       </section>
 
       {/* ===== VALUE STACK (moved here, after gallery) ===== */}
-      <section className="bg-white py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <section className="relative overflow-hidden bg-white py-20 md:py-28">
+        {/* faint sail-geometry motif (same family as the hero + What We Shade) */}
+        <div className="absolute inset-0 opacity-[0.03] text-charcoal" aria-hidden="true">
+          <svg className="absolute -top-14 -left-16 w-[400px] h-[400px]" viewBox="0 0 400 400" fill="none">
+            <path d="M50 350 L200 50 L350 280 Z" stroke="currentColor" strokeWidth="2" />
+            <path d="M85 330 L210 95 L325 270 Z" stroke="currentColor" strokeWidth="1" />
+          </svg>
+          <svg className="absolute -bottom-12 -right-14 w-[360px] h-[360px]" viewBox="0 0 400 400" fill="none">
+            <path d="M50 350 L200 50 L350 280 Z" stroke="currentColor" strokeWidth="2" />
+          </svg>
+        </div>
+        <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-charcoal tracking-tight">
-              A shade sail that is actually built for your backyard or patio
+            <span className="inline-block text-sm font-semibold uppercase tracking-widest text-copper">
+              The Apex difference
+            </span>
+            <h2 className="mt-3 font-heading text-3xl sm:text-4xl font-bold text-charcoal tracking-tight">
+              A shade sail that is <em className="not-italic text-copper">actually built</em> for your backyard or patio
             </h2>
             <p className="mt-4 text-lg text-copper italic leading-relaxed">
               Not an off-the-shelf canopy. Every sail is measured, engineered, and installed for your exact layout and sun angles, from backyard sails to patio shade covers to full sun shades for your yard.
@@ -599,7 +753,7 @@ export default function ResidentialPage() {
             {valueProps.map((p) => (
               <div
                 key={p.title}
-                className="rounded-2xl bg-white p-7 shadow-sm border border-charcoal/5 transition-transform duration-200 hover:-translate-y-1 text-center"
+                className="rounded-2xl bg-white p-7 shadow-sm border border-charcoal/5 transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-copper/20 text-center"
               >
                 <span className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-copper/10">
                   {p.icon}
@@ -621,12 +775,17 @@ export default function ResidentialPage() {
       {/* ===== FAQ (AEO: rendered Q&A mirrors the FAQPage JSON-LD exactly) ===== */}
       <section className="bg-cream py-20 md:py-28">
         <div className="max-w-3xl mx-auto px-6 sm:px-8">
-          <h2 className="text-center font-heading text-3xl sm:text-4xl font-bold text-charcoal tracking-tight">
-            Phoenix shade sail questions, answered
-          </h2>
+          <div className="text-center">
+            <span className="inline-block text-sm font-semibold uppercase tracking-widest text-copper">
+              Straight answers
+            </span>
+            <h2 className="mt-3 font-heading text-3xl sm:text-4xl font-bold text-charcoal tracking-tight">
+              Phoenix shade sail questions, <span className="text-copper">answered</span>
+            </h2>
+          </div>
           <div className="mt-10 space-y-4">
             {faqs.map((f) => (
-              <details key={f.q} className="group rounded-2xl bg-white border border-charcoal/5 shadow-sm px-6 py-5">
+              <details key={f.q} className="group rounded-2xl bg-white border border-charcoal/5 shadow-sm px-6 py-5 transition-colors duration-200 hover:border-copper/25 open:border-copper/25">
                 <summary className="cursor-pointer list-none flex items-center justify-between gap-4 font-heading text-lg font-semibold text-charcoal">
                   {f.q}
                   <span className="shrink-0 text-copper text-2xl leading-none transition-transform duration-200 group-open:rotate-45" aria-hidden="true">+</span>
@@ -644,7 +803,9 @@ export default function ResidentialPage() {
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
             Ready to make your backyard usable again?
           </h2>
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
+          {/* sm:items-start keeps the Call button TOP level with the primary
+              even though the primary carries a descriptor line beneath it. */}
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center sm:items-start">
             <div className="flex flex-col items-center">
               <Link
                 href="/contact"

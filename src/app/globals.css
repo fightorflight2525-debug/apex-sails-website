@@ -53,6 +53,17 @@ h1, h2, h3, h4, h5, h6 {
   .cta-glow-loop { animation: none; }
 }
 
+/* White pulse-glow for CTAs that sit on copper surfaces (residential card 4).
+   Same rhythm as ctaGlow so the two never feel like different systems. */
+@keyframes ctaGlowWhite {
+  0%, 100% { box-shadow: 0 0 18px 0 rgba(255, 255, 255, 0.4); }
+  50%      { box-shadow: 0 0 20px 9px rgba(255, 255, 255, 0.6); }
+}
+.cta-glow-loop-white { animation: ctaGlowWhite 2.4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .cta-glow-loop-white { animation: none; }
+}
+
 /* Gallery thumbnail fade-in-up cascade (Lightbox staggerDelayMs prop). */
 @keyframes fade-in-up {
   from {
