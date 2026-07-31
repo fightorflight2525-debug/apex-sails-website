@@ -6,6 +6,8 @@ import Link from "next/link";
 /**
  * Mobile-only sticky CTA bar that slides up after the user scrolls past the hero.
  * position: fixed, so it adds no document-flow layout shift (CLS-safe).
+ * v2: phone restored alongside the form CTA. Calls are the dominant real
+ * conversion channel, so the bar offers both paths.
  */
 export default function StickyCallBar() {
   const [show, setShow] = useState(false);
@@ -23,16 +25,22 @@ export default function StickyCallBar() {
         show ? "translate-y-0" : "translate-y-full"
       }`}
     >
-      <div className="flex border-t border-charcoal/10 bg-white/95 px-4 py-3 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] backdrop-blur">
+      <div className="flex gap-2 border-t border-charcoal/10 bg-white/95 px-4 py-3 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] backdrop-blur">
+        <a
+          href="tel:+16028370370"
+          className="inline-flex items-center justify-center rounded-full border-2 border-copper px-5 text-sm font-bold text-copper"
+        >
+          Call
+        </a>
         <Link
           href="/contact"
           className="flex-1 inline-flex flex-col items-center justify-center rounded-full bg-copper px-4 py-2.5 text-white"
         >
           <span className="text-sm font-semibold">
-            Get My <em className="not-italic font-bold text-[1.06em] mx-0.5">Free</em> 3
+            Get My <em className="not-italic font-bold text-[1.06em] mx-0.5">Free</em> Design + Estimate
           </span>
           <span className="text-[10px] uppercase tracking-widest text-white/85">
-            Visit &middot; 3D Design &middot; Estimate
+            We call within the hour
           </span>
         </Link>
       </div>

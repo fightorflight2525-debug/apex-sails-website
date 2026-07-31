@@ -7,10 +7,47 @@ import Lightbox from "@/components/Lightbox";
 import StickyCallBar from "@/components/StickyCallBar";
 
 export const metadata: Metadata = {
-  title: "Backyard & Patio Shade Sails Phoenix | Apex Sail Shades",
+  title: "Shade Sails Phoenix | Backyard, Pool & Patio | Apex Sail Shades",
   description:
-    "Custom-engineered backyard & patio shade sails for Phoenix homes. Take back your backyard. A real person calls you within the hour. Most projects $8,000 to $12,000.",
+    "Custom shade sails for Phoenix backyards, pools, and patios. Up to 96% UV block, 15°F cooler, up in as little as 14 days. Most projects $8,000 to $12,000. A real person calls you within the hour.",
+  alternates: { canonical: "/residential" },
+  openGraph: {
+    title: "Backyard, Pool & Patio Shade Sails in Phoenix | Apex Sail Shades",
+    description:
+      "Custom shade sails engineered for Phoenix heat and monsoon wind. Free visit, 3D design, and exact estimate. Most projects $8,000 to $12,000.",
+    url: "/residential",
+    type: "website",
+  },
 };
+
+/* AEO: the FAQ block below renders these verbatim and the FAQPage JSON-LD
+   mirrors them exactly (schema must always match visible content). */
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "How much do shade sails cost in Phoenix?",
+    a: "Most residential projects run $8,000 to $12,000 installed. The exact price depends on size, layout, and pole configuration. You get a clear, itemized quote at your free design visit, and the number we quote is the number you pay.",
+  },
+  {
+    q: "How fast can my shade sail be installed?",
+    a: "Most builds are up in about 14 days from deposit. Our guarantee window is 20 days. If your install passes 20 days for reasons on our side, we work for free until your vision is achieved. Monsoon weather can pause a build day; your timeline extends day for day.",
+  },
+  {
+    q: "Will a shade sail survive Phoenix monsoon season?",
+    a: "Yes. Every sail is engineered to a 90 mph wind rating with marine-grade 316 stainless hardware and footings set for monsoon load. Phoenix weather is exactly what we build for.",
+  },
+  {
+    q: "How much cooler is it under a shade sail?",
+    a: "Commercial-grade fabric blocks up to 96% of UV and drops the temperature underneath by up to 15°F. Pools, patios, and play areas stay usable through the hottest part of the day.",
+  },
+  {
+    q: "Do I need HOA approval for a shade sail?",
+    a: "Many Phoenix neighborhoods ask for it. We prepare the drawings and engineering documents your HOA wants to see and guide the approval with you.",
+  },
+  {
+    q: "What warranty comes with my shade sail?",
+    a: "A 10-year fabric warranty, and we stand behind the workmanship on every install. If something is not right, we make it right.",
+  },
+];
 
 /* Real-backyard hero slideshow. Frame 0 = current hero (LCP, priority).
    Frame 1 = the pool image (SLOT 2 flagged for operator confirmation). */
@@ -220,6 +257,22 @@ function WindIcon({ className = "" }: { className?: string }) {
 export default function ResidentialPage() {
   return (
     <>
+      {/* AEO: FAQPage structured data, mirrors the visible FAQ section exactly */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          }),
+        }}
+      />
+
       {/* ===== FIXED-BACKGROUND SCROLL ZONE: hero + Apex Guarantee ===== */}
       {/* The slideshow stays pinned while the hero, then the guarantee cards, scroll over it.
           The white header color-flip is intentionally left as-is (operator to specify the
@@ -249,7 +302,7 @@ export default function ResidentialPage() {
             <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-32 pb-24">
               <div className="max-w-3xl mx-auto text-center">
                 <span className="inline-block text-sm font-semibold uppercase tracking-widest text-sand">
-                  Residential shade sails
+                  Phoenix backyard, pool & patio shade sails
                 </span>
                 <h1 className="mt-4 font-heading text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-[1.05] tracking-tight">
                   Today...
@@ -258,9 +311,14 @@ export default function ResidentialPage() {
                   </span>
                 </h1>
                 <p className="mt-6 text-lg sm:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-body">
-                  Custom backyard, pool, and patio shade sails for Phoenix homes.
-                  Yours can be up two weeks from today. Want proof? A real person
-                  calls you within the hour.
+                  Custom shade sails for Phoenix backyards, pools, and patios.
+                  Designed for your exact space, engineered for monsoon wind, and
+                  up in as little as 14 days. Want proof of how fast we move? A
+                  real person calls you within the hour.
+                </p>
+                <p className="mt-3 text-sm sm:text-base text-white/60 font-body">
+                  Most projects run $8,000 to $12,000. You get the exact number at
+                  your free design visit.
                 </p>
 
                 <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -269,10 +327,10 @@ export default function ResidentialPage() {
                       href="/contact"
                       className="cta-glow-loop inline-flex items-center justify-center px-9 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
                     >
-                      Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> 3
+                      Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Estimate
                     </Link>
                     <span className="mt-2 text-xs uppercase tracking-widest text-white/60">
-                      Visit &middot; 3D Design &middot; Estimate
+                      Free in-home visit &middot; We call within the hour
                     </span>
                   </div>
                   <a
@@ -355,6 +413,11 @@ export default function ResidentialPage() {
                 <div className="rounded-2xl border border-white/12 bg-charcoal/55 backdrop-blur-sm p-7 sm:p-9">
                   <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white">In 20 Days</h3>
                   <p className="mt-2 text-base italic text-white/70">Or we work for free until your vision is achieved.</p>
+                  <p className="mt-2 text-sm text-white/55">
+                    Most builds are up in about 14 days. Monsoon weather can pause
+                    a build day; your timeline extends day for day and your price
+                    never changes.
+                  </p>
                   <ul className="mt-6 space-y-4">
                     {[
                       ["Today", "Call or fill out form"],
@@ -378,10 +441,10 @@ export default function ResidentialPage() {
                       href="/contact"
                       className="inline-flex items-center justify-center px-8 py-4 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/10"
                     >
-                      Get My <em className="not-italic font-extrabold text-[1.08em] mx-1">Free</em> 3
+                      Get My <em className="not-italic font-extrabold text-[1.08em] mx-1">Free</em> Design + Estimate
                     </Link>
                     <span className="mt-2 text-xs uppercase tracking-widest text-white/85">
-                      Visit &middot; 3D Design &middot; Estimate
+                      Free in-home visit &middot; We call within the hour
                     </span>
                   </div>
                   <p className="mt-6 text-lg text-white/90 leading-relaxed">
@@ -434,6 +497,57 @@ export default function ResidentialPage() {
         </div>
       </section>
 
+      {/* ===== WHAT WE SHADE (QS relevance: backyard / pool / patio keyword map) ===== */}
+      <section className="bg-white py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-charcoal tracking-tight">
+              Backyard, pool, and patio shade sails
+            </h2>
+            <p className="mt-4 text-lg text-charcoal/70 leading-relaxed">
+              Tell us the spot that gets too hot. We design the sail around it.
+            </p>
+          </div>
+          <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="rounded-2xl bg-cream p-7 border border-charcoal/5">
+              <h3 className="font-heading text-xl font-semibold text-charcoal">Backyard shade sails</h3>
+              <p className="mt-3 text-charcoal/70 leading-relaxed">
+                One sail can turn a backyard that bakes all afternoon into the
+                spot your family actually uses. We map the sun across your yard
+                and put the shade where you live: the lawn, the play set, the
+                seating area.
+              </p>
+              <Link href="/contact" className="mt-4 inline-block text-copper font-semibold hover:text-copper-dark transition-colors">
+                Start with a free visit &rarr;
+              </Link>
+            </div>
+            <div className="rounded-2xl bg-cream p-7 border border-charcoal/5">
+              <h3 className="font-heading text-xl font-semibold text-charcoal">Pool shade sails</h3>
+              <p className="mt-3 text-charcoal/70 leading-relaxed">
+                Phoenix pools lose their fun by June. A pool shade sail cools the
+                water and the deck, blocks up to 96% of UV, and rides high enough
+                to swim, splash, and see the whole pool.
+              </p>
+              <Link href="/contact" className="mt-4 inline-block text-copper font-semibold hover:text-copper-dark transition-colors">
+                Start with a free visit &rarr;
+              </Link>
+            </div>
+            <div className="rounded-2xl bg-cream p-7 border border-charcoal/5">
+              <h3 className="font-heading text-xl font-semibold text-charcoal">Patio shade sails</h3>
+              <p className="mt-3 text-charcoal/70 leading-relaxed">
+                A patio shade sail turns your patio into an outdoor room you can
+                use at noon in July. We attach to the house where the structure
+                allows it, or set clean steel poles, and the sail rides above
+                your space.
+              </p>
+              <Link href="/contact" className="mt-4 inline-block text-copper font-semibold hover:text-copper-dark transition-colors">
+                Start with a free visit &rarr;
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ===== GALLERY ===== */}
       <section id="gallery" className="bg-cream py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -477,7 +591,7 @@ export default function ResidentialPage() {
               A shade sail that is actually built for your backyard or patio
             </h2>
             <p className="mt-4 text-lg text-copper italic leading-relaxed">
-              A shade sail built for your backyard, not an off-the-shelf canopy. A custom-engineered sail designed to cover your space and block the sun. From backyard sails to patio shade covers, every design is fit to your exact layout and sun angles.
+              Not an off-the-shelf canopy. Every sail is measured, engineered, and installed for your exact layout and sun angles, from backyard sails to patio shade covers to full sun shades for your yard.
             </p>
           </div>
 
@@ -504,6 +618,26 @@ export default function ResidentialPage() {
         </div>
       </section>
 
+      {/* ===== FAQ (AEO: rendered Q&A mirrors the FAQPage JSON-LD exactly) ===== */}
+      <section className="bg-cream py-20 md:py-28">
+        <div className="max-w-3xl mx-auto px-6 sm:px-8">
+          <h2 className="text-center font-heading text-3xl sm:text-4xl font-bold text-charcoal tracking-tight">
+            Phoenix shade sail questions, answered
+          </h2>
+          <div className="mt-10 space-y-4">
+            {faqs.map((f) => (
+              <details key={f.q} className="group rounded-2xl bg-white border border-charcoal/5 shadow-sm px-6 py-5">
+                <summary className="cursor-pointer list-none flex items-center justify-between gap-4 font-heading text-lg font-semibold text-charcoal">
+                  {f.q}
+                  <span className="shrink-0 text-copper text-2xl leading-none transition-transform duration-200 group-open:rotate-45" aria-hidden="true">+</span>
+                </summary>
+                <p className="mt-3 text-charcoal/70 leading-relaxed">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===== FINAL CTA ===== */}
       <section className="relative overflow-hidden bg-charcoal py-20 md:py-24">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center">
@@ -516,10 +650,10 @@ export default function ResidentialPage() {
                 href="/contact"
                 className="cta-glow-loop inline-flex items-center justify-center px-9 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
               >
-                Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> 3
+                Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Estimate
               </Link>
               <span className="mt-2 text-xs uppercase tracking-widest text-white/60">
-                Visit &middot; 3D Design &middot; Estimate
+                Free in-home visit &middot; We call within the hour
               </span>
             </div>
             <a

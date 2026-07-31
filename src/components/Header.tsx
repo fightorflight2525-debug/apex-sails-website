@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 /** Inline phone glyph used by the always-visible call affordances (A2). */
 function PhoneIcon({ className }: { className?: string }) {
@@ -25,17 +26,23 @@ function PhoneIcon({ className }: { className?: string }) {
 }
 
 export default function Header() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
+    // F1: on /residential the header stays transparent over the pinned hero
+    // zone and flips to white after ~one viewport of scroll. Every other page
+    // keeps the original 20px flip. Tune the 0.9 factor to move the flip point.
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const flipAt =
+        pathname === "/residential" ? Math.round(window.innerHeight * 0.9) : 20;
+      setScrolled(window.scrollY > flipAt);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]);
 
   // Close mobile menu on resize to desktop
   useEffect(() => {
@@ -157,7 +164,7 @@ export default function Header() {
                 href="/contact"
                 className="rounded-full bg-copper px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-copper-dark hover:shadow-md"
               >
-                Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Visit
+                Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Estimate
               </Link>
             </nav>
 
@@ -285,7 +292,7 @@ export default function Header() {
               className="block w-full rounded-full bg-copper py-3.5 text-center text-sm font-semibold text-white shadow-sm transition-all hover:bg-copper-dark hover:shadow-md"
               onClick={closeMobile}
             >
-              Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Visit
+              Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Estimate
             </Link>
           </div>
 

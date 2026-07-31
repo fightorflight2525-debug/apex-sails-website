@@ -153,7 +153,7 @@ export default function GalleryPage() {
             href="/contact"
             className="mt-8 inline-flex items-center justify-center rounded-full bg-copper px-8 py-4 text-base font-semibold text-white shadow-sm transition-all hover:bg-copper-dark hover:shadow-md"
           >
-            Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Visit
+            Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Estimate
           </Link>
         </div>
       </section>

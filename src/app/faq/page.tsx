@@ -114,7 +114,7 @@ export default function FaqPage() {
               href="/contact"
               className="cta-glow inline-flex items-center justify-center rounded-full bg-copper px-8 py-4 text-base font-semibold text-white shadow-sm transition-all hover:bg-copper-dark hover:shadow-md"
             >
-              Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Visit
+              Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Estimate
             </Link>
             <a
               href="tel:+16028370370"
