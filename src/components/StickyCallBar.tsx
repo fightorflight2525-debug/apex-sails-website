@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 /**
  * Mobile-only sticky CTA bar that slides up after the user scrolls past the hero.
@@ -10,6 +11,9 @@ import Link from "next/link";
  * conversion channel, so the bar offers both paths.
  */
 export default function StickyCallBar() {
+  // MO decision (operator delegated, 2026-07-30): on /residential the bar goes
+  // DARK to match the page's premium dark aesthetic; other pages stay white.
+  const isResidential = usePathname() === "/residential";
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -25,7 +29,13 @@ export default function StickyCallBar() {
         show ? "translate-y-0" : "translate-y-full"
       }`}
     >
-      <div className="flex gap-2 border-t border-charcoal/10 bg-white/95 px-4 py-3 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] backdrop-blur">
+      <div
+        className={`flex gap-2 px-4 py-3 backdrop-blur ${
+          isResidential
+            ? "border-t border-white/10 bg-charcoal/95 shadow-[0_-4px_20px_rgba(0,0,0,0.35)]"
+            : "border-t border-charcoal/10 bg-white/95 shadow-[0_-4px_20px_rgba(0,0,0,0.08)]"
+        }`}
+      >
         <a
           href="tel:+16028370370"
           className="inline-flex items-center justify-center rounded-full border-2 border-copper px-5 text-sm font-bold text-copper"

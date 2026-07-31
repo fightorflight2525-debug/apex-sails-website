@@ -27,6 +27,11 @@ function PhoneIcon({ className }: { className?: string }) {
 
 export default function Header() {
   const pathname = usePathname();
+  // MO decision (operator delegated, 2026-07-30): on /residential the scrolled
+  // bar goes DARK (charcoal + blur) instead of white, preserving the premium
+  // dark aesthetic the operator likes while still making the nav readable
+  // over light sections. Every other page keeps the white flip.
+  const isResidential = pathname === "/residential";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -74,7 +79,9 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-white shadow-md"
+            ? isResidential
+              ? "bg-charcoal/95 backdrop-blur-md shadow-md shadow-black/25"
+              : "bg-white shadow-md"
             : "bg-transparent"
         }`}
       >
@@ -83,7 +90,7 @@ export default function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center group">
               <Image
-                src={scrolled ? "/images/logo-light-bg.svg" : "/images/logo-dark-bg.svg"}
+                src={scrolled && !isResidential ? "/images/logo-light-bg.svg" : "/images/logo-dark-bg.svg"}
                 alt="Apex Sail Shades"
                 width={200}
                 height={57}
@@ -97,7 +104,7 @@ export default function Header() {
               <Link
                 href="/residential"
                 className={`text-sm font-medium transition-colors duration-300 hover:text-copper ${
-                  scrolled ? "text-charcoal" : "text-white"
+                  scrolled && !isResidential ? "text-charcoal" : "text-white"
                 }`}
               >
                 Residential
@@ -106,7 +113,7 @@ export default function Header() {
               <Link
                 href="/commercial"
                 className={`text-sm font-medium transition-colors duration-300 hover:text-copper ${
-                  scrolled ? "text-charcoal" : "text-white"
+                  scrolled && !isResidential ? "text-charcoal" : "text-white"
                 }`}
               >
                 Commercial
@@ -115,7 +122,7 @@ export default function Header() {
               <Link
                 href="/process"
                 className={`text-sm font-medium transition-colors duration-300 hover:text-copper ${
-                  scrolled ? "text-charcoal" : "text-white"
+                  scrolled && !isResidential ? "text-charcoal" : "text-white"
                 }`}
               >
                 How It Works
@@ -124,7 +131,7 @@ export default function Header() {
               <Link
                 href="/about"
                 className={`text-sm font-medium transition-colors duration-300 hover:text-copper ${
-                  scrolled ? "text-charcoal" : "text-white"
+                  scrolled && !isResidential ? "text-charcoal" : "text-white"
                 }`}
               >
                 About
@@ -133,7 +140,7 @@ export default function Header() {
               <Link
                 href="/gallery"
                 className={`text-sm font-medium transition-colors duration-300 hover:text-copper ${
-                  scrolled ? "text-charcoal" : "text-white"
+                  scrolled && !isResidential ? "text-charcoal" : "text-white"
                 }`}
               >
                 Gallery
@@ -142,7 +149,7 @@ export default function Header() {
               <Link
                 href="/faq"
                 className={`text-sm font-medium transition-colors duration-300 hover:text-copper ${
-                  scrolled ? "text-charcoal" : "text-white"
+                  scrolled && !isResidential ? "text-charcoal" : "text-white"
                 }`}
               >
                 FAQ
@@ -152,7 +159,7 @@ export default function Header() {
               <a
                 href="tel:+16028370370"
                 className={`inline-flex items-center gap-1.5 text-sm font-medium transition-colors duration-300 hover:text-copper ${
-                  scrolled ? "text-charcoal" : "text-white"
+                  scrolled && !isResidential ? "text-charcoal" : "text-white"
                 }`}
               >
                 <PhoneIcon className="h-4 w-4" />
@@ -183,7 +190,7 @@ export default function Header() {
                 className={`relative z-50 flex h-10 w-10 items-center justify-center rounded-md transition-colors ${
                   mobileOpen
                     ? "text-charcoal"
-                    : scrolled
+                    : scrolled && !isResidential
                       ? "text-charcoal"
                       : "text-white"
                 }`}
