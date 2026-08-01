@@ -15,14 +15,87 @@ const ShadeCastSlideover = dynamic(() => import("@/components/ShadeCastSlideover
 const MiniGallerySlideshow = dynamic(() => import("@/components/MiniGallerySlideshow"));
 
 export const metadata: Metadata = {
-  title: "Apex Sail Shades | Custom Shade Sails for Phoenix Homes & Businesses",
+  title: "Shade Sails Phoenix | Custom Shade Sails for Homes & Businesses | Apex Sail Shades",
   description:
-    "Custom-engineered shade sails for Phoenix homes and businesses. Designed and installed in one visit, built for 110°F sun and monsoon winds. Get a free design visit.",
+    "Custom-engineered shade sails for Phoenix homes and businesses. Up to 96% UV block and 15°F cooler, engineered for 110°F sun and monsoon wind. Free design visit, and a real person calls you within the hour.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Shade Sails Phoenix | Custom Shade Sails for Homes & Businesses",
+    description:
+      "Custom shade sails engineered for Phoenix heat and monsoon wind. Free visit, 3D design, and an exact estimate. Most residential projects $8,000 to $12,000.",
+    url: "/",
+    type: "website",
+  },
+};
+
+/* ============================================================================
+   SAUCE-246 STRUCTURED DATA (site entity).
+   Before this, /residential's FAQPage block was the ONLY structured data on the
+   whole site, and the home page had none.
+
+   HONESTY RULE APPLIED - every field below is a fact verified from the live site
+   or the vault. Deliberately OMITTED because they are NOT verified anywhere the
+   MO can read: streetAddress, openingHours, geo coordinates, aggregateRating,
+   foundingDate. A fabricated address or a fabricated rating in schema is a false
+   claim made to Google and to customers, which is worse than emitting nothing.
+
+   UPGRADE PATH (one operator answer): supply the Google Business Profile address
+   and hours and this Organization node becomes a full LocalBusiness /
+   HomeAndConstructionBusiness node, which is what makes the site eligible for
+   local rich results. Until then this stays an Organization node, which is valid
+   without a postal address.
+
+   NOTE ON NAME: the site brand is "Apex Sail Shades"; the Google Business Profile
+   is verified as "Apex Sails LLC". Both are carried (name + legalName) so the
+   schema does not contradict the GBP - NAP consistency.
+   ========================================================================== */
+const siteSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://apex-sail-shades.com/#organization",
+      name: "Apex Sail Shades",
+      legalName: "Apex Sails LLC",
+      url: "https://apex-sail-shades.com",
+      logo: "https://apex-sail-shades.com/images/og-ws-29.webp",
+      image: "https://apex-sail-shades.com/images/og-ws-29.webp",
+      description:
+        "Custom-engineered shade sails for Phoenix homes and businesses, built for 110°F sun and monsoon wind.",
+      telephone: "+1-602-837-0370",
+      areaServed: {
+        "@type": "City",
+        name: "Phoenix",
+        containedInPlace: { "@type": "State", name: "Arizona" },
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+1-602-837-0370",
+        contactType: "sales",
+        areaServed: "US-AZ",
+        availableLanguage: "English",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://apex-sail-shades.com/#website",
+      url: "https://apex-sail-shades.com",
+      name: "Apex Sail Shades",
+      publisher: { "@id": "https://apex-sail-shades.com/#organization" },
+      inLanguage: "en-US",
+    },
+  ],
 };
 
 export default function Home() {
   return (
     <>
+      {/* SAUCE-246: site-entity structured data (Organization + WebSite). */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}
+      />
+
       {/* ============================================================
           SECTION 1: HERO  (LCP element, rendered immediately, NOT motion-gated)
           ============================================================ */}

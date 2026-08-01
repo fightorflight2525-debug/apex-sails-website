@@ -20,6 +20,15 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  // SAUCE-246: site-wide absolute-URL base. Without this, Next emits RELATIVE
+  // canonical and og:url values (verified live: /residential shipped
+  // <link rel="canonical" href="/residential">). Google's canonical docs say to
+  // "use absolute paths rather than relative paths with the rel=canonical link
+  // element" because relative paths "can cause problems in the long run (for
+  // example, if you unintentionally allow your testing site to be crawled)".
+  // With metadataBase set, every relative canonical/openGraph url below resolves
+  // to a fully qualified URL automatically. Do not remove.
+  metadataBase: new URL("https://apex-sail-shades.com"),
   title: "Apex Sail Shades | Phoenix Shade Sail Specialists",
   description:
     "Custom-engineered shade sails for Phoenix homes and businesses. Designed and installed in one visit, built for 110F sun and monsoon winds. 96% UV block, 10-year fabric, engineered and tensioned.",
