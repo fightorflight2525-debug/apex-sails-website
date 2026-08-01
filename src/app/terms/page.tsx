@@ -4,6 +4,10 @@ export const metadata: Metadata = {
   title: "Terms of Service | Apex Sail Shades",
   description:
     "The agreement between you and Apex Sail Shades when you use this site or work with us. Plain language. Arizona jurisdiction.",
+  // SAUCE-247: canonical only. Legal pages are indexable so they need a canonical,
+  // but openGraph is deliberately omitted: these are never shared socially.
+  // Relative path resolves absolute via the root layout metadataBase (SAUCE-246).
+  alternates: { canonical: "/terms" },
 };
 
 const H2 = "font-heading text-2xl font-bold text-charcoal mt-10 mb-4";

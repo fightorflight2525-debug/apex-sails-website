@@ -5,9 +5,19 @@ import ShadeCastDemo from "@/components/ShadeCastDemo";
 import CrossFadeCarousel from "@/components/CrossFadeCarousel";
 
 export const metadata: Metadata = {
-  title: "How It Works | Apex Sail Shades",
+  title: "How It Works | Shade Sail Design & Installation | Apex Sail Shades",
   description:
     "From analysis to installation in weeks, not months. Learn about our precision-engineered shade sail process: ShadeCast™ analysis, HyPar engineering, Leica 3D mapping, and professional installation.",
+  // SAUCE-247: canonical + openGraph added. Relative paths resolve absolute via the
+  // root layout metadataBase (SAUCE-246); do not hardcode the domain here.
+  alternates: { canonical: "/process" },
+  openGraph: {
+    title: "How It Works | Shade Sail Design & Installation",
+    description:
+      "Analysis to installation in weeks, not months. ShadeCast analysis, HyPar engineering, Leica 3D mapping, and professional install.",
+    url: "/process",
+    type: "website",
+  },
 };
 
 /* ------------------------------------------------------------------ */

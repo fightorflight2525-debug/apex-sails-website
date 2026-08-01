@@ -3,9 +3,19 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Apex Sail Shades",
+  title: "About Apex Sail Shades | Phoenix Shade Sail Engineers",
   description:
     "Learn about Apex Sail Shades, a Phoenix shade sail company engineering custom shade for homes and businesses across Arizona, built to perform under the most demanding desert sun.",
+  // SAUCE-247: canonical + openGraph added. Relative paths resolve absolute via the
+  // root layout metadataBase (SAUCE-246); do not hardcode the domain here.
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About Apex Sail Shades | Phoenix Shade Sail Engineers",
+    description:
+      "A Phoenix shade sail company that engineers custom shade for homes and businesses across Arizona, built for the desert sun.",
+    url: "/about",
+    type: "website",
+  },
 };
 
 const differentiators = [

@@ -10,6 +10,16 @@ export const metadata: Metadata = {
   title: "Commercial Shade Sails for Phoenix Businesses | Apex Sail Shades",
   description:
     "Custom-engineered commercial shade sails for Phoenix restaurants, patios, HOAs, golf, senior living, and schools. Designed, engineered, and installed by licensed, insured local crews with minimal downtime.",
+  // SAUCE-247: canonical + openGraph added. Relative paths resolve absolute via the
+  // root layout metadataBase (SAUCE-246); do not hardcode the domain here.
+  alternates: { canonical: "/commercial" },
+  openGraph: {
+    title: "Commercial Shade Sails for Phoenix Businesses",
+    description:
+      "Engineered commercial shade for restaurants, patios, HOAs, golf, senior living, and schools. Licensed, insured local crews and minimal downtime.",
+    url: "/commercial",
+    type: "website",
+  },
 };
 
 /* ------------------------------------------------------------------ */
