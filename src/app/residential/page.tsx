@@ -7,6 +7,7 @@ import CountUp from "@/components/CountUp";
 import Lightbox from "@/components/Lightbox";
 import StickyCallBar from "@/components/StickyCallBar";
 import ResidentialTopCurtain from "@/components/ResidentialTopCurtain";
+import { OG_DEFAULTS } from "@/app/og-defaults";
 
 export const metadata: Metadata = {
   title: "Shade Sails Phoenix | Backyard, Pool & Patio | Apex Sail Shades",
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     "Custom shade sails for Phoenix backyards, pools, and patios. Up to 96% UV block, 15°F cooler, up in as little as 14 days. Most projects $8,000 to $12,000. A real person calls you within the hour.",
   alternates: { canonical: "/residential" },
   openGraph: {
+    ...OG_DEFAULTS,
     title: "Backyard, Pool & Patio Shade Sails in Phoenix | Apex Sail Shades",
     description:
       "Custom shade sails engineered for Phoenix heat and monsoon wind. Free visit, 3D design, and exact estimate. Most projects $8,000 to $12,000.",

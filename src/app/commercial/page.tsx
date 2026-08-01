@@ -5,6 +5,7 @@ import Reveal from "@/components/Reveal";
 import StatsBand from "@/components/StatsBand";
 import StickyCallBar from "@/components/StickyCallBar";
 import Lightbox from "@/components/Lightbox";
+import { OG_DEFAULTS } from "@/app/og-defaults";
 
 export const metadata: Metadata = {
   title: "Commercial Shade Sails for Phoenix Businesses | Apex Sail Shades",
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
   // root layout metadataBase (SAUCE-246); do not hardcode the domain here.
   alternates: { canonical: "/commercial" },
   openGraph: {
+    ...OG_DEFAULTS,
     title: "Commercial Shade Sails for Phoenix Businesses",
     description:
       "Engineered commercial shade for restaurants, patios, HOAs, golf, senior living, and schools. Licensed, insured local crews and minimal downtime.",

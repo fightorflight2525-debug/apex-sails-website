@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_DEFAULTS } from "@/app/og-defaults";
 
 export const metadata: Metadata = {
   title: "Gallery | Apex Sail Shades",
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   // SAUCE-246: canonical + openGraph added (absolute via root metadataBase).
   alternates: { canonical: "/gallery" },
   openGraph: {
+    ...OG_DEFAULTS,
     title: "Shade Sail Gallery | Real Phoenix Installs | Apex Sail Shades",
     description:
       "Real custom shade sail installs across Phoenix, residential backyards and commercial properties. Proof, not promises.",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_DEFAULTS } from "@/app/og-defaults";
 
 export const metadata: Metadata = {
   title: "Free Shade Sail Quote & Design Visit | Apex Sail Shades",
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
   // in the root layout (Google: use absolute paths for rel=canonical).
   alternates: { canonical: "/contact" },
   openGraph: {
+    ...OG_DEFAULTS,
     title: "Free Shade Sail Quote & Design Visit | Apex Sail Shades",
     description:
       "Free on-site design visit, a ShadeCast sun study, and an exact itemized quote in the same visit. A real person calls you within the hour.",

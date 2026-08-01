@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ShadeCastDemo from "@/components/ShadeCastDemo";
 import CrossFadeCarousel from "@/components/CrossFadeCarousel";
+import { OG_DEFAULTS } from "@/app/og-defaults";
 
 export const metadata: Metadata = {
   title: "How It Works | Shade Sail Design & Installation | Apex Sail Shades",
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
   // root layout metadataBase (SAUCE-246); do not hardcode the domain here.
   alternates: { canonical: "/process" },
   openGraph: {
+    ...OG_DEFAULTS,
     title: "How It Works | Shade Sail Design & Installation",
     description:
       "Analysis to installation in weeks, not months. ShadeCast analysis, HyPar engineering, Leica 3D mapping, and professional install.",

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { OG_DEFAULTS } from "@/app/og-defaults";
 
 export const metadata: Metadata = {
   title: "About Apex Sail Shades | Phoenix Shade Sail Engineers",
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
   // root layout metadataBase (SAUCE-246); do not hardcode the domain here.
   alternates: { canonical: "/about" },
   openGraph: {
+    ...OG_DEFAULTS,
     title: "About Apex Sail Shades | Phoenix Shade Sail Engineers",
     description:
       "A Phoenix shade sail company that engineers custom shade for homes and businesses across Arizona, built for the desert sun.",

@@ -7,6 +7,7 @@ import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
 import StatsBand from "@/components/StatsBand";
 import StickyCallBar from "@/components/StickyCallBar";
+import { OG_DEFAULTS } from "@/app/og-defaults";
 
 // D5b LCP: defer below-the-fold client components out of the homepage's initial
 // JS bundle via next/dynamic (SSR stays ON by default -> zero visual change, CLS 0).
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
     "Custom-engineered shade sails for Phoenix homes and businesses. Up to 96% UV block and 15°F cooler, engineered for 110°F sun and monsoon wind. Free design visit, and a real person calls you within the hour.",
   alternates: { canonical: "/" },
   openGraph: {
+    ...OG_DEFAULTS,
     title: "Shade Sails Phoenix | Custom Shade Sails for Homes & Businesses",
     description:
       "Custom shade sails engineered for Phoenix heat and monsoon wind. Free visit, 3D design, and an exact estimate. Most residential projects $8,000 to $12,000.",

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { FAQ_ITEMS } from "./faq-items";
+import { OG_DEFAULTS } from "@/app/og-defaults";
 
 export const metadata: Metadata = {
   title: "Shade Sail FAQ | Cost, Engineering, HOA & Warranty | Apex Sail Shades",
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
   // SAUCE-246: canonical + openGraph added (absolute via root metadataBase).
   alternates: { canonical: "/faq" },
   openGraph: {
+    ...OG_DEFAULTS,
     title: "Shade Sail FAQ | Cost, Engineering, HOA & Warranty",
     description:
       "What shade sails cost in Phoenix, how they survive monsoon season, HOA approval, and the 10-year fabric warranty.",
