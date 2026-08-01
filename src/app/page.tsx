@@ -33,27 +33,49 @@ export const metadata: Metadata = {
    Before this, /residential's FAQPage block was the ONLY structured data on the
    whole site, and the home page had none.
 
-   HONESTY RULE APPLIED - every field below is a fact verified from the live site
-   or the vault. Deliberately OMITTED because they are NOT verified anywhere the
-   MO can read: streetAddress, openingHours, geo coordinates, aggregateRating,
-   foundingDate. A fabricated address or a fabricated rating in schema is a false
-   claim made to Google and to customers, which is worse than emitting nothing.
+   EVERY FIELD BELOW WAS VERIFIED AGAINST THE LIVE PUBLIC GOOGLE BUSINESS PROFILE
+   (Google Maps listing for "Apex Sails LLC", read 2026-07-31), not assumed:
+     - listing name        Apex Sails LLC          -> legalName
+     - website field       apex-sail-shades.com    -> url (exact match, NAP clean)
+     - phone field         (602) 837-0370          -> telephone (matches the site 3 ways:
+                                                     site copy, GBP owner panel, public listing)
+     - service area        greater Phoenix polygon -> areaServed
 
-   UPGRADE PATH (one operator answer): supply the Google Business Profile address
-   and hours and this Organization node becomes a full LocalBusiness /
-   HomeAndConstructionBusiness node, which is what makes the site eligible for
-   local rich results. Until then this stays an Organization node, which is valid
-   without a postal address.
+   NO STREET ADDRESS, AND THAT IS THE CORRECT ANSWER, NOT A GAP.
+   The GBP is a SERVICE AREA BUSINESS. Verified visually on the public listing: the
+   info panel has NO address row at all (every competitor listing on the same search
+   shows one), and the map renders a service-area BOUNDARY instead of a pin. Google
+   deliberately hides the address for an SAB. Publishing a street address here would
+   therefore CONTRADICT the Google Business Profile and manufacture the exact NAP
+   inconsistency this schema exists to prevent. Do not "fix" this by adding one.
 
-   NOTE ON NAME: the site brand is "Apex Sail Shades"; the Google Business Profile
-   is verified as "Apex Sails LLC". Both are carried (name + legalName) so the
-   schema does not contradict the GBP - NAP consistency.
+   NO aggregateRating, DELIBERATELY. The GBP shows a real 5.0 from 5 reviews and it is
+   tempting to publish it. Google's review-snippet policy forbids it: "Don't aggregate
+   reviews or ratings from other websites", and ratings "must be sourced directly from
+   users" of this site. Marking up Google reviews as our own is a policy violation that
+   risks a structured-data manual action. If first-party reviews are ever collected on
+   apex-sail-shades.com itself, they become eligible - GBP reviews never do.
+
+   NO openingHours. The public listing exposes only "Opens 7 AM Sat"; the full weekly
+   schedule did not expand publicly. A guessed schedule that contradicts the GBP is
+   worse than none, so it is omitted until the owner panel is read.
+
+   NO geo. The coordinates in the Maps URL are an SAB service-area centroid, not a
+   premises location, so publishing them as the business point would be false precision.
+
+   NAME HANDLING: site brand is "Apex Sail Shades" (the 2026-05-05 brand-name lock makes
+   it canonical on every consumer surface); the legal entity and the GBP listing both
+   read "Apex Sails LLC". Both are carried so the schema agrees with the GBP exactly.
    ========================================================================== */
 const siteSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
+      // HomeAndConstructionBusiness is a LocalBusiness subtype and is accurate for an
+      // install trade. Note: the GBP's own category is still "Awning supplier", which
+      // the 2026-05-05 brand-name-consistency-lock decided should become "Shade sail
+      // installer" - that GBP change was never executed and is an open operator item.
+      "@type": ["Organization", "HomeAndConstructionBusiness"],
       "@id": "https://apex-sail-shades.com/#organization",
       name: "Apex Sail Shades",
       legalName: "Apex Sails LLC",
@@ -63,11 +85,32 @@ const siteSchema = {
       description:
         "Custom-engineered shade sails for Phoenix homes and businesses, built for 110°F sun and monsoon wind.",
       telephone: "+1-602-837-0370",
-      areaServed: {
+      // sameAs = the verified Google Business Profile listing (Maps place URL for
+      // "Apex Sails LLC"). This is the entity link that ties site and GBP together
+      // for Google; it is a real, resolved URL, not a constructed guess.
+      sameAs: [
+        "https://www.google.com/maps/place/Apex+Sails+LLC/data=!4m2!3m1!1s0xa7f1955e4954bbd7:0x3b7c52cf14ae8b3",
+      ],
+      // Verified band, and the same one the /residential hero and the FAQ state.
+      // ONE SCOPE ONE NUMBER: this is the residential band only, not a blended figure.
+      priceRange: "$8,000 - $12,000",
+      // The cities the GBP service-area polygon covers, and the same list the FAQ
+      // answer "Where do you install?" already states on the site. Kept in sync with
+      // visible copy on purpose.
+      areaServed: [
+        "Phoenix",
+        "Scottsdale",
+        "Mesa",
+        "Tempe",
+        "Chandler",
+        "Gilbert",
+        "Glendale",
+        "Peoria",
+      ].map((city) => ({
         "@type": "City",
-        name: "Phoenix",
+        name: city,
         containedInPlace: { "@type": "State", name: "Arizona" },
-      },
+      })),
       contactPoint: {
         "@type": "ContactPoint",
         telephone: "+1-602-837-0370",
