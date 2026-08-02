@@ -214,7 +214,7 @@ const commercialServiceSchema = {
   name: "Commercial Shade Sail Design and Installation",
   serviceType: "Commercial shade sail installation",
   description:
-    "Custom-engineered commercial shade sails for Phoenix businesses: design, ShadeCast sun analysis, structural engineering, city permitting, fabrication, and installation by licensed, insured crews.",
+    "Custom-engineered commercial shade sails for Phoenix businesses: design, ShadeCast sun analysis, structural engineering, city permitting, and installation by licensed, insured crews, from survey to final tensioning.",
   url: "https://apex-sail-shades.com/commercial",
   provider: { "@id": "https://apex-sail-shades.com/#organization" },
   areaServed: {
