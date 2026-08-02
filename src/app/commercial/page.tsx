@@ -188,9 +188,75 @@ const COMMERCIAL_GALLERY = [
   { src: "/images/gallery-os-20.webp", alt: "Custom commercial shade sail install in the Phoenix metro" },
 ];
 
+/* ------------------------------------------------------------------ */
+/*  SAUCE-248: /commercial Service structured data.                   */
+/*                                                                    */
+/*  Mirrors ONLY what is visible on this page: the six verticals in   */
+/*  the "who we serve" grid, and the done-for-you scope stated in     */
+/*  the "why Apex" band (assessment, ShadeCast sun analysis,          */
+/*  engineering, permitting, licensed and insured crews).             */
+/*                                                                    */
+/*  provider is an @id reference to the Organization node the home    */
+/*  page graph already emits (SAUCE-246), so this Service attaches    */
+/*  to the existing site entity instead of minting a second business. */
+/*                                                                    */
+/*  Deliberately absent, same policy reasoning as the home graph:     */
+/*  NO aggregateRating or any rating (Google forbids ratings the      */
+/*  site owner controls or that are lifted from GBP), NO address or   */
+/*  streetAddress and NO geo (service-area business, no public        */
+/*  premises), NO openingHours, and no second LocalBusiness or        */
+/*  HomeAndConstructionBusiness node to compete with the home page.   */
+/* ------------------------------------------------------------------ */
+const commercialServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://apex-sail-shades.com/commercial#service",
+  name: "Commercial Shade Sail Design and Installation",
+  serviceType: "Commercial shade sail installation",
+  description:
+    "Custom-engineered commercial shade sails for Phoenix businesses: design, ShadeCast sun analysis, structural engineering, city permitting, fabrication, and installation by licensed, insured crews.",
+  url: "https://apex-sail-shades.com/commercial",
+  provider: { "@id": "https://apex-sail-shades.com/#organization" },
+  areaServed: {
+    "@type": "City",
+    name: "Phoenix",
+    address: {
+      "@type": "PostalAddress",
+      addressRegion: "AZ",
+      addressCountry: "US",
+    },
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Commercial shade sail services",
+    // One entry per vertical rendered in the WHO WE SERVE grid above.
+    // Kept in sync with visible copy on purpose: schema must never
+    // claim a service the page does not actually show.
+    itemListElement: [
+      "Restaurant and patio shade sails",
+      "HOA and community pool shade sails",
+      "Multi-family courtyard and amenity shade",
+      "Golf and recreation facility shade",
+      "Senior living community shade",
+      "School and daycare play area shade",
+    ].map((offering) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: offering },
+    })),
+  },
+};
+
 export default function CommercialPage() {
   return (
     <>
+      {/* SAUCE-248: commercial Service structured data. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(commercialServiceSchema),
+        }}
+      />
+
       {/* ============================================================
           SECTION 1: HERO  (LCP element, rendered immediately, NOT motion-gated)
           ============================================================ */}
