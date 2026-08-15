@@ -509,7 +509,7 @@ export default function ResidentialPage() {
             (How we are able to offer a guarantee like this)
           </p>
           <p className="mt-8 font-heading text-2xl sm:text-3xl font-bold text-red-500">
-            Offer ends August 15th
+            Offer ends September 15th
           </p>
           <p className="mt-2 text-sm sm:text-base italic text-white/55">
             (Sadly being forced to raise prices to maintain #1 fastest and premium shade sails in the Valley)
