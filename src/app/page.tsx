@@ -92,6 +92,10 @@ const siteSchema = {
       // for Google; it is a real, resolved URL, not a constructed guess.
       sameAs: [
         "https://www.google.com/maps/place/Apex+Sails+LLC/data=!4m2!3m1!1s0xa7f1955e4954bbd7:0x3b7c52cf14ae8b3",
+        // Meta surfaces (SAUCE-273): Page 61593429476438 + @apexsailshades,
+        // matched to the footer social links shipped in the same deploy.
+        "https://www.facebook.com/profile.php?id=61593429476438",
+        "https://www.instagram.com/apexsailshades/",
       ],
       // Verified band, and the same one the /residential hero and the FAQ state.
       // ONE SCOPE ONE NUMBER: this is the residential band only, not a blended figure.

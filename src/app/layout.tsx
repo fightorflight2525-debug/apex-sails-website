@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PhoneConversionTracker from "@/components/PhoneConversionTracker";
+import MetaPixel from "@/components/MetaPixel";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -81,6 +82,32 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <PhoneConversionTracker />
+        <MetaPixel />
+        {/* META PIXEL BASE CODE (SAUCE-273 M1). Dataset 1434479721875306, CAPI-enabled,
+            bound to ad account 5342635702628238. Loaded from connect.facebook.net
+            DIRECTLY by design: the /uplink reverse proxy is PostHog's rail, not Meta's.
+            SPA route-change PageViews are fired by the MetaPixel component above; this snippet
+            fires the initial one. Lead/Contact standard events live in QuoteForm and
+            PhoneConversionTracker (M2). Verify in Events Manager TEST EVENTS, not Overview. */}
+        <Script id="meta-pixel" strategy="afterInteractive">{`
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1434479721875306');
+  fbq('track', 'PageView');
+`}</Script>
+        <noscript>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            alt=""
+            src="https://www.facebook.com/tr?id=1434479721875306&ev=PageView&noscript=1"
+          />
+        </noscript>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-18055743018"
           strategy="afterInteractive"

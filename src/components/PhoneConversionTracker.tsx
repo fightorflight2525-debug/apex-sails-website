@@ -79,9 +79,18 @@ export default function PhoneConversionTracker() {
       const target = e.target as HTMLElement | null;
       const link = target?.closest?.('a[href^="tel:"]') as HTMLAnchorElement | null;
       if (!link) return;
+      // META Contact (SAUCE-273 M2): the phone rail measured on Meta the way
+      // GO-1 fixed it on Google. metaEventId is shared with the PostHog event
+      // for M5 CAPI dedup (fbq eventID <-> CAPI event_id). No PII parameters.
+      const metaEventId =
+        typeof crypto !== "undefined" && "randomUUID" in crypto
+          ? crypto.randomUUID()
+          : `contact-${Date.now()}-${Math.floor(Math.random() * 1e6)}`;
+      window.fbq?.("track", "Contact", {}, { eventID: metaEventId });
       posthog.capture("call_button_click", {
         forwarded: (link.getAttribute("href") || "") !== RAW_TEL,
         path: window.location.pathname,
+        meta_event_id: metaEventId,
       });
     };
     document.addEventListener("click", onClick, true);
