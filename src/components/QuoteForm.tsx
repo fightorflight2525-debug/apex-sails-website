@@ -103,9 +103,25 @@ export default function QuoteForm({ formName = "contact" }: QuoteFormProps) {
           value: 500,
           currency: 'USD',
         });
+        // META Lead (SAUCE-273 M2): fires on the SAME success path as the Google
+        // conversion above. metaEventId is shared with the PostHog event so the
+        // M5 CAPI destination can deduplicate browser vs server (fbq eventID
+        // <-> CAPI event_id). No PII parameters by design; automatic advanced
+        // matching stays OFF until explicitly reviewed.
+        const metaEventId =
+          typeof crypto !== "undefined" && "randomUUID" in crypto
+            ? crypto.randomUUID()
+            : `lead-${Date.now()}-${Math.floor(Math.random() * 1e6)}`;
+        window.fbq?.(
+          "track",
+          "Lead",
+          { content_name: "quote_form" },
+          { eventID: metaEventId },
+        );
         posthog.capture("form_submitted", {
           form: formName,
           project_type: formData.projectType || "unspecified",
+          meta_event_id: metaEventId,
         });
         setSubmitted(true);
       } else {

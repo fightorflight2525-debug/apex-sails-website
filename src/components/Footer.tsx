@@ -85,6 +85,50 @@ export default function Footer() {
               </svg>
               contact@apex-sail-shades.com
             </a>
+            {/* Social links (SAUCE-273 M1 deploy): first social presence on the site.
+                Page 61593429476438 + @apexsailshades, matched in the schema sameAs. */}
+            <div className="mt-5 flex items-center justify-center gap-4">
+              <a
+                href="https://www.facebook.com/profile.php?id=61593429476438"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Apex Sail Shades on Facebook"
+                className="text-gray-400 hover:text-copper transition-colors duration-200"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path d="M13.5 21v-7.5h2.52l.48-3h-3V8.6c0-.87.24-1.46 1.5-1.46H16.6V4.5c-.29-.04-1.28-.12-2.43-.12-2.4 0-4.05 1.46-4.05 4.15v1.97H7.6v3h2.52V21h3.38z" />
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/apexsailshades/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Apex Sail Shades on Instagram"
+                className="text-gray-400 hover:text-copper transition-colors duration-200"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4.2" />
+                  <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
+            </div>
           </div>
 
           {/* Column 2: Solutions (F5: centered on all viewports) */}
