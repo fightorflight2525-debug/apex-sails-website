@@ -66,6 +66,20 @@ export const metadata: Metadata = {
       "Custom-engineered shade sails for Phoenix homes and businesses. Designed and installed in one visit, built for 110F sun and monsoon winds.",
     images: ["https://apex-sail-shades.com/images/og-ws-29.webp"],
   },
+  // M4 (SAUCE-275, 2026-08-17): Meta Business domain verification for
+  // apex-sail-shades.com in portfolio 1499762085523255 (domain asset id
+  // 1783550399760051). Meta requires this tag to be SERVER-RENDERED inside
+  // <head>; it explicitly fails verification if the tag is injected by
+  // client-side JavaScript, which is why this rides the Metadata API and not
+  // a <Script> tag. DNS is Cloudflare (no token on our keyfile) so the TXT
+  // method was unavailable; meta-tag is the chosen method. Public value, not
+  // a secret. Do not remove: removal un-verifies the domain and breaks the
+  // Meta pixel's domain-level attribution + Aggregated Event Measurement.
+  verification: {
+    other: {
+      "facebook-domain-verification": "2si7gctir8vuv1dmt0k2zd7h77xbx2",
+    },
+  },
 };
 
 export default function RootLayout({
