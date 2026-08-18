@@ -114,9 +114,32 @@ export default function ContactPage() {
           value: 500,
           currency: 'USD',
         });
+        // META Lead - ADDED 2026-08-18 (SAUCE-275) TO CURE A LIVE MEASUREMENT DEFECT.
+        // SAUCE-273 wrote the Lead event into src/components/QuoteForm.tsx and
+        // recorded M2 as done. QuoteForm IS IMPORTED BY NOTHING: this inline form
+        // on /contact is the site's only real lead form, so the Meta Lead event
+        // FIRED NOWHERE ON THE LIVE SITE. Caught at M3 test-events verification,
+        // BEFORE any Meta spend. Had the campaign launched, it would have
+        // optimized for a conversion event it never once received.
+        // Same defect class as the July phone-conversion blindness: the tracking
+        // was real, it just was not on the path the users actually take.
+        // metaEventId is shared with the PostHog event so the M5 CAPI destination
+        // can deduplicate browser vs server (fbq eventID <-> CAPI event_id).
+        // No PII parameters; automatic advanced matching stays OFF.
+        const metaEventId =
+          typeof crypto !== "undefined" && "randomUUID" in crypto
+            ? crypto.randomUUID()
+            : `lead-${Date.now()}-${Math.floor(Math.random() * 1e6)}`;
+        window.fbq?.(
+          "track",
+          "Lead",
+          { content_name: "quote_form" },
+          { eventID: metaEventId },
+        );
         posthog.capture("form_submitted", {
           form: "contact",
           project_type: formData.projectType || "unspecified",
+          meta_event_id: metaEventId,
         });
         setSubmitted(true);
       } else {

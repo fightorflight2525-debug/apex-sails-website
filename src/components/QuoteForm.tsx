@@ -1,3 +1,16 @@
+// ============================================================================
+// WARNING - THIS COMPONENT IS NOT USED ANYWHERE ON THE SITE (verified 2026-08-18,
+// SAUCE-275: `grep -rn "QuoteForm" src` returns only this file and one comment).
+// It is DEAD CODE and it is a TRAP: SAUCE-273 added the Meta Lead event here,
+// reported M2 complete, and a later source-read "confirmed" Meta Lead was wired.
+// It was not. The live lead form is the INLINE form in src/app/contact/page.tsx,
+// which had no Lead event until SAUCE-275 cured it there.
+// IF YOU ARE VERIFYING CONVERSION TRACKING: read src/app/contact/page.tsx, and
+// verify against the SERVED page or the network tab, never against this file.
+// Any change to lead tracking must be made in contact/page.tsx (and mirrored
+// here only if this component is ever actually mounted).
+// Operator decision owed: delete this file, or wire it up and retire the inline form.
+// ============================================================================
 "use client";
 
 import { useRef, useState, type FormEvent } from "react";
