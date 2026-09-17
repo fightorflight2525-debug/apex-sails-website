@@ -50,7 +50,7 @@ export default function StickyCallBar() {
             Get My <em className="not-italic font-bold text-[1.06em] mx-0.5">Free</em> Design + Estimate
           </span>
           <span className="text-[10px] uppercase tracking-widest text-white/85">
-            We call within the hour
+            We call within 15 minutes
           </span>
         </Link>
       </div>

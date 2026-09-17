@@ -16,7 +16,7 @@
 export const FAQ_ITEMS: ReadonlyArray<{ q: string; a: string }> = [
   {
     q: "Will it survive Phoenix monsoons?",
-    a: "Engineered for 90 MPH winds with marine-grade 316 stainless hardware and a 10-year fabric warranty. Architectural-grade shade fabric blocks up to 96% of UV and drops temperatures up to 15 degrees Fahrenheit under the shade.",
+    a: "Engineered for 90 MPH winds with marine-grade 316 stainless hardware and a 15-year warranty. Architectural-grade shade fabric blocks up to 96% of UV and drops temperatures up to 15 degrees Fahrenheit under the shade.",
   },
   {
     q: "Are these actually engineered structures or just fabric?",
@@ -24,7 +24,7 @@ export const FAQ_ITEMS: ReadonlyArray<{ q: string; a: string }> = [
   },
   {
     q: "Residential or commercial, same crew?",
-    a: "Same Phoenix-trained installation crew, same marine-grade hardware, same 10-year fabric warranty across both. Custom 3D design free either way.",
+    a: "Same Phoenix-trained installation crew, same marine-grade hardware, same 15-year warranty across both. Custom 3D design free either way.",
   },
   {
     q: "What does a residential project cost?",
@@ -44,14 +44,14 @@ export const FAQ_ITEMS: ReadonlyArray<{ q: string; a: string }> = [
   },
   {
     q: "What is the warranty?",
-    a: "10-year fabric warranty backed by the manufacturer. Marine-grade 316 stainless hardware on every install. We stand behind the workmanship season after season.",
+    a: "A 15-year warranty on the shade fabric, backed by the manufacturer, against UV degradation and material defects. Apex warrants the installation workmanship for one year from completion, and we stand behind our work well past that. Marine-grade 316 stainless hardware on every install.",
   },
   {
     q: "Where do you install?",
-    a: "Greater Phoenix metro: Phoenix, Scottsdale, Mesa, Tempe, Chandler, Gilbert, Glendale, Peoria, and surrounding Valley cities. If you are outside that radius, ask anyway. We cover much of central Arizona for the right project.",
+    a: "Phoenix Metro and surrounding areas: Phoenix, Scottsdale, Mesa, Tempe, Chandler, Gilbert, Glendale, Peoria, and the surrounding areas. If you are outside that, ask anyway. We cover much of central Arizona for the right project.",
   },
   {
     q: "What is the next step?",
-    a: "One free on-site visit. Real quote same day. No high-pressure sales. We respond to all inquiries within the hour.",
+    a: "One free on-site visit. Real quote same day. No high-pressure sales. We respond to all inquiries within 15 minutes.",
   },
 ];

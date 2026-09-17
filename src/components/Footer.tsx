@@ -17,7 +17,7 @@ const footerCompany = [
 const footerWhyApex = [
   "96% UV Block",
   "15\u00B0F Cooler",
-  "10-Year Warranty",
+  "15-Year Warranty",
   "ShadeCast\u2122 Technology",
 ];
 

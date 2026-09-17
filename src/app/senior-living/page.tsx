@@ -362,7 +362,7 @@ export default function SeniorLivingPage() {
                 </h3>
                 <p className="text-white/60 leading-relaxed">
                   Architectural shade fabric blocks up to 96% of UV and drops the
-                  temperature beneath by up to 15&deg;F, backed by a 10-year fabric
+                  temperature beneath by up to 15&deg;F, backed by a 15-year
                   warranty.
                 </p>
               </div>

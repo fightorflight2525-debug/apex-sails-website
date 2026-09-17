@@ -354,7 +354,7 @@ const processSteps = [
       "Minimal site disruption \u2014 your operations continue",
       "Typically 1\u20133 days for most commercial projects",
       "Final inspection and client sign-off",
-      "10-year fabric warranty activation",
+      "15-year warranty activation",
     ],
     imagePlaceholder: "Installation Photo",
     image: "/images/gallery-desert-mountains.jpg",
@@ -488,7 +488,7 @@ const includedItems = [
   "City permit handling",
   "Custom fabrication",
   "Professional installation",
-  "10-year fabric warranty",
+  "15-year warranty",
   "Lifetime thread warranty",
   "Post-installation inspection",
 ];

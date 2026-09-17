@@ -5,14 +5,14 @@ import { OG_DEFAULTS } from "@/app/og-defaults";
 export const metadata: Metadata = {
   title: "Shade Sail FAQ | Cost, Engineering, HOA & Warranty | Apex Sail Shades",
   description:
-    "Real answers about custom shade sails in Phoenix: what they cost, how they are engineered for 90 MPH monsoon wind, HOA approval, the 10-year fabric warranty, and what the free design visit includes.",
+    "Real answers about custom shade sails in Phoenix: what they cost, how they are engineered for 90 MPH monsoon wind, HOA approval, the 15-year warranty, and what the free design visit includes.",
   // SAUCE-246: canonical + openGraph added (absolute via root metadataBase).
   alternates: { canonical: "/faq" },
   openGraph: {
     ...OG_DEFAULTS,
     title: "Shade Sail FAQ | Cost, Engineering, HOA & Warranty",
     description:
-      "What shade sails cost in Phoenix, how they survive monsoon season, HOA approval, and the 10-year fabric warranty.",
+      "What shade sails cost in Phoenix, how they survive monsoon season, HOA approval, and the 15-year warranty.",
     url: "/faq",
     type: "website",
   },

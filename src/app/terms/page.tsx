@@ -73,7 +73,7 @@ export default function TermsPage() {
 
           <h2 className={H2}>Warranty</h2>
           <p className={P}>
-            The shade fabric we install carries a 10-year warranty from the fabric manufacturer against material defects under normal use, subject to the manufacturer&apos;s stated terms. Apex warrants its workmanship for one year from substantial completion against installation defects that arise during normal use. Damage from impact, vandalism, modifications by other parties, or maintenance neglect is not covered.
+            The shade fabric we install carries a 15-year warranty from the fabric manufacturer against UV degradation and material defects under normal use, subject to the manufacturer&apos;s stated terms. That 15-year fabric warranty is what &quot;15-year warranty&quot; refers to elsewhere on this Site. Separately, Apex warrants its own installation workmanship for one year from substantial completion against installation defects that arise during normal use. Damage from impact, vandalism, modifications by other parties, or maintenance neglect is not covered.
           </p>
           <p className={P}>
             These warranties are the only warranties Apex provides. To the maximum extent permitted by Arizona law, we disclaim all other express or implied warranties, including warranties of merchantability and fitness for a particular purpose.

@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://apex-sail-shades.com"),
   title: "Apex Sail Shades | Phoenix Shade Sail Specialists",
   description:
-    "Custom-engineered shade sails for Phoenix homes and businesses. Designed and installed in one visit, built for 110F sun and monsoon winds. 96% UV block, 10-year fabric, engineered and tensioned.",
+    "Custom-engineered shade sails for Phoenix homes and businesses. Designed and installed in one visit, built for 110F sun and monsoon winds. 96% UV block, 15-year, engineered and tensioned.",
   keywords: [
     "shade sails Phoenix",
     "residential shade sails",

@@ -48,7 +48,7 @@ export default function StatsBand() {
             </div>
           </div>
 
-          {/* 10-Year Warranty */}
+          {/* 15-Year Warranty */}
           <div className="flex flex-col items-center text-center gap-3">
             <svg className="w-10 h-10 text-copper" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <path d="M20 4 L32 10 L32 22 C32 30 26 36 20 38 C14 36 8 30 8 22 L8 10 Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
@@ -56,7 +56,7 @@ export default function StatsBand() {
             </svg>
             <div>
               <p className="text-xl font-heading font-bold text-charcoal">
-                <CountUp to={10} suffix="-Year Warranty" />
+                <CountUp to={15} suffix="-Year Warranty" />
               </p>
               <p className="text-sm text-charcoal/50 mt-0.5">Fabric &amp; structure</p>
             </div>

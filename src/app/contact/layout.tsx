@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     ...OG_DEFAULTS,
     title: "Free Shade Sail Quote & Design Visit | Apex Sail Shades",
     description:
-      "Free on-site design visit, a ShadeCast sun study, and an exact itemized quote in the same visit. A real person calls you within the hour.",
+      "Free on-site design visit, a ShadeCast sun study, and an exact itemized quote in the same visit. A real person calls you within 15 minutes.",
     url: "/contact",
     type: "website",
   },

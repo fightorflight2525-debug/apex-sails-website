@@ -183,7 +183,7 @@ export default function QuoteForm({ formName = "contact" }: QuoteFormProps) {
           Got it{formData.fullName ? `, ${formData.fullName.split(" ")[0]}` : ""}.
         </h3>
         <p className="mt-3 text-charcoal-light leading-relaxed">
-          We&apos;ll call you within the hour to schedule your free design visit.
+          We&apos;ll call you within 15 minutes to schedule your free design visit.
         </p>
       </div>
     );

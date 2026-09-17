@@ -18,7 +18,7 @@ const MiniGallerySlideshow = dynamic(() => import("@/components/MiniGallerySlide
 export const metadata: Metadata = {
   title: "Shade Sails Phoenix | Custom Shade Sails for Homes & Businesses | Apex Sail Shades",
   description:
-    "Custom-engineered shade sails for Phoenix homes and businesses. Up to 96% UV block and 15°F cooler, engineered for 110°F sun and monsoon wind. Free design visit, and a real person calls you within the hour.",
+    "Custom-engineered shade sails for Phoenix homes and businesses. Up to 96% UV block and 15°F cooler, engineered for 110°F sun and monsoon wind. Free design visit, and a real person calls you within 15 minutes.",
   alternates: { canonical: "/" },
   openGraph: {
     ...OG_DEFAULTS,
@@ -540,7 +540,7 @@ export default function Home() {
                 </h3>
                 <p className="text-white/60 leading-relaxed">
                   Architectural shade fabric blocks up to 96% of UV and drops the
-                  temperature beneath by up to 15&deg;F, backed by a 10-year fabric
+                  temperature beneath by up to 15&deg;F, backed by a 15-year
                   warranty.
                 </p>
               </div>

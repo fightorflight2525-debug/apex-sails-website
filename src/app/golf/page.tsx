@@ -145,7 +145,7 @@ export default function GolfPage() {
               { node: <CountUp to={96} suffix="%" />, label: "UV blocked" },
               { node: <CountUp to={15} suffix={"°F"} />, label: "Cooler under shade" },
               { node: <CountUp to={90} suffix="mph" />, label: "Wind rated" },
-              { node: <CountUp to={10} suffix="-yr" />, label: "Fabric warranty" },
+              { node: <CountUp to={15} suffix="-yr" />, label: "Warranty" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <p className="font-heading text-3xl sm:text-4xl font-bold text-copper">
@@ -365,7 +365,7 @@ export default function GolfPage() {
                 </h3>
                 <p className="text-white/60 leading-relaxed">
                   Architectural shade fabric blocks up to 96% of UV and drops the
-                  temperature beneath by up to 15&deg;F, backed by a 10-year fabric
+                  temperature beneath by up to 15&deg;F, backed by a 15-year
                   warranty.
                 </p>
               </div>

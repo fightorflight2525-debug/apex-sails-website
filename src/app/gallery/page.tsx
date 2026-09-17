@@ -147,7 +147,7 @@ export default function GalleryPage() {
             See one you like?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-charcoal-light leading-relaxed">
-            We respond to all inquiries within the hour.
+            We respond to all inquiries within 15 minutes.
           </p>
           <Link
             href="/contact"

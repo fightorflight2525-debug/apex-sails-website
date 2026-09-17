@@ -12,7 +12,7 @@ import { OG_DEFAULTS } from "@/app/og-defaults";
 export const metadata: Metadata = {
   title: "Shade Sails Phoenix | Backyard, Pool & Patio | Apex Sail Shades",
   description:
-    "Custom shade sails for Phoenix backyards, pools, and patios. Up to 96% UV block, 15°F cooler, up in as little as 14 days. Most projects $8,000 to $12,000. A real person calls you within the hour.",
+    "Custom shade sails for Phoenix backyards, pools, and patios. Up to 96% UV block, 15°F cooler, up in as little as 14 days. Most projects $8,000 to $12,000. A real person calls you within 15 minutes.",
   alternates: { canonical: "/residential" },
   openGraph: {
     ...OG_DEFAULTS,
@@ -41,7 +41,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "How much cooler is it under a shade sail?",
-    a: "Commercial-grade fabric blocks up to 96% of UV and drops the temperature underneath by up to 15°F. Pools, patios, and play areas stay usable through the hottest part of the day.",
+    a: "Commercial-grade fabric blocks up to 96% of UV and drops the temperature underneath by up to 15°F. Pools, patios, and backyards stay usable through the hottest part of the day.",
   },
   {
     q: "Do I need HOA approval for a shade sail?",
@@ -49,7 +49,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What warranty comes with my shade sail?",
-    a: "A 10-year fabric warranty, and we stand behind the workmanship on every install. If something is not right, we make it right.",
+    a: "A 15-year warranty, and we stand behind the workmanship on every install. If something is not right, we make it right.",
   },
 ];
 
@@ -120,7 +120,7 @@ const valueProps: { title: string; body: string; icon: ReactNode; href?: string 
   },
   {
     title: "Built for Phoenix",
-    body: "Engineered for 110\u00b0F summers and 60+ mph monsoon winds. Marine-grade 316 stainless hardware on every install.",
+    body: "Engineered for 110\u00b0F summers and 90+ mph monsoon winds. Marine-grade 316 stainless hardware on every install.",
     icon: (
       <svg className="w-10 h-10 text-copper" viewBox="0 0 40 40" fill="none" aria-hidden="true">
         <path d="M3 30 L12 16 L18 24 L26 12 L37 30 Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
@@ -143,7 +143,7 @@ const valueProps: { title: string; body: string; icon: ReactNode; href?: string 
     ),
   },
   {
-    title: "10-year fabric warranty",
+    title: "15-year warranty",
     body: "We stand behind the materials and the workmanship, so your patio stays protected season after season.",
     icon: (
       <svg className="w-10 h-10 text-copper" viewBox="0 0 40 40" fill="none" aria-hidden="true">
@@ -325,7 +325,7 @@ export default function ResidentialPage() {
                   Custom shade sails for Phoenix backyards, pools, and patios.
                   Designed for your exact space, engineered for monsoon wind, and
                   up in as little as 14 days. Want proof of how fast we move? A
-                  real person calls you within the hour.
+                  real person calls you within 15 minutes.
                 </p>
                 <p className="mt-3 text-sm sm:text-base text-white/60 font-body">
                   Most projects run $8,000 to $12,000. You get the exact number at
@@ -343,7 +343,7 @@ export default function ResidentialPage() {
                       Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Estimate
                     </Link>
                     <span className="mt-2 text-xs uppercase tracking-widest text-white/60">
-                      Free in-home visit &middot; We call within the hour
+                      Free in-home visit &middot; We call within 15 minutes
                     </span>
                   </div>
                   <a
@@ -412,7 +412,7 @@ export default function ResidentialPage() {
                     </li>
                     <li className="flex items-center gap-4">
                       <ShieldIcon className="w-8 h-8 shrink-0 text-copper" />
-                      <span className="text-lg text-white/75">10-year warranty</span>
+                      <span className="text-lg text-white/75">15-year warranty</span>
                     </li>
                   </ul>
                 </div>
@@ -472,7 +472,7 @@ export default function ResidentialPage() {
                       Get My <em className="not-italic font-extrabold text-[1.08em] mx-1">Free</em> Design + Estimate
                     </Link>
                     <span className="mt-2 text-xs uppercase tracking-widest text-white/85">
-                      Free in-home visit &middot; We call within the hour
+                      Free in-home visit &middot; We call within 15 minutes
                     </span>
                   </div>
                   <p className="mt-6 text-lg text-white/90 leading-relaxed">
@@ -807,7 +807,7 @@ export default function ResidentialPage() {
                 Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Estimate
               </Link>
               <span className="mt-2 text-xs uppercase tracking-widest text-white/60">
-                Free in-home visit &middot; We call within the hour
+                Free in-home visit &middot; We call within 15 minutes
               </span>
             </div>
             <a

@@ -109,7 +109,7 @@ const stats = [
   { value: "15\u00b0F", label: "Avg Temp Reduction" },
   { value: "1,500 sq ft", label: "Largest commercial install" },
   { value: "90mph+", label: "Wind Load Rating" },
-  { value: "10 Years", label: "Fabric Warranty" },
+  { value: "15 Years", label: "Warranty" },
 ];
 
 const standards = [
