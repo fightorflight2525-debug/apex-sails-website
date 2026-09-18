@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
-import CrossFadeCarousel from "@/components/CrossFadeCarousel";
+import { HomeHeroBackdrop, HomeHeroHeadline } from "@/components/HomeHero";
+import ExperienceSection from "@/components/ExperienceSection";
 import Reveal from "@/components/Reveal";
-import CountUp from "@/components/CountUp";
 import StatsBand from "@/components/StatsBand";
 import StickyCallBar from "@/components/StickyCallBar";
 import { OG_DEFAULTS } from "@/app/og-defaults";
+import CtaText from "@/components/CtaText";
 
 // D5b LCP: defer below-the-fold client components out of the homepage's initial
 // JS bundle via next/dynamic (SSR stays ON by default -> zero visual change, CLS 0).
@@ -18,13 +19,13 @@ const MiniGallerySlideshow = dynamic(() => import("@/components/MiniGallerySlide
 export const metadata: Metadata = {
   title: "Shade Sails Phoenix | Custom Shade Sails for Homes & Businesses | Apex Sail Shades",
   description:
-    "Custom-engineered shade sails for Phoenix homes and businesses. Up to 96% UV block and 15°F cooler, engineered for 110°F sun and monsoon wind. Free design visit, and a real person calls you within 15 minutes.",
+    "Custom-engineered shade sails for Phoenix homes and businesses. Up to 96% UV block and 30°F cooler surfaces, engineered for 110°F sun and monsoon wind. Free design visit, and a real person calls you within 15 minutes.",
   alternates: { canonical: "/" },
   openGraph: {
     ...OG_DEFAULTS,
     title: "Shade Sails Phoenix | Custom Shade Sails for Homes & Businesses",
     description:
-      "Custom shade sails engineered for Phoenix heat and monsoon wind. Free visit, 3D design, and an exact estimate. Most residential projects $8,000 to $12,000.",
+      "Custom shade sails engineered for Phoenix heat and monsoon wind. Free visit, 3D design, and your FINAL price. Most residential projects $8,000 to $12,000.",
     url: "/",
     type: "website",
   },
@@ -149,125 +150,22 @@ export default function Home() {
           SECTION 1: HERO  (LCP element, rendered immediately, NOT motion-gated)
           ============================================================ */}
       <section className="relative min-h-screen flex items-center overflow-hidden bg-charcoal">
-        {/* Hero slideshow (H4): passive 11-frame strip from the ambiguous LP, auto-cycle only.
-            Frame 0 (both-hero-ws-14) preserves LCP behavior (priority+sized). */}
-        <CrossFadeCarousel
-          fill
-          controls={false}
-          ariaLabel="Hero image slideshow"
-          intervalMs={6000}
-          transitionMs={700}
-          sizes="100vw"
-          frameClassName="object-cover opacity-30"
-          frames={[
-            {
-              src: "/images/slideshow-01-ws34.webp",
-              alt: "Custom red shade sail over a Phoenix public art park",
-              priority: true,
-            },
-            {
-              src: "/images/slideshow-02-os07-cropped.webp",
-              alt: "Aerial view of Phoenix commercial shade sail install with mountain backdrop",
-            },
-            {
-              src: "/images/both-strip-02-ws-22.webp",
-              alt: "Phoenix residential shade sail install",
-            },
-            {
-              src: "/images/both-strip-03-ws-06.webp",
-              alt: "Apex commercial shade sail install",
-            },
-            {
-              src: "/images/both-strip-04-ws-29.webp",
-              alt: "Phoenix shade sail over outdoor patio",
-            },
-            {
-              src: "/images/both-strip-05-ws-18.webp",
-              alt: "Custom shade sail backyard install",
-            },
-            {
-              src: "/images/both-strip-06-ws-32.webp",
-              alt: "Tensioned shade sail commercial install",
-            },
-            {
-              src: "/images/both-strip-07-os-12.webp",
-              alt: "Residential shade sail over Phoenix backyard",
-            },
-            {
-              src: "/images/both-strip-08-ws-23.webp",
-              alt: "Apex shade sail finished install",
-            },
-            {
-              src: "/images/both-strip-09-ws-41.webp",
-              alt: "Custom shade sail outdoor space",
-            },
-            {
-              src: "/images/both-strip-11-ws-44.webp",
-              alt: "Tensioned custom shade sail in Phoenix",
-            },
-            {
-              src: "/images/both-hero-ws-14.webp",
-              alt: "Custom shade sail over a Phoenix outdoor space",
-            },
-          ]}
-        />
-        {/* Gradient overlay (B8: opacities reduced ~12% so slideshow image reads through more) */}
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal-light/50 to-charcoal/90" />
-
-        {/* Geometric sail-shape SVG motif (decorative) */}
-        <div className="absolute inset-0 opacity-[0.04]">
-          <svg
-            className="absolute top-20 -left-20 w-[600px] h-[600px]"
-            viewBox="0 0 600 600"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path d="M100 500 L300 100 L500 400 Z" stroke="white" strokeWidth="1.5" />
-            <path d="M150 480 L320 150 L480 380 Z" stroke="white" strokeWidth="0.75" />
-          </svg>
-          <svg
-            className="absolute top-40 right-0 w-[500px] h-[500px]"
-            viewBox="0 0 500 500"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path d="M50 450 L250 50 L450 350 Z" stroke="white" strokeWidth="1.5" />
-            <path d="M80 420 L260 100 L420 330 Z" stroke="white" strokeWidth="0.75" />
-          </svg>
-          <svg
-            className="absolute bottom-10 left-1/3 w-[400px] h-[400px]"
-            viewBox="0 0 400 400"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path d="M50 350 L200 50 L350 280 Z" stroke="white" strokeWidth="1" />
-          </svg>
-        </div>
-
-        {/* Subtle radial glow */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-copper/5 rounded-full blur-3xl" />
+        {/* SAUCE-313: slideshow, tint, sail motif, glow and bottom fade live in
+            HomeHero.tsx so /free-design shows the SAME hero (S1.7). */}
+        <HomeHeroBackdrop />
 
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-32 pb-20 w-full">
           <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-block text-sm font-semibold uppercase tracking-widest text-sand">
-              Phoenix shade sail specialists
-            </span>
-            <h1 className="mt-4 font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight">
-              <span className="italic text-copper">Custom</span> Shade Sails,<br />Built for <span className="text-copper">Phoenix</span> Heat.
-            </h1>
-            <p className="mt-6 text-lg sm:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed font-body">
-              Custom-engineered shade sails, designed and quoted in one visit.
-              Cooler patios, protected pools, shaded commercial spaces.
-            </p>
+            <HomeHeroHeadline />
 
             {/* Dual CTA */}
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
-                className="cta-glow-loop inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
+                className="cta-glow-loop inline-flex items-center justify-center text-center text-balance px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
               >
-                Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Estimate
+                <CtaText />
               </Link>
               <a
                 href="#work"
@@ -285,8 +183,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Bottom fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-charcoal to-transparent" />
       </section>
 
       {/* ============================================================
@@ -317,8 +213,8 @@ export default function Home() {
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <Image
-                    src="/images/home-card-os19.webp"
-                    alt="Custom red and tan shade sails over an Arizona residential outdoor deck"
+                    src="/images/home-card-backyard-patio.webp"
+                    alt="Custom shade sail over a Phoenix backyard patio"
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -539,8 +435,8 @@ export default function Home() {
                   Commercial-grade fabric
                 </h3>
                 <p className="text-white/60 leading-relaxed">
-                  Architectural shade fabric blocks up to 96% of UV and drops the
-                  temperature beneath by up to 15&deg;F, backed by a 15-year
+                  Architectural shade fabric blocks up to 96% of UV and keeps the
+                  surfaces beneath up to 30&deg;F cooler, backed by a 15-year
                   warranty.
                 </p>
               </div>
@@ -592,9 +488,9 @@ export default function Home() {
                 {/* S3 desktop CTA: visible at lg+, hidden below (mobile/tablet show the post-simulation CTA instead) */}
                 <Link
                   href="/contact"
-                  className="mt-10 hidden lg:inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
+                  className="mt-10 hidden lg:inline-flex items-center justify-center text-center text-balance px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
                 >
-                  Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Estimate
+                  <CtaText />
                 </Link>
               </div>
             </Reveal>
@@ -610,9 +506,9 @@ export default function Home() {
                 lg:hidden removes it from the grid entirely at lg+ so desktop stays 2-cell. */}
             <Link
               href="/contact"
-              className="lg:hidden mt-2 mx-auto inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
+              className="lg:hidden mt-2 mx-auto inline-flex items-center justify-center text-center text-balance px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
             >
-              Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Estimate
+              <CtaText />
             </Link>
           </div>
         </div>
@@ -620,56 +516,9 @@ export default function Home() {
 
       {/* ============================================================
           SECTION 7: EXPERIENCE BAND  (industry lineage, not entity age)
+          SAUCE-313: shared with /welcome (ExperienceSection.tsx)
           ============================================================ */}
-      <section className="bg-white py-20 sm:py-24">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* B3: photo hidden on mobile (showcase dominates above-the-fold; experience copy + stats stand alone on small viewports) */}
-            <Reveal className="hidden lg:block">
-              <div className="relative aspect-[16/11] rounded-2xl overflow-hidden bg-sand/30">
-                <Image
-                  src="/images/showcase-craft-ws09.webp"
-                  alt="Tensioned shade sails over a finished outdoor space"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-            </Reveal>
-            <Reveal delay={0.08}>
-              <p className="text-copper font-semibold tracking-wide uppercase text-sm mb-3">
-                Experience
-              </p>
-              <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-charcoal leading-tight">
-                Backed by <em className="italic">deep</em> shade-sail experience
-              </h2>
-              <p className="mt-6 text-lg text-charcoal/70 leading-relaxed">
-                The team at Apex came up through a Phoenix shade-sail lineage that dates back to 2019. Together, our crews and the partners we trained alongside have installed more than 1 million square feet of shade in the past year alone. That depth shows up in every footing we pour and every sail we tension.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-10">
-                <div>
-                  <p className="font-heading text-4xl font-bold text-copper">
-                    Since 2019
-                  </p>
-                  <p className="mt-1 text-charcoal/60 font-medium">Industry lineage</p>
-                </div>
-                <div>
-                  <p className="font-heading text-4xl font-bold text-copper">
-                    <CountUp to={500000} suffix="+" />
-                  </p>
-                  <p className="mt-1 text-charcoal/60 font-medium">Sq ft shaded (Apex + partners)</p>
-                </div>
-                <div>
-                  <p className="font-heading text-4xl font-bold text-copper">
-                    <CountUp to={1000000} suffix="+" />
-                  </p>
-                  <p className="mt-1 text-charcoal/60 font-medium">Partner volume, past year</p>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
+      <ExperienceSection />
 
       {/* ============================================================
           SECTION 8A: PROCESS TEASER  (3 of 5 steps -> /process)
@@ -757,9 +606,9 @@ export default function Home() {
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="cta-glow-loop inline-flex items-center justify-center px-10 py-5 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/20"
+              className="cta-glow-loop inline-flex items-center justify-center text-center text-balance px-10 py-5 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/20"
             >
-              Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Estimate
+              <CtaText />
             </Link>
             <a
               href="tel:+16028370370"
