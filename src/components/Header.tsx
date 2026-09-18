@@ -32,6 +32,10 @@ export default function Header() {
   // dark aesthetic the operator likes while still making the nav readable
   // over light sections. Every other page keeps the white flip.
   const isResidential = pathname === "/residential";
+  // SAUCE-312 (CTA v3): the Meta hallway (/free-design) and the thank-you page
+  // (/welcome) show the logo and the call link only. No nav, no second CTA:
+  // one door per room, and nothing to wander off through mid-hallway.
+  const isHallway = pathname === "/free-design" || pathname === "/welcome";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -99,7 +103,18 @@ export default function Header() {
               />
             </Link>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation (hallway pages: the call link only) */}
+            {isHallway ? (
+              <a
+                href="tel:+16028370370"
+                className={`hidden items-center gap-1.5 text-sm font-medium transition-colors duration-300 hover:text-copper lg:inline-flex ${
+                  scrolled && !isResidential ? "text-charcoal" : "text-white"
+                }`}
+              >
+                <PhoneIcon className="h-4 w-4" />
+                (602) 837-0370
+              </a>
+            ) : (
             <nav className="hidden items-center gap-8 lg:flex">
               <Link
                 href="/residential"
@@ -174,6 +189,7 @@ export default function Header() {
                 Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Estimate
               </Link>
             </nav>
+            )}
 
             {/* Mobile call button + hamburger (A2: call sits to the LEFT of hamburger) */}
             <div className="flex items-center gap-2 lg:hidden">
@@ -185,6 +201,7 @@ export default function Header() {
                 <PhoneIcon className="h-5 w-5" />
               </a>
 
+              {!isHallway && (
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
                 className={`relative z-50 flex h-10 w-10 items-center justify-center rounded-md transition-colors ${
@@ -219,6 +236,7 @@ export default function Header() {
                   />
                 </div>
               </button>
+              )}
             </div>
           </div>
         </div>

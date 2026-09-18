@@ -2,6 +2,7 @@
 
 import { useRef, useState, type FormEvent } from "react";
 import posthog from "posthog-js";
+import TextDoor from "@/components/TextDoor";
 
 const benefits = [
   "Complimentary ShadeCast\u2122 shadow analysis",
@@ -226,6 +227,15 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <>
+                  {/* SAUCE-312 CTA v3: the one-tap text door beside the form, for the
+                      70% who never start typing. Pre-written message, zero typing. */}
+                  <p className="mb-6 rounded-lg bg-cream px-4 py-3 text-sm text-charcoal">
+                    Rather text?{" "}
+                    <TextDoor door="contact" className="font-semibold text-copper underline underline-offset-4 hover:text-copper-dark">
+                      Text us
+                    </TextDoor>
+                    , the message is already written.
+                  </p>
                   <form onSubmit={handleSubmit} onFocusCapture={handleFormFocus} className="space-y-6" noValidate>
                     {/* Honeypot (invisible to humans, filled by bots; Formspree convention) */}
                     <div className="absolute h-0 w-0 overflow-hidden opacity-0" aria-hidden="true">
