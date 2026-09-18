@@ -106,3 +106,29 @@ export function SaveNumberButton() {
     </div>
   );
 }
+
+// ============================================================================
+// CallNowButton: "Can't wait? Call us now", shown INSIDE the call window only.
+// After hours the page promises the morning call, so it does not invite a call
+// nobody will answer. Same window as the line above.
+// ============================================================================
+export function CallNowButton() {
+  const [day, setDay] = useState(false);
+  useEffect(() => {
+    try {
+      const h = phoenixHour();
+      setDay(h >= CALL_START_HOUR && h < CALL_END_HOUR);
+    } catch {
+      setDay(true);
+    }
+  }, []);
+  if (!day) return null;
+  return (
+    <a
+      href="tel:+16028370370"
+      className="inline-flex items-center justify-center rounded-full border border-white/40 px-8 py-4 text-base font-semibold text-white transition-colors hover:bg-white/10 sm:text-lg"
+    >
+      Can&apos;t wait? Call us now
+    </a>
+  );
+}

@@ -74,7 +74,7 @@ export default function FreeDesignPage() {
           </div>
 
           <div id="free-design-form" className="mx-auto w-full max-w-xl scroll-mt-28">
-            <ShortLeadForm door="free-design" idPrefix="fd" />
+            <ShortLeadForm door="free-design" idPrefix="fd" showSubLine={false} />
             <p className="mt-4 text-center text-sm leading-relaxed text-white/75">
               Rather text?{" "}
               <TextDoor door="free-design" className="font-semibold text-white underline decoration-copper underline-offset-4">
@@ -93,7 +93,7 @@ export default function FreeDesignPage() {
       {/* ===== REAL WORK ===== */}
       <section className="bg-cream py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center font-heading text-3xl font-bold text-charcoal sm:text-4xl">
+          <h2 className="text-balance text-center font-heading text-3xl font-bold text-charcoal sm:text-4xl">
             Real Apex installs in Phoenix
           </h2>
           <div className="mt-10 grid gap-4 sm:grid-cols-3">

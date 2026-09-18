@@ -30,6 +30,8 @@ type Props = {
   door: string;
   /** Keeps element ids unique if a page ever carries two forms. */
   idPrefix?: string;
+  /** The "No extra fees" line under the button. Off where the hero already says it beside the form. */
+  showSubLine?: boolean;
 };
 
 function readUtm(): Record<string, string> {
@@ -46,7 +48,7 @@ function readUtm(): Record<string, string> {
   return out;
 }
 
-export default function ShortLeadForm({ door, idPrefix = "slf" }: Props) {
+export default function ShortLeadForm({ door, idPrefix = "slf", showSubLine = true }: Props) {
   const router = useRouter();
   const [space, setSpace] = useState<Space | "">("");
   const [name, setName] = useState("");
@@ -254,9 +256,11 @@ export default function ShortLeadForm({ door, idPrefix = "slf" }: Props) {
         {submitting ? "Sending..." : "Get my free 3D design + FINAL price"}
       </button>
 
-      <p className="mt-3 text-center text-sm font-medium text-charcoal">
-        No extra fees. The price we quote is the price you pay.
-      </p>
+      {showSubLine && (
+        <p className="mt-3 text-center text-sm font-medium text-charcoal">
+          No extra fees. The price we quote is the price you pay.
+        </p>
+      )}
 
       <p className="mt-3 text-center text-[11px] leading-relaxed text-charcoal-light/80">
         By submitting this form, you agree that Apex Sail Shades may contact you by phone call or email about your project and quote. See our{" "}

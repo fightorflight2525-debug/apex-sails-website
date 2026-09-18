@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import WelcomeCallLine, { SaveNumberButton } from "@/components/WelcomeCallLine";
+import WelcomeCallLine, { CallNowButton, SaveNumberButton } from "@/components/WelcomeCallLine";
 
 // ============================================================================
 // /welcome (SAUCE-312, CTA v3 S4): the thank-you page after ANY submit (the
@@ -63,12 +63,7 @@ export default function WelcomePage() {
           <WelcomeCallLine />
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:items-start">
             <SaveNumberButton />
-            <a
-              href="tel:+16028370370"
-              className="inline-flex items-center justify-center rounded-full border border-white/40 px-8 py-4 text-base font-semibold text-white transition-colors hover:bg-white/10 sm:text-lg"
-            >
-              Can&apos;t wait? Call us now
-            </a>
+            <CallNowButton />
           </div>
         </div>
       </section>
@@ -76,7 +71,7 @@ export default function WelcomePage() {
       {/* ===== WHAT THE CALL SETS UP ===== */}
       <section className="bg-white py-16 sm:py-20">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center font-heading text-3xl font-bold text-charcoal sm:text-4xl">
+          <h2 className="text-balance text-center font-heading text-3xl font-bold text-charcoal sm:text-4xl">
             Here&apos;s what that call sets up
           </h2>
           <ol className="mt-10 grid gap-6 sm:grid-cols-3">
@@ -96,7 +91,7 @@ export default function WelcomePage() {
       {/* ===== WHILE YOU WAIT (preps the call, zero homework) ===== */}
       <section className="bg-cream py-16 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="font-heading text-3xl font-bold text-charcoal sm:text-4xl">
+          <h2 className="text-balance font-heading text-3xl font-bold text-charcoal sm:text-4xl">
             While you wait (totally optional)
           </h2>
           <p className="mt-4 text-lg text-charcoal-light">
@@ -120,7 +115,7 @@ export default function WelcomePage() {
       {/* ===== REAL WORK (true before/afters slot in here once he picks the pairs) ===== */}
       <section className="bg-white py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center font-heading text-3xl font-bold text-charcoal sm:text-4xl">
+          <h2 className="text-balance text-center font-heading text-3xl font-bold text-charcoal sm:text-4xl">
             A little Phoenix shade inspiration
           </h2>
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
