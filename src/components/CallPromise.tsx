@@ -16,7 +16,15 @@ import { callPromiseHolds } from "@/components/WelcomeCallLine";
 export const CALL_PROMISE_DAY = "We call within 15 minutes";
 export const CALL_PROMISE_NIGHT = "We call first thing in the morning";
 
-export default function CallPromise({ className = "" }: { className?: string }) {
+export default function CallPromise({
+  className = "",
+  day: dayText = CALL_PROMISE_DAY,
+  night: nightText = CALL_PROMISE_NIGHT,
+}: {
+  className?: string;
+  day?: string;
+  night?: string;
+}) {
   const [day, setDay] = useState<boolean | null>(null);
   useEffect(() => {
     let v = true;
@@ -32,7 +40,7 @@ export default function CallPromise({ className = "" }: { className?: string }) 
       data-call-promise=""
       className={`transition-opacity duration-300 ${day === null ? "opacity-0" : "opacity-100"} ${className}`}
     >
-      {day === false ? CALL_PROMISE_NIGHT : CALL_PROMISE_DAY}
+      {day === false ? nightText : dayText}
     </span>
   );
 }

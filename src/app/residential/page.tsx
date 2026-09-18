@@ -87,9 +87,12 @@ export default function ResidentialPage() {
               <p className="mt-6 text-lg sm:text-xl text-white/80 max-w-2xl lg:max-w-3xl mx-auto leading-relaxed font-body">
                 Custom shade sails for Phoenix backyards, pools, and patios.
                 Designed for your exact space, engineered for monsoon wind, and
-                up in as little as 14 days. Want proof of how fast we move?{" "}
+                up in as little as 14 days.{" "}
                 {/* SAUCE-313: time-aware (true at every hour), same window as /welcome */}
-                <CallPromise />.
+                <CallPromise
+                  day="Want proof of how fast we move? A real person calls you within 15 minutes."
+                  night="Reach out tonight and a real person calls you first thing in the morning."
+                />
               </p>
               <p className="mt-3 text-sm sm:text-base text-white/60 font-body">
                 Most projects run $8,000 to $12,000. You get the exact number at
