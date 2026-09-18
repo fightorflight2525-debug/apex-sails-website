@@ -7,6 +7,8 @@ import CountUp from "@/components/CountUp";
 import Lightbox from "@/components/Lightbox";
 import StickyCallBar from "@/components/StickyCallBar";
 import ResidentialTopCurtain from "@/components/ResidentialTopCurtain";
+import ShortLeadForm from "@/components/ShortLeadForm";
+import TextDoor from "@/components/TextDoor";
 import { OG_DEFAULTS } from "@/app/og-defaults";
 
 export const metadata: Metadata = {
@@ -332,24 +334,27 @@ export default function ResidentialPage() {
                   your free design visit.
                 </p>
 
-                {/* sm:items-start keeps both button TOPS level on desktop even
-                    though the primary carries a descriptor line beneath it. */}
-                <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center sm:items-start">
-                  <div className="flex flex-col items-center">
-                    <Link
-                      href="/contact"
-                      className="cta-glow-loop inline-flex items-center justify-center px-9 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
-                    >
-                      Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Estimate
-                    </Link>
-                    <span className="mt-2 text-xs uppercase tracking-widest text-white/60">
-                      Free in-home visit &middot; We call within 15 minutes
-                    </span>
-                  </div>
-                  <a
-                    href="#gallery"
-                    className="inline-flex items-center justify-center px-8 py-4 border border-white/40 text-white text-lg font-semibold rounded-full hover:bg-white/10 transition-colors duration-200"
-                  >
+                {/* SAUCE-312 CTA v3: THE SHORT FORM AT THE TOP. /residential is the
+                    most-visited page and had no form on it; /contact loses 70% of
+                    arrivals before the first field. The door now sits where the
+                    people are: one tap question, name, phone. It replaces the
+                    "Get My Free Design + Estimate" link (to /contact) as the first
+                    screen's ONE commitment target (the r6 rule is kept). Same
+                    Google Ads form conversion fires on success (tracking parity). */}
+                <div id="quick-form" className="mx-auto mt-10 max-w-xl scroll-mt-28">
+                  <ShortLeadForm door="residential" idPrefix="res" />
+                  <p className="mt-4 text-sm leading-relaxed text-white/75">
+                    Rather text?{" "}
+                    <TextDoor door="residential" className="font-semibold text-white underline decoration-copper underline-offset-4">
+                      Text us
+                    </TextDoor>
+                    , the message is already written. Or call{" "}
+                    <a href="tel:+16028370370" className="font-semibold text-white underline decoration-copper underline-offset-4">
+                      (602) 837-0370
+                    </a>
+                    .
+                  </p>
+                  <a href="#gallery" className="mt-3 inline-block text-sm font-semibold text-white/70 transition-colors hover:text-white">
                     See Our Work
                   </a>
                 </div>
