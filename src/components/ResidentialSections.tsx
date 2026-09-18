@@ -642,13 +642,13 @@ export function ResidentialGallery() {
             </svg>
           </span>
           <span className="block text-sm font-semibold uppercase tracking-widest text-copper">
-            Proof, not promises
+            Shade sail ideas
           </span>
           <h2 className="mt-3 font-heading text-4xl sm:text-5xl font-bold text-charcoal tracking-tight">
-            Real backyards we have <span className="italic text-copper">shaded</span>
+            Ideas for your <span className="italic text-copper">backyard</span>
           </h2>
           <p className="mt-4 text-lg text-charcoal/70 leading-relaxed">
-            Every sail is custom designed and installed for the home it sits over.
+            Every sail we build is custom designed and installed for the home it sits over.
           </p>
         </div>
 
@@ -656,7 +656,7 @@ export function ResidentialGallery() {
           <Lightbox
             images={gallery.map((src) => ({
               src,
-              alt: "Custom residential shade sail installation in the Phoenix metro",
+              alt: "Residential shade sail design idea",
             }))}
             gridClassName="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
             itemClassName="relative aspect-square overflow-hidden rounded-xl bg-charcoal/5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-copper/60 focus:ring-offset-2"
