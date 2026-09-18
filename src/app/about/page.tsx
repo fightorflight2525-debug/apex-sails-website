@@ -114,7 +114,7 @@ const stats = [
 
 const standards = [
   "PTFE-coated architectural fabric",
-  "GORE Tenara PTFE thread \u2014 lifetime warranty",
+  "GORE Tenara PTFE thread, lifetime warranty",
   "Marine-grade 316 stainless steel hardware",
   "Leica 3D laser mapping precision",
   "CSFM Class A fire rated materials",

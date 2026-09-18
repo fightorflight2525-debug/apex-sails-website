@@ -304,7 +304,7 @@ const processSteps = [
       "Every sail is fabricated to exact specifications using the highest-grade materials available in the industry. From the PTFE-coated architectural fabric that blocks 96% of UV rays to GORE Tenara thread that carries a lifetime warranty, we never cut corners on what protects your guests and your investment.",
     bullets: [
       "PTFE-coated architectural fabric \u2014 96% UV block",
-      "GORE Tenara thread \u2014 lifetime warranty",
+      "GORE Tenara thread, lifetime warranty",
       "Marine-grade 316 stainless steel hardware",
       "Custom-cut to exact specifications from laser measurements",
       "Quality control inspection before shipping",

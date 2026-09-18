@@ -421,7 +421,7 @@ export default function ShadeCastDemo({ className = "" }: ShadeCastDemoProps) {
         </div>
 
         <p className="text-[10px] sm:text-xs text-charcoal/40 text-center tracking-wide font-body mt-3">
-          ShadeCast&#8482; Simulation &mdash; Actual results use precise GPS coordinates and terrain data
+          ShadeCast&#8482; Simulation. Actual results use precise GPS coordinates and terrain data
         </p>
       </div>
     </div>
