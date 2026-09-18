@@ -3,7 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-export type LightboxImage = { src: string; alt: string };
+// quality (SAUCE-313): optional per image; omitted = the site default (75).
+export type LightboxImage = { src: string; alt: string; quality?: number };
 
 export type LightboxProps = {
   images: LightboxImage[];
@@ -184,6 +185,7 @@ export default function Lightbox({
               alt={img.alt}
               fill
               sizes={imageSizes}
+              quality={img.quality}
               className="object-cover transition-transform duration-300 hover:scale-105"
               loading={i < 4 ? "eager" : "lazy"}
             />
@@ -262,6 +264,7 @@ export default function Lightbox({
                 alt={current.alt}
                 fill
                 sizes="100vw"
+                quality={current.quality}
                 className="object-contain"
                 priority
               />

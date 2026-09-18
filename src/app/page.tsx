@@ -216,6 +216,7 @@ export default function Home() {
                     src="/images/home-card-backyard-patio.webp"
                     alt="Custom shade sail over a Phoenix backyard patio"
                     fill
+                    quality={90}
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />

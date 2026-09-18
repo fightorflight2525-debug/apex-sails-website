@@ -47,8 +47,8 @@ const INSTALLS = [
 // quote renders here ONLY once his real words and his yes exist.
 const STORY_QUOTE: { text: string } | null = null;
 const STORY_PHOTOS = [
-  { src: "/images/story-backyard-patio.webp", alt: "Shade sail over a Phoenix backyard patio" },
-  { src: "/images/story-backyard-pool.webp", alt: "Shade sail beside a Phoenix backyard pool" },
+  { src: "/images/story-backyard-patio.webp", alt: "Shade sail over a Phoenix backyard patio", quality: 90 },
+  { src: "/images/story-backyard-pool.webp", alt: "Shade sail beside a Phoenix backyard pool", quality: 90 },
 ];
 
 const STEPS = ["A quick, friendly call", "Your free design visit", "Your FINAL price, same day"];
@@ -111,6 +111,7 @@ export default function WelcomeContent({ mode }: { mode: "page" | "sheet" }) {
                 alt="Custom 3D design of a shade sail over a backyard pool"
                 width={1448}
                 height={1086}
+                quality={90}
                 sizes="(min-width: 800px) 768px, calc(100vw - 40px)"
                 className="block h-auto w-full"
               />

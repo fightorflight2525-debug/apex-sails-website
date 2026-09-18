@@ -3,6 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
+    // SAUCE-313: 75 stays the default for every image; 90 is allowed for the
+    // five showcase images only (the 3D design render, the two project-story
+    // photos, the /free-design slide 2 and the home "For Your Home" card).
+    qualities: [75, 90],
   },
   // SAUCE-165: PostHog reverse proxy (official Next.js rewrites pattern).
   // Order matters: static and array MUST come before the catch-all.

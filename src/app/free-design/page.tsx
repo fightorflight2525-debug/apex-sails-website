@@ -56,6 +56,7 @@ const SLIDES: CarouselFrame[] = [
     src: "/images/slide-backyard-sail.webp",
     alt: "Custom shade sail over a Phoenix backyard pool",
     className: "object-[50%_20%]",
+    quality: 90,
   },
   ...HOME_HERO_FRAMES.slice(1),
 ];
