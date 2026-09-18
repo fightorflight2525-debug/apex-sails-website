@@ -242,6 +242,10 @@ export default function Header() {
         </div>
       </header>
 
+      {/* Hallway pages never render the mobile menu at all (no hidden nav or
+          chrome copy in the DOM of a door page). */}
+      {!isHallway && (
+      <>
       {/* Mobile Menu Overlay */}
       <div
         className={`fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
@@ -330,6 +334,8 @@ export default function Header() {
           </div>
         </div>
       </div>
+      </>
+      )}
     </>
   );
 }
