@@ -84,8 +84,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  // SAUCE-313: the @modal slot carries the /welcome sheet (app/@modal/(.)welcome).
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -95,6 +98,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        {modal}
         <PhoneConversionTracker />
         <MetaPixel />
         {/* META PIXEL BASE CODE (SAUCE-273 M1). Dataset 1434479721875306, CAPI-enabled,
