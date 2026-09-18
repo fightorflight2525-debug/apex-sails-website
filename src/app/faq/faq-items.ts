@@ -52,6 +52,6 @@ export const FAQ_ITEMS: ReadonlyArray<{ q: string; a: string }> = [
   },
   {
     q: "What is the next step?",
-    a: "One free on-site visit. Real quote same day. No high-pressure sales. We respond to all inquiries within 15 minutes.",
+    a: "One free on-site visit. Real quote same day. No high-pressure sales. We call within 15 minutes during our call hours, 7 AM to 7 PM every day, and first thing in the morning after hours.",
   },
 ];

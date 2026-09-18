@@ -70,7 +70,7 @@ export default function FaqPage() {
             Still have questions?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-charcoal-light leading-relaxed">
-            We respond to all inquiries within 15 minutes.
+            We call within 15 minutes during our call hours, 7 AM to 7 PM every day, and first thing in the morning after hours.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link

@@ -4,6 +4,7 @@ import { useRef, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import posthog from "posthog-js";
 import TextDoor from "@/components/TextDoor";
+import CallPromise from "@/components/CallPromise";
 import CtaText from "@/components/CtaText";
 
 const benefits = [
@@ -202,7 +203,8 @@ export default function ContactPage() {
             </span>
           </div>
           <p className="mx-auto mt-6 max-w-3xl text-lg text-sand-light leading-relaxed sm:text-xl">
-            Tell us about your space. We&apos;ll call you within 15 minutes to schedule.
+            {/* SAUCE-313: time-aware (true at every hour), same window as /welcome */}
+            Tell us about your space. <CallPromise /> to schedule.
           </p>
         </div>
       </section>
@@ -551,7 +553,7 @@ export default function ContactPage() {
                   Response Time
                 </p>
                 <p className="mt-1 text-xs text-sand-light leading-relaxed">
-                  We respond within 15 minutes.
+                  <CallPromise />.
                 </p>
               </div>
 

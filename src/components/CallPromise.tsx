@@ -28,7 +28,10 @@ export default function CallPromise({ className = "" }: { className?: string }) 
     setDay(v);
   }, []);
   return (
-    <span className={`transition-opacity duration-300 ${day === null ? "opacity-0" : "opacity-100"} ${className}`}>
+    <span
+      data-call-promise=""
+      className={`transition-opacity duration-300 ${day === null ? "opacity-0" : "opacity-100"} ${className}`}
+    >
       {day === false ? CALL_PROMISE_NIGHT : CALL_PROMISE_DAY}
     </span>
   );

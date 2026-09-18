@@ -160,7 +160,7 @@ export default function GalleryPage() {
             See one you like?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-charcoal-light leading-relaxed">
-            We respond to all inquiries within 15 minutes.
+            We call within 15 minutes during our call hours, 7 AM to 7 PM every day, and first thing in the morning after hours.
           </p>
           <Link
             href="/contact"
