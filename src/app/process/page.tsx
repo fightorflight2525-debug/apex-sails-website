@@ -261,7 +261,7 @@ const processSteps = [
       "This is where science meets craftsmanship. Our engineering team designs every structure using HyPar (Hyperbolic Parabola) tensioned membrane geometry, the gold standard for shade sail performance. Combined with Leica 3D Laser Mapping accurate to 1/16 of an inch, every element is engineered for precision, durability, and beauty.",
     bullets: [
       "HyPar tensioned membrane design for superior performance",
-      "Leica 3D Laser Mapping \u2014 1/16\u201d measurement accuracy",
+      "Leica 3D Laser Mapping, 1/16\u201d measurement accuracy",
       "Full structural engineering calculations",
       "90 mph+ wind load rated designs",
       "City permitting handled entirely by our team",
@@ -303,7 +303,7 @@ const processSteps = [
     description:
       "Every sail is fabricated to exact specifications using the highest-grade materials available in the industry. From the PTFE-coated architectural fabric that blocks 96% of UV rays to GORE Tenara thread that carries a lifetime warranty, we never cut corners on what protects your guests and your investment.",
     bullets: [
-      "PTFE-coated architectural fabric \u2014 96% UV block",
+      "PTFE-coated architectural fabric, 96% UV block",
       "GORE Tenara thread, lifetime warranty",
       "Marine-grade 316 stainless steel hardware",
       "Custom-cut to exact specifications from laser measurements",
@@ -351,8 +351,8 @@ const processSteps = [
       "Our professional installation teams work efficiently to minimize disruption to your business operations. Most commercial installations are completed in just one to three days. We finish with a thorough inspection and sign-off, activating your warranty and ensuring every detail meets Apex standards.",
     bullets: [
       "Professional installation by trained specialists",
-      "Minimal site disruption \u2014 your operations continue",
-      "Typically 1\u20133 days for most commercial projects",
+      "Minimal site disruption: your operations continue",
+      "Typically 1 to 3 days for most commercial projects",
       "Final inspection and client sign-off",
       "15-year warranty activation",
     ],
@@ -467,7 +467,7 @@ const technologies = [
   {
     title: "Leica 3D Laser Mapping",
     description:
-      "Precision begins with measurement. We use Leica 3D laser scanning technology to capture sub-millimeter accurate point clouds of every installation site. This data ensures that every post, cable, and fabric panel is fabricated to tolerances of 1/16 of an inch. The result is a perfect fit on installation day \u2014 no field adjustments, no compromises, and no surprises. This level of precision is typically reserved for aerospace and high-rise construction.",
+      "Precision begins with measurement. We use Leica 3D laser scanning technology to capture sub-millimeter accurate point clouds of every installation site. This data ensures that every post, cable, and fabric panel is fabricated to tolerances of 1/16 of an inch. The result is a perfect fit on installation day: no field adjustments, no compromises, and no surprises. This level of precision is typically reserved for aerospace and high-rise construction.",
     Icon: IconLeica,
   },
   {
