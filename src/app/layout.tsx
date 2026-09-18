@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://apex-sail-shades.com"),
   title: "Apex Sail Shades | Phoenix Shade Sail Specialists",
   description:
-    "Custom-engineered shade sails for Phoenix homes and businesses. Designed and installed in one visit, built for 110F sun and monsoon winds. 96% UV block, 15-year warranty, engineered and tensioned.",
+    "Custom-engineered shade sails for Phoenix homes and businesses. Designed and quoted in one visit, built for 110F sun and monsoon winds. 96% UV block, 15-year warranty, engineered and tensioned.",
   keywords: [
     "shade sails Phoenix",
     "residential shade sails",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Apex Sail Shades | Phoenix Shade Sail Specialists",
     description:
-      "Custom-engineered shade sails for Phoenix homes and businesses. Designed and installed in one visit, built for 110F sun and monsoon winds.",
+      "Custom-engineered shade sails for Phoenix homes and businesses. Designed and quoted in one visit, built for 110F sun and monsoon winds.",
     type: "website",
     locale: "en_US",
     siteName: "Apex Sail Shades",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Apex Sail Shades | Phoenix Shade Sail Specialists",
     description:
-      "Custom-engineered shade sails for Phoenix homes and businesses. Designed and installed in one visit, built for 110F sun and monsoon winds.",
+      "Custom-engineered shade sails for Phoenix homes and businesses. Designed and quoted in one visit, built for 110F sun and monsoon winds.",
     images: ["https://apex-sail-shades.com/images/og-ws-29.webp"],
   },
   // M4 (SAUCE-275, 2026-08-17): Meta Business domain verification for

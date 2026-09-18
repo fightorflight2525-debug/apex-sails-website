@@ -307,7 +307,7 @@ export default function Header() {
           <div className="mt-auto px-6 pt-8">
             <p className="text-xs text-charcoal-light">
               Custom shade sails for Phoenix homes and businesses. Designed and
-              installed in one visit.
+              quoted in one visit.
             </p>
           </div>
         </div>

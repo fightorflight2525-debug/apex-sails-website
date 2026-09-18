@@ -257,7 +257,7 @@ export default function Home() {
               <span className="italic text-copper">Custom</span> Shade Sails,<br />Built for <span className="text-copper">Phoenix</span> Heat.
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed font-body">
-              Custom-engineered shade sails, designed and installed in one visit.
+              Custom-engineered shade sails, designed and quoted in one visit.
               Cooler patios, protected pools, shaded commercial spaces.
             </p>
 
