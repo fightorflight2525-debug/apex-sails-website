@@ -8,6 +8,8 @@ export interface CarouselFrame {
   alt: string;
   /** Only honored on frame 0; passes through to next/image for LCP preservation. */
   priority?: boolean;
+  /** Extra classes for this frame only (e.g. an object-position for a portrait source). */
+  className?: string;
 }
 
 interface CrossFadeCarouselProps {
@@ -146,7 +148,7 @@ export default function CrossFadeCarousel({
             alt={f.alt}
             fill
             sizes={sizes ?? (fill ? "100vw" : "(max-width: 1024px) 100vw, 50vw")}
-            className={frameClassName}
+            className={f.className ? `${frameClassName} ${f.className}` : frameClassName}
             priority={i === 0 && (f.priority ?? false)}
           />
         </div>
