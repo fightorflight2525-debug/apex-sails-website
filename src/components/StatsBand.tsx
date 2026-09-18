@@ -29,7 +29,7 @@ export default function StatsBand() {
             </div>
           </div>
 
-          {/* 15 deg F Cooler */}
+          {/* 30 deg F cooler surfaces (SAUCE-313: one temperature number site-wide) */}
           <div className="flex flex-col items-center text-center gap-3">
             <svg className="w-10 h-10 text-copper" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <rect x="17" y="4" width="6" height="26" rx="3" stroke="currentColor" strokeWidth="2" />
@@ -42,7 +42,7 @@ export default function StatsBand() {
             </svg>
             <div>
               <p className="text-xl font-heading font-bold text-charcoal">
-                <CountUp to={15} suffix={"°F Cooler"} />
+                <CountUp to={30} suffix={"°F Cooler Surfaces"} />
               </p>
               <p className="text-sm text-charcoal/50 mt-0.5">Under shade coverage</p>
             </div>

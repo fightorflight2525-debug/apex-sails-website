@@ -5,6 +5,7 @@ import Link from "next/link";
 /* SAUCE-246: FAQ copy moved to ./faq-items so faq/layout.tsx can emit FAQPage
    JSON-LD from the SAME array this accordion renders. Schema cannot drift. */
 import { FAQ_ITEMS } from "./faq-items";
+import CtaText from "@/components/CtaText";
 
 
 
@@ -74,9 +75,9 @@ export default function FaqPage() {
           <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link
               href="/contact"
-              className="cta-glow inline-flex items-center justify-center rounded-full bg-copper px-8 py-4 text-base font-semibold text-white shadow-sm transition-all hover:bg-copper-dark hover:shadow-md"
+              className="cta-glow inline-flex items-center justify-center text-center text-balance rounded-full bg-copper px-8 py-4 text-base font-semibold text-white shadow-sm transition-all hover:bg-copper-dark hover:shadow-md"
             >
-              Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Estimate
+              <CtaText />
             </Link>
             <a
               href="tel:+16028370370"

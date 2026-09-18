@@ -1,8 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Lightbox from "@/components/Lightbox";
+import CtaText from "@/components/CtaText";
 
 type Category = "residential" | "commercial";
 
@@ -86,6 +87,18 @@ type Filter = (typeof FILTERS)[number];
 export default function GalleryPage() {
   const [filter, setFilter] = useState<Filter>("All");
 
+  // SAUCE-313: /gallery?filter=residential opens the residential view ("See
+  // more of our work" on /welcome). Read after mount so the page stays static.
+  useEffect(() => {
+    try {
+      const f = new URLSearchParams(window.location.search).get("filter");
+      if (f === "residential") setFilter("Residential");
+      else if (f === "commercial") setFilter("Commercial");
+    } catch {
+      /* no filter is fine */
+    }
+  }, []);
+
   const visible = useMemo(() => {
     if (filter === "All") return GALLERY;
     const want: Category = filter === "Residential" ? "residential" : "commercial";
@@ -151,9 +164,9 @@ export default function GalleryPage() {
           </p>
           <Link
             href="/contact"
-            className="mt-8 inline-flex items-center justify-center rounded-full bg-copper px-8 py-4 text-base font-semibold text-white shadow-sm transition-all hover:bg-copper-dark hover:shadow-md"
+            className="mt-8 inline-flex items-center justify-center text-center text-balance rounded-full bg-copper px-8 py-4 text-base font-semibold text-white shadow-sm transition-all hover:bg-copper-dark hover:shadow-md"
           >
-            Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Estimate
+            <CtaText />
           </Link>
         </div>
       </section>

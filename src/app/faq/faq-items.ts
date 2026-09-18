@@ -16,7 +16,7 @@
 export const FAQ_ITEMS: ReadonlyArray<{ q: string; a: string }> = [
   {
     q: "Will it survive Phoenix monsoons?",
-    a: "Engineered for 90 MPH winds with marine-grade 316 stainless hardware and a 15-year warranty. Architectural-grade shade fabric blocks up to 96% of UV and drops temperatures up to 15 degrees Fahrenheit under the shade.",
+    a: "Engineered for 90 MPH winds with marine-grade 316 stainless hardware and a 15-year warranty. Architectural-grade shade fabric blocks up to 96% of UV and keeps the surfaces under the shade up to 30°F cooler.",
   },
   {
     q: "Are these actually engineered structures or just fabric?",

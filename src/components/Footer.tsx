@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import SlimFooter from "@/components/SlimFooter";
 
 const footerSolutions = [
   { label: "Residential", href: "/residential" },
@@ -19,38 +20,18 @@ const footerCompany = [
 
 const footerWhyApex = [
   "96% UV Block",
-  "15\u00B0F Cooler",
+  "30\u00B0F Cooler",
   "15-Year Warranty",
   "ShadeCast\u2122 Technology",
 ];
 
 export default function Footer() {
   // SAUCE-313 (CTA v3 hallway): /free-design and /welcome get a slim footer.
-  // No menu, no badges: the full footer put "15\u00B0F Cooler" and "ShadeCast"
+  // No menu, no badges: the full footer put its badges and "ShadeCast"
   // right under the offer, and every link is an exit mid-hallway. Legal links stay.
   const pathname = usePathname();
   const isHallway = pathname === "/free-design" || pathname === "/welcome";
-  if (isHallway) {
-    return (
-      <footer className="bg-charcoal text-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8">
-          <div className="flex flex-col items-center justify-center gap-3 text-xs text-gray-500 text-center">
-            <span>
-              &copy; {new Date().getFullYear()} Apex Sail Shades. Installed by licensed, insured crews.
-            </span>
-            <div className="flex items-center gap-4">
-              <Link href="/privacy" className="hover:text-gray-300 transition-colors duration-200">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="hover:text-gray-300 transition-colors duration-200">
-                Terms of Service
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
-    );
-  }
+  if (isHallway) return <SlimFooter />;
   return (
     <footer className="bg-charcoal text-white">
       {/* Main Footer Content */}

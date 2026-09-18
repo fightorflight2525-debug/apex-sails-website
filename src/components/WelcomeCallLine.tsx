@@ -47,13 +47,22 @@ function phoenixNow(): { weekday: number; minutes: number } {
 }
 
 // True only while a call inside PROMISE_MINUTES can really happen.
-function callPromiseHolds(): boolean {
+// Exported (SAUCE-313): CallPromise, the time-aware line under every offer
+// button, reads the SAME window so the site can never promise two things.
+export function callPromiseHolds(): boolean {
   const { weekday, minutes } = phoenixNow();
   const w = CALL_WINDOWS[weekday];
   return !!w && minutes >= w[0] && minutes < w[1] - PROMISE_MINUTES;
 }
 
-export default function WelcomeCallLine() {
+// SAUCE-313: `className` sets the type size for the compact /welcome layout
+// (the whole "What should I expect?" section must fit the first phone screen).
+// The COPY below is unchanged.
+export default function WelcomeCallLine({
+  className = "mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-white/90 sm:text-2xl",
+}: {
+  className?: string;
+}) {
   const [variant, setVariant] = useState<"day" | "night" | null>(null);
 
   useEffect(() => {
@@ -76,11 +85,7 @@ export default function WelcomeCallLine() {
   const num = <strong className="whitespace-nowrap font-bold text-white">602-837-0370</strong>;
 
   return (
-    <p
-      className={`mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-white/90 transition-opacity duration-500 sm:text-2xl ${
-        variant ? "opacity-100" : "opacity-0"
-      }`}
-    >
+    <p className={`${className} transition-opacity duration-500 ${variant ? "opacity-100" : "opacity-0"}`}>
       {variant === "night" ? (
         <>
           Heads up: an Apex human with a fresh cup of coffee is calling you from {num} first thing in the

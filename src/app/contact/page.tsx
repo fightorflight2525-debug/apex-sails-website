@@ -1,8 +1,10 @@
 "use client";
 
 import { useRef, useState, type FormEvent } from "react";
+import { useRouter } from "next/navigation";
 import posthog from "posthog-js";
 import TextDoor from "@/components/TextDoor";
+import CtaText from "@/components/CtaText";
 
 const benefits = [
   "Complimentary ShadeCast\u2122 shadow analysis",
@@ -20,7 +22,11 @@ const trustBadges = [
 const serviceAreas = ["Phoenix Metro", "Scottsdale", "Mesa", "Gilbert", "Chandler", "Tucson"];
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
+  const router = useRouter();
+  // SAUCE-313 (CTA v3.1 S1.3): /welcome is THE thank-you page after ANY form.
+  // On success the welcome sheet slides up over this page; the form stays
+  // "sent" underneath so closing the sheet never invites a second submit.
+  const [sent, setSent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [smsOptIn, setSmsOptIn] = useState(false);
@@ -58,7 +64,7 @@ export default function ContactPage() {
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (submitting) return;
+    if (submitting || sent) return;
     setSubmitting(true);
     setSubmitError(null);
     posthog.capture("form_submit_attempted", {
@@ -142,7 +148,13 @@ export default function ContactPage() {
           project_type: formData.projectType || "unspecified",
           meta_event_id: metaEventId,
         });
-        setSubmitted(true);
+        try {
+          sessionStorage.setItem("apex_door", "contact");
+        } catch {
+          /* storage blocked: /welcome still renders */
+        }
+        setSent(true);
+        router.push("/welcome");
       } else {
         posthog.capture("form_submit_failed", {
           form: "contact",
@@ -186,7 +198,7 @@ export default function ContactPage() {
             </span>
             <span className="inline-flex items-center gap-2">
               <svg className="h-5 w-5 text-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-              Estimate
+              FINAL price
             </span>
           </div>
           <p className="mx-auto mt-6 max-w-3xl text-lg text-sand-light leading-relaxed sm:text-xl">
@@ -201,31 +213,6 @@ export default function ContactPage() {
           <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
             {/* ---------- FORM (left, wider) ---------- */}
             <div className="lg:col-span-3">
-              {submitted ? (
-                <div className="cta-glow-loop rounded-2xl border border-copper/20 bg-copper/5 p-10 text-center">
-                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-copper/10">
-                    <svg
-                      className="h-8 w-8 text-copper"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M4.5 12.75l6 6 9-13.5"
-                      />
-                    </svg>
-                  </div>
-                  <h3 className="mt-6 font-heading text-2xl font-bold text-charcoal">
-                    Got it{formData.fullName ? `, ${formData.fullName.split(" ")[0]}` : ""}.
-                  </h3>
-                  <p className="mt-3 text-charcoal-light leading-relaxed">
-                    We&apos;ll call you within 15 minutes to schedule your free design visit.
-                  </p>
-                </div>
-              ) : (
                 <>
                   {/* SAUCE-312 CTA v3: the one-tap text door beside the form, for the
                       70% who never start typing. Pre-written message, zero typing. */}
@@ -406,12 +393,10 @@ export default function ContactPage() {
                     {/* Submit */}
                     <button
                       type="submit"
-                      disabled={submitting}
-                      className="cta-glow-loop w-full rounded-lg bg-copper px-8 py-4 text-base font-semibold text-white shadow-sm transition-all hover:bg-copper-dark hover:shadow-md focus:outline-none focus:ring-2 focus:ring-copper/40 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+                      disabled={submitting || sent}
+                      className="cta-glow-loop w-full text-balance rounded-lg bg-copper px-8 py-4 text-base font-semibold text-white shadow-sm transition-all hover:bg-copper-dark hover:shadow-md focus:outline-none focus:ring-2 focus:ring-copper/40 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
                     >
-                      {submitting ? "Sending..." : (
-                        <>Request my <em className="not-italic font-bold">Free</em> design visit and Estimate</>
-                      )}
+                      {sent ? "Sent" : submitting ? "Sending..." : <CtaText />}
                     </button>
 
                     {/* Trust microcopy */}
@@ -426,7 +411,6 @@ export default function ContactPage() {
                     </p>
                   </form>
                 </>
-              )}
             </div>
 
             {/* ---------- RIGHT COLUMN ---------- */}

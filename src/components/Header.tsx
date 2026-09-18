@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { CTA_LABEL, CTA_LABEL_SHORT } from "@/lib/cta";
+import CtaText from "@/components/CtaText";
 
 /** Inline phone glyph used by the always-visible call affordances (A2). */
 function PhoneIcon({ className }: { className?: string }) {
@@ -31,11 +33,13 @@ export default function Header() {
   // bar goes DARK (charcoal + blur) instead of white, preserving the premium
   // dark aesthetic the operator likes while still making the nav readable
   // over light sections. Every other page keeps the white flip.
-  const isResidential = pathname === "/residential";
   // SAUCE-312 (CTA v3): the Meta hallway (/free-design) and the thank-you page
   // (/welcome) show the logo and the call link only. No nav, no second CTA:
   // one door per room, and nothing to wander off through mid-hallway.
   const isHallway = pathname === "/free-design" || pathname === "/welcome";
+  // SAUCE-313: both hallway pages now carry the /residential dark treatment
+  // (pinned slideshow, dark sections), so their scrolled bar goes dark too.
+  const isResidential = pathname === "/residential" || isHallway;
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -115,10 +119,11 @@ export default function Header() {
                 (602) 837-0370
               </a>
             ) : (
-            <nav className="hidden items-center gap-8 lg:flex">
+            // SAUCE-313: tighter gaps at 1024-1279 so the nav never wraps "How It Works"
+            <nav className="hidden items-center gap-4 lg:flex xl:gap-8">
               <Link
                 href="/residential"
-                className={`text-sm font-medium transition-colors duration-300 hover:text-copper ${
+                className={`whitespace-nowrap text-sm font-medium transition-colors duration-300 hover:text-copper ${
                   scrolled && !isResidential ? "text-charcoal" : "text-white"
                 }`}
               >
@@ -127,7 +132,7 @@ export default function Header() {
 
               <Link
                 href="/commercial"
-                className={`text-sm font-medium transition-colors duration-300 hover:text-copper ${
+                className={`whitespace-nowrap text-sm font-medium transition-colors duration-300 hover:text-copper ${
                   scrolled && !isResidential ? "text-charcoal" : "text-white"
                 }`}
               >
@@ -136,7 +141,7 @@ export default function Header() {
 
               <Link
                 href="/process"
-                className={`text-sm font-medium transition-colors duration-300 hover:text-copper ${
+                className={`whitespace-nowrap text-sm font-medium transition-colors duration-300 hover:text-copper ${
                   scrolled && !isResidential ? "text-charcoal" : "text-white"
                 }`}
               >
@@ -145,7 +150,7 @@ export default function Header() {
 
               <Link
                 href="/about"
-                className={`text-sm font-medium transition-colors duration-300 hover:text-copper ${
+                className={`whitespace-nowrap text-sm font-medium transition-colors duration-300 hover:text-copper ${
                   scrolled && !isResidential ? "text-charcoal" : "text-white"
                 }`}
               >
@@ -154,7 +159,7 @@ export default function Header() {
 
               <Link
                 href="/gallery"
-                className={`text-sm font-medium transition-colors duration-300 hover:text-copper ${
+                className={`whitespace-nowrap text-sm font-medium transition-colors duration-300 hover:text-copper ${
                   scrolled && !isResidential ? "text-charcoal" : "text-white"
                 }`}
               >
@@ -163,7 +168,7 @@ export default function Header() {
 
               <Link
                 href="/faq"
-                className={`text-sm font-medium transition-colors duration-300 hover:text-copper ${
+                className={`whitespace-nowrap text-sm font-medium transition-colors duration-300 hover:text-copper ${
                   scrolled && !isResidential ? "text-charcoal" : "text-white"
                 }`}
               >
@@ -173,7 +178,7 @@ export default function Header() {
               {/* Desktop Call link (A2): understated, sits just before the CTA */}
               <a
                 href="tel:+16028370370"
-                className={`inline-flex items-center gap-1.5 text-sm font-medium transition-colors duration-300 hover:text-copper ${
+                className={`inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-medium transition-colors duration-300 hover:text-copper ${
                   scrolled && !isResidential ? "text-charcoal" : "text-white"
                 }`}
               >
@@ -181,12 +186,14 @@ export default function Header() {
                 Call
               </a>
 
-              {/* CTA Button */}
+              {/* CTA Button. SAUCE-313: the uniform label; below 1280 px the full
+                  label cannot fit beside the nav, so the header alone shortens it. */}
               <Link
                 href="/contact"
-                className="rounded-full bg-copper px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-copper-dark hover:shadow-md"
+                className="whitespace-nowrap rounded-full bg-copper px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-copper-dark hover:shadow-md"
               >
-                Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Estimate
+                <span className="xl:hidden">{CTA_LABEL_SHORT}</span>
+                <span className="hidden xl:inline">{CTA_LABEL}</span>
               </Link>
             </nav>
             )}
@@ -259,8 +266,10 @@ export default function Header() {
 
       {/* Mobile Menu Panel */}
       <div
-        className={`fixed top-0 right-0 z-40 h-full w-80 max-w-[85vw] bg-white shadow-2xl transition-transform duration-300 ease-in-out lg:hidden ${
-          mobileOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-0 right-0 z-40 h-full w-80 max-w-[85vw] bg-white transition-transform duration-300 ease-in-out lg:hidden ${
+          // SAUCE-313: the shadow only while open (closed, it bled in as a grey
+          // strip down the right edge of every white section on a phone).
+          mobileOpen ? "translate-x-0 shadow-2xl" : "translate-x-full"
         }`}
       >
         <div className="flex h-full flex-col overflow-y-auto pt-24 pb-8">
@@ -321,7 +330,7 @@ export default function Header() {
               className="block w-full rounded-full bg-copper py-3.5 text-center text-sm font-semibold text-white shadow-sm transition-all hover:bg-copper-dark hover:shadow-md"
               onClick={closeMobile}
             >
-              Get My <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Design + Estimate
+              <CtaText />
             </Link>
           </div>
 

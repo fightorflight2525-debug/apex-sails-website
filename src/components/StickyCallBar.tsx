@@ -3,17 +3,23 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import CallPromise from "@/components/CallPromise";
+import CtaText from "@/components/CtaText";
 
 /**
  * Mobile-only sticky CTA bar that slides up after the user scrolls past the hero.
  * position: fixed, so it adds no document-flow layout shift (CLS-safe).
  * v2: phone restored alongside the form CTA. Calls are the dominant real
  * conversion channel, so the bar offers both paths.
+ * SAUCE-313: the uniform CTA label; the line under it is time-aware (CallPromise);
+ * `href` lets /free-design point the bar at its own hero form (one door per room).
  */
-export default function StickyCallBar() {
+export default function StickyCallBar({ href = "/contact" }: { href?: string }) {
   // MO decision (operator delegated, 2026-07-30): on /residential the bar goes
   // DARK to match the page's premium dark aesthetic; other pages stay white.
-  const isResidential = usePathname() === "/residential";
+  // SAUCE-313: /free-design carries the same /residential sections, so it matches.
+  const pathname = usePathname();
+  const isDark = pathname === "/residential" || pathname === "/free-design";
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -31,7 +37,7 @@ export default function StickyCallBar() {
     >
       <div
         className={`flex gap-2 px-4 py-3 backdrop-blur ${
-          isResidential
+          isDark
             ? "border-t border-white/10 bg-charcoal/95 shadow-[0_-4px_20px_rgba(0,0,0,0.35)]"
             : "border-t border-charcoal/10 bg-white/95 shadow-[0_-4px_20px_rgba(0,0,0,0.08)]"
         }`}
@@ -43,15 +49,11 @@ export default function StickyCallBar() {
           Call
         </a>
         <Link
-          href="/contact"
-          className="flex-1 inline-flex flex-col items-center justify-center rounded-full bg-copper px-4 py-2.5 text-white"
+          href={href}
+          className="flex-1 inline-flex flex-col items-center justify-center rounded-full bg-copper px-4 py-2.5 text-center text-white"
         >
-          <span className="text-sm font-semibold">
-            Get My <em className="not-italic font-bold text-[1.06em] mx-0.5">Free</em> Design + Estimate
-          </span>
-          <span className="text-[10px] uppercase tracking-widest text-white/85">
-            We call within 15 minutes
-          </span>
+          <span className="text-balance text-sm font-semibold leading-tight"><CtaText /></span>
+          <CallPromise className="text-[10px] uppercase tracking-widest text-white/85" />
         </Link>
       </div>
     </div>
