@@ -4,6 +4,7 @@ import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import StatsBand from "@/components/StatsBand";
 import StickyCallBar from "@/components/StickyCallBar";
+import CtaText from "@/components/CtaText";
 
 export const metadata: Metadata = {
   title: "Senior Living Shade Solutions | Apex Sail Shades",
@@ -41,8 +42,8 @@ const solutions = [
     body: "Commercial-grade fabric blocks up to 96% of UV, protecting vulnerable skin.",
   },
   {
-    title: "Up to 15°F cooler",
-    body: "Temperatures under the shade drop by up to 15°F, from dangerous to comfortable.",
+    title: "Up to 30°F cooler surfaces",
+    body: "Surfaces under the shade stay up to 30°F cooler, from dangerous to comfortable.",
   },
   {
     title: "Dignified architectural design",
@@ -113,9 +114,9 @@ export default function SeniorLivingPage() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
+                className="inline-flex items-center justify-center text-center text-balance px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
               >
-                Get a Free Facility Assessment
+                <CtaText />
               </Link>
               <a
                 href="tel:+16028370370"
@@ -361,8 +362,8 @@ export default function SeniorLivingPage() {
                   Commercial-grade fabric
                 </h3>
                 <p className="text-white/60 leading-relaxed">
-                  Architectural shade fabric blocks up to 96% of UV and drops the
-                  temperature beneath by up to 15&deg;F, backed by a 15-year
+                  Architectural shade fabric blocks up to 96% of UV and keeps the
+                  surfaces beneath up to 30&deg;F cooler, backed by a 15-year
                   warranty.
                 </p>
               </div>
@@ -390,9 +391,9 @@ export default function SeniorLivingPage() {
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-10 py-5 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/20"
+              className="inline-flex items-center justify-center text-center text-balance px-10 py-5 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/20"
             >
-              Get a Free Facility Assessment
+              <CtaText />
             </Link>
             <a
               href="tel:+16028370370"

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import StatsBand from "@/components/StatsBand";
 import StickyCallBar from "@/components/StickyCallBar";
+import CtaText from "@/components/CtaText";
 import Lightbox from "@/components/Lightbox";
 import { OG_DEFAULTS } from "@/app/og-defaults";
 
@@ -300,9 +301,9 @@ export default function CommercialPage() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
-                className="cta-glow-loop inline-flex items-center justify-center text-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
+                className="cta-glow-loop inline-flex items-center justify-center text-center text-balance px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
               >
-                <span>Get a <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Commercial Assessment</span>
+                <span><CtaText /></span>
               </Link>
               <a
                 href="tel:+16028370370"
@@ -606,8 +607,8 @@ export default function CommercialPage() {
                   Commercial-grade fabric
                 </h3>
                 <p className="text-white/60 leading-relaxed">
-                  Architectural shade fabric blocks up to 96% of UV and drops the
-                  temperature beneath by up to 15&deg;F, backed by a 15-year
+                  Architectural shade fabric blocks up to 96% of UV and keeps the
+                  surfaces beneath up to 30&deg;F cooler, backed by a 15-year
                   warranty.
                 </p>
               </div>
@@ -641,9 +642,9 @@ export default function CommercialPage() {
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="cta-glow-loop inline-flex items-center justify-center text-center px-10 py-5 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/20"
+              className="cta-glow-loop inline-flex items-center justify-center text-center text-balance px-10 py-5 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/20"
             >
-              <span>Get a <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Commercial Assessment</span>
+              <span><CtaText /></span>
             </Link>
             <a
               href="tel:+16028370370"

@@ -4,6 +4,7 @@ import Image from "next/image";
 import ShadeCastDemo from "@/components/ShadeCastDemo";
 import CrossFadeCarousel from "@/components/CrossFadeCarousel";
 import { OG_DEFAULTS } from "@/app/og-defaults";
+import CtaText from "@/components/CtaText";
 
 export const metadata: Metadata = {
   title: "How It Works | Shade Sail Design & Installation | Apex Sail Shades",
@@ -690,9 +691,9 @@ export default function HowItWorksPage() {
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Link
                 href="/contact"
-                className="inline-flex h-14 items-center justify-center rounded-full bg-white px-10 font-heading text-base font-bold text-copper transition-all duration-300 hover:bg-cream hover:shadow-xl"
+                className="inline-flex min-h-14 items-center justify-center text-center text-balance rounded-full bg-white px-10 py-3 font-heading text-base font-bold text-copper transition-all duration-300 hover:bg-cream hover:shadow-xl"
               >
-                Get Your Free Assessment
+                <CtaText />
               </Link>
               <Link
                 href="/about"

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { OG_DEFAULTS } from "@/app/og-defaults";
+import CtaText from "@/components/CtaText";
 
 export const metadata: Metadata = {
   title: "About Apex Sail Shades | Phoenix Shade Sail Engineers",
@@ -106,7 +107,7 @@ const differentiators = [
 const stats = [
   { value: "300,000+", label: "Sq Ft Shaded" },
   { value: "96%", label: "UV Block Rating" },
-  { value: "15\u00b0F", label: "Avg Temp Reduction" },
+  { value: "30\u00b0F", label: "Cooler Surfaces" },
   { value: "1,500 sq ft", label: "Largest commercial install" },
   { value: "90mph+", label: "Wind Load Rating" },
   { value: "15 Years", label: "Warranty" },
@@ -313,9 +314,9 @@ export default function AboutPage() {
           </p>
           <Link
             href="/contact"
-            className="mt-8 inline-block rounded-full bg-white px-8 py-4 text-base font-semibold text-copper shadow-lg transition-all hover:bg-cream hover:shadow-xl"
+            className="mt-8 inline-block text-balance rounded-full bg-white px-8 py-4 text-base font-semibold text-copper shadow-lg transition-all hover:bg-cream hover:shadow-xl"
           >
-            Get Your <em className="not-italic font-bold text-[1.08em] mx-1">Free</em> Assessment
+            <CtaText />
           </Link>
         </div>
       </section>

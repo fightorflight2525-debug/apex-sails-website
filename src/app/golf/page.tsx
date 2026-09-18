@@ -4,6 +4,7 @@ import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
 import StickyCallBar from "@/components/StickyCallBar";
+import CtaText from "@/components/CtaText";
 
 export const metadata: Metadata = {
   title: "Golf & Entertainment Venue Shade | Apex Sail Shades",
@@ -113,9 +114,9 @@ export default function GolfPage() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
+                className="inline-flex items-center justify-center text-center text-balance px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
               >
-                Get a Free Commercial Assessment
+                <CtaText />
               </Link>
               <a
                 href="tel:+16028370370"
@@ -143,7 +144,7 @@ export default function GolfPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { node: <CountUp to={96} suffix="%" />, label: "UV blocked" },
-              { node: <CountUp to={15} suffix={"°F"} />, label: "Cooler under shade" },
+              { node: <CountUp to={30} suffix={"°F"} />, label: "Cooler surfaces" },
               { node: <CountUp to={90} suffix="mph" />, label: "Wind rated" },
               { node: <CountUp to={15} suffix="-yr" />, label: "Warranty" },
             ].map((stat) => (
@@ -364,8 +365,8 @@ export default function GolfPage() {
                   Commercial-grade fabric
                 </h3>
                 <p className="text-white/60 leading-relaxed">
-                  Architectural shade fabric blocks up to 96% of UV and drops the
-                  temperature beneath by up to 15&deg;F, backed by a 15-year
+                  Architectural shade fabric blocks up to 96% of UV and keeps the
+                  surfaces beneath up to 30&deg;F cooler, backed by a 15-year
                   warranty.
                 </p>
               </div>
@@ -393,9 +394,9 @@ export default function GolfPage() {
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-10 py-5 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/20"
+              className="inline-flex items-center justify-center text-center text-balance px-10 py-5 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/20"
             >
-              Get a Free Commercial Assessment
+              <CtaText />
             </Link>
             <a
               href="tel:+16028370370"
