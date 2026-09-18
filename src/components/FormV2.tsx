@@ -40,6 +40,16 @@ type Props = {
   door: string;
   /** Keeps element ids unique if a page ever carries two forms. */
   idPrefix?: string;
+  /**
+   * SAUCE-314 (his 09-18 ruling): "choice" = What needs shade? My home / My
+   * business, the fields drop down under the choice (/free-design). "cta" = no
+   * question: just the offer button; the first tap drops the fields down the
+   * same way and the button slides down under them; the next tap sends
+   * (/residential, where the answer is already known).
+   */
+  variant?: "choice" | "cta";
+  /** The "cta" variant's fixed answer (a residential page = "Residential"). */
+  projectType?: "Residential" | "Commercial";
 };
 
 function readUtm(): Record<string, string> {
@@ -56,10 +66,12 @@ function readUtm(): Record<string, string> {
   return out;
 }
 
-export default function FormV2({ door, idPrefix = "fv2" }: Props) {
+export default function FormV2({ door, idPrefix = "fv2", variant = "choice", projectType: fixedType = "Residential" }: Props) {
   const router = useRouter();
+  const isCta = variant === "cta";
   const [choice, setChoice] = useState<Choice | "">("");
   const [open, setOpen] = useState(false);
+  const opened = useRef(false);
   const [askChoice, setAskChoice] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -76,30 +88,48 @@ export default function FormV2({ door, idPrefix = "fv2" }: Props) {
     posthog.capture("form_started", { form: door, first_field: field });
   }
 
+  // The fields drop down (either variant). Measured once per page view, so the
+  // funnel reads: opened -> started (first field) -> attempted -> submitted.
+  function openFields(via: "choice" | "cta") {
+    setOpen(true);
+    if (!opened.current) {
+      opened.current = true;
+      posthog.capture("form_opened", { form: door, via });
+    }
+  }
+
   function pick(c: Choice) {
     setChoice(c);
-    setOpen(true);
+    openFields("choice");
     setAskChoice(false);
   }
+
+  // The "cta" variant answers the question for the buyer (the page already knows it).
+  const space: Choice | "" = isCta ? (fixedType === "Commercial" ? "My business" : "My home") : choice;
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (submitting || sent) return;
+    // "cta" variant: the first tap on the offer button only drops the fields down.
+    if (isCta && !open) {
+      openFields("cta");
+      return;
+    }
     setError(null);
-    posthog.capture("form_submit_attempted", { form: door, project_type: choice || "unspecified" });
+    posthog.capture("form_submit_attempted", { form: door, project_type: space || "unspecified" });
 
     const em = email.trim();
     const missing: string[] = [];
-    if (!choice) missing.push("what needs shade");
+    if (!space) missing.push("what needs shade");
     if (!name.trim()) missing.push("name");
     if (phone.replace(/\D/g, "").length < 10) missing.push("valid phone number");
     if (em && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) missing.push("valid email (or leave it blank)");
     if (missing.length > 0) {
       posthog.capture("form_submit_failed", { form: door, stage: "client_validation", missing: missing.join(", ") });
-      if (!choice) {
+      if (!space) {
         // Tapping the button before a choice: the fields open and the choice
         // is asked for inline (no error box on a first tap).
-        setOpen(true);
+        openFields("choice");
         setAskChoice(true);
       } else {
         setError(`Please fill in: ${missing.join(", ")}.`);
@@ -112,9 +142,9 @@ export default function FormV2({ door, idPrefix = "fv2" }: Props) {
       (e.currentTarget.elements.namedItem("_gotcha") as HTMLInputElement | null)?.value || "";
     const utm = readUtm();
     const from = [utm.utm_source, utm.utm_medium].filter(Boolean).join(" / ");
-    const projectType = CHOICES.find((c) => c.value === choice)?.projectType ?? "Residential";
+    const projectType = isCta ? fixedType : CHOICES.find((c) => c.value === choice)?.projectType ?? "Residential";
     const note =
-      `Auto note: shading ${choice}. Quick form on /${door}` +
+      `Auto note: shading ${space}. Quick form on /${door}` +
       (from ? `, from ${from}` : "") +
       ". The quick form asks no notes.";
 
@@ -156,7 +186,7 @@ export default function FormV2({ door, idPrefix = "fv2" }: Props) {
       posthog.capture("form_submitted", {
         form: door,
         project_type: projectType,
-        space: choice,
+        space,
         meta_event_id: metaEventId,
         ...utm,
       });
@@ -189,6 +219,7 @@ export default function FormV2({ door, idPrefix = "fv2" }: Props) {
         <input type="text" id={`${idPrefix}-gotcha`} name="_gotcha" tabIndex={-1} autoComplete="off" />
       </div>
 
+      {!isCta && (
       <fieldset disabled={sent}>
         <legend className="mx-auto font-heading text-xl font-semibold text-white sm:text-2xl">What needs shade?</legend>
         <div className="mt-3 grid grid-cols-2 gap-3">
@@ -223,8 +254,11 @@ export default function FormV2({ door, idPrefix = "fv2" }: Props) {
           </p>
         )}
       </fieldset>
+      )}
 
-      {/* The fields drop down under the choice (grid-rows 0fr -> 1fr). */}
+      {/* The fields drop down under the choice (grid-rows 0fr -> 1fr). In the
+          "cta" variant they drop down on the first tap of the offer button,
+          which slides down under them and sends on the next tap. */}
       <div
         className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out ${
           open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
@@ -324,13 +358,25 @@ export default function FormV2({ door, idPrefix = "fv2" }: Props) {
         .
       </p>
 
-      <p className="mx-auto mt-3 max-w-md text-[11px] leading-relaxed text-white/45">
-        By submitting this form, you agree that Apex Sail Shades may contact you by phone call or email about your project and quote. See our{" "}
-        <a href="/privacy" className="underline hover:text-white/80">
-          Privacy Policy
-        </a>
-        .
-      </p>
+      {/* SAUCE-314 (his ruling, "always"): the consent line appears only once the
+          fields have dropped down, so it is on screen before anyone can send,
+          never before they start. Same collapse as the fields. */}
+      <div
+        className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out ${
+          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        }`}
+        aria-hidden={!open}
+      >
+        <div className="overflow-hidden">
+          <p className="mx-auto mt-3 max-w-md text-[11px] leading-relaxed text-white/45">
+            By submitting this form, you agree that Apex Sail Shades may contact you by phone call or email about your project and quote. See our{" "}
+            <a href="/privacy" tabIndex={open ? 0 : -1} className="underline hover:text-white/80">
+              Privacy Policy
+            </a>
+            .
+          </p>
+        </div>
+      </div>
     </form>
   );
 }

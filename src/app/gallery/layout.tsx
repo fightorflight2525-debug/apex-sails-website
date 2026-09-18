@@ -4,14 +4,14 @@ import { OG_DEFAULTS } from "@/app/og-defaults";
 export const metadata: Metadata = {
   title: "Gallery | Apex Sail Shades",
   description:
-    "Real custom shade sail installs. Browse residential backyards and commercial properties; click any photo to enlarge.",
+    "Shade sail ideas for homes and businesses. Browse residential backyards and commercial properties; click any photo to enlarge.",
   // SAUCE-246: canonical + openGraph added (absolute via root metadataBase).
   alternates: { canonical: "/gallery" },
   openGraph: {
     ...OG_DEFAULTS,
-    title: "Shade Sail Gallery | Real Phoenix Installs | Apex Sail Shades",
+    title: "Shade Sail Gallery | Ideas for Homes and Businesses | Apex Sail Shades",
     description:
-      "Real custom shade sail installs across Phoenix, residential backyards and commercial properties. Proof, not promises.",
+      "Shade sail ideas for homes and businesses: residential backyards and commercial properties.",
     url: "/gallery",
     type: "website",
   },

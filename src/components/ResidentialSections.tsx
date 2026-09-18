@@ -238,7 +238,8 @@ export function ResidentialBackdrop({
    desktop height by construction, not by a pixel guess. */
 export function TrustBadgeRow() {
   return (
-    <div className="px-6 sm:px-8 lg:px-12 pb-24">
+    // SAUCE-314: pb-24 -> pb-12 / lg:pb-14 (his "too big of a gap" before the guarantee)
+    <div className="px-6 sm:px-8 lg:px-12 pb-12 lg:pb-14">
       <div className="max-w-3xl mx-auto text-center">
         <div className="flex justify-center">
           <Image

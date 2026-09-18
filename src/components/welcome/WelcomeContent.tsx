@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, type ReactNode } from "react";
 import Image from "next/image";
 import WelcomeCallLine from "@/components/WelcomeCallLine";
 import Lightbox from "@/components/Lightbox";
@@ -23,8 +23,8 @@ import { NO_EXTRA_FEES } from "@/lib/cta";
 //        (c) the FINAL price block with the main site's Why section
 //   -- the /residential background treatment ends here --
 //   "Ideas for your backyard" (6 residential ideas, tap to expand)
-//   a recent backyard of ours, told in OUR words (S2.4): Before, His 3D
-//        design, Finished (our own photos of that job)
+//   a recent backyard of ours, told in OUR words (S2.4): Before, Install
+//        day, Finished (our own photos of that job; SAUCE-314 his ruling)
 //   the main site's Experience section
 // mode "sheet" = the pop-up over the page (app/@modal); "page" = a hard load.
 // ============================================================================
@@ -53,19 +53,29 @@ const IDEAS = [
 // customer is never named and no words are written in his voice. His own
 // quote renders here ONLY once his real words and his yes exist.
 const STORY_QUOTE: { text: string } | null = null;
-// Three real steps of that job, one camera direction (the palm on the left):
-//   Before        = LB-29 (true before: no poles, no sail)
-//   His 3D design = LB-38 (the design he was shown, drawn on that same LB-29 photo)
-//   Finished      = LB-12 (the built sail from the same side of the yard)
-// Byte-identical copies of the vault pool files (max 1600 px). The cards are
-// 16:9 and at most ~350 CSS px wide, so no screen enlarges them.
+// Three real steps of that job (SAUCE-314, his ruling: the design frame is out,
+// "put us working on it" in the middle):
+//   Before      = LB-29 (true before: no poles, no sail)
+//   Install day = LB-22 = his IMG_1987 (EXIF 2026-08-31 17:12 MST), our crew
+//                 setting a post by the pool; 16:9 crop of the 4284 x 5712
+//                 original, sRGB, 1600 x 900, WebP q90 (no upscaling)
+//   Finished    = LB-12 (the built sail from the same side of the yard)
+// The cards are 16:9 and at most ~350 CSS px wide, so no screen enlarges them.
 const STORY_STEPS = [
   { src: "/images/welcome/story-before.webp", label: "Before", alt: "The backyard before the shade sail" },
-  { src: "/images/welcome/story-design.webp", label: "His 3D design", alt: "The design shown for this backyard, with the proposed poles marked" },
+  { src: "/images/welcome/story-install.webp", label: "Install day", alt: "An Apex installer setting a shade sail post beside the pool" },
   { src: "/images/welcome/story-finished.webp", label: "Finished", alt: "The finished shade sail over the backyard pool" },
 ];
 
-const STEPS = ["A quick, friendly call", "Your free design visit", "Your FINAL price, same day"];
+// SAUCE-314 (his ruling): "FINAL" carries the site's thin white outline
+// (hero-word-outline, as on /residential's "Backyard") everywhere it reads
+// "Your FINAL price" on this page.
+const FinalWord = () => <span className="text-copper hero-word-outline">FINAL</span>;
+const STEPS: { key: string; text: ReactNode }[] = [
+  { key: "call", text: "A quick, friendly call" },
+  { key: "visit", text: "Your free design visit" },
+  { key: "price", text: <>Your <FinalWord /> price, same day</> },
+];
 
 export default function WelcomeContent({ mode }: { mode: "page" | "sheet" }) {
   return (
@@ -90,19 +100,22 @@ export default function WelcomeContent({ mode }: { mode: "page" | "sheet" }) {
           <StatLine />
 
           <section aria-labelledby="welcome-expect" className="mx-auto max-w-xl pt-5">
-            <h2 id="welcome-expect" className="font-heading text-[24px] font-bold leading-tight text-white sm:text-3xl">
-              What should I expect?
+            {/* SAUCE-314 (his ruling): stands out more, still native: the site's
+                heading voice (white + one copper word with the thin white outline). */}
+            <h2 id="welcome-expect" className="font-heading text-[30px] font-bold leading-tight tracking-tight text-white [text-shadow:0_2px_18px_rgba(0,0,0,0.55)] sm:text-5xl">
+              What should I <span className="text-copper hero-word-outline">expect</span>?
             </h2>
+            <span className="mx-auto mt-2 block h-[2px] w-24 rounded-full bg-gradient-to-r from-transparent via-copper to-transparent sm:w-32" aria-hidden="true" />
             <WelcomeCallLine className="mx-auto mt-2 max-w-lg text-[17px] leading-[1.45] text-white/90 sm:text-xl" />
             <WelcomeActions />
             <ol className="relative mx-auto mt-4 grid max-w-md grid-cols-3 gap-2">
               <span className="absolute left-[16.7%] right-[16.7%] top-4 h-px bg-white/25" aria-hidden="true" />
-              {STEPS.map((t, i) => (
-                <li key={t} className="relative flex flex-col items-center">
+              {STEPS.map(({ key, text }, i) => (
+                <li key={key} className="relative flex flex-col items-center">
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-copper font-heading text-[15px] font-bold text-white ring-4 ring-charcoal">
                     {i + 1}
                   </span>
-                  <span className="mt-1.5 text-[14px] font-semibold leading-snug text-white/90">{t}</span>
+                  <span className="mt-1.5 text-[14px] font-semibold leading-snug text-white/90">{text}</span>
                 </li>
               ))}
             </ol>
@@ -111,9 +124,11 @@ export default function WelcomeContent({ mode }: { mode: "page" | "sheet" }) {
 
         {/* ===== WHAT DO I GET? ===== */}
         <section aria-labelledby="welcome-get" className="px-5 pb-20 pt-16 sm:pt-24">
-          <h2 id="welcome-get" className="text-center font-heading text-3xl font-bold text-white sm:text-5xl">
-            What do I get?
+          {/* SAUCE-314: stands out more, same treatment as "What should I expect?" */}
+          <h2 id="welcome-get" className="text-center font-heading text-[34px] font-bold leading-tight tracking-tight text-white [text-shadow:0_2px_18px_rgba(0,0,0,0.55)] sm:text-6xl">
+            What do I <span className="text-copper hero-word-outline">get</span>?
           </h2>
+          <span className="mx-auto mt-3 block h-[2px] w-28 rounded-full bg-gradient-to-r from-transparent via-copper to-transparent sm:w-36" aria-hidden="true" />
 
           {/* (a) the render he sent: a design, presented as one */}
           <div className="mx-auto mt-10 max-w-3xl">
@@ -147,7 +162,7 @@ export default function WelcomeContent({ mode }: { mode: "page" | "sheet" }) {
           {/* (c) the FINAL price, then the main site's Why section (copy untouched) */}
           <div className="mx-auto mt-20 max-w-2xl text-center">
             <h3 className="font-heading text-3xl font-bold text-white sm:text-4xl">
-              Your <span className="text-copper">FINAL</span> price
+              Your <FinalWord /> price
             </h3>
             <p className="mt-2 text-lg font-medium text-white/85">{NO_EXTRA_FEES}</p>
             <p className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
@@ -210,8 +225,15 @@ export default function WelcomeContent({ mode }: { mode: "page" | "sheet" }) {
             One Phoenix backyard, start to finish
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-lg leading-relaxed text-charcoal/75">
-            He filled out our form on the morning of July 30, holding a pergola quote he wasn&apos;t excited
-            about. We called him back in 67 seconds. By the end of August, we were building his shade.
+            {/* SAUCE-314 (his ruling: make the short time from the yes to the finished
+                shade land). OUR voice, every number from the record: form 2026-07-30,
+                callback 67 s (CRM 5480dc96), deposit 2026-08-08, posts in 2026-08-31
+                (his photos' EXIF), finished by 2026-09-12 (camera EXIF; rocks 14:01). */}
+            He filled out our form holding a pergola quote he wasn&apos;t excited about. We called him back
+            in <strong className="whitespace-nowrap font-semibold text-charcoal">67 seconds</strong>, designed his shade and gave
+            him one FINAL price. <strong className="whitespace-nowrap font-semibold text-charcoal">23 days</strong> after he said
+            yes, the posts went in. <strong className="whitespace-nowrap font-semibold text-charcoal">12 days</strong> later, his
+            pool was in the shade.
           </p>
           <ol className="mx-auto mt-8 grid max-w-md gap-8 sm:max-w-none sm:grid-cols-3 sm:gap-6">
             {STORY_STEPS.map((step, i) => (

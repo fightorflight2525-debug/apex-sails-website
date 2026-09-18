@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { HOME_CAROUSEL_FRAMES } from "@/lib/homeCarousel";
 
 /**
  * Homepage mini-gallery slideshow (A6 / B2). 8 hand-picked frames from the
@@ -14,16 +15,9 @@ import { useEffect, useState } from "react";
  *   gallery-ws-48 → showcase-commercial-ws48.webp (WS-48 placed at showcase name)
  * Same underlying photo bytes; MO's curated photo set preserved.
  */
-const GALLERY_FRAMES = [
-  { src: "/images/home-card-ws22.webp", alt: "Phoenix residential shade sail" },
-  { src: "/images/gallery-ws-29.webp", alt: "Custom shade sail backyard install" },
-  { src: "/images/gallery-os-01.webp", alt: "Phoenix outdoor shade install" },
-  { src: "/images/gallery-os-19.webp", alt: "Red and tan residential shade sails" },
-  { src: "/images/business-card-ws06.webp", alt: "Apex commercial shade sail install" },
-  { src: "/images/gallery-ws-34.webp", alt: "Phoenix public art shade sail" },
-  { src: "/images/showcase-commercial-ws48.webp", alt: "Commercial shade sail venue" },
-  { src: "/images/gallery-os-07.webp", alt: "Aerial Phoenix shade sail commercial complex" },
-];
+// SAUCE-314: the frames live in @/lib/homeCarousel (same photos, same order) so
+// /free-design's ideas carousel shows exactly this set and the two cannot drift.
+const GALLERY_FRAMES = HOME_CAROUSEL_FRAMES;
 
 export default function MiniGallerySlideshow() {
   const [index, setIndex] = useState(0);

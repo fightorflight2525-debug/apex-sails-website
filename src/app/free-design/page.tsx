@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import FormV2 from "@/components/FormV2";
+import IdeasCarousel from "@/components/IdeasCarousel";
 import StickyCallBar from "@/components/StickyCallBar";
 import type { CarouselFrame } from "@/components/CrossFadeCarousel";
 import { HOME_HERO_FRAMES, HomeHeroBackdrop, HomeHeroHeadline } from "@/components/HomeHero";
@@ -10,7 +11,6 @@ import {
   UrgencySection,
   PriceTransparency,
   WhatWeShade,
-  ResidentialGallery,
   ValueStack,
   ResidentialFaq,
   ResidentialFinalCta,
@@ -68,7 +68,7 @@ export default function FreeDesignPage() {
           all over the pinned home slideshow (the /residential scroll treatment) ===== */}
       <PinnedZone background={<HomeHeroBackdrop frames={SLIDES} />}>
         <div className="min-h-screen flex items-start lg:items-center">
-          <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-[6.25rem] sm:pt-32 pb-14 lg:pb-20">
+          <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-[6.25rem] sm:pt-32 pb-6 lg:pb-10">
             <div className="max-w-4xl mx-auto text-center">
               <HomeHeroHeadline compact />
               <div id="free-design-form" className="mx-auto mt-7 max-w-xl scroll-mt-28">
@@ -85,7 +85,9 @@ export default function FreeDesignPage() {
       <UrgencySection />
       <PriceTransparency />
       <WhatWeShade ctaHref={FORM} withCommercial />
-      <ResidentialGallery />
+      {/* SAUCE-314 (his ruling): universal, homes AND businesses, the homepage
+          carousel photos in that exact order; shown as ideas (provenance). */}
+      <IdeasCarousel />
       <ValueStack />
       <ResidentialFaq />
       <ResidentialFinalCta ctaHref={FORM} />

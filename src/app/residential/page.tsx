@@ -69,7 +69,8 @@ export default function ResidentialPage() {
       <PinnedZone id="top" background={<ResidentialBackdrop />}>
         {/* HERO screen */}
         <div className="min-h-screen flex items-center">
-          <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-32 lg:pt-28 pb-10 lg:pb-24">
+          {/* SAUCE-314: bottom padding cut (his "too big of a gap" under See Our Work) */}
+          <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-32 lg:pt-28 pb-2 lg:pb-8">
             <div className="max-w-3xl lg:max-w-4xl mx-auto text-center">
               <span className="inline-block text-sm font-semibold uppercase tracking-widest text-sand">
                 Phoenix backyard, pool & patio
@@ -99,13 +100,15 @@ export default function ResidentialPage() {
                 your free design visit.
               </p>
 
-              {/* SAUCE-313 CTA v3.1 (S1.8, S3.A): the hero lead block is FormV2,
-                  the same block as /free-design (What needs shade? My home / My
-                  business, fields drop down, the glowing offer button, the
-                  one-tap text line + call). Same Formspree form, same labels,
-                  same Google Ads / Meta / PostHog events (tracking parity). */}
-              <div id="quick-form" className="mx-auto mt-10 max-w-xl scroll-mt-28">
-                <FormV2 door="residential" idPrefix="res" />
+              {/* SAUCE-313 CTA v3.1 (S1.8, S3.A): the hero lead block is FormV2.
+                  SAUCE-314 (his 09-18 ruling): NO "What needs shade?" here, this
+                  page is residential. Just the offer button at the bottom; its
+                  first tap drops the fields down the same way My home does on
+                  /free-design, the button slides under them and sends on the next
+                  tap (Project type "Residential"). Same Formspree form, same
+                  labels, same Google Ads / Meta / PostHog events (tracking parity). */}
+              <div id="quick-form" className="mx-auto mt-6 max-w-xl scroll-mt-28">
+                <FormV2 door="residential" idPrefix="res" variant="cta" projectType="Residential" />
                 <a href="#gallery" className="mt-4 inline-block text-sm font-semibold text-white/70 transition-colors hover:text-white">
                   See Our Work
                 </a>
