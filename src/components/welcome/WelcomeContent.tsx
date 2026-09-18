@@ -22,33 +22,47 @@ import { NO_EXTRA_FEES } from "@/lib/cta";
 //   "What do I get?"  (a) the 3D design render, (b) the ShadeCast loop,
 //        (c) the FINAL price block with the main site's Why section
 //   -- the /residential background treatment ends here --
-//   "Real Apex installs in Phoenix" (6 residential, tap to expand)
-//   a recent backyard of ours, told in OUR words (S2.4)
+//   "Ideas for your backyard" (6 residential ideas, tap to expand)
+//   a recent backyard of ours, told in OUR words (S2.4): Before, His 3D
+//        design, Finished (our own photos of that job)
 //   the main site's Experience section
 // mode "sheet" = the pop-up over the page (app/@modal); "page" = a hard load.
 // ============================================================================
 
 // Background: the /residential treatment, first 6 of its frames (weight).
-const BG_FRAMES = RESIDENTIAL_HERO_FRAMES.slice(0, 6);
+// Decorative here (alt=""): those frames are supplier / other-installer photos
+// (vault photo-index), so this page makes no claim about them.
+const BG_FRAMES = RESIDENTIAL_HERO_FRAMES.slice(0, 6).map((f) => ({ ...f, alt: "" }));
 
-// "Real Apex installs in Phoenix": residential only, hero images first, pools
-// first, none of the project-story yard, 2 x 3 on a phone and 3 x 2 on desktop.
-const INSTALLS = [
-  { src: "/images/gallery-ws-29.webp", alt: "Twin shade sails over a Phoenix backyard pool" },
-  { src: "/images/gallery-ws-36.webp", alt: "Shade sail over a Phoenix backyard pool" },
-  { src: "/images/gallery-ws-52.webp", alt: "Shade sail over a pool-side patio in Phoenix" },
-  { src: "/images/residential-hero.webp", alt: "Custom residential shade sail over a Phoenix backyard patio" },
-  { src: "/images/gallery-ws-41.webp", alt: "Shade sails over a Phoenix outdoor kitchen" },
-  { src: "/images/gallery-ws-60.webp", alt: "Shade sail over a Phoenix backyard lawn and patio" },
+// "Ideas for your backyard": residential, pools first, 2 x 3 on a phone and
+// 3 x 2 on desktop. TRUTH RULE (vault photo-index): gallery-ws-* are the
+// Wholesale Shade supplier gallery (San Diego, California, Texas installs) and
+// residential-hero is WS-22 from that gallery. They are NOT Apex installs, so
+// the heading, the button and every alt text stay neutral: ideas, never "ours",
+// never "Phoenix".
+const IDEAS = [
+  { src: "/images/gallery-ws-29.webp", alt: "Twin shade sails over a backyard pool" },
+  { src: "/images/gallery-ws-36.webp", alt: "Shade sail over a backyard pool" },
+  { src: "/images/gallery-ws-52.webp", alt: "Shade sail over a pool-side patio" },
+  { src: "/images/residential-hero.webp", alt: "Shade sails over a backyard patio" },
+  { src: "/images/gallery-ws-41.webp", alt: "Shade sails over an outdoor kitchen" },
+  { src: "/images/gallery-ws-60.webp", alt: "Shade sail over a backyard lawn and patio" },
 ];
 
 // The project story (S2.4): OUR words, from the visible CRM record; the
 // customer is never named and no words are written in his voice. His own
 // quote renders here ONLY once his real words and his yes exist.
 const STORY_QUOTE: { text: string } | null = null;
-const STORY_PHOTOS = [
-  { src: "/images/story-backyard-patio.webp", alt: "Shade sail over a Phoenix backyard patio", quality: 90 },
-  { src: "/images/story-backyard-pool.webp", alt: "Shade sail beside a Phoenix backyard pool", quality: 90 },
+// Three real steps of that job, one camera direction (the palm on the left):
+//   Before        = LB-29 (true before: no poles, no sail)
+//   His 3D design = LB-38 (the design he was shown, drawn on that same LB-29 photo)
+//   Finished      = LB-12 (the built sail from the same side of the yard)
+// Byte-identical copies of the vault pool files (max 1600 px). The cards are
+// 16:9 and at most ~350 CSS px wide, so no screen enlarges them.
+const STORY_STEPS = [
+  { src: "/images/welcome/story-before.webp", label: "Before", alt: "The backyard before the shade sail" },
+  { src: "/images/welcome/story-design.webp", label: "His 3D design", alt: "The design shown for this backyard, with the proposed poles marked" },
+  { src: "/images/welcome/story-finished.webp", label: "Finished", alt: "The finished shade sail over the backyard pool" },
 ];
 
 const STEPS = ["A quick, friendly call", "Your free design visit", "Your FINAL price, same day"];
@@ -56,7 +70,7 @@ const STEPS = ["A quick, friendly call", "Your free design visit", "Your FINAL p
 export default function WelcomeContent({ mode }: { mode: "page" | "sheet" }) {
   return (
     <>
-      <PinnedZone background={<ResidentialBackdrop frames={BG_FRAMES} ariaLabel="Real Phoenix backyard shade sail installs" />}>
+      <PinnedZone background={<ResidentialBackdrop frames={BG_FRAMES} ariaLabel="Shade sail ideas" />}>
         {/* ===== FIRST SCREEN: all of it fits a phone (390 x 664) ===== */}
         <div className={`px-5 text-center ${mode === "sheet" ? "pt-12" : "pt-[5.5rem]"} sm:pt-24`}>
           <Suspense fallback={null}>
@@ -157,15 +171,18 @@ export default function WelcomeContent({ mode }: { mode: "page" | "sheet" }) {
         </section>
       </PinnedZone>
 
-      {/* ===== REAL APEX INSTALLS (normal page from here) ===== */}
+      {/* ===== IDEAS FOR YOUR BACKYARD (normal page from here) ===== */}
       <section className="bg-white py-16 sm:py-20">
         <div className="mx-auto max-w-5xl px-5 sm:px-8">
           <h2 className="text-balance text-center font-heading text-3xl font-bold text-charcoal sm:text-4xl">
-            Real Apex installs in Phoenix
+            Ideas for your backyard
           </h2>
+          <p className="mx-auto mt-3 max-w-xl text-balance text-center text-lg leading-relaxed text-charcoal/70">
+            Shapes, colors and layouts we can design for your space.
+          </p>
           <div className="mt-8">
             <Lightbox
-              images={INSTALLS}
+              images={IDEAS}
               gridClassName="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4"
               itemClassName="relative aspect-square overflow-hidden rounded-xl bg-charcoal/5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-copper/60 focus:ring-offset-2"
               imageSizes="(min-width: 1024px) 330px, (min-width: 640px) 33vw, 50vw"
@@ -176,7 +193,7 @@ export default function WelcomeContent({ mode }: { mode: "page" | "sheet" }) {
               href="/gallery?filter=residential"
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border-2 border-copper px-7 py-3 text-base font-semibold text-copper transition-colors hover:bg-copper hover:text-white"
             >
-              See more of our work
+              See more ideas
               <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
               </svg>
@@ -196,14 +213,35 @@ export default function WelcomeContent({ mode }: { mode: "page" | "sheet" }) {
             He filled out our form on the morning of July 30, holding a pergola quote he wasn&apos;t excited
             about. We called him back in 67 seconds. By the end of August, we were building his shade.
           </p>
-          <div className="mx-auto mt-8 max-w-3xl">
-            <Lightbox
-              images={STORY_PHOTOS}
-              gridClassName="grid grid-cols-2 gap-3 sm:gap-4"
-              itemClassName="relative aspect-[4/5] overflow-hidden rounded-2xl bg-charcoal/5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-copper/60 focus:ring-offset-2"
-              imageSizes="(min-width: 768px) 380px, 50vw"
-            />
-          </div>
+          <ol className="mx-auto mt-8 grid max-w-md gap-8 sm:max-w-none sm:grid-cols-3 sm:gap-6">
+            {STORY_STEPS.map((step, i) => (
+              <li key={step.src} className="relative">
+                <figure className="relative aspect-video overflow-hidden rounded-2xl bg-charcoal/10 shadow-md shadow-charcoal/10">
+                  <Image
+                    src={step.src}
+                    alt={step.alt}
+                    fill
+                    quality={90}
+                    sizes="(min-width: 1024px) 300px, (min-width: 640px) calc(33vw - 40px), calc(100vw - 40px)"
+                    className="object-cover"
+                  />
+                  <figcaption className="absolute left-3 top-3 rounded-full bg-charcoal/80 px-3 py-1 text-[13px] font-semibold text-white backdrop-blur-sm">
+                    {step.label}
+                  </figcaption>
+                </figure>
+                {i < STORY_STEPS.length - 1 && (
+                  <span
+                    aria-hidden="true"
+                    className="absolute -bottom-[30px] left-1/2 z-10 flex h-7 w-7 -translate-x-1/2 items-center justify-center rounded-full bg-copper text-white shadow sm:bottom-auto sm:left-auto sm:-right-[26px] sm:top-1/2 sm:-translate-y-1/2 sm:translate-x-0"
+                  >
+                    <svg className="h-4 w-4 rotate-90 sm:rotate-0" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M7.2 14.8a.75.75 0 010-1.06L10.94 10 7.2 6.26a.75.75 0 111.06-1.06l4.27 4.27a.75.75 0 010 1.06l-4.27 4.27a.75.75 0 01-1.06 0z" clipRule="evenodd" />
+                    </svg>
+                  </span>
+                )}
+              </li>
+            ))}
+          </ol>
           {STORY_QUOTE && (
             <blockquote className="mx-auto mt-8 max-w-2xl text-center font-heading text-xl italic text-charcoal sm:text-2xl">
               &ldquo;{STORY_QUOTE.text}&rdquo;
