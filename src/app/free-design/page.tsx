@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
 };
 
-const proof = ["15-year warranty", "30°+ cooler", "96% UV block"];
+const proof = ["15-year warranty", "30°F cooler surfaces", "96% UV block"];
 
 const installs = [
   { src: "/images/residential-01.webp", alt: "Shade sail over a Phoenix backyard pool" },

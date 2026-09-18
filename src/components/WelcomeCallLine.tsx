@@ -7,23 +7,50 @@
 // they answer it.
 // KEEP THE PROMISE TRUE: inside the call window (Phoenix time) it promises the
 // call in 15 minutes; outside it, the first call of the morning. A 10 PM buyer
-// is never told "15 minutes". CALL WINDOW HOURS ARE THE OPERATOR'S RULING.
+// is never told "15 minutes", and neither is a buyer 10 minutes before closing
+// (SAUCE-313: the line switches off PROMISE_MINUTES early). HOURS ARE HIS RULING.
 // Rendered after mount (the server cannot know the buyer's hour), faded in.
 // ============================================================================
 
 import { useEffect, useState } from "react";
 import posthog from "posthog-js";
 
-const CALL_START_HOUR = 7; // 7:00 AM Phoenix (America/Phoenix, no DST)
-const CALL_END_HOUR = 19; // 7:00 PM Phoenix
+// CALL WINDOW = THE OPERATOR'S RULING. America/Phoenix (no DST), minutes after
+// midnight, per weekday (0 = Sunday). null = nobody calls that day.
+// OPERATOR RULING 2026-09-18 (SAUCE-313): 7:00 AM to 7:00 PM, every day.
+const CALL_WINDOWS: Record<number, [number, number] | null> = {
+  0: [7 * 60, 19 * 60],
+  1: [7 * 60, 19 * 60],
+  2: [7 * 60, 19 * 60],
+  3: [7 * 60, 19 * 60],
+  4: [7 * 60, 19 * 60],
+  5: [7 * 60, 19 * 60],
+  6: [7 * 60, 19 * 60],
+};
+// The day line promises a call "in the next 15 minutes", so it switches off
+// PROMISE_MINUTES before the window closes: a 6:58 PM lead is never promised 7:13.
+const PROMISE_MINUTES = 15;
 
-function phoenixHour(): number {
+function phoenixNow(): { weekday: number; minutes: number } {
   const parts = new Intl.DateTimeFormat("en-US", {
     timeZone: "America/Phoenix",
+    weekday: "short",
     hour: "numeric",
+    minute: "numeric",
     hourCycle: "h23",
   }).formatToParts(new Date());
-  return parseInt(parts.find((p) => p.type === "hour")?.value ?? "12", 10);
+  const v = (t: string) => parts.find((p) => p.type === t)?.value ?? "";
+  const wd = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(v("weekday"));
+  const h = parseInt(v("hour") || "12", 10) % 24;
+  const m = parseInt(v("minute") || "0", 10);
+  return { weekday: wd < 0 ? 1 : wd, minutes: h * 60 + m };
+}
+
+// True only while a call inside PROMISE_MINUTES can really happen.
+function callPromiseHolds(): boolean {
+  const { weekday, minutes } = phoenixNow();
+  const w = CALL_WINDOWS[weekday];
+  return !!w && minutes >= w[0] && minutes < w[1] - PROMISE_MINUTES;
 }
 
 export default function WelcomeCallLine() {
@@ -32,8 +59,7 @@ export default function WelcomeCallLine() {
   useEffect(() => {
     let v: "day" | "night" = "day";
     try {
-      const h = phoenixHour();
-      v = h >= CALL_START_HOUR && h < CALL_END_HOUR ? "day" : "night";
+      v = callPromiseHolds() ? "day" : "night";
     } catch {
       /* default to day */
     }
@@ -108,7 +134,7 @@ export function SaveNumberButton() {
 }
 
 // ============================================================================
-// CallNowButton: "Can't wait? Call us now", shown INSIDE the call window only.
+// CallNowButton: "Can't wait? Call us now", shown only while the 15-minute promise holds.
 // After hours the page promises the morning call, so it does not invite a call
 // nobody will answer. Same window as the line above.
 // ============================================================================
@@ -116,8 +142,7 @@ export function CallNowButton() {
   const [day, setDay] = useState(false);
   useEffect(() => {
     try {
-      const h = phoenixHour();
-      setDay(h >= CALL_START_HOUR && h < CALL_END_HOUR);
+      setDay(callPromiseHolds());
     } catch {
       setDay(true);
     }
