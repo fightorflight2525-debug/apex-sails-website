@@ -1,5 +1,6 @@
 import CrossFadeCarousel, { type CarouselFrame } from "@/components/CrossFadeCarousel";
 import { HOME_CAROUSEL_FRAMES } from "@/lib/homeCarousel";
+import ColorBrowserButton from "@/components/ColorBrowser";
 
 // ============================================================================
 // IdeasCarousel (SAUCE-314, his 09-18 ruling for /free-design): the section
@@ -43,7 +44,7 @@ export default function IdeasCarousel() {
           <p className="mt-4 text-lg text-charcoal/70 leading-relaxed">
             Shapes, colors and layouts we can design for your space.
           </p>
-          {/* S314_COLOR_BROWSER_SLOT */}
+          <ColorBrowserButton className="mt-6" />
         </div>
 
         <div className="mx-auto mt-10 max-w-5xl overflow-hidden rounded-2xl bg-charcoal shadow-xl shadow-charcoal/15">

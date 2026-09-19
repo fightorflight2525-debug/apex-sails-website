@@ -131,7 +131,7 @@ export default function ColorBrowserButton({
         onPointerEnter={prefetch}
         onFocus={prefetch}
         className={[
-          "group inline-flex items-center justify-center gap-2.5 rounded-full border px-6 py-3 text-base font-semibold transition-colors duration-200",
+          "group inline-flex max-w-full items-center justify-center gap-2 rounded-full border px-4 py-3 text-[15px] font-semibold transition-colors duration-200 sm:gap-2.5 sm:px-6 sm:text-base",
           "focus-visible:outline-2 focus-visible:outline-offset-2",
           toneClass,
           className ?? "",
@@ -142,7 +142,7 @@ export default function ColorBrowserButton({
           <span className="h-4 w-4 rounded-full border-2 border-white bg-[#363E45]" />
           <span className="h-4 w-4 rounded-full border-2 border-white bg-copper" />
         </span>
-        <span className="text-balance">{BUTTON_LABEL}</span>
+        <span className="text-balance min-[380px]:whitespace-nowrap">{BUTTON_LABEL}</span>
       </button>
       {open ? <ColorDialog onClose={close} /> : null}
     </>

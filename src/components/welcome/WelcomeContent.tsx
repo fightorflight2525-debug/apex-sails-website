@@ -11,6 +11,7 @@ import WelcomeActions from "@/components/welcome/WelcomeActions";
 import ShadeCastLoop from "@/components/welcome/ShadeCastLoop";
 import ProjectStory from "@/components/ProjectStory";
 import { NO_EXTRA_FEES } from "@/lib/cta";
+import ColorBrowserButton from "@/components/ColorBrowser";
 
 // ============================================================================
 // /welcome, top to bottom (CTA v3.1 S1.4, his order; S3.B build notes):
@@ -205,7 +206,7 @@ export default function WelcomeContent({ mode }: { mode: "page" | "sheet" }) {
             <p className="mx-auto mt-3 max-w-xl text-balance text-lg leading-relaxed text-charcoal/70">
               Choose your sail color and post finish.
             </p>
-            {/* S314_COLOR_BROWSER_SLOT */}
+            <ColorBrowserButton className="mt-5" />
           </div>
           <div className="mt-8">
             <Lightbox

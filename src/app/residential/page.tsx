@@ -19,6 +19,7 @@ import {
   ProcessTeaser,
 } from "@/components/ResidentialSections";
 import { OG_DEFAULTS } from "@/app/og-defaults";
+import ProjectStory from "@/components/ProjectStory";
 
 export const metadata: Metadata = {
   title: "Shade Sails Phoenix | Backyard, Pool & Patio | Apex Sail Shades",
@@ -125,7 +126,7 @@ export default function ResidentialPage() {
       <PriceTransparency />
       <WhatWeShade />
       <ResidentialGallery />
-      {/* S314_PROJECT_STORY_SLOT */}
+      <ProjectStory />
       <ValueStack />
       <ResidentialFaq />
       <ResidentialFinalCta />

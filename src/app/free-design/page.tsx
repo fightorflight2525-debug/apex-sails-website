@@ -17,6 +17,7 @@ import {
   ProcessTeaser,
 } from "@/components/ResidentialSections";
 import { OG_DEFAULTS } from "@/app/og-defaults";
+import ProjectStory from "@/components/ProjectStory";
 
 // ============================================================================
 // /free-design (SAUCE-313, CTA v3.1 S1.7 / S3.C): the bio link. A SIMULATION OF
@@ -89,7 +90,7 @@ export default function FreeDesignPage() {
       {/* SAUCE-314 (his ruling): universal, homes AND businesses, the homepage
           carousel photos in that exact order; shown as ideas (provenance). */}
       <IdeasCarousel />
-      {/* S314_PROJECT_STORY_SLOT */}
+      <ProjectStory />
       <ValueStack />
       <ResidentialFaq />
       <ResidentialFinalCta ctaHref={FORM} />

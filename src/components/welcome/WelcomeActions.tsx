@@ -64,9 +64,6 @@ export default function WelcomeActions() {
           </a>
         )}
       </div>
-      {(!state || state.save) && (
-        <p className="mt-2 text-[11px] uppercase tracking-widest text-white/55">So your phone knows it&apos;s us</p>
-      )}
     </div>
   );
 }

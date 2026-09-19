@@ -7,6 +7,7 @@ import Lightbox from "@/components/Lightbox";
 import CallPromise from "@/components/CallPromise";
 import { BrushPencilX, UvIcon, ThermometerIcon, WindIcon, ShieldIcon, BusinessIcon } from "@/components/icons";
 import CtaText from "@/components/CtaText";
+import ColorBrowserButton from "@/components/ColorBrowser";
 
 // ============================================================================
 // /residential SECTIONS, SHARED (SAUCE-313, CTA v3.1 S1.7 / S3.C).
@@ -653,7 +654,7 @@ export function ResidentialGallery() {
           <p className="mt-4 text-lg text-charcoal/70 leading-relaxed">
             Choose your sail color and post finish.
           </p>
-          {/* S314_COLOR_BROWSER_SLOT */}
+          <ColorBrowserButton className="mt-6" />
         </div>
 
         <div className="mt-12">
