@@ -43,6 +43,7 @@ export default function IdeasCarousel() {
           <p className="mt-4 text-lg text-charcoal/70 leading-relaxed">
             Shapes, colors and layouts we can design for your space.
           </p>
+          {/* S314_COLOR_BROWSER_SLOT */}
         </div>
 
         <div className="mx-auto mt-10 max-w-5xl overflow-hidden rounded-2xl bg-charcoal shadow-xl shadow-charcoal/15">

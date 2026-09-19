@@ -4,12 +4,32 @@ import CountUp from "@/components/CountUp";
  * Canonical 4-icon stats band, shared across home, commercial, residential,
  * and senior-living. Render-identical on every page (no props).
  * Source of truth: home "SECTION 2: 4-ICON VALUE BAR".
+ * S314 (his ruling): 15-Year Warranty first (far left), then 96 / 30 / 90.
+ * "Center everything properly": below lg every title breaks after its number
+ * ("15-Year" / "Warranty"), so all four wrap the same way at 390 px (the 2 x 2
+ * grid) and at md (4 narrow columns); from lg each title is one line. Wording
+ * and numbers unchanged.
  */
 export default function StatsBand() {
   return (
     <section className="bg-cream py-10 sm:py-12 border-b border-sand/30">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4 md:gap-4">
+          {/* 15-Year Warranty (S314, his ruling: first, far left; the trust builder) */}
+          <div className="flex flex-col items-center text-center gap-3">
+            <svg className="w-10 h-10 text-copper" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <path d="M20 4 L32 10 L32 22 C32 30 26 36 20 38 C14 36 8 30 8 22 L8 10 Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+              <polyline points="14,20 18,24 26,16" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <div>
+              <p className="text-xl font-heading font-bold text-charcoal">
+                <CountUp to={15} suffix="-Year" />
+                <span className="block whitespace-nowrap lg:inline"> Warranty</span>
+              </p>
+              <p className="text-sm text-charcoal/50 mt-0.5">Fabric &amp; structure</p>
+            </div>
+          </div>
+
           {/* 96% UV Block */}
           <div className="flex flex-col items-center text-center gap-3">
             <svg className="w-10 h-10 text-copper" viewBox="0 0 40 40" fill="none" aria-hidden="true">
@@ -23,7 +43,8 @@ export default function StatsBand() {
             </svg>
             <div>
               <p className="text-xl font-heading font-bold text-charcoal">
-                <CountUp to={96} suffix="% UV Block" />
+                <CountUp to={96} suffix="%" />
+                <span className="block whitespace-nowrap lg:inline"> UV Block</span>
               </p>
               <p className="text-sm text-charcoal/50 mt-0.5">Maximum protection</p>
             </div>
@@ -42,23 +63,10 @@ export default function StatsBand() {
             </svg>
             <div>
               <p className="text-xl font-heading font-bold text-charcoal">
-                <CountUp to={30} suffix={"°F Cooler Surfaces"} />
+                <CountUp to={30} suffix="°F" />
+                <span className="block whitespace-nowrap lg:inline"> Cooler Surfaces</span>
               </p>
               <p className="text-sm text-charcoal/50 mt-0.5">Under shade coverage</p>
-            </div>
-          </div>
-
-          {/* 15-Year Warranty */}
-          <div className="flex flex-col items-center text-center gap-3">
-            <svg className="w-10 h-10 text-copper" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <path d="M20 4 L32 10 L32 22 C32 30 26 36 20 38 C14 36 8 30 8 22 L8 10 Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-              <polyline points="14,20 18,24 26,16" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            <div>
-              <p className="text-xl font-heading font-bold text-charcoal">
-                <CountUp to={15} suffix="-Year Warranty" />
-              </p>
-              <p className="text-sm text-charcoal/50 mt-0.5">Fabric &amp; structure</p>
             </div>
           </div>
 
@@ -71,7 +79,8 @@ export default function StatsBand() {
             </svg>
             <div>
               <p className="text-xl font-heading font-bold text-charcoal">
-                <CountUp to={90} suffix="mph Wind Rating" />
+                <CountUp to={90} suffix="mph" />
+                <span className="block whitespace-nowrap lg:inline"> Wind Rating</span>
               </p>
               <p className="text-sm text-charcoal/50 mt-0.5">Engineered to endure</p>
             </div>
