@@ -25,7 +25,8 @@ import { OG_DEFAULTS } from "@/app/og-defaults";
 // lead block in the same phone frame, then the /residential page as it is
 // (shared components, so the two cannot drift), serving homes AND businesses
 // ("What we shade" gains Commercial spaces). Every offer button on this page
-// points at the hero form: one door per room.
+// points at the hero form: one door per room (SAUCE-314: via "/#get-started";
+// LeadFormBridge opens the hero form with the dropdown already down).
 // Submit -> the /welcome sheet slides up over this page.
 // NOINDEX by design (not an SEO page; never competes with /residential).
 // Kept OUT of sitemap.ts on purpose. Header in hallway mode, slim footer.
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
   },
 };
 
-const FORM = "#free-design-form";
+const FORM = "/#get-started";
 
 // The home slideshow with a recent backyard of ours as slide 2 (S1.7). Portrait
 // source: object-position keeps the sail corner in the desktop band; on a phone
@@ -88,6 +89,7 @@ export default function FreeDesignPage() {
       {/* SAUCE-314 (his ruling): universal, homes AND businesses, the homepage
           carousel photos in that exact order; shown as ideas (provenance). */}
       <IdeasCarousel />
+      {/* S314_PROJECT_STORY_SLOT */}
       <ValueStack />
       <ResidentialFaq />
       <ResidentialFinalCta ctaHref={FORM} />

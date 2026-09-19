@@ -690,7 +690,7 @@ export default function HowItWorksPage() {
             </p>
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Link
-                href="/contact"
+                href="/#get-started"
                 className="inline-flex min-h-14 items-center justify-center text-center text-balance rounded-full bg-white px-10 py-3 font-heading text-base font-bold text-copper transition-all duration-300 hover:bg-cream hover:shadow-xl"
               >
                 <CtaText />

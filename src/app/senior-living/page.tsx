@@ -113,7 +113,7 @@ export default function SeniorLivingPage() {
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Link
-                href="/contact"
+                href="/#get-started"
                 className="inline-flex items-center justify-center text-center text-balance px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
               >
                 <CtaText />
@@ -390,7 +390,7 @@ export default function SeniorLivingPage() {
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact"
+              href="/#get-started"
               className="inline-flex items-center justify-center text-center text-balance px-10 py-5 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/20"
             >
               <CtaText />

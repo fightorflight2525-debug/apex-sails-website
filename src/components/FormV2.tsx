@@ -19,15 +19,26 @@
 // form_submit_attempted / form_submit_failed / form_submitted (form = door),
 // sessionStorage apex_door, then router.push("/welcome") (the welcome sheet).
 // No PII is ever put in a URL.
+// SAUCE-314 (contract B1, D2): the form root carries data-lead-form and opens
+// on the "apex:open-form" event (LeadFormBridge: every CTA on the page opens
+// the TOP form, dropdown already open), and on arrival at "/#get-started".
+// New door "home" (the homepage hero): its auto note reads "Quick form on /".
 // ============================================================================
 
-import { useRef, useState, type FormEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import posthog from "posthog-js";
 import TextDoor from "@/components/TextDoor";
 import { HomeIcon, BusinessIcon, CheckIcon } from "@/components/icons";
 import { NO_EXTRA_FEES } from "@/lib/cta";
 import CtaText from "@/components/CtaText";
+import {
+  LEAD_FORM_HASH,
+  LEAD_FORM_SELECTOR,
+  OPEN_FORM_EVENT,
+  OPEN_FORM_FLAG,
+  scrollToLeadForm,
+} from "@/components/LeadFormBridge";
 
 const CHOICES = [
   { value: "My home", projectType: "Residential", Icon: HomeIcon },
@@ -36,7 +47,7 @@ const CHOICES = [
 type Choice = (typeof CHOICES)[number]["value"];
 
 type Props = {
-  /** Which door this is ("free-design", "residential"). Goes to PostHog, Meta and the lead's notes. */
+  /** Which door this is ("free-design", "residential", "home" = the homepage). Goes to PostHog, Meta and the lead's notes. */
   door: string;
   /** Keeps element ids unique if a page ever carries two forms. */
   idPrefix?: string;
@@ -51,6 +62,14 @@ type Props = {
   /** The "cta" variant's fixed answer (a residential page = "Residential"). */
   projectType?: "Residential" | "Commercial";
 };
+
+// The Lead event id Meta (eventID) and PostHog (meta_event_id) share for CAPI
+// dedup. Module level so the component body stays pure; same format as before.
+function newEventId(): string {
+  return typeof crypto !== "undefined" && "randomUUID" in crypto
+    ? crypto.randomUUID()
+    : `lead-${Date.now()}-${Math.floor(Math.random() * 1e6)}`;
+}
 
 function readUtm(): Record<string, string> {
   const out: Record<string, string> = {};
@@ -80,8 +99,12 @@ export default function FormV2({ door, idPrefix = "fv2", variant = "choice", pro
   const [sent, setSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const started = useRef(false);
+  const rootRef = useRef<HTMLFormElement>(null);
 
   function onFocus(e: React.FocusEvent<HTMLFormElement>) {
+    // SAUCE-314: the form root itself takes focus when a CTA opens it; that is
+    // not a started form (and form.name would resolve to the "name" input).
+    if (e.target === e.currentTarget) return;
     const field = (e.target as { name?: string })?.name || "";
     if (!field || field === "_gotcha" || started.current) return;
     started.current = true;
@@ -90,13 +113,60 @@ export default function FormV2({ door, idPrefix = "fv2", variant = "choice", pro
 
   // The fields drop down (either variant). Measured once per page view, so the
   // funnel reads: opened -> started (first field) -> attempted -> submitted.
-  function openFields(via: "choice" | "cta") {
-    setOpen(true);
-    if (!opened.current) {
-      opened.current = true;
-      posthog.capture("form_opened", { form: door, via });
+  // via: "choice" / "cta" (a tap in this form) or "cta_link" (SAUCE-314: a CTA
+  // elsewhere on the site opened it).
+  const openFields = useCallback(
+    (via: string) => {
+      setOpen(true);
+      if (!opened.current) {
+        opened.current = true;
+        posthog.capture("form_opened", { form: door, via });
+      }
+    },
+    [door],
+  );
+
+  // SAUCE-314 (B1): a CTA opens this form. LeadFormBridge dispatches
+  // "apex:open-form" on the first [data-lead-form] of the page: the same open
+  // state as a tap on the top button (cta: the fields; choice: My home / My
+  // business + the fields). No input is focused (no phone keyboard pops up);
+  // the form root takes focus quietly, for screen readers.
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+    const onOpen = (e: Event) => {
+      openFields((e as CustomEvent<{ via?: string } | null>).detail?.via || "cta_link");
+      el.focus({ preventScroll: true });
+    };
+    el.addEventListener(OPEN_FORM_EVENT, onOpen);
+    return () => el.removeEventListener(OPEN_FORM_EVENT, onOpen);
+  }, [openFields]);
+
+  // SAUCE-314 (B1): arriving from a CTA on a page with no form ("/#get-started",
+  // or the flag LeadFormBridge set): the FIRST form of the page opens and
+  // scrolls into view after a tick. The flag is cleared when it is used.
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+    let flagged = false;
+    try {
+      flagged = sessionStorage.getItem(OPEN_FORM_FLAG) === "1";
+    } catch {
+      /* storage blocked: the hash alone decides */
     }
-  }
+    if (!flagged && window.location.hash !== LEAD_FORM_HASH) return;
+    if (document.querySelector(LEAD_FORM_SELECTOR) !== el) return;
+    const t = window.setTimeout(() => {
+      try {
+        sessionStorage.removeItem(OPEN_FORM_FLAG);
+      } catch {
+        /* nothing to clear */
+      }
+      scrollToLeadForm(el);
+      el.dispatchEvent(new CustomEvent(OPEN_FORM_EVENT, { detail: { via: "cta_link" } }));
+    }, 80);
+    return () => window.clearTimeout(t);
+  }, []);
 
   function pick(c: Choice) {
     setChoice(c);
@@ -143,8 +213,10 @@ export default function FormV2({ door, idPrefix = "fv2", variant = "choice", pro
     const utm = readUtm();
     const from = [utm.utm_source, utm.utm_medium].filter(Boolean).join(" / ");
     const projectType = isCta ? fixedType : CHOICES.find((c) => c.value === choice)?.projectType ?? "Residential";
+    // SAUCE-314: the homepage door ("home") reads "Quick form on /".
+    const formPath = door === "home" ? "/" : `/${door}`;
     const note =
-      `Auto note: shading ${space}. Quick form on /${door}` +
+      `Auto note: shading ${space}. Quick form on ${formPath}` +
       (from ? `, from ${from}` : "") +
       ". The quick form asks no notes.";
 
@@ -178,10 +250,7 @@ export default function FormV2({ door, idPrefix = "fv2", variant = "choice", pro
         value: 500,
         currency: "USD",
       });
-      const metaEventId =
-        typeof crypto !== "undefined" && "randomUUID" in crypto
-          ? crypto.randomUUID()
-          : `lead-${Date.now()}-${Math.floor(Math.random() * 1e6)}`;
+      const metaEventId = newEventId();
       window.fbq?.("track", "Lead", { content_name: `short_form_${door}` }, { eventID: metaEventId });
       posthog.capture("form_submitted", {
         form: door,
@@ -212,7 +281,15 @@ export default function FormV2({ door, idPrefix = "fv2", variant = "choice", pro
   const label = "mb-1.5 block text-left text-[15px] font-medium text-white/85";
 
   return (
-    <form onSubmit={onSubmit} onFocusCapture={onFocus} noValidate className="relative text-center">
+    <form
+      ref={rootRef}
+      data-lead-form={door}
+      tabIndex={-1}
+      onSubmit={onSubmit}
+      onFocusCapture={onFocus}
+      noValidate
+      className="relative text-center outline-none"
+    >
       {/* Honeypot (invisible to humans, filled by bots; Formspree convention) */}
       <div className="absolute h-0 w-0 overflow-hidden opacity-0" aria-hidden="true">
         <label htmlFor={`${idPrefix}-gotcha`}>Leave this field blank</label>

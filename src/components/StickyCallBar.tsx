@@ -13,8 +13,13 @@ import CtaText from "@/components/CtaText";
  * conversion channel, so the bar offers both paths.
  * SAUCE-313: the uniform CTA label; the line under it is time-aware (CallPromise);
  * `href` lets /free-design point the bar at its own hero form (one door per room).
+ * SAUCE-314 (B4, his 09-18 find on /free-design: "not glowing or pulsing the way
+ * that it should. Nor does the button click to anything."): the button carries
+ * the SAME glow as the page's top CTA (cta-glow-loop) and links to
+ * "/#get-started", so LeadFormBridge lands it on the top form with the dropdown
+ * open on every page (the homepage form on a page with no form).
  */
-export default function StickyCallBar({ href = "/contact" }: { href?: string }) {
+export default function StickyCallBar({ href = "/#get-started" }: { href?: string }) {
   // MO decision (operator delegated, 2026-07-30): on /residential the bar goes
   // DARK to match the page's premium dark aesthetic; other pages stay white.
   // SAUCE-313: /free-design carries the same /residential sections, so it matches.
@@ -50,7 +55,8 @@ export default function StickyCallBar({ href = "/contact" }: { href?: string }) 
         </a>
         <Link
           href={href}
-          className="flex-1 inline-flex flex-col items-center justify-center rounded-full bg-copper px-4 py-2.5 text-center text-white"
+          data-cta="sticky"
+          className="cta-glow-loop flex-1 inline-flex flex-col items-center justify-center rounded-full bg-copper px-4 py-2.5 text-center text-white"
         >
           <span className="text-balance text-sm font-semibold leading-tight"><CtaText /></span>
           <CallPromise className="text-[10px] uppercase tracking-widest text-white/85" />

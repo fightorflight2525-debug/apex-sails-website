@@ -187,9 +187,12 @@ export default function Header() {
               </a>
 
               {/* CTA Button. SAUCE-313: the uniform label; below 1280 px the full
-                  label cannot fit beside the nav, so the header alone shortens it. */}
+                  label cannot fit beside the nav, so the header alone shortens it.
+                  SAUCE-314 (D2): opens this page's top form (LeadFormBridge), or
+                  the homepage form on a page with no form. */}
               <Link
-                href="/contact"
+                href="/#get-started"
+                data-cta="header"
                 className="whitespace-nowrap rounded-full bg-copper px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-copper-dark hover:shadow-md"
               >
                 <span className="xl:hidden">{CTA_LABEL_SHORT}</span>
@@ -323,10 +326,12 @@ export default function Header() {
             </Link>
           </nav>
 
-          {/* Mobile CTA */}
+          {/* Mobile CTA. SAUCE-314 (D2): same door as the desktop button; the
+              bridge never stops propagation, so onClick still closes the menu. */}
           <div className="mt-8 px-6">
             <Link
-              href="/contact"
+              href="/#get-started"
+              data-cta="menu"
               className="block w-full rounded-full bg-copper py-3.5 text-center text-sm font-semibold text-white shadow-sm transition-all hover:bg-copper-dark hover:shadow-md"
               onClick={closeMobile}
             >

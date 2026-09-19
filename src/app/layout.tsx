@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PhoneConversionTracker from "@/components/PhoneConversionTracker";
 import MetaPixel from "@/components/MetaPixel";
+import LeadFormBridge from "@/components/LeadFormBridge";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -101,6 +102,8 @@ export default function RootLayout({
         {modal}
         <PhoneConversionTracker />
         <MetaPixel />
+        {/* SAUCE-314 (D2): every CTA opens the top form of its page, dropdown open. */}
+        <LeadFormBridge />
         {/* META PIXEL BASE CODE (SAUCE-273 M1). Dataset 1434479721875306, CAPI-enabled,
             bound to ad account 5342635702628238. Loaded from connect.facebook.net
             DIRECTLY by design: the /uplink reverse proxy is PostHog's rail, not Meta's.

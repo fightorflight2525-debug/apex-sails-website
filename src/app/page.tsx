@@ -7,6 +7,7 @@ import ExperienceSection from "@/components/ExperienceSection";
 import Reveal from "@/components/Reveal";
 import StatsBand from "@/components/StatsBand";
 import StickyCallBar from "@/components/StickyCallBar";
+import FormV2 from "@/components/FormV2";
 import { OG_DEFAULTS } from "@/app/og-defaults";
 import CtaText from "@/components/CtaText";
 
@@ -159,17 +160,16 @@ export default function Home() {
           <div className="max-w-4xl mx-auto text-center">
             <HomeHeroHeadline />
 
-            {/* Dual CTA */}
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="cta-glow-loop inline-flex items-center justify-center text-center text-balance px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
-              >
-                <CtaText />
-              </Link>
+            {/* SAUCE-314 (B5, his words: "just on the main page, just render the
+                lead form"): the homepage door sits where the CTA buttons were,
+                as on /free-design. Every CTA on this page, and on every page
+                with no form, lands here with the dropdown open (LeadFormBridge).
+                Same Formspree form, same labels, same events (door "home"). */}
+            <div id="get-started" className="mx-auto mt-10 max-w-xl scroll-mt-28">
+              <FormV2 door="home" idPrefix="home" variant="choice" />
               <a
                 href="#work"
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white text-lg font-semibold rounded-full hover:bg-white/10 transition-colors duration-200"
+                className="mt-4 inline-block text-sm font-semibold text-white/70 transition-colors hover:text-white"
               >
                 See Our Work
               </a>
@@ -212,9 +212,11 @@ export default function Home() {
                 className="group block overflow-hidden rounded-2xl border-2 border-sand/40 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-charcoal/5 hover:border-copper"
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
+                  {/* SAUCE-314 (B7): the Lambert water-level hero (LB-15, ours), the
+                      whole scene at the card's 16:10, not a zoomed crop. */}
                   <Image
-                    src="/images/home-card-backyard-patio.webp"
-                    alt="Custom shade sail over a Phoenix backyard patio"
+                    src="/images/home/home-card-lambert.webp"
+                    alt="An Apex shade sail over a backyard pool"
                     fill
                     quality={90}
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -222,8 +224,9 @@ export default function Home() {
                   />
                 </div>
                 <div className="p-8 sm:p-10">
+                  {/* SAUCE-314 (B6): "Home" stands out so the card says what it is for. */}
                   <p className="text-base sm:text-lg font-bold uppercase tracking-widest text-copper">
-                    For Your Home
+                    For Your <span className="ml-1 inline-block align-baseline font-heading text-[1.75em] leading-none italic tracking-wide text-copper sm:text-[1.9em]">Home</span>
                   </p>
                   <h3 className="mt-2 font-heading text-2xl font-bold text-charcoal group-hover:text-copper transition-colors">
                     Cooler outdoor living
@@ -258,8 +261,9 @@ export default function Home() {
                   />
                 </div>
                 <div className="p-8 sm:p-10">
+                  {/* SAUCE-314 (B6): "Business" stands out the same way. */}
                   <p className="text-base sm:text-lg font-bold uppercase tracking-widest text-copper">
-                    For Your Business
+                    For Your <span className="ml-1 inline-block align-baseline font-heading text-[1.75em] leading-none italic tracking-wide text-copper sm:text-[1.9em]">Business</span>
                   </p>
                   <h3 className="mt-2 font-heading text-2xl font-bold text-charcoal group-hover:text-copper transition-colors">
                     Comfortable, shaded spaces
@@ -488,7 +492,7 @@ export default function Home() {
 
                 {/* S3 desktop CTA: visible at lg+, hidden below (mobile/tablet show the post-simulation CTA instead) */}
                 <Link
-                  href="/contact"
+                  href="/#get-started"
                   className="mt-10 hidden lg:inline-flex items-center justify-center text-center text-balance px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
                 >
                   <CtaText />
@@ -506,7 +510,7 @@ export default function Home() {
             {/* S3 mobile-only CTA: appears AFTER the simulation per the mobile reorder spec.
                 lg:hidden removes it from the grid entirely at lg+ so desktop stays 2-cell. */}
             <Link
-              href="/contact"
+              href="/#get-started"
               className="lg:hidden mt-2 mx-auto inline-flex items-center justify-center text-center text-balance px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
             >
               <CtaText />
@@ -606,7 +610,7 @@ export default function Home() {
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact"
+              href="/#get-started"
               className="cta-glow-loop inline-flex items-center justify-center text-center text-balance px-10 py-5 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/20"
             >
               <CtaText />
