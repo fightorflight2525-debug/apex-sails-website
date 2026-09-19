@@ -14,8 +14,9 @@ import CtaText from "@/components/CtaText";
 // page as it is" below its hero, and /welcome reuses the Why block. These are
 // the /residential sections lifted verbatim into one file so the pages render
 // the SAME markup and cannot drift. Differences are props, never copies:
-//   ctaHref       where the offer buttons point (/contact on /residential; the
-//                 hero form on /free-design, so the hallway keeps one door)
+//   ctaHref       where the offer buttons point. SAUCE-314 (D2): "/#get-started"
+//                 everywhere; LeadFormBridge opens the page's own top form (the
+//                 hero form on /residential and /free-design, dropdown open)
 //   withCommercial  /free-design serves homes AND businesses (S1.7): the
 //                 "What we shade" block gains a Commercial spaces card.
 // SAUCE-313 copy changes inside (his rulings): 30°F cooler surfaces (S2.6),
@@ -266,7 +267,7 @@ function UnderButtonLine({ className }: { className: string }) {
 }
 
 /* THE APEX GUARANTEE (scrolls over the pinned background) */
-export function ApexGuarantee({ ctaHref = "/contact" }: { ctaHref?: string }) {
+export function ApexGuarantee({ ctaHref = "/#get-started" }: { ctaHref?: string }) {
   return (
     <div className="px-6 sm:px-8 lg:px-12 pb-28 md:pb-36">
       <div className="max-w-7xl mx-auto">
@@ -462,7 +463,7 @@ function CardCta({ href }: { href: string }) {
    withCommercial (/free-design, S1.7): + a Commercial spaces card with a photo
    from the existing /commercial set; its copy is the home page's own "For Your
    Business" card copy. */
-export function WhatWeShade({ ctaHref = "/contact", withCommercial = false }: { ctaHref?: string; withCommercial?: boolean }) {
+export function WhatWeShade({ ctaHref = "/#get-started", withCommercial = false }: { ctaHref?: string; withCommercial?: boolean }) {
   return (
     <section className="relative overflow-hidden bg-white py-20 md:py-28">
       {/* sail-geometry motif so the section is not flat white */}
@@ -648,9 +649,11 @@ export function ResidentialGallery() {
           <h2 className="mt-3 font-heading text-4xl sm:text-5xl font-bold text-charcoal tracking-tight">
             Ideas for your <span className="italic text-copper">backyard</span>
           </h2>
+          {/* SAUCE-314 (B8): the contract's subtext; the MO wires the color pop-up button at the slot. */}
           <p className="mt-4 text-lg text-charcoal/70 leading-relaxed">
-            Every sail we build is custom designed and installed for the home it sits over.
+            Choose your sail color and post finish.
           </p>
+          {/* S314_COLOR_BROWSER_SLOT */}
         </div>
 
         <div className="mt-12">
@@ -751,7 +754,7 @@ export function ResidentialFaq() {
 }
 
 /* FINAL CTA */
-export function ResidentialFinalCta({ ctaHref = "/contact" }: { ctaHref?: string }) {
+export function ResidentialFinalCta({ ctaHref = "/#get-started" }: { ctaHref?: string }) {
   return (
     <section className="relative overflow-hidden bg-charcoal py-20 md:py-24">
       <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center">

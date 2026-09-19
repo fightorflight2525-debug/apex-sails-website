@@ -313,7 +313,7 @@ export default function AboutPage() {
             engineered shade can do for your facility.
           </p>
           <Link
-            href="/contact"
+            href="/#get-started"
             className="mt-8 inline-block text-balance rounded-full bg-white px-8 py-4 text-base font-semibold text-copper shadow-lg transition-all hover:bg-cream hover:shadow-xl"
           >
             <CtaText />

@@ -92,8 +92,11 @@ export default function GalleryPage() {
   useEffect(() => {
     try {
       const f = new URLSearchParams(window.location.search).get("filter");
-      if (f === "residential") setFilter("Residential");
-      else if (f === "commercial") setFilter("Commercial");
+      const want: Filter | null = f === "residential" ? "Residential" : f === "commercial" ? "Commercial" : null;
+      // SAUCE-314 lint note: a one-time read of the URL after hydration (the
+      // server cannot see it), one extra render by design; behavior unchanged.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      if (want) setFilter(want);
     } catch {
       /* no filter is fine */
     }
@@ -166,7 +169,7 @@ export default function GalleryPage() {
             We call within 15 minutes during our call hours, 7 AM to 7 PM every day, and first thing in the morning after hours.
           </p>
           <Link
-            href="/contact"
+            href="/#get-started"
             className="mt-8 inline-flex items-center justify-center text-center text-balance rounded-full bg-copper px-8 py-4 text-base font-semibold text-white shadow-sm transition-all hover:bg-copper-dark hover:shadow-md"
           >
             <CtaText />

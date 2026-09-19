@@ -41,7 +41,7 @@ const verticals: {
     title: "Restaurants & Patios",
     blurb:
       "Keep diners comfortable and seats full through the midday heat with shade built for your patio.",
-    href: "/contact",
+    href: "/#get-started",
     cta: "Request an assessment",
     icon: (
       <path
@@ -55,7 +55,7 @@ const verticals: {
     title: "HOA & Community Pools",
     blurb:
       "Protect pool decks, ramadas, and common areas so residents can use them all summer.",
-    href: "/contact",
+    href: "/#get-started",
     cta: "Request an assessment",
     icon: (
       <path
@@ -69,7 +69,7 @@ const verticals: {
     title: "Multi-Family",
     blurb:
       "Shade courtyards, walkways, and amenity spaces that set your property apart for renters.",
-    href: "/contact",
+    href: "/#get-started",
     cta: "Request an assessment",
     icon: (
       <path
@@ -83,7 +83,7 @@ const verticals: {
     title: "Golf & Recreation",
     blurb:
       "Keep driving bays, ranges, and seating usable through peak sun so play does not stop at midday.",
-    href: "/contact",
+    href: "/#get-started",
     cta: "Request an assessment",
     icon: (
       <path
@@ -97,7 +97,7 @@ const verticals: {
     title: "Senior Living",
     blurb:
       "Give residents shaded courtyards and walkways so outdoor access is not lost to the summer.",
-    href: "/contact",
+    href: "/#get-started",
     cta: "Request an assessment",
     icon: (
       <path
@@ -111,7 +111,7 @@ const verticals: {
     title: "Schools & Daycares",
     blurb:
       "Cover play areas, lunch courts, and pickup lanes with shade engineered for safety and sun.",
-    href: "/contact",
+    href: "/#get-started",
     cta: "Request an assessment",
     icon: (
       <path
@@ -300,7 +300,7 @@ export default function CommercialPage() {
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/contact"
+                href="/#get-started"
                 className="cta-glow-loop inline-flex items-center justify-center text-center text-balance px-8 py-4 bg-copper text-white text-lg font-semibold rounded-full hover:bg-copper-light transition-colors duration-200"
               >
                 <span><CtaText /></span>
@@ -641,7 +641,7 @@ export default function CommercialPage() {
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact"
+              href="/#get-started"
               className="cta-glow-loop inline-flex items-center justify-center text-center text-balance px-10 py-5 bg-white text-copper text-lg font-bold rounded-full hover:bg-cream transition-colors duration-200 shadow-lg shadow-black/20"
             >
               <span><CtaText /></span>

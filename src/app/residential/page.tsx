@@ -125,6 +125,7 @@ export default function ResidentialPage() {
       <PriceTransparency />
       <WhatWeShade />
       <ResidentialGallery />
+      {/* S314_PROJECT_STORY_SLOT */}
       <ValueStack />
       <ResidentialFaq />
       <ResidentialFinalCta />

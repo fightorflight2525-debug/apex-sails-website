@@ -74,7 +74,7 @@ export default function FaqPage() {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link
-              href="/contact"
+              href="/#get-started"
               className="cta-glow inline-flex items-center justify-center text-center text-balance rounded-full bg-copper px-8 py-4 text-base font-semibold text-white shadow-sm transition-all hover:bg-copper-dark hover:shadow-md"
             >
               <CtaText />
