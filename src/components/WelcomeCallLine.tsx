@@ -1,10 +1,18 @@
 "use client";
 
 // ============================================================================
-// WelcomeCallLine (SAUCE-312): the line under "You're family now!" on /welcome.
-// Operator's brief 2026-09-17: friendlier, a real person excited to help (not a
-// salesperson), and make them WANT to pick up. It names the calling number so
-// they answer it.
+// WelcomeCallLine (SAUCE-312): the heads-up under "What should I expect?" on
+// /welcome. Operator's brief 2026-09-17: friendlier, a real person excited to
+// help (not a salesperson), and make them WANT to pick up. It names the calling
+// number so they answer it.
+// S314 (his words, contract section 1, exact copy): four lines, laid out so ONE
+// glance says who calls, when, and from which number:
+//   1 (bold)    Josh or Brax will call you in 15 minutes.          (call window)
+//               Josh or Brax will call you first thing in the morning. (after it)
+//   2 (italic)  "Probably a little too excited to hear about your shade needs."
+//   3           Make sure to save the number so you know it's us: 602-837-0370
+//               + `actions` (the page's Save our number / Call us now row)
+//   4           We can't wait to hear about your space!
 // KEEP THE PROMISE TRUE: inside the call window (Phoenix time) it promises the
 // call in 15 minutes; outside it, the first call of the morning. A 10 PM buyer
 // is never told "15 minutes", and neither is a buyer 10 minutes before closing
@@ -12,7 +20,7 @@
 // Rendered after mount (the server cannot know the buyer's hour), faded in.
 // ============================================================================
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import posthog from "posthog-js";
 
 // CALL WINDOW = THE OPERATOR'S RULING. America/Phoenix (no DST), minutes after
@@ -55,13 +63,15 @@ export function callPromiseHolds(): boolean {
   return !!w && minutes >= w[0] && minutes < w[1] - PROMISE_MINUTES;
 }
 
-// SAUCE-313: `className` sets the type size for the compact /welcome layout
-// (the whole "What should I expect?" section must fit the first phone screen).
-// The COPY below is unchanged.
+// SAUCE-313: `className` sets the base type size for the compact /welcome layout.
+// S314: `actions` renders between line 3 and line 4 (WelcomeActions: the Save
+// our number + Call us now row, its behavior and tracking untouched).
 export default function WelcomeCallLine({
   className = "mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-white/90 sm:text-2xl",
+  actions,
 }: {
   className?: string;
+  actions?: ReactNode;
 }) {
   const [variant, setVariant] = useState<"day" | "night" | null>(null);
 
@@ -72,6 +82,9 @@ export default function WelcomeCallLine({
     } catch {
       /* default to day */
     }
+    // A client-only value (the buyer's Phoenix hour) set after mount, so SSR and
+    // hydration match. Pre-existing pattern, unchanged by S314 (lint: 0 errors, R4).
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setVariant(v);
     let from = "";
     try {
@@ -82,22 +95,27 @@ export default function WelcomeCallLine({
     posthog.capture("welcome_viewed", { variant: v, from_door: from || null });
   }, []);
 
-  const num = <strong className="whitespace-nowrap font-bold text-white">602-837-0370</strong>;
-
+  // Before mount the DAY copy holds the space at opacity 0 (no layout jump).
   return (
-    <p className={`${className} transition-opacity duration-500 ${variant ? "opacity-100" : "opacity-0"}`}>
-      {variant === "night" ? (
-        <>
-          Heads up: an Apex human with a fresh cup of coffee is calling you from {num} first thing in the
-          morning. Save the number and pick up. We can&apos;t wait to hear about your space!
-        </>
-      ) : (
-        <>
-          Heads up: an Apex human with a little too much coffee is calling you from {num} in the next 15
-          minutes. Save the number and pick up. We can&apos;t wait to hear about your space!
-        </>
-      )}
-    </p>
+    <div className={`${className} transition-opacity duration-500 ${variant ? "opacity-100" : "opacity-0"}`}>
+      {/* Two beats on every screen: WHO / WHEN. Block spans (no <br>, no nbsp), so the
+          served text stays one plain sentence. */}
+      <p className="text-[1.2em] font-bold leading-snug text-white">
+        <span className="block">Josh or Brax will call you </span>
+        <span className="block">{variant === "night" ? "first thing in the morning." : "in 15 minutes."}</span>
+      </p>
+      <p className="mt-1 text-balance italic text-white/75">
+        &ldquo;Probably a little too excited to hear about your shade needs.&rdquo;
+      </p>
+      <p className="mt-4 text-balance">
+        Make sure to save the number so you know it&apos;s us:{" "}
+        <strong className="block whitespace-nowrap font-heading text-[1.35em] font-bold tracking-wide text-white">
+          602-837-0370
+        </strong>
+      </p>
+      {actions}
+      <p className="mt-4 font-semibold text-white">We can&apos;t wait to hear about your space!</p>
+    </div>
   );
 }
 
@@ -118,6 +136,8 @@ export function SaveNumberButton() {
     } catch {
       /* assume a normal browser */
     }
+    // Client-only (the user agent), set after mount so SSR and hydration match.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setShow(!inApp);
   }, []);
   if (!show) return null;
@@ -146,11 +166,15 @@ export function SaveNumberButton() {
 export function CallNowButton() {
   const [day, setDay] = useState(false);
   useEffect(() => {
+    let d = true;
     try {
-      setDay(callPromiseHolds());
+      d = callPromiseHolds();
     } catch {
-      setDay(true);
+      /* default to day */
     }
+    // Client-only (the buyer's Phoenix hour), set after mount so SSR and hydration match.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setDay(d);
   }, []);
   if (!day) return null;
   return (
